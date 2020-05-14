@@ -1,6 +1,6 @@
 [package]
 name = "feembox"
-description = "Implementation of the pir-8 ISA"
+description = "What if a feed, but it's a mailbox?"
 documentation = "https://rawcdn.githack.com/nabijaczleweli/feembox/doc/feembox/index.html"
 repository = "https://github.com/nabijaczleweli/feembox"
 readme = "README.md"
@@ -16,3 +16,4 @@ exclude = ["*.enc"]
 
 [dependencies]
 mailparse = "0.12"
+clap = "2.33"
