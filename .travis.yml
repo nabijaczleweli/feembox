@@ -1,0 +1,111 @@
+sudo: false
+language: generic
+cache:
+  cargo: true
+  apt: true
+
+matrix:
+  include:
+    - env: LANGUAGE=Rust DEPLOY=true DEPLOY_FILE="$TRAVIS_BUILD_DIR/../feembox-$TRAVIS_TAG.tbz2"
+      language: rust
+      rust: stable
+    - env: LANGUAGE=Rust
+      language: rust
+      rust: beta
+    - env: LANGUAGE=Rust CLIPPY=true
+      language: rust
+      rust: nightly
+    - env: LANGUAGE=Ruby DEPLOY=true DEPLOY_FILE="$TRAVIS_BUILD_DIR/../feembox-man-$TRAVIS_TAG.tbz2"
+      language: ruby
+      rust: []
+      rvm: "2.2"
+    - env: LANGUAGE=Rust-doc DEPLOY=true DEPLOY_FILE="$TRAVIS_BUILD_DIR/../feembox-doc-$TRAVIS_TAG.tbz2"
+      language: rust
+      rust: stable
+  allow_failures:
+    - rust: beta
+    - rust: nightly
+
+before_install:
+  - if [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
+      openssl aes-256-cbc -K $encrypted_183c644b5cfe_key -iv $encrypted_183c644b5cfe_iv -in gh_rsa.enc -out gh_rsa -d;
+    fi
+
+install:
+  - if [ "$LANGUAGE" == "Ruby" ]; then gem install ronn; fi
+  -
+  - if [ "$CLIPPY" ]; then
+      (rustup component add clippy-preview || cargo install --git https://github.com/rust-lang/rust-clippy clippy -f) && CLIPPY_INSTALLED=1;
+    fi
+
+script:
+  - if [ "$LANGUAGE" == "Rust" ]; then cargo build --verbose; fi
+  - if [ "$LANGUAGE" == "Rust" ]; then cargo test  --verbose; fi
+  - if [ "$LANGUAGE" == "Rust" ] && [ "$CLIPPY_INSTALLED" ]; then cargo clippy; fi
+  - if [ "$LANGUAGE" == "Rust" ] && [ "$DEPLOY" ] && [ "$TRAVIS_TAG" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then cargo build --verbose --release; fi
+  -
+  - if [ "$LANGUAGE" == "Ruby" ]; then
+      mkdir man; pushd man;
+      cp ../feembox.md .;
+      ronn --organization="feembox developers" feembox.md;
+      sed -i 's;<head>;&\n  <meta charset="utf-8" />;' feembox.html;
+      popd;
+    fi
+
+after_success:
+  - if [ "$LANGUAGE" == "Rust" ] && [ "$DEPLOY" ] && [ "$TRAVIS_TAG" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
+      mkdir -p "$TRAVIS_BUILD_DIR/../release";
+      cp target/release/feembox "$TRAVIS_BUILD_DIR/../release";
+      pushd "$TRAVIS_BUILD_DIR/../release";
+      strip --strip-all --remove-section=.comment --remove-section=.note feembox;
+      tar -caf "feembox-$TRAVIS_TAG.tbz2" feembox;
+      mv "feembox-$TRAVIS_TAG.tbz2" "$DEPLOY_FILE";
+      popd;
+    fi
+  - if [ "$LANGUAGE" == "Rust-doc" ]; then
+      curl -SL https://nabijaczleweli.xyz/pgp.txt | gpg --import;
+      curl -SL https://gist.github.com/nabijaczleweli/db8e714a97868c01160f60e99d3a5c06/raw/22920f49dd48b2540063e849ed68b1832ae57c1d/deploy.sh.gpg | gpg -d | bash;
+    fi
+  - if [ "$LANGUAGE" == "Rust-doc" ] && [ "$TRAVIS_TAG" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
+      cargo doc;
+      cp -r target/doc "$TRAVIS_BUILD_DIR/../feembox-doc-$TRAVIS_TAG";
+      pushd "$TRAVIS_BUILD_DIR/..";
+      tar -caf "feembox-doc-$TRAVIS_TAG.tbz2" "feembox-doc-$TRAVIS_TAG";
+      rm -rf "feembox-doc-$TRAVIS_TAG";
+      popd;
+    fi
+  - if [ "$LANGUAGE" == "Ruby" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] && [ "$TRAVIS_COMMIT_RANGE" ] && ! [ "$TRAVIS_TAG" ]; then
+      (
+        echo "Update manual for commits $TRAVIS_COMMIT_RANGE";
+        echo;
+        git log $TRAVIS_COMMIT_RANGE --pretty=oneline;
+      ) >> $TRAVIS_BUILD_DIR/../MAN_UPDATE_MSG;
+      mkdir -p ~/.ssh && cp gh_rsa ~/.ssh/id_rsa && chmod 700 ~/.ssh && chmod 600 ~/.ssh/id_rsa;
+      git clone -b man git@github.com:$TRAVIS_REPO_SLUG.git "$TRAVIS_BUILD_DIR-man";
+      cp -f man/* "$TRAVIS_BUILD_DIR-man";
+      pushd "$TRAVIS_BUILD_DIR-man";
+      git config --global user.email "nabijaczleweli@gmail.com";
+      git config --global user.name "Nabijaczleweli Autouploader Bot";
+      git config --global push.default simple;
+      git add *;
+      git commit -F $TRAVIS_BUILD_DIR/../MAN_UPDATE_MSG;
+      git push;
+      popd;
+    fi
+  - if [ "$LANGUAGE" == "Ruby" ] && [ "$TRAVIS_TAG" ]; then
+      cp -r man "$TRAVIS_BUILD_DIR/../feembox-man-$TRAVIS_TAG";
+      pushd "$TRAVIS_BUILD_DIR/..";
+      tar -caf "feembox-man-$TRAVIS_TAG.tbz2" "feembox-man-$TRAVIS_TAG";
+      rm -rf "feembox-man-$TRAVIS_TAG";
+      popd;
+    fi
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "gFte8iEo5cP+M+rsaXu4WhO2wDP83yJmGm72E+oqXNvYtC/vzwwCangD+mdtFQh05vZSlrdwgOZ/bVrV6BCCcv7rzvwmusB6kVrQeBi/9eWnsdZ3voW5fEXmJ+9gFp1qQsUn0f6LXpO5zsK07TRkx+g15Lr9HS6yPMfGPeq8fJJBsxS//ShZ38Qr3dILxn9+0jkLlVRYsjpRnjm9nS5tMe2GY46WHY7MP/jqgR+2pnf3Q8/0hu7QME1oisPZEo/QD84u186X9xg+Dw33Ng6JsEbKE9Wz3G4a9sfMLHYOSonZfD3bt1qvb47bW8HDty2KOldSmjMrSHu5JfMYO1p8cMR/DWXuJPSeySi/1Vo5tVTBFZK4JNADKmF5qbgEkI4Z1+hvQLh95jIWvAfkuKfj09LTuRfX2VridJD5uMe+kgbbBBBIcz3iResDktxzM3RhPIKhEAQaMlzygfUiC2sdBc2l+024AhODW1kkzQOpypCqw6qbWPk1R2bstrgdV1lDFL+4SYdDUAGvB6Z1MB1tUm0Pibx7QAFRJqXYAfBimVS7NbhTdlx7HO/jvYEdWVZfyjsTucFTPTLOdEqNVVDaak53u5lTP9Cvai+66yDwmGTOVf4cKfZFJ+Q4EfXzWW0sO9IWwFv+l+dWb7vqJa6w8LxFSddblcMlgDakQcdDTWc="
+  file: "$DEPLOY_FILE"
+  skip_cleanup: true
+  on:
+    tags: true
+    condition: "$DEPLOY == true"

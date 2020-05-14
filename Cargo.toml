@@ -1,0 +1,18 @@
+[package]
+name = "feembox"
+description = "Implementation of the pir-8 ISA"
+documentation = "https://rawcdn.githack.com/nabijaczleweli/feembox/doc/feembox/index.html"
+repository = "https://github.com/nabijaczleweli/feembox"
+readme = "README.md"
+keywords = ["rss", "feed", "mbox", "maildir"]
+categories = ["email"]
+license = "MIT"
+# Remember to also update in appveyor.yml
+version = "0.1.0"
+# Remember to also update in feembox.md
+authors = ["наб <nabijaczleweli@gmail.com>"]
+exclude = ["*.enc"]
+
+
+[dependencies]
+mailparse = "0.12"
