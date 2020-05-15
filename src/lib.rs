@@ -6,12 +6,13 @@
 
 
 extern crate mailparse;
+extern crate feed_rs;
 #[macro_use]
 extern crate clap;
 
 
-// mod error;
 mod options;
 
-// pub use error::Error;
+pub mod util;
+
 pub use options::Options;
