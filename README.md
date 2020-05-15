@@ -1,4 +1,4 @@
-# feembox [![TravisCI build status](https://travis-ci.com/nabijaczleweli/feembox.svg?branch=master)](https://travis-ci.com/nabijaczleweli/feembox) [![AppVeyorCI build status](https://ci.appveyor.com/api/projects/status/hricwh1vkkj0wiwo?svg=true)](https://ci.appveyor.com/project/nabijaczleweli/feembox/branch/master) [![Licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![Crates.io version](https://meritbadge.herokuapp.com/feembox)](https://crates.io/crates/feembox)
+# feembox [![TravisCI build status](https://travis-ci.com/nabijaczleweli/feembox.svg?branch=trunk)](https://travis-ci.com/nabijaczleweli/feembox) [![AppVeyorCI build status](https://ci.appveyor.com/api/projects/status/hricwh1vkkj0wiwo?svg=true)](https://ci.appveyor.com/project/nabijaczleweli/feembox/branch/trunk) [![Licence](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE) [![Crates.io version](https://meritbadge.herokuapp.com/feembox)](https://crates.io/crates/feembox)
 What if a feed, but it's a mailbox?
 
 ## [Documentation](https://rawcdn.githack.com/nabijaczleweli/feembox/doc/feembox/index.html)

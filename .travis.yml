@@ -48,7 +48,7 @@ script:
       mkdir man; pushd man;
       cp ../feembox.md .;
       ronn --organization="feembox developers" feembox.md;
-      sed -i 's;<head>;&\n  <meta charset="utf-8" />;' feembox.html;
+      sed -i 's;<head>;&\n  <meta charset="utf-8" />;' *.html;
       popd;
     fi
 
@@ -74,6 +74,7 @@ after_success:
       rm -rf "feembox-doc-$TRAVIS_TAG";
       popd;
     fi
+  - echo "$LANGUAGE" == "Ruby" "$TRAVIS_SECURE_ENV_VARS" == "true" "$TRAVIS_COMMIT_RANGE" "$TRAVIS_TAG"
   - if [ "$LANGUAGE" == "Ruby" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ] && [ "$TRAVIS_COMMIT_RANGE" ] && ! [ "$TRAVIS_TAG" ]; then
       (
         echo "Update manual for commits $TRAVIS_COMMIT_RANGE";
