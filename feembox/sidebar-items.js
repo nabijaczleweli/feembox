@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["util","Various utility functions."]],"struct":[["Options","Representation of the application's all configurable values."]]});

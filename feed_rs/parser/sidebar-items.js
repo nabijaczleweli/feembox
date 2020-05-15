@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ParseErrorKind","Underlying cause of the parse failure"],["ParseFeedError","An error returned when parsing a feed from a source fails"]],"fn":[["parse","Parse the input (Atom, a flavour of RSS or JSON Feed) into our model"]],"type":[["ParseFeedResult",""]]});

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `mailparse` crate."><meta name="keywords" content="rust, rustlang, rust-lang, mailparse"><title>mailparse - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../mailparse/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate mailparse</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all mailparse's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'mailparse', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/mailparse/lib.rs.html#1-1423' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>mailparse</a></span></h1><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table><tr class='module-item'><td><a class="mod" href="body/index.html" title='mailparse::body mod'>body</a></td><td class='docblock-short'></td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.GroupInfo.html" title='mailparse::GroupInfo struct'>GroupInfo</a></td><td class='docblock-short'><p>A representation of a group address. It has a name and
+a list of mailboxes.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MailAddrList.html" title='mailparse::MailAddrList struct'>MailAddrList</a></td><td class='docblock-short'><p>A simple wrapper around <code>Vec&lt;MailAddr&gt;</code>. This is primarily here so we can
+implement the Display trait on it, and allow user code to easily convert
+the return value from <code>addrparse</code> back into a string. However there are some
+additional utility functions on this wrapper as well.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MailHeader.html" title='mailparse::MailHeader struct'>MailHeader</a></td><td class='docblock-short'><p>A struct that represents a single header in the message.
+It holds slices into the raw byte array passed to parse_mail, and so the
+lifetime of this struct must be contained within the lifetime of the raw
+input. There are additional accessor functions on this struct to extract
+the data as Rust strings.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MessageIdList.html" title='mailparse::MessageIdList struct'>MessageIdList</a></td><td class='docblock-short'><p>A simple wrapper around <code>Vec&lt;String&gt;</code>. This is primarily here so we can
+implement the Display trait on it, and allow user code to easily convert
+the return value from <code>msgidparse</code> back into a string. This also allows
+to add additional methods on this type in the future.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ParsedContentDisposition.html" title='mailparse::ParsedContentDisposition struct'>ParsedContentDisposition</a></td><td class='docblock-short'><p>A struct to hold a more structured representation of the Content-Disposition header.
+This is provided mostly as a convenience since this metadata is usually
+needed to interpret the message body properly.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ParsedContentType.html" title='mailparse::ParsedContentType struct'>ParsedContentType</a></td><td class='docblock-short'><p>A struct to hold a more structured representation of the Content-Type header.
+This is provided mostly as a convenience since this metadata is usually
+needed to interpret the message body properly.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ParsedMail.html" title='mailparse::ParsedMail struct'>ParsedMail</a></td><td class='docblock-short'><p>Struct that holds the structured representation of the message. Note that
+since MIME allows for nested multipart messages, a tree-like structure is
+necessary to represent it properly. This struct accomplishes that by holding
+a vector of other ParsedMail structures for the subparts.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.SingleInfo.html" title='mailparse::SingleInfo struct'>SingleInfo</a></td><td class='docblock-short'><p>A representation of a single mailbox. Each mailbox has
+a routing address <code>addr</code> and an optional display name.</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.DispositionType.html" title='mailparse::DispositionType enum'>DispositionType</a></td><td class='docblock-short'><p>The possible disposition types in a Content-Disposition header. A more
+comprehensive list of IANA-recognized types can be found at
+https://www.iana.org/assignments/cont-disp/cont-disp.xhtml. This library
+only enumerates the types most commonly found in email messages, and
+provides the <code>Extension</code> value for holding all other types.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.MailAddr.html" title='mailparse::MailAddr enum'>MailAddr</a></td><td class='docblock-short'><p>An abstraction over the two different kinds of top-level addresses allowed
+in email headers. Group addresses have a name and a list of mailboxes. Single
+addresses are just a mailbox. Each mailbox consists of what you would consider
+an email address (e.g. foo@bar.com) and optionally a display name (&quot;Foo Bar&quot;).
+Groups are represented in email headers with colons and semicolons, e.g.
+To: my-peeps: foo@peeps.org, bar@peeps.org;</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.MailParseError.html" title='mailparse::MailParseError enum'>MailParseError</a></td><td class='docblock-short'><p>An error type that represents the different kinds of errors that may be
+encountered during message parsing.</p>
+</td></tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table><tr class='module-item'><td><a class="trait" href="trait.MailHeaderMap.html" title='mailparse::MailHeaderMap trait'>MailHeaderMap</a></td><td class='docblock-short'><p>A trait that is implemented by the [MailHeader] slice. These functions are
+also available on Vec<MailHeader> which is returned by the parse_headers
+function. It provides a map-like interface to look up header values by their
+name.</p>
+</td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.addrparse.html" title='mailparse::addrparse fn'>addrparse</a></td><td class='docblock-short'><p>Convert an address field from an email header into a structured type.
+This function handles the most common formatting of to/from/cc/bcc fields
+found in email headers. Note that if you are attempting to parse the
+value of a <code>MailHeader</code>, it is better (both for correctness and performance
+to use the <code>addrparse_header</code> function instead of this one. Correctness
+is impacted because of the way encoded words within the header are
+processed; using <code>MailHeader::get_value()</code> will decode encoded words,
+which may then contain characters like commas that affect how <code>addrparse</code>
+parses the value. This can produce incorrect results in some cases; using
+<code>addrparse_header</code> will avoid this problem.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.addrparse_header.html" title='mailparse::addrparse_header fn'>addrparse_header</a></td><td class='docblock-short'><p>Take a <code>MailHeader</code> that contains addresses in the value (e.g. from/to/cc/bcc)
+and produce a structured type representing those addresses.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.dateparse.html" title='mailparse::dateparse fn'>dateparse</a></td><td class='docblock-short'><p>Convert a date field from an email header into a UNIX epoch timestamp.
+This function handles the most common formatting of date fields found in
+email headers. It may fail to parse some of the more creative formattings.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.msgidparse.html" title='mailparse::msgidparse fn'>msgidparse</a></td><td class='docblock-short'><p>Parse an email header into a structured type holding a list of message ids.
+This function can be used to parse headers containing message IDs, such as
+<code>Message-ID</code>, <code>In-Reply-To</code>, and <code>References</code>.
+This function is currently mostly trivial (splits on whitespace and strips
+angle-brackets) but may be enhanced in the future to strip comments (which
+are technically allowed by the RFCs but never really used in practice).</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.parse_content_disposition.html" title='mailparse::parse_content_disposition fn'>parse_content_disposition</a></td><td class='docblock-short'><p>Helper method to parse a header value as a Content-Disposition header. The disposition
+defaults to &quot;inline&quot; if no disposition parameter is provided in the header
+value.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.parse_content_type.html" title='mailparse::parse_content_type fn'>parse_content_type</a></td><td class='docblock-short'><p>Helper method to parse a header value as a Content-Type header. Note that
+the returned object's <code>params</code> map will contain a charset key if a charset
+was explicitly specified in the header; otherwise the <code>params</code> map will not
+contain a charset key. Regardless, the <code>charset</code> field will contain a
+charset - either the one explicitly specified or the default of &quot;us-ascii&quot;.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.parse_header.html" title='mailparse::parse_header fn'>parse_header</a></td><td class='docblock-short'><p>Parse a single header from the raw data given.
+This function takes raw byte data, and starts parsing it, expecting there
+to be a MIME header key-value pair right at the beginning. It parses that
+header and returns it, along with the index at which the next header is
+expected to start. If you just want to parse a single header, you can ignore
+the second component of the tuple, which is the index of the next header.
+Error values are returned if the data could not be successfully interpreted
+as a MIME key-value pair.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.parse_headers.html" title='mailparse::parse_headers fn'>parse_headers</a></td><td class='docblock-short'><p>Parses all the headers from the raw data given.
+This function takes raw byte data, and starts parsing it, expecting there
+to be zero or more MIME header key-value pair right at the beginning,
+followed by two consecutive newlines (i.e. a blank line). It parses those
+headers and returns them in a vector. The normal vector functions can be
+used to access the headers linearly, or the MailHeaderMap trait can be used
+to access them in a map-like fashion. Along with this vector, the function
+returns the index at which the message body is expected to start. If you
+just care about the headers, you can ignore the second component of the
+returned tuple.
+Error values are returned if there was some sort of parsing error.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.parse_mail.html" title='mailparse::parse_mail fn'>parse_mail</a></td><td class='docblock-short'><p>The main mail-parsing entry point.
+This function takes the raw data making up the message body and returns a
+structured version of it, which allows easily accessing the header and body
+information as needed.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "mailparse";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

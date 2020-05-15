@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `charset` crate."><meta name="keywords" content="rust, rustlang, rust-lang, charset"><title>charset - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../charset/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate charset</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all charset's items</p></a><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'charset', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/charset/lib.rs.html#10-861' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>charset</a></span></h1><div class='docblock'><p><code>charset</code> is a wrapper around <a href="https://crates.io/crates/encoding_rs/"><code>encoding_rs</code></a> that provides
+(non-streaming) decoding for character encodings that occur in <em>email</em> by
+providing decoding for <a href="https://tools.ietf.org/html/rfc2152">UTF-7</a> in addition to the encodings defined by
+the <a href="https://encoding.spec.whatwg.org/">Encoding Standard</a> (and provided by <code>encoding_rs</code>).</p>
+<p><em>Note:</em> Do <em>not</em> use this crate for consuming <em>Web</em> content. For security
+reasons, consumers of Web content are <a href="https://html.spec.whatwg.org/#character-encodings"><em>prohibited</em></a> from supporting
+UTF-7. Use <code>encoding_rs</code> directly when consuming Web content.</p>
+<p>The set of encodings consisting of UTF-7 and the encodings defined in the
+Encoding Standard is believed to be appropriate for consuming email,
+because that's the set of encodings supported by <a href="https://thunderbird.net/">Thunderbird</a>.
+Furthermore, UTF-7 support is believed to be necessary based on the
+experience of the Firefox OS email client. In fact, while the UTF-7
+implementation in this crate is independent of Thunderbird's UTF-7
+implementation, Thunderbird uses <code>encoding_rs</code> to decode the other
+encodings. The set of <em>labels</em>/<em>aliases</em> recognized by this crate matches
+those recognized by Thunderbird.</p>
+<p>Known compatibility limitations (shared with Thunderbird and known from
+Thunderbird bug reports):</p>
+<ul>
+<li>JavaMail may use non-standard labels for legacy encodings such that
+the labels aren't recognized by this crate even if the encodings
+themselves would be supported.</li>
+<li>Some ancient Usenet posting in Chinese may not be decodable, because
+this crate does not support HZ.</li>
+<li>Some emails sent in Chinese by Sun's email client for CDE on Solaris
+around the turn of the millennium may not decodable, because this
+crate does not support ISO-2022-CN.</li>
+<li>Some emails sent in Korean by IBM/Lotus Notes may not be decodable,
+because this crate does not support ISO-2022-KR.</li>
+</ul>
+<p>This crate intentionally does not support encoding content into legacy
+encodings. When sending email, <em>always</em> use UTF-8. This is, just call
+<code>.as_bytes()</code> on <code>&amp;str</code> and label the content as <code>UTF-8</code>.</p>
+<h1 id="security-considerations" class="section-header"><a href="#security-considerations">Security considerations</a></h1>
+<p>Again, this crate is for <em>email</em>. Please do <em>NOT</em> use it for <em>Web</em>
+content.</p>
+<p>Never try to perform any security analysis on the undecoded data in
+ASCII-incompatible encodings and in UTF-7 in particular. Always decode
+first and analyze after. UTF-7 allows even characters that don't have to
+be represeted as base64 to be represented as base64. Also, for consistency
+with Thunderbird, the UTF-7 decoder in this crate allows e.g. ASCII
+controls to be represented without base64 encoding even when the spec
+says they should be base64-encoded.</p>
+<p>This implementation is non-constant-time by design. An attacker who
+can observe input length and the time it takes to decode it can make
+guesses about relative proportions of characters from different ranges.
+Guessing the proportion of ASCII vs. non-ASCII should be particularly
+feasible.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Charset.html" title='charset::Charset struct'>Charset</a></td><td class='docblock-short'><p>A character encoding suitable for decoding <em>email</em>.</p>
+</td></tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table><tr class='module-item'><td><a class="constant" href="constant.UTF_7.html" title='charset::UTF_7 constant'>UTF_7</a></td><td class='docblock-short'><p>The UTF-7 encoding.</p>
+</td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table><tr class='module-item'><td><a class="fn" href="fn.decode_ascii.html" title='charset::decode_ascii fn'>decode_ascii</a></td><td class='docblock-short'><p>Converts ASCII to UTF-8 with non-ASCII bytes replaced with the
+REPLACEMENT CHARACTER.</p>
+</td></tr><tr class='module-item'><td><a class="fn" href="fn.decode_latin1.html" title='charset::decode_latin1 fn'>decode_latin1</a></td><td class='docblock-short'><p>Converts bytes whose unsigned value is interpreted as Unicode code point
+(i.e. U+0000 to U+00FF, inclusive) to UTF-8.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "charset";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
