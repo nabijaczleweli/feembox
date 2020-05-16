@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["DisplayParseFeedError","An equivalent of a `Display` implementation for `ParseFeedError`"]]});
+initSidebarItems({"static":[["MESSAGE_ID_HEADER","Case-insensitive matcher for the Message-ID header"]],"struct":[["DisplayParseFeedError","An equivalent of a `Display` implementation for `ParseFeedError`"]]});
