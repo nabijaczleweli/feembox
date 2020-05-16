@@ -30,15 +30,11 @@ feembox(1) -- What if a feed, but it's a mailbox?
 
 ## EXIT VALUES
 
-    1 - option parsing error
-    2 - unused
-    3 - input file opening failure
-    4 - output write failure
-    5 - input read failure
-    6 - unused
-    7 - insufficient instruction data
-    8 - unused
-    9 - unused
+    1 - option parse error
+    2 - feed file open failed
+    3 - feed parse failed
+    4 - maildir subdirectory read failed
+    5 - existing mail open(2)/mmap(2) failed
 
 ## AUTHOR
 
