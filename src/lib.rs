@@ -5,8 +5,8 @@
 //!   * ThePhD
 
 
-extern crate mailparse;
 extern crate feed_rs;
+extern crate unicase;
 #[macro_use]
 extern crate clap;
 

@@ -2,7 +2,12 @@
 
 
 use feed_rs::parser::{ParseErrorKind as ParseFeedErrorKind, ParseFeedError};
+use unicase::Ascii;
 use std::fmt;
+
+
+/// Case-insensitive matcher for the Message-ID header
+pub static MESSAGE_ID_HEADER: Ascii<&str> = Ascii::new("Message-ID");
 
 
 /// An equivalent of a `Display` implementation for `ParseFeedError`

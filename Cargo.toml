@@ -16,5 +16,8 @@ exclude = ["*.enc"]
 
 [dependencies]
 mailparse = "0.12"
+tabwriter = "1.2"
 feed-rs = "0.2"
+unicase = "2.6"
+memmap = "0.7"
 clap = "2.33"
