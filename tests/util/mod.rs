@@ -1,11 +1,11 @@
 use feembox::util::{self, MESSAGE_ID_HEADER, LINK_REL_FILTER};
 use feed_rs::parser::parse as parse_feed;
 
-mod display_parse_feed_error;
+mod display_feed_person;
 
 
 static KDIST_XML: &[u8] = include_bytes!("../../test-data/kdist.xml");
-static KDIST_ID: &str = "8439afcc8c180d1e80b76c39f3beb253";
+static KDIST_ID: &str = "7edcf1fbe86570753646f6eb75db4d55";
 static KDIST_ENTRY_IDS: &[&str] = &["kernel.org,mainline,5.7-rc4,2020-05-03",
                                     "kernel.org,stable,5.6.11,2020-05-06",
                                     "kernel.org,stable,5.5.19,2020-04-21",

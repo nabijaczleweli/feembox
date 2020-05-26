@@ -14,7 +14,6 @@ extern crate clap;
 use mailparse::{parse_header as parse_mail_header, msgidparse as parse_message_ids};
 use mail_core::default_impl::simple_context as simple_mail_context;
 use mail_headers::header_components::Domain;
-use feembox::util::DisplayParseFeedError;
 use feed_rs::parser::parse as parse_feed;
 use feed_rs::model::Entry as FeedEntry;
 use std::process::{exit, id as pid};
@@ -47,7 +46,7 @@ fn actual_main() -> Result<(), i32> {
             }
             None => parse_feed(stdin()),
         }.map_err(|e| {
-            eprintln!("Reading {} failed: {}", opts.feed.0, DisplayParseFeedError(e));
+            eprintln!("Reading {} failed: {}", opts.feed.0, e);
             3
         })?;
 
@@ -110,7 +109,7 @@ fn actual_main() -> Result<(), i32> {
 
             let mut curs = &mail_map[..];
             while let Ok((header, next)) = parse_mail_header(curs) {
-                if header.get_key() == feembox::util::MESSAGE_ID_HEADER {
+                if &header.get_key_ref()[..] == feembox::util::MESSAGE_ID_HEADER {
                     if let Ok(ids) = parse_message_ids(&header.get_value()) {
                         for id in &*ids {
                             if entries_ids.remove(id).is_some() && opts.verbose {
