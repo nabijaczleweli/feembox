@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["UNKNOWN",""],["US_ASCII",""],["UTF_8",""]],"enum":[["EncodingErrorKind","A general error appearing when encoding failed in some way."],["Place",""]],"struct":[["EncodingError","A general error appearing when encoding failed in some way."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BodyPart","Parts used to create a mail body (in a multipart mail)."],["MailParts","Parts which can be used to compose a multipart mail."]]});

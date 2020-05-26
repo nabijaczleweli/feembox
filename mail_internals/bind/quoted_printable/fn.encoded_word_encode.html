@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `encoded_word_encode` fn in crate `mail_internals`."><meta name="keywords" content="rust, rustlang, rust-lang, encoded_word_encode"><title>mail_internals::bind::quoted_printable::encoded_word_encode - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../mail_internals/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class='location'><a href='../../index.html'>mail_internals</a>::<wbr><a href='../index.html'>bind</a>::<wbr><a href='index.html'>quoted_printable</a></p><script>window.sidebarCurrent = {name: 'encoded_word_encode', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../../src/mail_internals/bind/quoted_printable.rs.html#103-151' title='goto source code'>[src]</a></span><span class='in-band'>Function <a href='../../index.html'>mail_internals</a>::<wbr><a href='../index.html'>bind</a>::<wbr><a href='index.html'>quoted_printable</a>::<wbr><a class="fn" href=''>encoded_word_encode</a></span></h1><pre class='rust fn'>pub fn encoded_word_encode&lt;'a, I, O&gt;(input: I, out: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;mut </a>O) <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html" title="trait core::iter::traits::iterator::Iterator">Iterator</a>&lt;Item = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;O: <a class="trait" href="../../../mail_internals/bind/encoded_word/trait.EncodedWordWriter.html" title="trait mail_internals::bind::encoded_word::EncodedWordWriter">EncodedWordWriter</a>,&nbsp;</span></pre><div class='docblock'><p>Quoted Printable encoding for Encoded Words in MIME-Headers</p>
+<p>Which means:</p>
+<ol>
+<li>there is a limit to the maximum number of characters
+<ul>
+<li>the limit is 75 INCLUDING the <code>=?charset?encoding?...?=</code> overhead</li>
+<li>as such the line length limit of quoted printable can not be hit,
+the quoted printable part is at most 67 chars long, e.g. for utf8
+it is at most 64 chars</li>
+</ul>
+</li>
+<li>has to be one token, so no ' ','\t' and neither soft nor hard newlines</li>
+<li>no '?' character</li>
+</ol>
+<p>The input is a sequence of bytes split up in chunks where
+a split in multipl encoded words can be done between any
+two chunks but not in a chunk. Wrt. utf8 a chunk would
+correspond to a character, e.g. <code>[65]</code> for <code>'a'</code> and
+<code>[0xe2, 0x99, 0xa5]</code> for a <code>'♥'</code>.</p>
+<p>Note that a chunk can with more than 21 byte is not guranteed to
+work, and can trigger a panic.</p>
+<p>As this has to be safe for usage in all header contexts, additional
+to the chars required by the standard (i.e. '=') following chars are ALWAYS
+quoted' ', '\t', '?', '(', ')'. Also '\n','\r' see the note below for more
+details.</p>
+<h1 id="panics" class="section-header"><a href="#panics">Panics:</a></h1>
+<ol>
+<li>
+<p>if the encoded size of a chunk is more than 16 byte, which can
+happen if a chunk has more than 5 bytes. For comparison utf8 has
+at most chunks with 4 bytes leading to at most 12 byte buffer usage.</p>
+</li>
+<li>
+<p>if max size if &gt;76 as no new line handling is implemented and
+the max size for the use case can be at most 67 chars</p>
+</li>
+<li>
+<p>if a single encoded chunk can not be written as one because of
+the length limitation AFTER a new encoded word was started.</p>
+</li>
+</ol>
+<h1 id="note" class="section-header"><a href="#note">Note:</a></h1>
+<p>as it has to be a token no new line characters can appear in the output,
+BUT q-encoding also forbids the encoding of CRLF line breaks in TEXT!
+bodies, which is mean to not mess up with the limitations to the line
+length, but they are allowed to appear in non TEXT data, but this
+function should, but might not be limited to be used with text data,
+which should but might not be limited to data not containing any new
+line character. For now any appearance of '\r' or '\n' will be encoded
+like any other &quot;special&quot; byte, for the future a context might be needed.
+(Especially as encoded words can contain non-ascii text in which '\r','\n'
+might be encoded with completely different bytes, but when the RFC speaks of
+'\r','\n' it normally means the bytes 10/13 independent of the character set,
+or if they appear in a image, zip-archiev etc. )</p>
+</div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "mail_internals";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script defer src="../../../search-index.js"></script></body></html>

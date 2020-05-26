@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ContextSetupError","Error returned when creating a \"simple_context\" fails."]],"fn":[["new","create a new CompositeContext<FsResourceLoader, CpuPool, HashedIdGen>"]],"type":[["Context","Type Alias for a the type returned by `simple_context::new`."]]});

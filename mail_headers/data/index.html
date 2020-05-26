@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `data` mod in crate `mail_headers`."><meta name="keywords" content="rust, rustlang, rust-lang, data"><title>mail_headers::data - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../mail_headers/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Module data</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'><a href='../index.html'>mail_headers</a></p><script>window.sidebarCurrent = {name: 'data', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/mail_headers/data/mod.rs.html#1-23' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>mail_headers</a>::<wbr><a class="mod" href=''>data</a></span></h1><div class='docblock'><p>A number of little helper types, which contain text.</p>
+<p>They provide mainly following functionality:</p>
+<ol>
+<li>remember if the data is Ascii/Utf8
+<ul>
+<li>this might be extended at some point
+to contain non ascii data</li>
+</ul>
+</li>
+<li>make sure the types are cheap to clone, by
+sharing the text internally.
+<ul>
+<li>this is mainly helpful when parsing a mail</li>
+</ul>
+</li>
+</ol>
+<p>Both main points are for features which I decided to
+to not yet implement, as such <strong>there is a chance
+that this module will be removed int the future</strong>.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Input.html" title='mail_headers::data::Input struct'>Input</a></td><td class='docblock-short'><p>a Input is similar to Item a container data container used in different
+context's with different restrictions, but different to an Item it
+might contain characters which require encoding (e.g. encoded words)
+to represent them</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.InnerAscii.html" title='mail_headers::data::InnerAscii enum'>InnerAscii</a></td><td class='docblock-short'><p>InnerAscii is string data container which can contain either a
+owned <code>SoftAsciiString</code> or a <code>SoftAsciiStr</code> reference into a shared
+string buffer.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.InnerUtf8.html" title='mail_headers::data::InnerUtf8 enum'>InnerUtf8</a></td><td class='docblock-short'><p>InnerUtf8 is string data container which can contain either a
+owned <code>String</code> or a <code>str</code> reference into a shared
+string buffer.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.SimpleItem.html" title='mail_headers::data::SimpleItem enum'>SimpleItem</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "mail_headers";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `checked_command` crate."><meta name="keywords" content="rust, rustlang, rust-lang, checked_command"><title>checked_command - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../checked_command/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate checked_command</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all checked_command's items</p></a><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'checked_command', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/checked_command/lib.rs.html#1-110' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>checked_command</a></span></h1><div class='docblock'><p>In std the methods used to retrieve the <code>ExitStatus</code>/<code>Output</code>
+from executing a <code>Command</code> do not consider the exit status
+when deciding weather or not the function returns a error.</p>
+<p>This creates provides:</p>
+<ol>
+<li>
+<p>A <code>CheckedCommand</code> and <code>CheckedChild</code> struct, which wrap <code>std::process::Command</code> and
+<code>std::process::Child</code> replacing <code>status()</code>,<code>output()</code>,<code>wait()</code> and <code>wait_with_output()</code>
+with a version which will check the <code>ExitStatus</code> and if it didn't succeed
+they will return a <code>Err(...)</code> instead of a <code>Ok(...)</code>.</p>
+</li>
+<li>
+<p>A <code>CommandExt</code> and <code>ChildExt</code> extension trait which provide versions of <code>status()</code>,
+<code>output()</code> etc. which check the <code>ExitStatus</code> returning a <code>Err(...)</code> if the exit status
+is non successful (i.e. there is no exit code or  it is not equal zero). The
+checked methods are <code>checked_status()</code>, <code>checked_output()</code>, <code>checked_wait()</code>,
+<code>checked_wait_with_output()</code>. The <code>CheckedCommand</code> and <code>CheckedChild</code> wrapper use
+this methods as their <code>status()</code>/<code>output()</code> etc. methods.</p>
+</li>
+</ol>
+<p>In case of functions originally returning a <code>Output</code> it might be necessary to process
+the <code>Output</code> even if the command returned a non-successful exit status. For this reason
+the <code>Output</code> is included into the error <code>Error::Failure</code> variant (as option as not all
+functions provide a output)</p>
+<p>Note that the provided functions do return their own <code>Output</code> struct instead of
+<code>std::process::Output</code> which differs in that it does not contain a <code>status</code> field
+(which is also not anymore needed for the new methods). There is <code>use_std_output</code>
+feature which will make the crate use the std's output implementation instead.</p>
+<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">checked_command</span>::{ <span class="ident">Error</span>, <span class="ident">CheckedCommand</span> };
+
+<span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">CheckedCommand</span>::<span class="ident">new</span>(<span class="string">&quot;ls&quot;</span>)
+                .<span class="ident">arg</span>(<span class="string">&quot;--badbadbad&quot;</span>).<span class="ident">arg</span>(<span class="string">&quot;--&quot;</span>)
+                .<span class="ident">output</span>();
+
+<span class="kw">match</span> <span class="ident">result</span> {
+    <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;ls should have failed&quot;</span>),
+    <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">Io</span>(<span class="ident">io_err</span>)) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;unexpected I/O Error: {:?}&quot;</span>, <span class="ident">io_err</span>),
+    <span class="prelude-val">Err</span>(<span class="ident">Error</span>::<span class="ident">Failure</span>(<span class="ident">ex</span>, <span class="ident">output</span>)) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;failed with exit code: {:?}&quot;</span>, <span class="ident">ex</span>.<span class="ident">code</span>());
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">output</span>) <span class="op">=</span> <span class="ident">output</span> {
+            <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;error output was:\n{}&quot;</span>,
+                     <span class="ident">String</span>::<span class="ident">from_utf8_lossy</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">output</span>.<span class="ident">stderr</span>));
+        }
+    }
+}</pre></div>
+<h1 id="features" class="section-header"><a href="#features">Features</a></h1><h2 id="process_try_wait" class="section-header"><a href="#process_try_wait">process_try_wait</a></h2>
+<p>Requires nightly rust as the rust feature <code>process_try_wait</code> is required.</p>
+<p>Adds a <code>checked_try_wait</code> method to <code>ChildExt</code> as well as a <code>try_wait</code>
+method to <code>CheckedChild</code> (which uses <code>checked_try_wait</code> internally).
+Both methods call the unstable <code>std::process::Child::try_wait</code> method
+internally.</p>
+<h2 id="command_envs" class="section-header"><a href="#command_envs">command_envs</a></h2>
+<p>Requires nightly rust as the rust feature <code>command_envs</code> is required.</p>
+<p>Adds a <code>envs</code> method to <code>CheckedCommand</code> which calls the unstable
+<code>std::process::Command::env</code> method.</p>
+<h2 id="use_std_output" class="section-header"><a href="#use_std_output">use_std_output</a></h2>
+<p>Works with stable.</p>
+<p>This crate uses normally it's own <code>Output</code> struct, with this option the
+<code>std::process::Output</code> is used instead, which differs in that it has an
+additional <code>status: ExitStatus</code> field.</p>
+<h2 id="enable_integration_tests" class="section-header"><a href="#enable_integration_tests">enable_integration_tests</a></h2>
+<p>Works with stable.</p>
+<p>Enable integration tests for this crate.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.CheckedChild.html" title='checked_command::CheckedChild struct'>CheckedChild</a></td><td class='docblock-short'><p>A wrapper around <code>std::process::Child</code>
+which hides the original <code>wait</code>/<code>wait_with_output</code> methods
+and replaces it with the versions from <code>checked_command::ChildExt</code></p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.CheckedCommand.html" title='checked_command::CheckedCommand struct'>CheckedCommand</a></td><td class='docblock-short'><p>A wrapper around <code>std::process::Command</code>
+which hides the original <code>status</code>/<code>output</code> methods
+and replaces them with the versions from <code>checked_command::CommandExt</code></p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Output.html" title='checked_command::Output struct'>Output</a></td><td class='docblock-short'><p>custom output type which, diferently to <code>std::process::Output</code> is not
+closely coupled with <code>ExitStatus</code> (it does not have a <code>status</code> field)</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.Error.html" title='checked_command::Error enum'>Error</a></td><td class='docblock-short'><p>error type representing either a <code>io::Error</code> or a
+failure caused by a non-successful exit status i.e.
+without exit code or a exit code not equal zero.</p>
+</td></tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table><tr class='module-item'><td><a class="trait" href="trait.ChildExt.html" title='checked_command::ChildExt trait'>ChildExt</a></td><td class='docblock-short'><p>Extension to <code>std::process::Child</code> adding versions of the wait_with_output/wait
+functions which also fail/error with a non-success exit status</p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.CommandExt.html" title='checked_command::CommandExt trait'>CommandExt</a></td><td class='docblock-short'><p>Extension to <code>std::process::Command</code> adding versions of the output/status
+functions which also fail/error with a non-success exit status</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "checked_command";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

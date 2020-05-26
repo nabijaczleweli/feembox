@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `total_order_multi_map` crate."><meta name="keywords" content="rust, rustlang, rust-lang, total_order_multi_map"><title>total_order_multi_map - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../total_order_multi_map/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate total_order_multi_map</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all total_order_multi_map's items</p></a><div class="block items"><ul><li><a href="#structs">Structs</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'total_order_multi_map', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/total_order_multi_map/lib.rs.html#1-1162' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>total_order_multi_map</a></span></h1><div class='docblock'><p>A multi map implementation which also keeps the
+total order of inserted elements. I.e. if you
+insert <code>(k1, v1)</code> then <code>(k2, v2)</code> then <code>(k1, v3)</code>.
+The order when iterating over it will be exact this
+insertion order. Through there is an <code>grouped_values</code>
+method returning a iterator over the values grouped
+by key, instead of iteration order.</p>
+<p>The map makes sure that normal iteration is roughly
+as fast a iterating over a vector but using <code>get</code> to
+get a (group of) values is also roughly as fast as
+using <code>get</code> on a <code>HashMap</code>. The draw back is that
+insertion is a bit slower.</p>
+<p>Note that this implementation is made for values
+which dereference to the actually relevant values.
+It is also temporary limited to values which implement
+<code>DerefMut</code>, this can be lifted in the future. (I.e.
+currently <code>Box&lt;T&gt;</code> is supported but <code>Rc&lt;T&gt;</code> can be
+supported in the future just not for <code>_mut</code> methods).
+When accessing the map references to the inner values
+are returned (e.g. with a <code>Box&lt;T&gt;</code> references to <code>&amp;T</code>/<code>&amp;mut T</code>
+are returned and the <code>Box</code> is not accessible).</p>
+<p>Because of implementation details it is required that
+the value containers implement <code>StableDeref</code>. Note that
+this multi map can, or more precisely is made to, handle
+unsized values like trait object or slices.</p>
+<h1 id="state-of-implementation" class="section-header"><a href="#state-of-implementation">State of Implementation</a></h1>
+<p>Currently a lot of possible and useful methods are
+missing, take a look at the readme for more details.
+Through core methods like <code>insert</code>, <code>get</code>, <code>get_mut</code>
+and multiple iterators are implemented.</p>
+<p>Also currently it is limited to <code>StableDeref + DerefMut</code>
+but this is only needed for <code>_mut</code> methods.</p>
+<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<p>see the example directories <code>from_readme.rs</code> example,
+which is also present in the README.</p>
+<h1 id="implementation-details" class="section-header"><a href="#implementation-details">Implementation Details</a></h1>
+<p>This implementation internally has a <code>Vec</code> and
+a <code>HashMap</code>. The <code>Vec</code> contains key-value pairs
+and &quot;owns&quot; the values. It is used for simple
+iteration and keeps the insertion order. The
+<code>HashMap</code> is a map from keys to vectors of
+pointers to inner values. And represents
+the multi map part. The code makes sure that
+only pointers are in the hash map iff their
+&quot;owned&quot; value is in the <code>Vec</code> at <em>any</em> part
+of execution, even during insertion. This is
+needed to make sure that this type is unwind
+safe. Also to make sure that the pointers to
+the inner values are always valid the values
+have to implement <code>StableDeref</code>, so even if
+the vec is moved/resized the pointers stay
+valid as they don't point into the vec, but
+to the inner value the value in the vec points
+to. In turn this also means that mutable references
+to the containers/values should <em>never</em> be exposed,
+through mutable references to the inner values
+can be exposed.</p>
+<p>Note that for ease of implementation only Copy
+keys are allowed, this should be improved on in
+later versions.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Entry.html" title='total_order_multi_map::Entry struct'>Entry</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.EntryValues.html" title='total_order_multi_map::EntryValues struct'>EntryValues</a></td><td class='docblock-short'><p>A type providing access to all values associated to &quot;some key&quot;</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.EntryValuesMut.html" title='total_order_multi_map::EntryValuesMut struct'>EntryValuesMut</a></td><td class='docblock-short'><p>A type providing mut access to all values associated to &quot;some key&quot;</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Group.html" title='total_order_multi_map::Group struct'>Group</a></td><td class='docblock-short'><p>A iterator over <code>&amp;V::Target</code> values returned by <code>GroupedValues</code>.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.GroupMut.html" title='total_order_multi_map::GroupMut struct'>GroupMut</a></td><td class='docblock-short'><p>A iterator over <code>&amp;mut V::Target</code> values returned by <code>GroupedValues</code>.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.GroupedValues.html" title='total_order_multi_map::GroupedValues struct'>GroupedValues</a></td><td class='docblock-short'><p>An iterator of Groups (no fixed iteration order).</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.GroupedValuesMut.html" title='total_order_multi_map::GroupedValuesMut struct'>GroupedValuesMut</a></td><td class='docblock-short'><p>An iterator of Groups (no fixed iteration order).</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Iter.html" title='total_order_multi_map::Iter struct'>Iter</a></td><td class='docblock-short'><p>Iterator over TotalOrderMultimap in insertion order.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.IterMut.html" title='total_order_multi_map::IterMut struct'>IterMut</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.Keys.html" title='total_order_multi_map::Keys struct'>Keys</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.SyncSendHelper.html" title='total_order_multi_map::SyncSendHelper struct'>SyncSendHelper</a></td><td class='docblock-short'><p>Delegate the job of deciding about Send, Sync to rustc (ignore this)</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.TotalOrderMultiMap.html" title='total_order_multi_map::TotalOrderMultiMap struct'>TotalOrderMultiMap</a></td><td class='docblock-short'><p>A multi map with keeps the total ordering of inserted elements</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Values.html" title='total_order_multi_map::Values struct'>Values</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.ValuesMut.html" title='total_order_multi_map::ValuesMut struct'>ValuesMut</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "total_order_multi_map";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

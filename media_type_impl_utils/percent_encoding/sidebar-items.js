@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["HttpPercentEncodeSet","a percent-encoding EncodeSet for Http tokens"],["MimePercentEncodeSet","a percent-encoding EncodeSet for Mime tokens"]]});

@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["soft_ascii_string"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/alloc/borrow/trait.ToOwned.html\" title=\"trait alloc::borrow::ToOwned\">ToOwned</a> for <a class=\"struct\" href=\"soft_ascii_string/struct.SoftAsciiStr.html\" title=\"struct soft_ascii_string::SoftAsciiStr\">SoftAsciiStr</a>","synthetic":false,"types":["soft_ascii_string::soft_str::SoftAsciiStr"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

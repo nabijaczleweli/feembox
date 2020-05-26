@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["encoded_word_decode",""],["encoded_word_encode","Note for now this only supports utf8/ascii input, as we have to know where we can split"],["normal_decode",""],["normal_encode",""]]});

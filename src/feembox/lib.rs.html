@@ -16,24 +16,44 @@
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! What if a feed, but it&#39;s a mailbox?</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Special thanks</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! To all who support further development on [Patreon](https://patreon.com/nabijaczleweli), in particular:</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//!   * ThePhD</span>
 
 
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">linked_hash_set</span>;
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">mail_headers</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">mail_core</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">feed_rs</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">unicase</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">chrono</span>;
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">clap</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">mime</span>;
 
 
+<span class="kw">mod</span> <span class="ident">ops</span>;
 <span class="kw">mod</span> <span class="ident">options</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">util</span>;
 
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ops</span>::<span class="ident">assemble_mail</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">options</span>::<span class="ident">Options</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "feembox";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

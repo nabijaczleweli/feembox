@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["VecDrainWhere","Iterator for draining a vector conditionally."]],"trait":[["VecDrainWhereExt","Ext. trait adding `e_drain_where` to `Vec`"]]});

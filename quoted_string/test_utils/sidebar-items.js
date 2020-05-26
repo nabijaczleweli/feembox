@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["TestParsingImpl","a parsing implementations which allows non semantic stange thinks in it for testing purpose"]],"struct":[["TestSpec",""],["TestUnquotedValidator",""]]});

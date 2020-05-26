@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/feed-rs-0.2.3/src/parser/util.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>util.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../feed_rs/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/feed-rs-0.2.4/src/parser/util.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>util.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../feed_rs/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -103,6 +103,40 @@
 <span id="103">103</span>
 <span id="104">104</span>
 <span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">chrono</span>::{<span class="ident">DateTime</span>, <span class="ident">Utc</span>};
 <span class="kw">use</span> <span class="ident">regex</span>::<span class="ident">Regex</span>;
@@ -110,6 +144,7 @@
 
 <span class="macro">lazy_static</span><span class="macro">!</span> {
     <span class="comment">// Initialise the set of regular expressions we use to clean up broken dates</span>
+
     <span class="comment">// Feeds may not comply with the specification in various ways (https://tools.ietf.org/html/rfc2822#page-14)</span>
     <span class="kw">static</span> <span class="kw-2">ref</span> <span class="ident">RFC2822_FIXES</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Regex</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>)<span class="op">&gt;</span> <span class="op">=</span> {
         <span class="macro">vec</span><span class="macro">!</span>(
@@ -133,13 +168,21 @@
             (<span class="ident">Regex</span>::<span class="ident">new</span>(<span class="string">&quot; ([0-9]):&quot;</span>).<span class="ident">unwrap</span>(), <span class="string">&quot; 0${1}:&quot;</span>),
         )
     };
+
+    <span class="comment">// Feeds may not comply with the specification (https://tools.ietf.org/html/rfc3339)</span>
+    <span class="kw">static</span> <span class="kw-2">ref</span> <span class="ident">RFC3339_FIXES</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">Regex</span>, <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>)<span class="op">&gt;</span> <span class="op">=</span> {
+        <span class="macro">vec</span><span class="macro">!</span>(
+            <span class="comment">// inserts missing colon in timezone</span>
+            (<span class="ident">Regex</span>::<span class="ident">new</span>(<span class="string">r#&quot;(\+|-)(\d{2})(\d{2})&quot;#</span>).<span class="ident">unwrap</span>(), <span class="string">&quot;${1}${2}:${3}&quot;</span>),
+        )
+    };
 }
 
 <span class="doccomment">/// Parses a timestamp from an RSS2 feed.</span>
 <span class="doccomment">/// This should be an RFC-2822 formatted timestamp but we need a bunch of fixes / workarounds for the generally broken stuff we find on the internet</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timestamp_rfc2822_lenient</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DateTime</span><span class="op">&lt;</span><span class="ident">Utc</span><span class="op">&gt;</span><span class="op">&gt;</span> {
     <span class="comment">// Curiously, we see RFC-3339 dates in RSS 2 feeds so try that first</span>
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ts</span>) <span class="op">=</span> <span class="ident">timestamp_rfc3339</span>(<span class="ident">text</span>) {
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">ts</span>) <span class="op">=</span> <span class="ident">timestamp_rfc3339_lenient</span>(<span class="ident">text</span>) {
         <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">ts</span>);
     }
 
@@ -153,9 +196,16 @@
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">with_timezone</span>(<span class="kw-2">&amp;</span><span class="ident">Utc</span>)).<span class="ident">ok</span>()
 }
 
-<span class="doccomment">/// Parses a timestamp from an Atom or JSON feed</span>
-<span class="doccomment">/// This should be an RFC-3339 formatted timestamp</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timestamp_rfc3339</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DateTime</span><span class="op">&lt;</span><span class="ident">Utc</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="doccomment">/// Parses a timestamp from an Atom or JSON feed.</span>
+<span class="doccomment">/// This should be an RFC-3339 formatted timestamp but we need fixes for feeds that don&#39;t comply</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">timestamp_rfc3339_lenient</span>(<span class="ident">text</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">DateTime</span><span class="op">&lt;</span><span class="ident">Utc</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+
+    <span class="comment">// Clean the input string by applying each of the regex fixes</span>
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">text</span> <span class="op">=</span> <span class="ident">text</span>.<span class="ident">trim</span>().<span class="ident">to_string</span>();
+    <span class="kw">for</span> (<span class="ident">regex</span>, <span class="ident">replacement</span>) <span class="kw">in</span> <span class="ident">RFC3339_FIXES</span>.<span class="ident">iter</span>() {
+        <span class="ident">text</span> <span class="op">=</span> <span class="ident">regex</span>.<span class="ident">replace</span>(<span class="kw-2">&amp;</span><span class="ident">text</span>, <span class="kw-2">*</span><span class="ident">replacement</span>).<span class="ident">to_string</span>();
+    }
+
     <span class="ident">DateTime</span>::<span class="ident">parse_from_rfc3339</span>(<span class="ident">text</span>.<span class="ident">trim</span>())
         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">t</span><span class="op">|</span> <span class="ident">t</span>.<span class="ident">with_timezone</span>(<span class="kw-2">&amp;</span><span class="ident">Utc</span>)).<span class="ident">ok</span>()
 }
@@ -204,7 +254,25 @@
         );
 
         <span class="kw">for</span> (<span class="ident">source</span>, <span class="ident">expected</span>) <span class="kw">in</span> <span class="ident">tests</span> {
-            <span class="kw">let</span> <span class="ident">parsed</span> <span class="op">=</span> <span class="ident">timestamp_rfc2822_lenient</span>(<span class="ident">source</span>).<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="ident">parsed</span> <span class="op">=</span> <span class="ident">timestamp_rfc2822_lenient</span>(<span class="ident">source</span>)
+                .<span class="ident">expect</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;failed to parse {}&quot;</span>, <span class="ident">source</span>));
+            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">parsed</span>, <span class="ident">expected</span>);
+        }
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">test_timestamp_atom</span>() {
+        <span class="kw">let</span> <span class="ident">tests</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>(
+            <span class="comment">// properly formated rfc3339 string</span>
+            (<span class="string">&quot;2014-12-29T14:53:35+02:00&quot;</span>, <span class="ident">Utc</span>.<span class="ident">ymd</span>(<span class="number">2014</span>, <span class="number">12</span>, <span class="number">29</span>).<span class="ident">and_hms_milli</span>(<span class="number">12</span>, <span class="number">53</span>, <span class="number">35</span>, <span class="number">0</span>)),
+
+            <span class="comment">// missing colon in timezone</span>
+            (<span class="string">&quot;2014-12-29T14:53:35+0200&quot;</span>, <span class="ident">Utc</span>.<span class="ident">ymd</span>(<span class="number">2014</span>, <span class="number">12</span>, <span class="number">29</span>).<span class="ident">and_hms_milli</span>(<span class="number">12</span>, <span class="number">53</span>, <span class="number">35</span>, <span class="number">0</span>)),
+        );
+
+        <span class="kw">for</span> (<span class="ident">source</span>, <span class="ident">expected</span>) <span class="kw">in</span> <span class="ident">tests</span> {
+            <span class="kw">let</span> <span class="ident">parsed</span> <span class="op">=</span> <span class="ident">timestamp_rfc3339_lenient</span>(<span class="ident">source</span>)
+                .<span class="ident">expect</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;failed to parse {}&quot;</span>, <span class="ident">source</span>));
             <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">parsed</span>, <span class="ident">expected</span>);
         }
     }

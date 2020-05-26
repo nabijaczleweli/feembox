@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/checked_command-0.2.2/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../checked_command/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+</pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! In std the methods used to retrieve the `ExitStatus`/`Output`</span>
+<span class="doccomment">//! from executing a `Command` do not consider the exit status</span>
+<span class="doccomment">//! when deciding weather or not the function returns a error.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This creates provides:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! 1. A `CheckedCommand` and `CheckedChild` struct, which wrap `std::process::Command` and</span>
+<span class="doccomment">//!    `std::process::Child` replacing `status()`,`output()`,`wait()` and `wait_with_output()`</span>
+<span class="doccomment">//!    with a version which will check the `ExitStatus` and if it didn&#39;t succeed</span>
+<span class="doccomment">//!    they will return a `Err(...)` instead of a `Ok(...)`.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! 2. A `CommandExt` and `ChildExt` extension trait which provide versions of `status()`,</span>
+<span class="doccomment">//!    `output()` etc. which check the `ExitStatus` returning a `Err(...)` if the exit status</span>
+<span class="doccomment">//!    is non successful (i.e. there is no exit code or  it is not equal zero). The</span>
+<span class="doccomment">//!    checked methods are `checked_status()`, `checked_output()`, `checked_wait()`,</span>
+<span class="doccomment">//!    `checked_wait_with_output()`. The `CheckedCommand` and `CheckedChild` wrapper use</span>
+<span class="doccomment">//!    this methods as their `status()`/`output()` etc. methods.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! In case of functions originally returning a `Output` it might be necessary to process</span>
+<span class="doccomment">//! the `Output` even if the command returned a non-successful exit status. For this reason</span>
+<span class="doccomment">//! the `Output` is included into the error `Error::Failure` variant (as option as not all</span>
+<span class="doccomment">//! functions provide a output)</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Note that the provided functions do return their own `Output` struct instead of</span>
+<span class="doccomment">//! `std::process::Output` which differs in that it does not contain a `status` field</span>
+<span class="doccomment">//! (which is also not anymore needed for the new methods). There is `use_std_output`</span>
+<span class="doccomment">//! feature which will make the crate use the std&#39;s output implementation instead.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Example</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! use checked_command::{ Error, CheckedCommand };</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! let result = CheckedCommand::new(&quot;ls&quot;)</span>
+<span class="doccomment">//!                 .arg(&quot;--badbadbad&quot;).arg(&quot;--&quot;)</span>
+<span class="doccomment">//!                 .output();</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! match result {</span>
+<span class="doccomment">//!     Ok(_) =&gt; panic!(&quot;ls should have failed&quot;),</span>
+<span class="doccomment">//!     Err(Error::Io(io_err)) =&gt; panic!(&quot;unexpected I/O Error: {:?}&quot;, io_err),</span>
+<span class="doccomment">//!     Err(Error::Failure(ex, output)) =&gt; {</span>
+<span class="doccomment">//!         println!(&quot;failed with exit code: {:?}&quot;, ex.code());</span>
+<span class="doccomment">//!         if let Some(output) = output {</span>
+<span class="doccomment">//!             println!(&quot;error output was:\n{}&quot;,</span>
+<span class="doccomment">//!                      String::from_utf8_lossy(&amp;*output.stderr));</span>
+<span class="doccomment">//!         }</span>
+<span class="doccomment">//!     }</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Features</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## process_try_wait</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Requires nightly rust as the rust feature `process_try_wait` is required.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Adds a `checked_try_wait` method to `ChildExt` as well as a `try_wait`</span>
+<span class="doccomment">//! method to `CheckedChild` (which uses `checked_try_wait` internally).</span>
+<span class="doccomment">//! Both methods call the unstable `std::process::Child::try_wait` method</span>
+<span class="doccomment">//! internally.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## command_envs</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Requires nightly rust as the rust feature `command_envs` is required.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Adds a `envs` method to `CheckedCommand` which calls the unstable</span>
+<span class="doccomment">//! `std::process::Command::env` method.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## use_std_output</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Works with stable.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This crate uses normally it&#39;s own `Output` struct, with this option the</span>
+<span class="doccomment">//! `std::process::Output` is used instead, which differs in that it has an</span>
+<span class="doccomment">//! additional `status: ExitStatus` field.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## enable_integration_tests</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Works with stable.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Enable integration tests for this crate.</span>
+<span class="doccomment">//!</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span><span class="op">=</span><span class="string">&quot;process_try_wait&quot;</span>, <span class="ident">feature</span>(<span class="ident">process_try_wait</span>))]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">feature</span><span class="op">=</span><span class="string">&quot;command_envs&quot;</span>, <span class="ident">feature</span>(<span class="ident">command_envs</span>))]</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_docs</span>)]</span>
+
+
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">quick_error</span>;
+
+
+<span class="doccomment">/// internal module containing the CommandExt/ChildExt traints and implementation</span>
+<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="kw">mod</span> <span class="ident">ext</span>;
+
+<span class="doccomment">/// internal module containing the CheckedCommand and CheckedChild wrappers</span>
+<span class="attribute">#[<span class="ident">doc</span>(<span class="ident">hidden</span>)]</span>
+<span class="kw">mod</span> <span class="ident">wrapper</span>;
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">wrapper</span>::<span class="ident">CheckedChild</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">wrapper</span>::<span class="ident">CheckedCommand</span>;
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ext</span>::<span class="ident">CommandExt</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ext</span>::<span class="ident">ChildExt</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ext</span>::<span class="ident">Output</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ext</span>::<span class="ident">Error</span>;</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "checked_command";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

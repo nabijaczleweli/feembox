@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `mail_headers` crate."><meta name="keywords" content="rust, rustlang, rust-lang, mail_headers"><title>mail_headers - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../mail_headers/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate mail_headers</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all mail_headers's items</p></a><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li><li><a href="#structs">Structs</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'mail_headers', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/mail_headers/lib.rs.html#1-170' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>mail_headers</a></span></h1><div class='docblock'><p>This crate provides header specific functionality for the <code>mail</code>
+crate. This includes:</p>
+<ul>
+<li><code>HeaderName</code>, <code>Header</code> and <code>HeaderMap</code> as for the general API</li>
+<li><code>HeaderTryFrom</code>, <code>HeaderTryInto</code> as the <code>TryFrom</code>/<code>TryInto</code>
+traits are not stable but we need something similar to their
+functionality.</li>
+<li>a number of headers like <code>_To</code>,<code>_From</code>, <code>Sender</code>, <code>Subject</code>
+and many more (Note that <code>_To</code> and <code>_From</code> are prefixed with
+and <code>_</code> to prevent name collisions when importing them, i.e.
+importing <code>_From as From</code> would shadow <code>std::convert::From</code>
+which can lead to extremely irritating errors).</li>
+<li>a number of components which are used to represent the
+content/field body of an header field e.g. <code>MailboxList</code>
+or <code>Email</code>. They are placed in the <code>components</code> module.</li>
+<li>a <code>headers!</code> macro for making the creation of an <code>HeaderMap</code>
+with a number of headers easier.</li>
+<li>a <code>def_headers!</code> macro for defining new custom headers</li>
+</ul>
+<h2 id="example-headermap" class="section-header"><a href="#example-headermap">Example (HeaderMap)</a></h2>
+<p>A header map is a collection representing a number
+of mail headers in an specific order. It can be
+created like this:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+
+<span class="comment">// just import all headers</span>
+<span class="kw">use</span> <span class="ident">mail_headers</span>::<span class="ident">headers</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">mail_headers</span>::<span class="ident">HeaderMap</span>;
+<span class="kw">use</span> <span class="ident">mail_headers</span>::<span class="ident">error</span>::<span class="ident">ComponentCreationError</span>;
+
+<span class="kw">fn</span> <span class="ident">create_headers</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">HeaderMap</span>, <span class="ident">ComponentCreationError</span><span class="op">&gt;</span> {
+    <span class="macro">headers</span><span class="macro">!</span>{
+        <span class="comment">// from and to can have multiple values</span>
+        <span class="comment">// until specialization is stable is array</span>
+        <span class="comment">// is necessary</span>
+        <span class="ident">_From</span>: [(<span class="string">&quot;My Fancy Display Name&quot;</span>, <span class="string">&quot;theduck@example.com&quot;</span>)],
+        <span class="ident">_To</span>: [ <span class="string">&quot;unknown@example.com&quot;</span>, ],
+        <span class="ident">Subject</span>: <span class="string">&quot;Who are you?&quot;</span>
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="ident">create_headers</span>().<span class="ident">unwrap</span>();
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">headers</span>.<span class="ident">len</span>(), <span class="number">3</span>);
+}</pre></div>
+<h2 id="example-custom-header" class="section-header"><a href="#example-custom-header">Example (custom header)</a></h2>
+<p>If needed users of the <code>mail</code> crate can create their own
+headers, through this should be done with care.</p>
+<p>Note that the second field (then <code>unchecked { &lt;name&gt; }</code>),
+expects a specific naming scheme, the auto-generated test
+do check if it's violated but if you just run the code and
+ignore the failing tests strange error can occure. (
+The scheme is a capitalise the first letter of each
+word and write all other letter in lower case, i.e.
+<code>X-Id</code> is ok but <code>X-ID</code> isn't). The reason for this is because
+of the way the header does the field lookup. While this
+is not nice, for most use cases there is no need to
+generate custom headers and in the future this might be
+circumvented by auto-generating the name with a proc-derive.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered">
+
+<span class="kw">use</span> <span class="ident">mail_headers</span>::<span class="ident">header_components</span>;
+
+<span class="comment">// this will define two headers `XFooEmail` and `XBarMailbox`</span>
+<span class="comment">// the first will add a header field named `X-Foo-Email` with</span>
+<span class="comment">// a value which is an `components::Email` and the second will</span>
+<span class="comment">// add field with a value which is an `components::Mailbox`.</span>
+<span class="comment">//</span>
+<span class="comment">// Note that through the way they are defined `XFooEmail` can</span>
+<span class="comment">// at most appear 1 time in an header map, while `XBarMailbox`</span>
+<span class="comment">// can appear multiple times. Be aware that this is checked through</span>
+<span class="comment">// so called validators which needs to be explicitly run, which they</span>
+<span class="comment">// are if this header map is used to create a mail (running them</span>
+<span class="comment">// when adding fields would be a mess as you would have to add</span>
+<span class="comment">// transactions which can add/remove multiple fields at once, and</span>
+<span class="comment">// implementing auto-generation for some fields which are required if</span>
+<span class="comment">// some other fields are given in a certain way would be harder too).</span>
+
+<span class="comment">// If in scope both can be used in the `headers!` macro,</span>
+<span class="comment">// like any other header.</span>
+<span class="comment">//</span>
+<span class="macro">def_headers</span><span class="macro">!</span> {
+    <span class="comment">// the name of the auto-generated test</span>
+    <span class="ident">test_name</span>: <span class="ident">validate_header_names</span>,
+
+    <span class="comment">// the scope from which all components should be imported</span>
+    <span class="comment">// E.g. `DateTime` refers to `components::DateTime`.</span>
+    <span class="ident">scope</span>: <span class="ident">header_components</span>,
+
+    <span class="comment">// definitions of the headers or the form</span>
+    <span class="comment">// &lt;type_name&gt;, unchecked { &lt;filed_name&gt; }, &lt;component&gt;, &lt;maxOne&gt;, &lt;validator&gt;</span>
+    <span class="ident">XFooEmail</span>, <span class="ident">unchecked</span> { <span class="string">&quot;X-Foo-Email&quot;</span>      }, <span class="ident">Email</span> ,   <span class="ident">maxOne</span>, <span class="prelude-val">None</span>,
+    <span class="ident">XBarMailbox</span>, <span class="ident">unchecked</span> { <span class="string">&quot;X-Bar-Mailbox&quot;</span> }, <span class="ident">Mailbox</span>,   <span class="ident">multi</span>,  <span class="prelude-val">None</span>
+}
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">headers</span> <span class="op">=</span> <span class="macro">headers</span><span class="macro">!</span> {
+        <span class="ident">XFooEmail</span>: <span class="string">&quot;123@example.com&quot;</span>,
+        <span class="ident">XBarMailbox</span>: (<span class="string">&quot;My Funy Name&quot;</span>, <span class="string">&quot;notfunny@example.com&quot;</span>),
+        <span class="ident">XBarMailbox</span>: <span class="string">&quot;without.display.name@example.com&quot;</span>
+    }.<span class="ident">unwrap</span>();
+}</pre></div>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
+<table><tr><td><code>pub use self::map::<a class="struct" href="../mail_headers/map/struct.HeaderMap.html" title="struct mail_headers::map::HeaderMap">HeaderMap</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table><tr class='module-item'><td><a class="mod" href="data/index.html" title='mail_headers::data mod'>data</a></td><td class='docblock-short'><p>A number of little helper types, which contain text.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="error/index.html" title='mail_headers::error mod'>error</a></td><td class='docblock-short'><p>module contains the (new) errors emitted by this crate</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="header_components/index.html" title='mail_headers::header_components mod'>header_components</a></td><td class='docblock-short'><p>This modules contains all components provided by this library.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="headers/index.html" title='mail_headers::headers mod'>headers</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="mod" href="map/index.html" title='mail_headers::map mod'>map</a></td><td class='docblock-short'><p>Module containing the <code>HeaderMap</code>.</p>
+</td></tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table><tr class='module-item'><td><a class="macro" href="macro.def_headers.html" title='mail_headers::def_headers macro'>def_headers</a></td><td class='docblock-short'><p>Defines a new header types with given type name, filed name and component</p>
+</td></tr><tr class='module-item'><td><a class="macro" href="macro.headers.html" title='mail_headers::headers macro'>headers</a></td><td class='docblock-short'><p>Create a header map from a list of header's with ther fields</p>
+</td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.Header.html" title='mail_headers::Header struct'>Header</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct.HeaderName.html" title='mail_headers::HeaderName struct'>HeaderName</a></td><td class='docblock-short'><p>Note: Normally you will never have the need to create a HeaderName instance by
+yourself (except maybe for testing). At last as long as you use <code>def_header!</code>
+for defining custom Headers, which is highly recommended</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.InvalidHeaderName.html" title='mail_headers::InvalidHeaderName struct'>InvalidHeaderName</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="struct" href="struct._SoftAsciiStr.html" title='mail_headers::_SoftAsciiStr struct'>_SoftAsciiStr</a></td><td class='docblock-short'><p>A <code>str</code> wrapper adding a &quot;is us-ascii&quot; soft constraint.</p>
+</td></tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table><tr class='module-item'><td><a class="trait" href="trait.HasHeaderName.html" title='mail_headers::HasHeaderName trait'>HasHeaderName</a></td><td class='docblock-short'><p>a utility trait allowing us to use type hint structs
+in <code>HeaderMap::{contains, get_untyped}</code></p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.HeaderKind.html" title='mail_headers::HeaderKind trait'>HeaderKind</a></td><td class='docblock-short'><p>Trait representing a mail header.</p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.HeaderObjTrait.html" title='mail_headers::HeaderObjTrait trait'>HeaderObjTrait</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="trait" href="trait.HeaderObjTraitBoxExt.html" title='mail_headers::HeaderObjTraitBoxExt trait'>HeaderObjTraitBoxExt</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="trait" href="trait.HeaderTryFrom.html" title='mail_headers::HeaderTryFrom trait'>HeaderTryFrom</a></td><td class='docblock-short'><p>Workaround for <code>TryFrom</code>,<code>TryInto</code> not being stable.</p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.HeaderTryInto.html" title='mail_headers::HeaderTryInto trait'>HeaderTryInto</a></td><td class='docblock-short'><p>Workaround for <code>TryFrom</code>,<code>TryInto</code> not being stable.</p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.MaxOneMarker.html" title='mail_headers::MaxOneMarker trait'>MaxOneMarker</a></td><td class='docblock-short'></td></tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table><tr class='module-item'><td><a class="type" href="type.HeaderObj.html" title='mail_headers::HeaderObj type'>HeaderObj</a></td><td class='docblock-short'><p>Type alias for HeaderObjTrait's trait object.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "mail_headers";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

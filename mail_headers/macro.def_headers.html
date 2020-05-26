@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `def_headers` macro in crate `mail_headers`."><meta name="keywords" content="rust, rustlang, rust-lang, def_headers"><title>mail_headers::def_headers - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc macro"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../mail_headers/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class='location'><a href='index.html'>mail_headers</a></p><script>window.sidebarCurrent = {name: 'def_headers', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/mail_headers/header_macro.rs.html#72-159' title='goto source code'>[src]</a></span><span class='in-band'>Macro <a href='index.html'>mail_headers</a>::<wbr><a class="macro" href=''>def_headers</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><div class="example-wrap"><pre class="rust macro">
+<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">def_headers</span> {
+    (
+        <span class="ident">test_name</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">tn</span>:<span class="ident">ident</span>,
+        <span class="ident">scope</span>: <span class="macro-nonterminal">$</span><span class="macro-nonterminal">scope</span>:<span class="ident">ident</span>,
+        $(
+            $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">attr</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span>
+            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="ident">unchecked</span> { <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hname</span>:<span class="ident">tt</span> }, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">component</span>:<span class="ident">ident</span>,
+              <span class="macro-nonterminal">$</span><span class="macro-nonterminal">maxOne</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">validator</span>:<span class="ident">ident</span>
+        ),<span class="op">+</span>
+    ) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_marker_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="ident">multi</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_marker_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="ident">maxOne</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_marker_impl</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">other</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_validator</span> <span class="prelude-val">None</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_validator</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">validator</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_max_one</span> <span class="ident">multi</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_max_one</span> <span class="ident">maxOne</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_mk_max_one</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">other</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+    (<span class="ident">_PRIV_max_one_err</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">other</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> { ... };
+}</pre></div>
+</div><div class='docblock'><p>Defines a new header types with given type name, filed name and component</p>
+<p>Note that the name is not checked/validated, it has to be ascii, a valid
+header field name AND has to comply with the naming schema (each word
+separated by <code>'-'</code> starts with a capital letter and no capital letter
+follow, e.g. &quot;Message-Id&quot; is ok <strong>but &quot;Message-ID&quot; isn't</strong>).</p>
+<p>This macro will create a test which will check if the used field names
+are actually valid and appears only once (<em>per def_header macro call</em>)
+so as long as test's are run any invalid name will be found.</p>
+<p>Note that even if a invalid name was used and test where ignored/not run
+this will <em>not</em> cause an rust safety issue, but can still cause bugs under
+some circumstances (e.g. if you have multiple differing definitions of the
+same header with different spelling (at last one failed the test) like e.g.
+when you override default implementations of fields).</p>
+<p>The macros expects following items:</p>
+<ol>
+<li>
+<p><code>test_name</code>, which is the name the auto-generated test will have</p>
+</li>
+<li>
+<p><code>scope</code>, the scope all components are used with, this helps with some
+name collisions. Use <code>self</code> to use the current scope.</p>
+</li>
+<li>
+<p>a list of header definitions consisting of:</p>
+<ol>
+<li><code>&lt;typename&gt;</code> the name the type of the header will have, i.e. the name of a zero-sized
+struct which will be generated</li>
+<li><code>unchecked</code> a hint to make people read the documentation and not forget the the
+folowing data is <code>unchecked</code> / only vaidated in the auto-generated test</li>
+<li><code>&quot;&lt;header_name&gt;&quot;</code> the header name in a syntax using <code>'-'</code> to serperate words,
+also each word has to start with a capital letter and be followed by lowercase
+letters additionaly to being a valid header field name. E.g. &quot;Message-Id&quot; is
+ok, but &quot;Message-ID&quot; is not. (Note that header field name are on itself ignore
+case, but by enforcing a specific case in the encoder equality checks can be
+done on byte level, which is especially usefull for e.g. placing them as keys
+into a HashMap or for performance reasons.</li>
+<li><code>&lt;component&gt;</code> the name of the type to use ing <code>scope</code> a the component type of
+the header. E.g. <code>Unstructured</code> for an unstructured header field (which still
+support Utf8 through encoded words)</li>
+<li><code>None</code>/<code>maxOne</code>/<code>&lt;name&gt;</code>, None, maxOne or the name of a validator function.
+The validator function is used to validate some contextual limitations a header field
+might have, like that it can appear at most one time, or that if a <code>From</code> with multiple
+mailboxes is given a <code>Sender</code> field needs to be given too.
+If <code>maxOne</code> is used it will automatically generate a function which makes sure that
+the header appears at most one time. This validator functions are used <em>after</em> creating
+a header map but before using it to encode a mail (or anywhere in between if you want to).
+Note that validators are kept separate from the headers and might be run even if the header
+does not appear in the header map passed to the validator, as such if a validator can not find
+the header it should validate or if it finds it but it has an unexpected type it <em>must not</em>
+create an error.</li>
+</ol>
+</li>
+</ol>
+<h1 id="example" class="section-header"><a href="#example">Example</a></h1>
+<pre><code class="language-norun">def_headers! {
+    // the name of the auto-generated test
+    test_name: validate_header_names,
+    // the scope from which all components should be imported
+    // E.g. `DateTime` refers to `components::DateTime`.
+    scope: components,
+    // definitions of the headers or the form
+    // &lt;type_name&gt;, unchecked { &lt;struct_name&gt; }, &lt;component&gt;, &lt;validator&gt;
+    Date,     unchecked { &quot;Date&quot;          },  DateTime,       maxOne,
+    From,     unchecked { &quot;From&quot;          },  MailboxList,    validator_from,
+    Subject,  unchecked { &quot;Subject&quot;       },  Unstructured,   maxOne,
+    Comments, unchecked { &quot;Comments&quot;      },  Unstructured,   None,
+}
+</code></pre>
+</div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "mail_headers";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

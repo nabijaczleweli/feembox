@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["FromSourceError","Error returned if creating a SoftAsciiStr/SoftAsciiString failed"],["StringFromStrError","Error returned if FromStr failed"]]});

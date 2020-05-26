@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["do_encode_word","As word has to be differently encoded, depending on the context it appears in it cannot implement EncodableInHeader, instead we have a function which can be used by type containing it which (should) implement EncodableInHeader"]],"struct":[["Word","A ward as in the mail grammar (RFC 5322)."]]});
