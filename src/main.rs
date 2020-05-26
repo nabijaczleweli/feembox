@@ -1,19 +1,31 @@
+extern crate mail_internals;
+extern crate mail_headers;
+extern crate mail_core;
 extern crate mailparse;
 extern crate tabwriter;
+extern crate hostname;
 extern crate feembox;
 extern crate feed_rs;
+extern crate futures;
 extern crate memmap;
+#[macro_use]
+extern crate clap;
 
 use mailparse::{parse_header as parse_mail_header, msgidparse as parse_message_ids};
+use mail_core::default_impl::simple_context as simple_mail_context;
+use mail_headers::header_components::Domain;
 use feembox::util::DisplayParseFeedError;
 use feed_rs::parser::parse as parse_feed;
 use feed_rs::model::Entry as FeedEntry;
+use std::process::{exit, id as pid};
 use std::io::{Write, stdout, stdin};
 use std::collections::BTreeMap;
+use mail_internals::MailType;
+use futures::future::Future;
+use std::time::SystemTime;
+use std::fs::{self, File};
 use tabwriter::TabWriter;
-use std::process::exit;
 use std::borrow::Cow;
-use std::fs::File;
 use memmap::Mmap;
 
 
@@ -65,7 +77,7 @@ fn actual_main() -> Result<(), i32> {
     }
 
 
-    let mut entries_ids: BTreeMap<String, &FeedEntry> = BTreeMap::new();
+    let mut entries_ids: BTreeMap<String, &FeedEntry> = feed.entries.iter().map(|ent| (feembox::util::message_id_for_feed_entry(&feed, ent), ent)).collect();
 
 
     for dir_name in &["cur", "new"] {
@@ -96,33 +108,83 @@ fn actual_main() -> Result<(), i32> {
                     5
                 })?;
 
-            if opts.verbose {
-                println!("{}{}: length {}", dir_name, mail.file_name().to_string_lossy(), mail_map.len());
-            }
-
             let mut curs = &mail_map[..];
             while let Ok((header, next)) = parse_mail_header(curs) {
                 if header.get_key() == feembox::util::MESSAGE_ID_HEADER {
                     if let Ok(ids) = parse_message_ids(&header.get_value()) {
-                        if opts.verbose {
-                            print!("  ");
-                            for (i, id) in ids.iter().enumerate() {
-                                if i != 0 {
-                                    print!(", ");
-                                }
-                                print!("{}", id);
-                            }
-                            println!();
-                        }
-
                         for id in &*ids {
-                            entries_ids.remove(id);
+                            if entries_ids.remove(id).is_some() && opts.verbose {
+                                println!("{}{}: length {}", dir_name, mail.file_name().to_string_lossy(), mail_map.len());
+                                print!("  ");
+                                for (i, id) in ids.iter().enumerate() {
+                                    if i != 0 {
+                                        print!(", ");
+                                    }
+                                    print!("{}", id);
+                                }
+                                println!();
+                            }
                         }
                     }
                 }
                 curs = &curs[next..];
             }
         }
+    }
+
+
+    // We don't write to cur, but NeoMutt needs it to recognise the directory as a mailbox
+    for dir_name in &["tmp", "new", "cur"] {
+        fs::create_dir_all(opts.maildir.1.join(dir_name)).map_err(|e| {
+                eprintln!("Creating {}{}/ failed: {}", opts.maildir.0, dir_name, e);
+                6
+            })?;
+    }
+
+
+    let hostname = hostname::get().as_ref().map(|h| h.to_string_lossy().replace('/', "\\057").replace(':', "\\072").into()).unwrap_or(Cow::from(crate_name!()));
+    let pid = pid();
+
+    let mail_ctx = simple_mail_context::new(Domain::from_unchecked(format!("P{}.{}", pid, hostname)), feed.id.clone().parse().unwrap()).map_err(|e| {
+            eprintln!("Creating mail context: {}", e);
+            7
+        })?;
+    for (i, (message_id, entry)) in entries_ids.into_iter().enumerate() {
+        let mail_data = feembox::assemble_mail(&feed, entry, message_id, &mail_ctx).into_encodable_mail(mail_ctx.clone())
+            .wait()
+            .map_err(|e| {
+                eprintln!("Constructing mail for entry {}: {}", entry.id, e);
+                7
+            })?
+            .encode_into_bytes(MailType::Internationalized)
+            .map_err(|e| {
+                eprintln!("Encoding mail for entry {}: {}", entry.id, e);
+                7
+            })?;
+
+        let timeofday = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).expect("now < epoch");
+        let mail_name = format!("{}.M{}P{}Q{}.{}", timeofday.as_secs(), timeofday.subsec_micros(), pid, i, hostname);
+
+        let tmp_path = opts.maildir.1.join("tmp").join(&mail_name);
+        File::create(&tmp_path).map_err(|e| {
+                eprintln!("Creating {} in {}tmp/{}: {}", entry.id, opts.maildir.0, mail_name, e);
+                8
+            })?
+            .write_all(&mail_data)
+            .map_err(|e| {
+                eprintln!("Writing {} in {}tmp/{}: {}", entry.id, opts.maildir.0, mail_name, e);
+                let _ = fs::remove_file(&tmp_path);
+                8
+            })?;
+
+        if opts.verbose {
+            println!("Delivering {} to {}new/{}", entry.id, opts.maildir.0, mail_name);
+        }
+
+        fs::rename(tmp_path, opts.maildir.1.join("new").join(&mail_name)).map_err(|e| {
+                eprintln!("Delivering {} from tmp/ to {}new/{}: {}", entry.id, opts.maildir.0, mail_name, e);
+                8
+            })?;
     }
 
     Ok(())

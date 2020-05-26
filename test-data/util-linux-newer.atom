@@ -1,0 +1,1358 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<feed
+xmlns="http://www.w3.org/2005/Atom"
+xmlns:thr="http://purl.org/syndication/thread/1.0"><title>Util-Linux Archive on lore.kernel.org</title><link
+rel="alternate"
+type="text/html"
+href="https://lore.kernel.org/util-linux/"/><link
+rel="self"
+href="https://lore.kernel.org/util-linux/new.atom"/><id>mailto:util-linux@vger.kernel.org</id><updated>2020-05-18T11:41:20Z</updated><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: [PATCH] ipcs.1: ipcs no longer needs read permission on IPC resources</title><updated>2020-05-18T11:41:19Z</updated><link
+href="https://lore.kernel.org/util-linux/20200518114111.kv2gibesmi55babf@ws.net.home/"/><id>urn:uuid:3b750651-4d38-41f7-d5ce-01f6511c6185</id><thr:in-reply-to
+ref="urn:uuid:94158972-3786-e3c6-7e0a-dec2988cd32b"
+href="https://lore.kernel.org/util-linux/5700d4b6-c499-0881-263c-7df96df511ff@gmail.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Sat, May 16, 2020 at 10:10:27AM +0200, Michael Kerrisk (man-pages) wrote:
+<span
+class="q">&gt;  sys-utils/ipcs.1 | 22 ++++++++++++++++++++--
+&gt;  1 file changed, 20 insertions(+), 2 deletions(-)
+</span>
+Applied, thanks.
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: [PATCH] util-linux: Some minor fixes in some manuals</title><updated>2020-05-18T11:40:38Z</updated><link
+href="https://lore.kernel.org/util-linux/20200518114027.cn4kqdb66kukfq4s@ws.net.home/"/><id>urn:uuid:d2c69230-d7ba-e4cf-ee51-2b25d53119a1</id><thr:in-reply-to
+ref="urn:uuid:ae168781-095a-7168-c087-155173099297"
+href="https://lore.kernel.org/util-linux/20200514235129.GA8403@rhi.hi.is/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Thu, May 14, 2020 at 11:51:29PM +0000, Bjarni Ingi Gislason wrote:
+<span
+class="q">&gt;  misc-utils/kill.1   | 2 +-
+&gt;  misc-utils/lsblk.8  | 2 +-
+&gt;  sys-utils/mount.8   | 1 -
+&gt;  sys-utils/unshare.1 | 8 ++++----
+&gt;  term-utils/agetty.8 | 2 +-
+&gt;  text-utils/more.1   | 4 ++--
+&gt;  6 files changed, 9 insertions(+), 10 deletions(-)
+</span>
+Applied, thanks.
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: [PATCH] Fix dead references to kernel documentation</title><updated>2020-05-18T11:39:59Z</updated><link
+href="https://lore.kernel.org/util-linux/20200518113948.f57czituiszkxpzs@ws.net.home/"/><id>urn:uuid:d9e31d9a-5d6c-8403-9661-2d303e6fb24a</id><thr:in-reply-to
+ref="urn:uuid:98e3d4cd-17c1-ac1d-3dd9-7bbe87f6402e"
+href="https://lore.kernel.org/util-linux/DBBPR08MB55480F8E7F62EFE9323E29FA9BBB0@DBBPR08MB5548.eurprd08.prod.outlook.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Sun, May 17, 2020 at 11:13:22PM +0800, Yannick Le Pennec wrote:
+<span
+class="q">&gt;  disk-utils/fdisk.8  | 2 +-
+&gt;  sys-utils/eject.c   | 2 +-
+&gt;  sys-utils/mount.8   | 2 +-
+&gt;  sys-utils/rfkill.8  | 2 +-
+&gt;  sys-utils/tunelp.8  | 2 +-
+&gt;  sys-utils/zramctl.8 | 2 +-
+&gt;  6 files changed, 6 insertions(+), 6 deletions(-)
+</span>
+Applied, thanks.
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Michael Kerrisk (man-pages)</name><email>mtk.manpages@gmail.com</email></author><title>Re: Consistency fixes in util-linux man pages</title><updated>2020-05-18T10:36:15Z</updated><link
+href="https://lore.kernel.org/util-linux/CAKgNAkihsF1tGurfHbnFPYZ4qJV9-2f=Sbj5qdLxmuuuAJ+GGA@mail.gmail.com/"/><id>urn:uuid:dccd47a2-d327-df9b-7ad1-9218d08a8349</id><thr:in-reply-to
+ref="urn:uuid:ba1cf039-280f-f33d-199d-86f5a9c1bb1b"
+href="https://lore.kernel.org/util-linux/20200518082814.pq22ph732eiebacz@ws.net.home/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Hello Karel,
+
+On Mon, 18 May 2020 at 10:28, Karel Zak &lt;kzak@redhat.com&gt; wrote:
+<span
+class="q">&gt;
+&gt; On Sat, May 16, 2020 at 10:24:59AM +0200, Michael Kerrisk (man-pages) wrote:
+&gt; &gt; Hello Karel,
+&gt; &gt;
+&gt; &gt; Perhaps a little inspired by Helge&#39;s recent reports, I wonder about
+&gt; &gt; submitting some wide-ranging patches to improve consistency across
+&gt; &gt; the util-linux manual pages.
+&gt; &gt;
+&gt; &gt; As an example, there&#39;s quite a bit of variation in the order of
+&gt; &gt; .SH sections in the manual pages (e.g., in the placement of the SEE
+&gt; &gt; ALSO section). The pages would be more readable if the ordering was
+&gt; &gt; more consistent.
+&gt; &gt;
+&gt; &gt; Would you entertain patches that made wide-ranging changes
+&gt; &gt; that fixed that sort of thing (without changing page content?
+&gt;
+&gt; No problem,
+</span>
+Ok.
+
+<span
+class="q">&gt; but it would be nice to somehow document that is expected
+&gt; to avoid future changes in an opposite way. For example add some info
+&gt; to Documentation/howto-man-page.txt.
+</span>
+Agreed. For man-pages, I created man-pags(7) to document those
+expectations. At least some of that should be applicable in othe
+pojects, if they want.
+
+<span
+class="q">&gt; BTW, I&#39;m not sure about man pages as ideal format to maintain
+&gt; documentation (because it&#39;s mostly about formatting than about
+&gt; content). I think about AsciiDoc or so in future. What do you think
+&gt; about this idea?
+</span>
+I&#39;m not too knowledgeable in AsciiDc, but my impression is that it&#39;s
+too limited in terms of its formatting opinions.
+
+If I did move man-pages, the most likely candidate would probably be
+Sphinx, as is nowadays used in the kernel docs. But, that would
+require converting a thousand pages or so, and  I have not so far had
+the stomach for that. Of course, you have a rather smaller set of
+pages to deal with, so a conversion step sould be more easily
+entertained.
+
+Thanks,
+
+Michael
+
+-- 
+Michael Kerrisk
+Linux man-pages maintainer; <a
+href="http://www.kernel.org/doc/man-pages/">http://www.kernel.org/doc/man-pages/</a>
+Linux/UNIX System Programming Training: <a
+href="http://man7.org/training/">http://man7.org/training/</a>
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: Consistency fixes in util-linux man pages</title><updated>2020-05-18T08:28:25Z</updated><link
+href="https://lore.kernel.org/util-linux/20200518082814.pq22ph732eiebacz@ws.net.home/"/><id>urn:uuid:ba1cf039-280f-f33d-199d-86f5a9c1bb1b</id><thr:in-reply-to
+ref="urn:uuid:68946069-8d16-0362-57e6-feba21ebbecb"
+href="https://lore.kernel.org/util-linux/4cb60e3f-0226-e7f0-0052-08a48ea9f425@gmail.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Sat, May 16, 2020 at 10:24:59AM +0200, Michael Kerrisk (man-pages) wrote:
+<span
+class="q">&gt; Hello Karel,
+&gt; 
+&gt; Perhaps a little inspired by Helge&#39;s recent reports, I wonder about 
+&gt; submitting some wide-ranging patches to improve consistency across
+&gt; the util-linux manual pages.
+&gt; 
+&gt; As an example, there&#39;s quite a bit of variation in the order of 
+&gt; .SH sections in the manual pages (e.g., in the placement of the SEE 
+&gt; ALSO section). The pages would be more readable if the ordering was
+&gt; more consistent.
+&gt; 
+&gt; Would you entertain patches that made wide-ranging changes
+&gt; that fixed that sort of thing (without changing page content?
+</span>
+No problem, but it would be nice to somehow document that is expected
+to avoid future changes in an opposite way. For example add some info
+to Documentation/howto-man-page.txt.
+
+BTW, I&#39;m not sure about man pages as ideal format to maintain
+documentation (because it&#39;s mostly about formatting than about
+content). I think about AsciiDoc or so in future. What do you think
+about this idea?
+
+    Karel
+
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Yannick Le Pennec</name><email>yannick.lepennec@live.fr</email></author><title>[PATCH] Fix dead references to kernel documentation</title><updated>2020-05-17T15:13:35Z</updated><link
+href="https://lore.kernel.org/util-linux/DBBPR08MB55480F8E7F62EFE9323E29FA9BBB0@DBBPR08MB5548.eurprd08.prod.outlook.com/"/><id>urn:uuid:98e3d4cd-17c1-ac1d-3dd9-7bbe87f6402e</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Most date back to reorganisation of the Documentation/ tree in 2016,
+new paths based on v5.7-rc5:
+
+fdisk.8:   Documentation/{,admin-guide/}devices.txt
+eject.c:   Documentation/{,userspace-api/}ioctl/cdrom.rst
+mount.8:   Documentation/filesystems/adfs.{txt,rst}
+rfkill.8:  Documentation/{rfkill.txt,driver-api/rfkill.rst}
+tunelp.8:  Documentation/{parport.txt,admin-guide/parport.rst}
+zramctl.8: Documentation/{blockdev/zram.txt,admin-guide/blockdev/zram.rst}
+
+Signed-off-by: Yannick Le Pennec &lt;yannick.lepennec@live.fr&gt;
+---
+ disk-utils/fdisk.8  | 2 +-
+ sys-utils/eject.c   | 2 +-
+ sys-utils/mount.8   | 2 +-
+ sys-utils/rfkill.8  | 2 +-
+ sys-utils/tunelp.8  | 2 +-
+ sys-utils/zramctl.8 | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+<span
+class="head">diff --git a/disk-utils/fdisk.8 b/disk-utils/fdisk.8
+index cc172a0a5..dcc587fed 100644
+--- a/disk-utils/fdisk.8
++++ b/disk-utils/fdisk.8
+</span><span
+class="hunk">@@ -161,7 +161,7 @@ The
+</span> .I partition
+ is a device name followed by a partition number.  For example, /dev/sda1 is the
+ first partition on the first hard disk in the system.  See also Linux kernel
+<span
+class="del">-documentation (the Documentation/devices.txt file).
+</span><span
+class="add">+documentation (the Documentation/admin-guide/devices.txt file).
+</span>
+ .SH SIZES
+ The &#34;last sector&#34; dialog accepts partition size specified by number of sectors
+<span
+class="head">diff --git a/sys-utils/eject.c b/sys-utils/eject.c
+index 2f3b200bf..651ecc7d8 100644
+--- a/sys-utils/eject.c
++++ b/sys-utils/eject.c
+</span><span
+class="hunk">@@ -330,7 +330,7 @@ static void auto_eject(const struct eject_control *ctl)
+</span>  * Stops CDROM from opening on manual eject button press.
+  * This can be useful when you carry your laptop
+  * in your bag while it&#39;s on and no CD inserted in it&#39;s drive.
+<span
+class="del">- * Implemented as found in Documentation/ioctl/cdrom.txt
+</span><span
+class="add">+ * Implemented as found in Documentation/userspace-api/ioctl/cdrom.rst
+</span>  */
+ static void manual_eject(const struct eject_control *ctl)
+ {
+<span
+class="head">diff --git a/sys-utils/mount.8 b/sys-utils/mount.8
+index 13a5f7167..7f5da2d2b 100644
+--- a/sys-utils/mount.8
++++ b/sys-utils/mount.8
+</span><span
+class="hunk">@@ -1342,7 +1342,7 @@ Set the owner and group of the files in the filesystem (default: uid=gid=0).
+</span> Set the permission mask for ADFS &#39;owner&#39; permissions and &#39;other&#39; permissions,
+ respectively (default: 0700 and 0077, respectively).
+ See also
+<span
+class="del">-.IR /usr/src/linux/Documentation/filesystems/adfs.txt .
+</span><span
+class="add">+.IR /usr/src/linux/Documentation/filesystems/adfs.rst .
+</span>
+ .SS &#34;Mount options for affs&#34;
+ .TP
+<span
+class="head">diff --git a/sys-utils/rfkill.8 b/sys-utils/rfkill.8
+index 9eff913b8..eb640954f 100644
+--- a/sys-utils/rfkill.8
++++ b/sys-utils/rfkill.8
+</span><span
+class="hunk">@@ -110,7 +110,7 @@ for the Debian project (and may be used by others).
+</span> .SH &#34;SEE ALSO&#34;
+ .BR powertop (8),
+ .BR systemd-rfkill (8),
+<span
+class="del">-.UR https://\:git.\:kernel.\:org/\:pub/\:scm/\:linux/\:kernel/\:git/\:torvalds/\:linux.git/\:tree/\:Documentation/\:rfkill.txt
+</span><span
+class="add">+.UR https://\:git.\:kernel.\:org/\:pub/\:scm/\:linux/\:kernel/\:git/\:torvalds/\:linux.git/\:tree/\:Documentation/\:driver-api/\:rfkill.rst
+</span> Linux kernel documentation
+ .UE
+ .SH AVAILABILITY
+<span
+class="head">diff --git a/sys-utils/tunelp.8 b/sys-utils/tunelp.8
+index 5c927458f..7716ba7e1 100644
+--- a/sys-utils/tunelp.8
++++ b/sys-utils/tunelp.8
+</span><span
+class="hunk">@@ -34,7 +34,7 @@ irq is handled by the parport driver.  You can change the parport irq for
+</span> example via
+ .IR /proc/parport/*/irq .
+ Read
+<span
+class="del">-.I /usr/src/linux/Documentation/parport.txt
+</span><span
+class="add">+.I /usr/src/linux/Documentation/admin-guide/parport.rst
+</span> for more details on parport.
+ .TP
+ \fB\-t\fR, \fB\-\-time\fR \fImilliseconds\fR
+<span
+class="head">diff --git a/sys-utils/zramctl.8 b/sys-utils/zramctl.8
+index c6ecdc3d5..12983f144 100644
+--- a/sys-utils/zramctl.8
++++ b/sys-utils/zramctl.8
+</span><span
+class="hunk">@@ -118,7 +118,7 @@ and use it as swap device.
+</span> # zramctl --reset /dev/zram0
+ .fi
+ .SH SEE ALSO
+<span
+class="del">-.UR <a
+href="http://git">http://git</a>.\:kernel.\:org\:/cgit\:/linux\:/kernel\:/git\:/torvalds\:/linux.git\:/tree\:/Documentation\:/blockdev\:/zram.txt
+</span><span
+class="add">+.UR <a
+href="http://git">http://git</a>.\:kernel.\:org\:/cgit\:/linux\:/kernel\:/git\:/torvalds\:/linux.git\:/tree\:/Documentation\:/admin-guide\:/blockdev\:/zram.rst
+</span> Linux kernel documentation
+ .UE .
+ .SH AUTHORS
+<span
+class="del">--
+</span>2.20.1
+
+</pre></div></content></entry><entry><author><name>Michael Kerrisk (man-pages)</name><email>mtk.manpages@gmail.com</email></author><title>Consistency fixes in util-linux man pages</title><updated>2020-05-16T08:25:11Z</updated><link
+href="https://lore.kernel.org/util-linux/4cb60e3f-0226-e7f0-0052-08a48ea9f425@gmail.com/"/><id>urn:uuid:68946069-8d16-0362-57e6-feba21ebbecb</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Hello Karel,
+
+Perhaps a little inspired by Helge&#39;s recent reports, I wonder about 
+submitting some wide-ranging patches to improve consistency across
+the util-linux manual pages.
+
+As an example, there&#39;s quite a bit of variation in the order of 
+.SH sections in the manual pages (e.g., in the placement of the SEE 
+ALSO section). The pages would be more readable if the ordering was
+more consistent.
+
+Would you entertain patches that made wide-ranging changes
+that fixed that sort of thing (without changing page content?
+
+Thanks,
+
+Michael
+
+-- 
+Michael Kerrisk
+Linux man-pages maintainer; <a
+href="http://www.kernel.org/doc/man-pages/">http://www.kernel.org/doc/man-pages/</a>
+Linux/UNIX System Programming Training: <a
+href="http://man7.org/training/">http://man7.org/training/</a>
+</pre></div></content></entry><entry><author><name>Michael Kerrisk (man-pages)</name><email>mtk.manpages@gmail.com</email></author><title>[PATCH] ipcs.1: ipcs no longer needs read permission on IPC resources</title><updated>2020-05-16T08:10:32Z</updated><link
+href="https://lore.kernel.org/util-linux/5700d4b6-c499-0881-263c-7df96df511ff@gmail.com/"/><id>urn:uuid:94158972-3786-e3c6-7e0a-dec2988cd32b</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">From: Michael Kerrisk &lt;mtk.manpages@gmail.com&gt;
+Date: Sat, 16 May 2020 09:45:11 +0200
+Subject: [PATCH] ipcs.1: ipcs no longer needs read permission on IPC resources
+
+With changes starting around util-linux commit 058e81540fbb0d2b78
+that switched from using IPC_STAT to parsing /proc/sysvipc/*,
+ipcs now shows all IPC objects rather than just the objects for
+which the user has read permission. Update the page to reflect this
+fact, and also add a NOTES section describing the historical and
+fallback behavior where /proc is not available.
+
+Signed-off-by: Michael Kerrisk &lt;mtk.manpages@gmail.com&gt;
+---
+ sys-utils/ipcs.1 | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+<span
+class="head">diff --git a/sys-utils/ipcs.1 b/sys-utils/ipcs.1
+index 93c35e323..4b3baaaa5 100644
+--- a/sys-utils/ipcs.1
++++ b/sys-utils/ipcs.1
+</span><span
+class="hunk">@@ -8,8 +8,7 @@ ipcs \- show information on IPC facilities
+</span> [options]
+ .SH DESCRIPTION
+ .B ipcs
+<span
+class="del">-shows information on the inter-process communication facilities
+-for which the calling process has read access.
+</span><span
+class="add">+shows information on inter-process communication facilities.
+</span> By default it shows information about all three resources:
+ shared memory segments, message queues, and semaphore arrays.
+ .SH OPTIONS
+<span
+class="hunk">@@ -76,6 +75,25 @@ Print sizes in bytes.
+</span> .TP
+ .B \-\-human
+ Print sizes in human-readable format.
+<span
+class="add">+.SH NOTES
++The current implementation of
++.B ipcs
++obtains information about available IPC resources by parsing the files in
++.IR /proc/sysvipc .
++Before util-linux version v2.23, an alternate mechanism was used: the
++.BR IPC_STAT
++command of
++.BR msgctl (2),
++.BR semctl (2),
++and
++.BR shmctl (2).
++This mechanism is also used in later util-linux versions in the case where
++.I /proc
++is unavailable.
++A limitation of the
++.B IPC_STAT
++mechanism is that it can only be used to retrieve information about
++IPC resources for which the user has read permission.
+</span> .SH SEE ALSO
+ .BR ipcmk (1),
+ .BR ipcrm (1),
+-- 
+2.26.2
+
+-- 
+Michael Kerrisk
+Linux man-pages maintainer; <a
+href="http://www.kernel.org/doc/man-pages/">http://www.kernel.org/doc/man-pages/</a>
+Linux/UNIX System Programming Training: <a
+href="http://man7.org/training/">http://man7.org/training/</a>
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>plan for v2.35.2</title><updated>2020-05-15T13:05:16Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515130509.cbkfyim7o7dchb25@ws.net.home/"/><id>urn:uuid:37f8f0a9-d285-b8f9-5269-6eeb2475f9ba</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">
+I&#39;d like to release v2.35.2 on Monday (and 2.36-rc1 later). See below
+the current stable/v2.35 branch. Any objections and suggestions?
+
+    Karel
+
+
+Anatoly Pugachev (1):
+      docs: Correct ChangeLog URL to history log.
+
+Disconnect3d (1):
+      Fix off by one when checking &#34;/dev/mapper/&#34; path
+
+Ga&#235;l PORTAY (2):
+      libfdisk: (script) fix segmentation fault
+      lib/mangle: check for the NULL string argument
+
+J William Piggott (1):
+      hwclock: make glibc 2.31 compatible
+
+Jakub Wilk (2):
+      scriptlive: fix man page formatting
+      scriptlive: fix typo
+
+Jiaxun Yang (1):
+      lscpu: Adapt MIPS cpuinfo
+
+Johannes Thumshirn (1):
+      blkzone: deny destructive ioctls on busy blockdev
+
+Karel Zak (23):
+      libfdisk: (script) accept sector-size, ignore unknown headers
+      fstrim: do not use Protect setting in systemd service
+      libfdisk: (script) fix memory leak
+      sfdisk: fix ref-counting for the script
+      lscpu: fix SIGSEGV on archs without drawers &#38; books
+      umount: don&#39;t try it as non-suid if not found mountinfo entry
+      lsblk: fix -P regression from v2.34
+      chsh: (man) fix default behavior description
+      hwclock: fix audit exit status
+      su, runuser: (man) add more info about PATH and PAM
+      lscpu: use official name for HiSilicon tsv110
+      libmount: improve smb{2,3} support
+      libmount: smb2 is unsupported alias
+      libfdisk: remove unwanted assert()
+      pylibmount: cleanup and sync UL_RaiseExc
+      eject: fix compiler warning [-Wformat-overflow]
+      sfdisk: only report I/O errors on --move-data
+      libfdisk: (script) fix partno_from_devname()
+      docs: add swap to 1st fstab field
+      libfdisk: fix partition calculation for BLKPG_* ioctls
+      wipefs: fix man page --no-headings short option
+      libblkid: fix fstatat() use in blkid__scan_dir()
+      libblkid: fix compiler warning [-Wsign-compare]
+
+Lukas Czerner (1):
+      blkdiscard: (man) offset and length must be sector aligned
+
+Mark Barbone (1):
+      Fix typo in the mount (8) man page
+
+Mark Hindley (1):
+      tests: Fix for misc/fallocate test build failure.
+
+Pali Roh&#225;r (2):
+      libblkid: Fix UTF-16 support in function blkid_encode_to_utf8()
+      exfat: Fix parsing exfat label
+
+Ritika Srivastava (1):
+      lsblk: Ignore hidden devices
+
+Roberto Bergantinos Corpas (1):
+      libmount: fix mount -a EBUSY for cifs
+
+Sami Kerola (4):
+      kill: include sys/types.h before checking SYS_pidfd_send_signal
+      docs: kill.1 add note about shell-internal kill implementations
+      ctrlaltdel: display error message indicated by errno
+      write: fix potential string overflow
+
+Sven Wiltink (1):
+      lsblk: Fall back to ID_SERIAL
+
+Tycho Andersen (1):
+      libmount: do not unnecessarily chmod utab.lock
+
+Wolfram Sang (1):
+      bash-completion: umount explicitly needs gawk
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: [PATCH] blkzone: deny destructive ioctls on busy blockdev</title><updated>2020-05-15T12:58:28Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515125816.2lyw4f3pg54npv6y@ws.net.home/"/><id>urn:uuid:825a1dee-965b-7e28-c202-973ae37d8129</id><thr:in-reply-to
+ref="urn:uuid:a2e9075b-133b-3bd6-cb3b-e90af0dd7122"
+href="https://lore.kernel.org/util-linux/20200515084133.21896-1-johannes.thumshirn@wdc.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Fri, May 15, 2020 at 05:41:33PM +0900, Johannes Thumshirn wrote:
+<span
+class="q">&gt;  sys-utils/blkzone.c | 4 +++-
+&gt;  1 file changed, 3 insertions(+), 1 deletion(-)
+</span>
+Applied, thanks.
+
+<span
+class="q">&gt; +	fd = init_device(ctl, O_WRONLY | O_EXCL);
+&gt; +	if (fd &lt; 0)
+&gt; +		errx(EXIT_FAILURE, _(&#34;%s: unable to open&#34;), ctl-&gt;devname);
+</span>
+I have removed this error message. It&#39;s already within init_device().
+
+    Karel
+
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: [PATCH] blkzone: deny destructive ioctls on busy blockdev</title><updated>2020-05-15T10:37:53Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515103736.5jsezljksq64kofg@ws.net.home/"/><id>urn:uuid:e35a8705-425c-a889-5d45-232a5826eef0</id><thr:in-reply-to
+ref="urn:uuid:46248eb8-5aa0-6515-9132-c0ceb2a6c1ab"
+href="https://lore.kernel.org/util-linux/SN4PR0401MB35982647432681A63CBABCA99BBD0@SN4PR0401MB3598.namprd04.prod.outlook.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Fri, May 15, 2020 at 09:53:46AM +0000, Johannes Thumshirn wrote:
+<span
+class="q">&gt; On 15/05/2020 10:50, Chris Hofstaedtler wrote:
+&gt; &gt; * Johannes Thumshirn &lt;johannes.thumshirn@wdc.com&gt; [200515 10:41]:
+&gt; &gt;&gt; If a user submits a zone management ioctl from user-space, like a zone
+&gt; &gt;&gt; reset and a file-system (like zonefs or f2fs) is mounted on the zoned
+&gt; &gt;&gt; block device, the zone will get reset and the file-system&#39;s cached value
+&gt; &gt;&gt; of the zone&#39;s write-pointer becomes invalid.
+&gt; &gt;&gt;
+&gt; &gt;&gt; Subsequent writes to this zone from the file-system will result in
+&gt; &gt;&gt; unaligned writes and the drive will error out.
+&gt; &gt; 
+&gt; &gt; &#34;error out&#34; meaning what exactly?
+&gt; 
+&gt; The drive will report an Unaligned Write error.
+&gt; 
+&gt; &gt; 
+&gt; &gt;&gt; Open the block device file in exclusive mode for submitting these ioctls.
+&gt; &gt;&gt; If a file-system is mounted the kernel will return -EBUSY and we can&#39;t
+&gt; &gt;&gt; continue issuing the ioctl.
+&gt; &gt; 
+&gt; &gt; Isn&#39;t this something the kernel should enforce, then?
+&gt; 
+&gt; I did a patch for the kernel yesterday [1] enforcing this limitation, but as
+&gt; Damien said it&#39;s SYS_CAP_ADMIN and with great power comes great responsibility.
+&gt; We&#39;re also allowing other raw block device accesses on block devices.
+&gt; 
+&gt; [1] <a
+href="https://lore.kernel.org/linux-block/BY5PR04MB69006DE86D1050620B5EDAA4E7BD0@BY5PR04MB6900.namprd04.prod.outlook.com/">https://lore.kernel.org/linux-block/BY5PR04MB69006DE86D1050620B5EDAA4E7BD0@BY5PR04MB6900.namprd04.prod.outlook.com/</a>
+&gt; 
+&gt; &gt; What&#39;s to stop anybody from calling the ioctl from another tool,
+&gt; &gt; without using O_EXCL?
+&gt; 
+&gt; Nothing, but still we don&#39;t need to make one&#39;s life hard by letting blkzone go 
+&gt; havoc with FS internal caching. If another tool does zone resets, it&#39;s up to them
+&gt; to check for mounted block devices.
+</span>
+O_EXCL good idea, it nothing unusual that you can do crazy things with
+devices with mounted filesystem (see for example fdisk(s), wipefs, ...). 
+
+And sometimes it is valid use-case to do &#34;bad&#34; things and in this case
+we have --force option in our tools (for example to avoid O_EXCL).
+
+    Karel
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Johannes Thumshirn</name><email>Johannes.Thumshirn@wdc.com</email></author><title>Re: [PATCH] blkzone: deny destructive ioctls on busy blockdev</title><updated>2020-05-15T09:53:50Z</updated><link
+href="https://lore.kernel.org/util-linux/SN4PR0401MB35982647432681A63CBABCA99BBD0@SN4PR0401MB3598.namprd04.prod.outlook.com/"/><id>urn:uuid:46248eb8-5aa0-6515-9132-c0ceb2a6c1ab</id><thr:in-reply-to
+ref="urn:uuid:0fd93c16-2f11-ac2b-7ec4-46c3bd76af1b"
+href="https://lore.kernel.org/util-linux/20200515085013.i5lzw5t2sqpamwhi@zeha.at/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On 15/05/2020 10:50, Chris Hofstaedtler wrote:
+<span
+class="q">&gt; * Johannes Thumshirn &lt;johannes.thumshirn@wdc.com&gt; [200515 10:41]:
+&gt;&gt; If a user submits a zone management ioctl from user-space, like a zone
+&gt;&gt; reset and a file-system (like zonefs or f2fs) is mounted on the zoned
+&gt;&gt; block device, the zone will get reset and the file-system&#39;s cached value
+&gt;&gt; of the zone&#39;s write-pointer becomes invalid.
+&gt;&gt;
+&gt;&gt; Subsequent writes to this zone from the file-system will result in
+&gt;&gt; unaligned writes and the drive will error out.
+&gt; 
+&gt; &#34;error out&#34; meaning what exactly?
+</span>
+The drive will report an Unaligned Write error.
+
+<span
+class="q">&gt; 
+&gt;&gt; Open the block device file in exclusive mode for submitting these ioctls.
+&gt;&gt; If a file-system is mounted the kernel will return -EBUSY and we can&#39;t
+&gt;&gt; continue issuing the ioctl.
+&gt; 
+&gt; Isn&#39;t this something the kernel should enforce, then?
+</span>
+I did a patch for the kernel yesterday [1] enforcing this limitation, but as
+Damien said it&#39;s SYS_CAP_ADMIN and with great power comes great responsibility.
+We&#39;re also allowing other raw block device accesses on block devices.
+
+[1] <a
+href="https://lore.kernel.org/linux-block/BY5PR04MB69006DE86D1050620B5EDAA4E7BD0@BY5PR04MB6900.namprd04.prod.outlook.com/">https://lore.kernel.org/linux-block/BY5PR04MB69006DE86D1050620B5EDAA4E7BD0@BY5PR04MB6900.namprd04.prod.outlook.com/</a>
+
+<span
+class="q">&gt; What&#39;s to stop anybody from calling the ioctl from another tool,
+&gt; without using O_EXCL?
+</span>
+Nothing, but still we don&#39;t need to make one&#39;s life hard by letting blkzone go 
+havoc with FS internal caching. If another tool does zone resets, it&#39;s up to them
+to check for mounted block devices.
+</pre></div></content></entry><entry><author><name>Chris Hofstaedtler</name><email>chris@hofstaedtler.name</email></author><title>Re: [PATCH] blkzone: deny destructive ioctls on busy blockdev</title><updated>2020-05-15T08:55:37Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515085013.i5lzw5t2sqpamwhi@zeha.at/"/><id>urn:uuid:0fd93c16-2f11-ac2b-7ec4-46c3bd76af1b</id><thr:in-reply-to
+ref="urn:uuid:a2e9075b-133b-3bd6-cb3b-e90af0dd7122"
+href="https://lore.kernel.org/util-linux/20200515084133.21896-1-johannes.thumshirn@wdc.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">* Johannes Thumshirn &lt;johannes.thumshirn@wdc.com&gt; [200515 10:41]:
+<span
+class="q">&gt; If a user submits a zone management ioctl from user-space, like a zone
+&gt; reset and a file-system (like zonefs or f2fs) is mounted on the zoned
+&gt; block device, the zone will get reset and the file-system&#39;s cached value
+&gt; of the zone&#39;s write-pointer becomes invalid.
+&gt; 
+&gt; Subsequent writes to this zone from the file-system will result in
+&gt; unaligned writes and the drive will error out.
+</span>
+&#34;error out&#34; meaning what exactly?
+
+<span
+class="q">&gt; Open the block device file in exclusive mode for submitting these ioctls.
+&gt; If a file-system is mounted the kernel will return -EBUSY and we can&#39;t
+&gt; continue issuing the ioctl.
+</span>
+Isn&#39;t this something the kernel should enforce, then?
+
+What&#39;s to stop anybody from calling the ioctl from another tool,
+without using O_EXCL?
+
+Chris
+</pre></div></content></entry><entry><author><name>Johannes Thumshirn</name><email>johannes.thumshirn@wdc.com</email></author><title>[PATCH] blkzone: deny destructive ioctls on busy blockdev</title><updated>2020-05-15T08:41:52Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515084133.21896-1-johannes.thumshirn@wdc.com/"/><id>urn:uuid:a2e9075b-133b-3bd6-cb3b-e90af0dd7122</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">If a user submits a zone management ioctl from user-space, like a zone
+reset and a file-system (like zonefs or f2fs) is mounted on the zoned
+block device, the zone will get reset and the file-system&#39;s cached value
+of the zone&#39;s write-pointer becomes invalid.
+
+Subsequent writes to this zone from the file-system will result in
+unaligned writes and the drive will error out.
+
+Open the block device file in exclusive mode for submitting these ioctls.
+If a file-system is mounted the kernel will return -EBUSY and we can&#39;t
+continue issuing the ioctl.
+
+Reported-by: Coly Li &lt;colyli@suse.de&gt;
+Cc: Damien Le Moal &lt;Damien.LeMoal@wdc.com&gt;
+Signed-off-by: Johannes Thumshirn &lt;johannes.thumshirn@wdc.com&gt;
+---
+ sys-utils/blkzone.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+<span
+class="head">diff --git a/sys-utils/blkzone.c b/sys-utils/blkzone.c
+index 8d9de2e1bba7..a4b59754616e 100644
+--- a/sys-utils/blkzone.c
++++ b/sys-utils/blkzone.c
+</span><span
+class="hunk">@@ -301,7 +301,9 @@ static int blkzone_action(struct blkzone_control *ctl)
+</span> 	if (!zonesize)
+ 		errx(EXIT_FAILURE, _(&#34;%s: unable to determine zone size&#34;), ctl-&gt;devname);
+ 
+<span
+class="del">-	fd = init_device(ctl, O_WRONLY);
+</span><span
+class="add">+	fd = init_device(ctl, O_WRONLY | O_EXCL);
++	if (fd &lt; 0)
++		errx(EXIT_FAILURE, _(&#34;%s: unable to open&#34;), ctl-&gt;devname);
+</span> 
+ 	if (ctl-&gt;offset &#38; (zonesize - 1))
+ 		errx(EXIT_FAILURE, _(&#34;%s: offset %&#34; PRIu64 &#34; is not aligned &#34;
+-- 
+2.24.1
+
+</pre></div></content></entry><entry><author><name>Karel Zak</name><email>kzak@redhat.com</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-15T07:50:14Z</updated><link
+href="https://lore.kernel.org/util-linux/20200515075003.szuxgob6qy63imva@ws.net.home/"/><id>urn:uuid:4b0ef8fd-fad3-6e20-3466-177eb4c58aec</id><thr:in-reply-to
+ref="urn:uuid:97f0bca8-ede0-1fe9-2219-677e8672c8c5"
+href="https://lore.kernel.org/util-linux/fa40b05f-7050-c5ee-a0ea-5af2d104a1bc@physik.fu-berlin.de/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On Thu, May 14, 2020 at 10:15:47PM +0200, John Paul Adrian Glaubitz wrote:
+<span
+class="q">&gt; On 5/14/20 10:09 PM, Michael Kerrisk wrote:
+&gt; &gt;&gt; On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+&gt; &gt;&gt;&gt; I&#39;m now reporting the errors for your project. If future reports should
+&gt; &gt;&gt;&gt; use another channel, please let me know.
+&gt; &gt;&gt;
+&gt; &gt;&gt; I think you should send your changes as patches, preferably with a git pull
+&gt; &gt;&gt; request as the current form of submitting these changes requires a lot of
+&gt; &gt;&gt; manual editing due to the large number of changes involved.
+&gt; &gt; 
+&gt; &gt; Well, yes, but see
+&gt; &gt; <a
+href="https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/">https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/</a>
+&gt; 
+&gt; Doesn&#39;t convince, me really. I don&#39;t think it&#39;s too much to ask for to
+&gt; read the documentation of git and then create a set of patches.
+</span>
+Helge&#39;s way provides opportunity for other mailing list members to
+contribute :-) 
+
+<span
+class="q">&gt; I wouldn&#39;t accept such mass mails for my own projects, it&#39;s just way too
+&gt; much work to import all these changes manually. And I also haven&#39;t seen
+&gt; any other project do that in the past 20 years, so I&#39;m not sure how successful
+&gt; this strategy is.
+</span>
+Sharing is caring ... better report bugs than ignore.
+
+    Karel
+
+-- 
+ Karel Zak  &lt;kzak@redhat.com&gt;
+ <a
+href="http://karelzak.blogspot.com">http://karelzak.blogspot.com</a>
+
+</pre></div></content></entry><entry><author><name>Bjarni Ingi Gislason</name><email>bjarniig@rhi.hi.is</email></author><title>[PATCH] util-linux: Some minor fixes in some manuals</title><updated>2020-05-14T23:55:45Z</updated><link
+href="https://lore.kernel.org/util-linux/20200514235129.GA8403@rhi.hi.is/"/><id>urn:uuid:ae168781-095a-7168-c087-155173099297</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Output is from: test-groff -b -e -mandoc -T utf8 -rF0 -t -w w -z
+
+  [ &#34;test-groff&#34; is a developmental version of &#34;groff&#34; ]
+
+Input file is ././misc-utils/kill.1
+
+&lt;./misc-utils/kill.1&gt;:173 (macro BR): only 1 argument, but more are expected
+####
+
+Input file is ././misc-utils/lsblk.8
+
+troff: backtrace: &#39;/home/bg/git/groff/build/s-tmac/an-old.tmac&#39;:478: macro &#39;BR&#39;
+troff: backtrace: file &#39;&lt;./misc-utils/lsblk.8&gt;&#39;:122
+troff: &lt;./misc-utils/lsblk.8&gt;:122: warning: trailing space
+####
+
+Input file is ././sys-utils/mount.8
+
+an-old.tmac: &lt;./sys-utils/mount.8&gt;:2427 (.RE): warning: extra .RE or .RS is missing before it; &#34;an-RS-open&#34; is 0.
+
+####
+
+Input file is ././sys-utils/unshare.1
+
+&lt;./sys-utils/unshare.1&gt;:176 (macro BR): only 1 argument, but more are expected
+&lt;./sys-utils/unshare.1&gt;:181 (macro BR): only 1 argument, but more are expected
+&lt;./sys-utils/unshare.1&gt;:240 (macro BR): only 1 argument, but more are expected
+&lt;./sys-utils/unshare.1&gt;:246 (macro BR): only 1 argument, but more are expected
+####
+
+Input file is ././term-utils/agetty.8
+
+troff: backtrace: file &#39;&lt;./term-utils/agetty.8&gt;&#39;:130
+troff: &lt;./term-utils/agetty.8&gt;:130: warning: trailing space
+####
+
+Input file is ././text-utils/more.1
+
+troff: backtrace: file &#39;&lt;./text-utils/more.1&gt;&#39;:91
+troff: &lt;./text-utils/more.1&gt;:91: warning: macro &#39;b&#39; not defined
+
+####
+
+  The output from nroff and troff is unchanged, except for the word
+&#34;number&#34; in text-utils/more.1, that was missing.
+
+Signed-off-by: Bjarni Ingi Gislason &lt;bjarniig@rhi.hi.is&gt;
+---
+ misc-utils/kill.1   | 2 +-
+ misc-utils/lsblk.8  | 2 +-
+ sys-utils/mount.8   | 1 -
+ sys-utils/unshare.1 | 8 ++++----
+ term-utils/agetty.8 | 2 +-
+ text-utils/more.1   | 4 ++--
+ 6 files changed, 9 insertions(+), 10 deletions(-)
+
+<span
+class="head">diff --git a/misc-utils/kill.1 b/misc-utils/kill.1
+index 65872ce19..27258d293 100644
+--- a/misc-utils/kill.1
++++ b/misc-utils/kill.1
+</span><span
+class="hunk">@@ -170,7 +170,7 @@ preferred in relation to the
+</span> .BR kill (1)
+ executable described by this manual.  Easiest way to ensure one is executing
+ the executable is to use full path when calling the command, for example:
+<span
+class="del">-.BR &#34;/bin/kill --version&#34;
+</span><span
+class="add">+.B &#34;/bin/kill \-\-version&#34;
+</span> .SH RETURN CODES
+ .B kill
+ has the following return codes:
+<span
+class="head">diff --git a/misc-utils/lsblk.8 b/misc-utils/lsblk.8
+index 416b28298..1b73e6f25 100644
+--- a/misc-utils/lsblk.8
++++ b/misc-utils/lsblk.8
+</span><span
+class="hunk">@@ -119,7 +119,7 @@ The default is to use tree for the column &#39;NAME&#39; (see also \fB\-\-tree\fR).
+</span> The default list of columns may be extended if \fIlist\fP is
+ specified in the format \fI+list\fP (e.g., \fBlsblk \-o +UUID\fP).
+ .TP
+<span
+class="del">-.BR \-O , &#34; \-\-output\-all &#34;
+</span><span
+class="add">+.BR \-O , &#34; \-\-output\-all&#34;
+</span> Output all available columns.
+ .TP
+ .BR \-P , &#34; \-\-pairs&#34;
+<span
+class="head">diff --git a/sys-utils/mount.8 b/sys-utils/mount.8
+index 54af6c2b1..05117c727 100644
+--- a/sys-utils/mount.8
++++ b/sys-utils/mount.8
+</span><span
+class="hunk">@@ -2424,7 +2424,6 @@ Parity bytes for FEC (default: 2). Optional.
+</span> Path to pkcs7 signature of root hash hex string. Requires crypt_activate_by_signed_key() from cryptsetup and
+ kernel built with CONFIG_DM_VERITY_VERIFY_ROOTHASH_SIG. For device reuse, signatures have to be either used by all
+ mounts of a device or by none. Optional.
+<span
+class="del">-.RE
+</span> .PP
+ Supported since util-linux v2.35.
+ .PP
+<span
+class="head">diff --git a/sys-utils/unshare.1 b/sys-utils/unshare.1
+index a58821921..86506ffa3 100644
+--- a/sys-utils/unshare.1
++++ b/sys-utils/unshare.1
+</span><span
+class="hunk">@@ -173,12 +173,12 @@ implies creating a new mount namespace since the /proc mount would otherwise
+</span> mess up existing programs on the system.  The new proc filesystem is explicitly
+ mounted as private (with MS_PRIVATE|MS_REC).
+ .TP
+<span
+class="del">-.BR \-\-map\-user=\fIuid|name
+</span><span
+class="add">+.BI \-\-map\-user= uid|name
+</span> Run the program only after the current effective user ID has been mapped to \fIuid\fP.
+ If this option is specified multiple times, the last occurrence takes precedence.
+ This option implies \fB\-\-user\fR.
+ .TP
+<span
+class="del">-.BR \-\-map\-group=\fIgid|name
+</span><span
+class="add">+.BI \-\-map\-group= gid|name
+</span> Run the program only after the current effective group ID has been mapped to \fIgid\fP.
+ If this option is specified multiple times, the last occurrence takes precedence.
+ This option implies \fB\-\-setgroups=deny\fR and \fB\-\-user\fR.
+<span
+class="hunk">@@ -237,13 +237,13 @@ Set the user ID which will be used in the entered namespace.
+</span> Set the group ID which will be used in the entered namespace and drop
+ supplementary groups.
+ .TP
+<span
+class="del">-.BR &#34;\-\-monotonic \fIoffset&#34;
+</span><span
+class="add">+.BI \-\-monotonic &#34; offset&#34;
+</span> Set the offset of
+ .B CLOCK_MONOTONIC
+ which will be used in the entered time namespace. This option requires
+ unsharing a time namespace with \fB\-\-time\fP.
+ .TP
+<span
+class="del">-.BR &#34;\-\-boottime \fIoffset&#34;
+</span><span
+class="add">+.BI \-\-boottime &#34; offset&#34;
+</span> Set the offset of
+ .B CLOCK_BOOTTIME
+ which will be used in the entered time namespace. This option requires
+<span
+class="head">diff --git a/term-utils/agetty.8 b/term-utils/agetty.8
+index fa92df09c..fd6cf4b44 100644
+--- a/term-utils/agetty.8
++++ b/term-utils/agetty.8
+</span><span
+class="hunk">@@ -127,7 +127,7 @@ messages to be displayed on different terminals.  The
+</span> \-\-show\-issue
+ Display the current issue file (or other) on the current terminal and exit.
+ Use this option to review the current setting, it is not designed for any other
+<span
+class="del">-purpose.  Note that output may use some default or incomplete information as 
+</span><span
+class="add">+purpose.  Note that output may use some default or incomplete information as
+</span> proper output depends on terminal and agetty command line.
+ .TP
+ \-h, \-\-flow\-control
+<span
+class="head">diff --git a/text-utils/more.1 b/text-utils/more.1
+index 2176d5528..4cf445f87 100644
+--- a/text-utils/more.1
++++ b/text-utils/more.1
+</span><span
+class="hunk">@@ -88,9 +88,9 @@ compatibility.
+</span> .TP
+ \fB\-n\fR, \fB\-\-lines \fInumber\fR
+ Specify the
+<span
+class="del">-.b number
+</span><span
+class="add">+.I number
+</span> of lines per screenful.  The
+<span
+class="del">-.b number
+</span><span
+class="add">+.I number
+</span> argument is a positive decimal integer.  The
+ .B \-\-lines
+ option shall override any values obtained from any other source, such as
+-- 
+2.26.2
+</pre></div></content></entry><entry><author><name>Michael Kerrisk (man-pages)</name><email>mtk.manpages@gmail.com</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T20:33:25Z</updated><link
+href="https://lore.kernel.org/util-linux/CAKgNAkgRr-zDW2RGrr7CSHOW1tLNdJhdZRPGPkfao51Q_DhUDw@mail.gmail.com/"/><id>urn:uuid:27c328af-de03-0c03-351a-1eb338ab1510</id><thr:in-reply-to
+ref="urn:uuid:97f0bca8-ede0-1fe9-2219-677e8672c8c5"
+href="https://lore.kernel.org/util-linux/fa40b05f-7050-c5ee-a0ea-5af2d104a1bc@physik.fu-berlin.de/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Hello John,
+
+On Thu, 14 May 2020 at 22:15, John Paul Adrian Glaubitz
+&lt;glaubitz@physik.fu-berlin.de&gt; wrote:
+<span
+class="q">&gt;
+&gt; On 5/14/20 10:09 PM, Michael Kerrisk wrote:
+&gt; &gt;&gt; On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+&gt; &gt;&gt;&gt; I&#39;m now reporting the errors for your project. If future reports should
+&gt; &gt;&gt;&gt; use another channel, please let me know.
+&gt; &gt;&gt;
+&gt; &gt;&gt; I think you should send your changes as patches, preferably with a git pull
+&gt; &gt;&gt; request as the current form of submitting these changes requires a lot of
+&gt; &gt;&gt; manual editing due to the large number of changes involved.
+&gt; &gt;
+&gt; &gt; Well, yes, but see
+&gt; &gt; <a
+href="https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/">https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/</a>
+&gt;
+&gt; Doesn&#39;t convince, me really. I don&#39;t think it&#39;s too much to ask for to
+&gt; read the documentation of git and then create a set of patches.
+</span>
+Yes, but probably the work for Helge to do that is a factor of
+*several* times the work of someone with commit access doing the
+manual edits.
+
+<span
+class="q">&gt; I wouldn&#39;t accept such mass mails for my own projects, it&#39;s just way too
+&gt; much work to import all these changes manually.
+</span>
+I agree. It&#39;s a pain.
+
+<span
+class="q">&gt; And I also haven&#39;t seen
+&gt; any other project do that in the past 20 years, so I&#39;m not sure how successful
+&gt; this strategy is.
+</span>
+I&#39;m not sure how successful it will be either. But, one project just
+did what you haven&#39;t seen in the past 20 years, just last month :-).
+
+Cheers,
+
+Michael
+
+-- 
+Michael Kerrisk
+Linux man-pages maintainer; <a
+href="http://www.kernel.org/doc/man-pages/">http://www.kernel.org/doc/man-pages/</a>
+Linux/UNIX System Programming Training: <a
+href="http://man7.org/training/">http://man7.org/training/</a>
+</pre></div></content></entry><entry><author><name>John Paul Adrian Glaubitz</name><email>glaubitz@physik.fu-berlin.de</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T20:15:51Z</updated><link
+href="https://lore.kernel.org/util-linux/fa40b05f-7050-c5ee-a0ea-5af2d104a1bc@physik.fu-berlin.de/"/><id>urn:uuid:97f0bca8-ede0-1fe9-2219-677e8672c8c5</id><thr:in-reply-to
+ref="urn:uuid:a5342a50-b0c1-2666-823b-aa834f26401d"
+href="https://lore.kernel.org/util-linux/CALxWeYqwYyOAMHaoWnoKKL2O4BvYu8-m-DyBap5eYn=2stzXyQ@mail.gmail.com/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On 5/14/20 10:09 PM, Michael Kerrisk wrote:
+<span
+class="q">&gt;&gt; On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+&gt;&gt;&gt; I&#39;m now reporting the errors for your project. If future reports should
+&gt;&gt;&gt; use another channel, please let me know.
+&gt;&gt;
+&gt;&gt; I think you should send your changes as patches, preferably with a git pull
+&gt;&gt; request as the current form of submitting these changes requires a lot of
+&gt;&gt; manual editing due to the large number of changes involved.
+&gt; 
+&gt; Well, yes, but see
+&gt; <a
+href="https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/">https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/</a>
+</span>
+Doesn&#39;t convince, me really. I don&#39;t think it&#39;s too much to ask for to
+read the documentation of git and then create a set of patches.
+
+I wouldn&#39;t accept such mass mails for my own projects, it&#39;s just way too
+much work to import all these changes manually. And I also haven&#39;t seen
+any other project do that in the past 20 years, so I&#39;m not sure how successful
+this strategy is.
+
+Adrian
+
+-- 
+ .&#39;&#39;`.  John Paul Adrian Glaubitz
+: :&#39; :  Debian Developer - glaubitz@debian.org
+`. `&#39;   Freie Universitaet Berlin - glaubitz@physik.fu-berlin.de
+  `-    GPG: 62FF 8A75 84E0 2956 9546  0006 7426 3B37 F5B5 F913
+</pre></div></content></entry><entry><author><name>Michael Kerrisk</name><email>mtk.manpages@gmail.com</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T20:09:23Z</updated><link
+href="https://lore.kernel.org/util-linux/CALxWeYqwYyOAMHaoWnoKKL2O4BvYu8-m-DyBap5eYn=2stzXyQ@mail.gmail.com/"/><id>urn:uuid:a5342a50-b0c1-2666-823b-aa834f26401d</id><thr:in-reply-to
+ref="urn:uuid:6ca761ce-8012-eb15-f66e-91ef94a07091"
+href="https://lore.kernel.org/util-linux/5372295b-b74b-2bf9-a8d1-bf1b38edcb30@physik.fu-berlin.de/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Hello John,
+
+On Thu, May 14, 2020 at 9:20 PM John Paul Adrian Glaubitz
+&lt;glaubitz@physik.fu-berlin.de&gt; wrote:
+<span
+class="q">&gt;
+&gt; Hello Helge!
+&gt;
+&gt; On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+&gt; &gt; I&#39;m now reporting the errors for your project. If future reports should
+&gt; &gt; use another channel, please let me know.
+&gt;
+&gt; I think you should send your changes as patches, preferably with a git pull
+&gt; request as the current form of submitting these changes requires a lot of
+&gt; manual editing due to the large number of changes involved.
+</span>
+Well, yes, but see
+<a
+href="https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/">https://lore.kernel.org/util-linux/CAKgNAkgqKs=Q4qvPHirHa6KjW3qOqyyNG7sCxHX2RfWiOBqRbg@mail.gmail.com/</a>
+
+Cheers,
+
+Michael
+</pre></div></content></entry><entry><author><name>John Paul Adrian Glaubitz</name><email>glaubitz@physik.fu-berlin.de</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T19:46:24Z</updated><link
+href="https://lore.kernel.org/util-linux/d9fe9cdf-c9a4-b8b0-2407-922c7ee10756@physik.fu-berlin.de/"/><id>urn:uuid:dbf1f3e8-7aa9-46ac-68a2-1c2f1326c773</id><thr:in-reply-to
+ref="urn:uuid:7fc8c051-4c73-6ca0-b26a-5d061f318799"
+href="https://lore.kernel.org/util-linux/20200514194229.GA29387@Debian-50-lenny-64-minimal/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">On 5/14/20 9:42 PM, Helge Kreutzmann wrote:
+<span
+class="q">&gt;&gt; I think you should send your changes as patches, preferably with a git pull
+&gt;&gt; request as the current form of submitting these changes requires a lot of
+&gt;&gt; manual editing due to the large number of changes involved.
+&gt; 
+&gt; Sorry, this won&#39;t be possible as stated in my long e-mail. 
+</span>
+I haven&#39;t read that mail, but I don&#39;t understand what reason should prevent
+anyone from sending a patch.
+
+<span
+class="q">&gt; However, in the future the number of changes should be (much!) lower,
+&gt; as I don&#39;t think we wait another 10 years for reporting. 
+&gt; 
+&gt; And you can process them at your convenience, for us (translators)
+&gt; there is no time pressure at all, many (formatting) issues are fixed
+&gt; in the translation already.
+</span>
+But how are the changes supposed to get into the git repository?
+
+If you send something like 50 mails, someone has to sit down and edit
+all these changes manually. I don&#39;t think anyone is going to do that,
+it&#39;s just way too tedious.
+
+Adrian
+
+-- 
+ .&#39;&#39;`.  John Paul Adrian Glaubitz
+: :&#39; :  Debian Developer - glaubitz@debian.org
+`. `&#39;   Freie Universitaet Berlin - glaubitz@physik.fu-berlin.de
+  `-    GPG: 62FF 8A75 84E0 2956 9546  0006 7426 3B37 F5B5 F913
+</pre></div></content></entry><entry><author><name>Helge Kreutzmann</name><email>debian@helgefjell.de</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T19:42:32Z</updated><link
+href="https://lore.kernel.org/util-linux/20200514194229.GA29387@Debian-50-lenny-64-minimal/"/><id>urn:uuid:7fc8c051-4c73-6ca0-b26a-5d061f318799</id><thr:in-reply-to
+ref="urn:uuid:6ca761ce-8012-eb15-f66e-91ef94a07091"
+href="https://lore.kernel.org/util-linux/5372295b-b74b-2bf9-a8d1-bf1b38edcb30@physik.fu-berlin.de/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">
+<a
+href="https://lore.kernel.org/util-linux/20200514194229.GA29387@Debian-50-lenny-64-minimal/1-a.txt">[-- Attachment #1: Type: text/plain, Size: 1174 bytes --]</a>
+
+Hello Adrian,
+On Thu, May 14, 2020 at 09:20:07PM +0200, John Paul Adrian Glaubitz wrote:
+<span
+class="q">&gt; On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+&gt; &gt; I&#39;m now reporting the errors for your project. If future reports should 
+&gt; &gt; use another channel, please let me know.
+&gt; 
+&gt; I think you should send your changes as patches, preferably with a git pull
+&gt; request as the current form of submitting these changes requires a lot of
+&gt; manual editing due to the large number of changes involved.
+</span>
+Sorry, this won&#39;t be possible as stated in my long e-mail. 
+
+However, in the future the number of changes should be (much!) lower,
+as I don&#39;t think we wait another 10 years for reporting. 
+
+And you can process them at your convenience, for us (translators)
+there is no time pressure at all, many (formatting) issues are fixed
+in the translation already.
+
+Greetings
+
+           Helge
+
+-- 
+      Dr. Helge Kreutzmann                     debian@helgefjell.de
+           Dipl.-Phys.                   <a
+href="http://www.helgefjell.de/debian.php">http://www.helgefjell.de/debian.php</a>
+        64bit GNU powered                     gpg signed mail preferred
+           Help keep free software &#34;libre&#34;: <a
+href="http://www.ffii.de/">http://www.ffii.de/</a>
+
+<a
+href="https://lore.kernel.org/util-linux/20200514194229.GA29387@Debian-50-lenny-64-minimal/2-signature.asc">[-- Attachment #2: signature.asc --]
+[-- Type: application/pgp-signature, Size: 833 bytes --]</a>
+</pre></div></content></entry><entry><author><name>John Paul Adrian Glaubitz</name><email>glaubitz@physik.fu-berlin.de</email></author><title>Re: Errors in util-linux man pages, here: adjtime_config.5: Wording</title><updated>2020-05-14T19:20:11Z</updated><link
+href="https://lore.kernel.org/util-linux/5372295b-b74b-2bf9-a8d1-bf1b38edcb30@physik.fu-berlin.de/"/><id>urn:uuid:6ca761ce-8012-eb15-f66e-91ef94a07091</id><thr:in-reply-to
+ref="urn:uuid:2dffbe4f-4837-9501-4e8f-61fb6dffb55c"
+href="https://lore.kernel.org/util-linux/20200514185116.GA25596@Debian-50-lenny-64-minimal/"/><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Hello Helge!
+
+On 5/14/20 8:51 PM, Helge Kreutzmann wrote:
+<span
+class="q">&gt; I&#39;m now reporting the errors for your project. If future reports should 
+&gt; use another channel, please let me know.
+</span>
+I think you should send your changes as patches, preferably with a git pull
+request as the current form of submitting these changes requires a lot of
+manual editing due to the large number of changes involved.
+
+Adrian
+
+-- 
+ .&#39;&#39;`.  John Paul Adrian Glaubitz
+: :&#39; :  Debian Developer - glaubitz@debian.org
+`. `&#39;   Freie Universitaet Berlin - glaubitz@physik.fu-berlin.de
+  `-    GPG: 62FF 8A75 84E0 2956 9546  0006 7426 3B37 F5B5 F913
+</pre></div></content></entry><entry><author><name>Helge Kreutzmann</name><email>debian@helgefjell.de</email></author><title>Errors in util-linux man pages, here: rtcwake.8: Wording</title><updated>2020-05-14T19:13:03Z</updated><link
+href="https://lore.kernel.org/util-linux/20200514185146.GA27395@Debian-50-lenny-64-minimal/"/><id>urn:uuid:3321eacb-70f4-9807-c300-62bf082cb768</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Dear util-linux maintainers.
+the manpage-l10n project maintains a large number of translations of
+man pages both from a large variety of sources (including util-linux) as
+well for a large variety of target languages.
+
+During their work translators notice different possible issues in the
+original (english) man pages. Sometiems this is a straightforward
+typo, sometimes a hard to read sentence, sometimes this is a
+convention not held up and sometimes we simply do not understand the 
+original.
+
+We use several distributions as sources and update regularly (at
+least every 2 month). This means we are fairly recent (some
+distributions like archlinux also update frequently) but might miss
+the latest upstream version once a while, so the error might be
+already fixed. We apologize and ask you to close the issue immediately
+if this should be the case, but given the huge volume of projects and
+the very limited number of volunteers we are not able to double check
+each and every issue.
+
+Secondly we translators see the manpages in the neutral po format,
+i.e. converted and harmonized, but not the original source (be it man,
+groff, xml or other). So we cannot provide a true patch (where
+possible), but only an approximation which you need to convert into
+your source format.
+
+Finally the issues I&#39;m reporting have accumulated over time and are
+not always discovered by me, so sometimes my description of the
+problem my be a bit limited - do not hesitate to ask so we can clarify
+them.
+
+I&#39;m now reporting the errors for your project. If future reports should 
+use another channel, please let me know.
+
+**
+
+Man page: rtcwake.8
+Issue: to terminal &#8594; the terminal
+
+&#34;The suspend setup may be interrupted by active hardware; for example &#34;
+&#34;wireless USB input devices that continue to send events for some fraction of &#34;
+&#34;a second after the return key is pressed.  B&lt;rtcwake&gt; tries to avoid this &#34;
+&#34;problem and it waits to terminal to settle down before entering a system &#34;
+&#34;sleep.&#34;
+
+Greetings
+
+           Helge
+
+-- 
+      Dr. Helge Kreutzmann                     debian@helgefjell.de
+           Dipl.-Phys.                   <a
+href="http://www.helgefjell.de/debian.php">http://www.helgefjell.de/debian.php</a>
+        64bit GNU powered                     gpg signed mail preferred
+           Help keep free software &#34;libre&#34;: <a
+href="http://www.ffii.de/">http://www.ffii.de/</a>
+</pre></div></content></entry><entry><author><name>Helge Kreutzmann</name><email>debian@helgefjell.de</email></author><title>Errors in util-linux man pages, here: runuser.1: Markup/Wording</title><updated>2020-05-14T19:13:02Z</updated><link
+href="https://lore.kernel.org/util-linux/20200514185147.GA27426@Debian-50-lenny-64-minimal/"/><id>urn:uuid:61d23bd6-c989-12f9-e9bf-d7f118a27609</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Dear util-linux maintainers.
+the manpage-l10n project maintains a large number of translations of
+man pages both from a large variety of sources (including util-linux) as
+well for a large variety of target languages.
+
+During their work translators notice different possible issues in the
+original (english) man pages. Sometiems this is a straightforward
+typo, sometimes a hard to read sentence, sometimes this is a
+convention not held up and sometimes we simply do not understand the 
+original.
+
+We use several distributions as sources and update regularly (at
+least every 2 month). This means we are fairly recent (some
+distributions like archlinux also update frequently) but might miss
+the latest upstream version once a while, so the error might be
+already fixed. We apologize and ask you to close the issue immediately
+if this should be the case, but given the huge volume of projects and
+the very limited number of volunteers we are not able to double check
+each and every issue.
+
+Secondly we translators see the manpages in the neutral po format,
+i.e. converted and harmonized, but not the original source (be it man,
+groff, xml or other). So we cannot provide a true patch (where
+possible), but only an approximation which you need to convert into
+your source format.
+
+Finally the issues I&#39;m reporting have accumulated over time and are
+not always discovered by me, so sometimes my description of the
+problem my be a bit limited - do not hesitate to ask so we can clarify
+them.
+
+I&#39;m now reporting the errors for your project. If future reports should 
+use another channel, please let me know.
+
+**
+
+Man page: runuser.1
+Issue: Markup missing and copy &#8594; sync?
+ 
+&#34;Create pseudo-terminal for the session. The independent terminal provides &#34;
+&#34;better security as user does not share terminal with the original session.  &#34;
+&#34;This allow to avoid TIOCSTI ioctl terminal injection and another security &#34;
+&#34;attacks against terminal file descriptors. The all session is also possible &#34;
+&#34;to move to background (e.g., \&#34;runuser --pty -u username -- command &#38;\&#34;).  &#34;
+&#34;If the pseudo-terminal is enabled then runuser command works as a proxy &#34;
+&#34;between the sessions (copy stdin and stdout).&#34;
+
+Greetings
+
+           Helge
+
+-- 
+      Dr. Helge Kreutzmann                     debian@helgefjell.de
+           Dipl.-Phys.                   <a
+href="http://www.helgefjell.de/debian.php">http://www.helgefjell.de/debian.php</a>
+        64bit GNU powered                     gpg signed mail preferred
+           Help keep free software &#34;libre&#34;: <a
+href="http://www.ffii.de/">http://www.ffii.de/</a>
+</pre></div></content></entry><entry><author><name>Helge Kreutzmann</name><email>debian@helgefjell.de</email></author><title>Errors in util-linux man pages, here: script.1: Markup</title><updated>2020-05-14T19:12:59Z</updated><link
+href="https://lore.kernel.org/util-linux/20200514185147.GA27450@Debian-50-lenny-64-minimal/"/><id>urn:uuid:c8436c19-db3e-48d0-9922-1f77239bcaaa</id><content
+type="xhtml"><div
+xmlns="http://www.w3.org/1999/xhtml"><pre
+style="white-space:pre-wrap">Dear util-linux maintainers.
+the manpage-l10n project maintains a large number of translations of
+man pages both from a large variety of sources (including util-linux) as
+well for a large variety of target languages.
+
+During their work translators notice different possible issues in the
+original (english) man pages. Sometiems this is a straightforward
+typo, sometimes a hard to read sentence, sometimes this is a
+convention not held up and sometimes we simply do not understand the 
+original.
+
+We use several distributions as sources and update regularly (at
+least every 2 month). This means we are fairly recent (some
+distributions like archlinux also update frequently) but might miss
+the latest upstream version once a while, so the error might be
+already fixed. We apologize and ask you to close the issue immediately
+if this should be the case, but given the huge volume of projects and
+the very limited number of volunteers we are not able to double check
+each and every issue.
+
+Secondly we translators see the manpages in the neutral po format,
+i.e. converted and harmonized, but not the original source (be it man,
+groff, xml or other). So we cannot provide a true patch (where
+possible), but only an approximation which you need to convert into
+your source format.
+
+Finally the issues I&#39;m reporting have accumulated over time and are
+not always discovered by me, so sometimes my description of the
+problem my be a bit limited - do not hesitate to ask so we can clarify
+them.
+
+I&#39;m now reporting the errors for your project. If future reports should 
+use another channel, please let me know.
+
+**
+
+Man page: script.1
+Issue: B&lt;scriptreplay (1)&gt; &#8594; B&lt;scriptreplay&gt;(1)
+
+&#34;B&lt;script&gt; makes a typescript of everything on your terminal session.  The &#34;
+&#34;terminal data are stored in raw form to the log file and information about &#34;
+&#34;timing to another (optional) structured log file.  The timing log file is &#34;
+&#34;necessary to replay the session later by B&lt;scriptreplay (1)&gt; and to store &#34;
+&#34;additional information about the session.&#34;
+
+Greetings
+
+           Helge
+
+-- 
+      Dr. Helge Kreutzmann                     debian@helgefjell.de
+           Dipl.-Phys.                   <a
+href="http://www.helgefjell.de/debian.php">http://www.helgefjell.de/debian.php</a>
+        64bit GNU powered                     gpg signed mail preferred
+           Help keep free software &#34;libre&#34;: <a
+href="http://www.ffii.de/">http://www.ffii.de/</a>
+</pre></div></content></entry></feed>

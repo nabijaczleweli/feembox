@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Latest Linux Kernel Versions</title><link>http://www.kernel.org</link><description>Latest Linux Kernel Versions</description><lastBuildDate>Fri, 08 May 2020 11:11:02 -0000</lastBuildDate><item><title>5.7-rc4: mainline</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;5.7-rc4&lt;/strong&gt; (mainline)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-03&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://git.kernel.org/torvalds/t/linux-5.7-rc4.tar.gz"&gt;linux-5.7-rc4.tar.gz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://git.kernel.org/torvalds/p/v5.7-rc4/v5.6"&gt;full&lt;/a&gt; (&lt;a href="https://git.kernel.org/torvalds/p/v5.7-rc4/v5.7-rc3"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Sun, 03 May 2020 21:56:15 -0000</pubDate><guid isPermaLink="false">kernel.org,mainline,5.7-rc4,2020-05-03</guid></item><item><title>5.6.11: stable</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;5.6.11&lt;/strong&gt; (stable)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-06&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.11.tar.xz"&gt;linux-5.6.11.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.11.tar.sign"&gt;linux-5.6.11.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.6.11.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.6.10-11.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.6.11"&gt;ChangeLog-5.6.11&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Wed, 06 May 2020 06:16:50 -0000</pubDate><guid isPermaLink="false">kernel.org,stable,5.6.11,2020-05-06</guid></item><item><title>5.5.19: stable</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;5.5.19 (EOL)&lt;/strong&gt; (stable)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-04-21&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.19.tar.xz"&gt;linux-5.5.19.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.19.tar.sign"&gt;linux-5.5.19.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.19.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.5.18-19.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.5.19"&gt;ChangeLog-5.5.19&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Tue, 21 Apr 2020 07:06:45 -0000</pubDate><guid isPermaLink="false">kernel.org,stable,5.5.19,2020-04-21</guid></item><item><title>5.4.39: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;5.4.39&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-06&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.39.tar.xz"&gt;linux-5.4.39.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.39.tar.sign"&gt;linux-5.4.39.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.39.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.4.38-39.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.4.39"&gt;ChangeLog-5.4.39&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Wed, 06 May 2020 06:15:17 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,5.4.39,2020-05-06</guid></item><item><title>4.19.121: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;4.19.121&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-06&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.121.tar.xz"&gt;linux-4.19.121.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.121.tar.sign"&gt;linux-4.19.121.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.121.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.19.120-121.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.19.121"&gt;ChangeLog-4.19.121&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Wed, 06 May 2020 06:13:38 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,4.19.121,2020-05-06</guid></item><item><title>4.14.179: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;4.14.179&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-05&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.179.tar.xz"&gt;linux-4.14.179.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.179.tar.sign"&gt;linux-4.14.179.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.179.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.14.178-179.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.14.179"&gt;ChangeLog-4.14.179&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Tue, 05 May 2020 17:15:53 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,4.14.179,2020-05-05</guid></item><item><title>4.9.222: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;4.9.222&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-05&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.222.tar.xz"&gt;linux-4.9.222.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.222.tar.sign"&gt;linux-4.9.222.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.9.222.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.9.221-222.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.9.222"&gt;ChangeLog-4.9.222&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Tue, 05 May 2020 17:14:41 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,4.9.222,2020-05-05</guid></item><item><title>4.4.222: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;4.4.222&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-05&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.222.tar.xz"&gt;linux-4.4.222.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.222.tar.sign"&gt;linux-4.4.222.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.4.222.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/incr/patch-4.4.221-222.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.4.222"&gt;ChangeLog-4.4.222&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Tue, 05 May 2020 17:13:29 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,4.4.222,2020-05-05</guid></item><item><title>3.16.83: longterm</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;3.16.83&lt;/strong&gt; (longterm)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-04-28&lt;/td&gt;&lt;/tr&gt;
+            
+                &lt;tr&gt;&lt;th align="right"&gt;Source:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.16.83.tar.xz"&gt;linux-3.16.83.tar.xz&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;PGP Signature:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v3.x/linux-3.16.83.tar.sign"&gt;linux-3.16.83.tar.sign&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Patch:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v3.x/patch-3.16.83.xz"&gt;full&lt;/a&gt; (&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v3.x/incr/patch-3.16.82-83.xz"&gt;incremental&lt;/a&gt;)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;ChangeLog:&lt;/th&gt;&lt;td&gt;&lt;a href="https://cdn.kernel.org/pub/linux/kernel/v3.x/ChangeLog-3.16.83"&gt;ChangeLog-3.16.83&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;</description><pubDate>Tue, 28 Apr 2020 18:04:06 -0000</pubDate><guid isPermaLink="false">kernel.org,longterm,3.16.83,2020-04-28</guid></item><item><title>next-20200508: linux-next</title><link>http://www.kernel.org/</link><description>
+            &lt;table&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Version:&lt;/th&gt;&lt;td&gt;&lt;strong&gt;next-20200508&lt;/strong&gt; (linux-next)&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;th align="right"&gt;Released:&lt;/th&gt;&lt;td&gt;2020-05-08&lt;/td&gt;&lt;/tr&gt;
+            
+            &lt;/table&gt;</description><pubDate>Fri, 08 May 2020 11:11:02 -0000</pubDate><guid isPermaLink="false">kernel.org,linux-next,next-20200508,2020-05-08</guid></item></channel></rss>
