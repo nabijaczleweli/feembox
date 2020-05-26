@@ -35,6 +35,9 @@ feembox(1) -- What if a feed, but it's a mailbox?
     3 - feed parse failed
     4 - maildir subdirectory read failed
     5 - existing mail open(2)/mmap(2) failed
+    6 - creating a MAILDIR/tmp or MAILDIR/new failed
+    7 - formatting mail failed
+    8 - creating/writing/delivering mail failed
 
 ## AUTHOR
 
