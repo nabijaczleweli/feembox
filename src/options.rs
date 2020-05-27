@@ -5,7 +5,7 @@
 //! # Examples
 //!
 //! ```no_run
-//! # use feembox::Options;
+//! # use feembox::options::Options;
 //! let options = Options::parse();
 //! if options.verbose {
 //!     println!("{} -> {}", options.feed.0, options.maildir.0);
@@ -17,6 +17,28 @@ use std::path::{self, PathBuf, Path};
 use clap::{Arg, AppSettings};
 use std::borrow::Cow;
 use std::fs;
+
+
+/// Verbosity level to print to stdout
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+pub enum Verbosity {
+    /// Print nothing
+    None,
+    /// Print data for human consumption
+    Human,
+    /// Print values useful for debugging
+    Debug,
+}
+
+impl From<u64> for Verbosity {
+    fn from(n: u64) -> Verbosity {
+        match n {
+            0 => Verbosity::None,
+            1 => Verbosity::Human,
+            _ => Verbosity::Debug,
+        }
+    }
+}
 
 
 /// Representation of the application's all configurable values.
@@ -33,7 +55,7 @@ pub struct Options {
     /// Default: "<stdin>" + `None`
     pub feed: (Cow<'static, str>, Option<PathBuf>),
     /// Print what's happening to stdout
-    pub verbose: bool,
+    pub verbosity: Verbosity,
 }
 
 impl Options {
@@ -44,7 +66,7 @@ impl Options {
             .setting(AppSettings::ColoredHelp)
             .arg(Arg::from_usage("[MAILDIR] 'Where to write to the mails to. Default: .'").validator(|s| Options::parse_maildir_path(&s).map(|_| ())))
             .arg(Arg::from_usage("[FEED] 'Where to read the feed from. Default: stdin'").validator(|s| Options::parse_feed_path(&s).map(|_| ())))
-            .arg(Arg::from_usage("-v --verbose 'Print what's happening to stdout'"))
+            .arg(Arg::from_usage("-v --verbose 'Print what's happening to stdout'").multiple(true))
             .get_matches();
 
         Options {
@@ -70,7 +92,7 @@ impl Options {
                 }
                 None => ("<stdin>".into(), None),
             },
-            verbose: matches.is_present("verbose"),
+            verbosity: matches.occurrences_of("verbose").into(),
         }
     }
 

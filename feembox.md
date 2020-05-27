@@ -14,7 +14,8 @@ feembox(1) -- What if a feed, but it's a mailbox?
 
   -v --verbose
 
-    Print what's happening to the standard output
+    Print what's happening to the standard output,
+    if specified twice: print parse debugging information.
 
   [MAILDIR]
 

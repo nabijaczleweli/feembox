@@ -20,9 +20,8 @@ extern crate mime;
 
 
 mod ops;
-mod options;
 
 pub mod util;
+pub mod options;
 
 pub use ops::assemble_mail;
-pub use options::Options;

@@ -34,7 +34,7 @@ fn main() {
 }
 
 fn actual_main() -> Result<(), i32> {
-    let opts = feembox::Options::parse();
+    let opts = feembox::options::Options::parse();
     println!("{:#?}", opts);
 
     let feed = match opts.feed.1.as_ref() {
@@ -50,7 +50,7 @@ fn actual_main() -> Result<(), i32> {
             3
         })?;
 
-    if opts.verbose {
+    if opts.verbosity >= feembox::options::Verbosity::Human {
         println!("{}: feed ID {}, title {:?}, updated {}",
                  opts.feed.0,
                  feed.id,
@@ -112,7 +112,7 @@ fn actual_main() -> Result<(), i32> {
                 if &header.get_key_ref()[..] == feembox::util::MESSAGE_ID_HEADER {
                     if let Ok(ids) = parse_message_ids(&header.get_value()) {
                         for id in &*ids {
-                            if entries_ids.remove(id).is_some() && opts.verbose {
+                            if entries_ids.remove(id).is_some() && opts.verbosity >= feembox::options::Verbosity::Debug {
                                 println!("{}{}: length {}", dir_name, mail.file_name().to_string_lossy(), mail_map.len());
                                 print!("  ");
                                 for (i, id) in ids.iter().enumerate() {
@@ -176,7 +176,7 @@ fn actual_main() -> Result<(), i32> {
                 8
             })?;
 
-        if opts.verbose {
+        if opts.verbosity >= feembox::options::Verbosity::Human {
             println!("Delivering {} to {}new/{}", entry.id, opts.maildir.0, mail_name);
         }
 
