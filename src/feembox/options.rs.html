@@ -106,6 +106,28 @@
 <span id="106">106</span>
 <span id="107">107</span>
 <span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! This module contains the configuration of the application.</span>
 <span class="doccomment">//!</span>
@@ -114,7 +136,7 @@
 <span class="doccomment">//! # Examples</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```no_run</span>
-<span class="doccomment">//! # use feembox::Options;</span>
+<span class="doccomment">//! # use feembox::options::Options;</span>
 <span class="doccomment">//! let options = Options::parse();</span>
 <span class="doccomment">//! if options.verbose {</span>
 <span class="doccomment">//!     println!(&quot;{} -&gt; {}&quot;, options.feed.0, options.maildir.0);</span>
@@ -126,6 +148,28 @@
 <span class="kw">use</span> <span class="ident">clap</span>::{<span class="ident">Arg</span>, <span class="ident">AppSettings</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">borrow</span>::<span class="ident">Cow</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fs</span>;
+
+
+<span class="doccomment">/// Verbosity level to print to stdout</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Hash</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Verbosity</span> {
+    <span class="doccomment">/// Print nothing</span>
+    <span class="prelude-val">None</span>,
+    <span class="doccomment">/// Print data for human consumption</span>
+    <span class="ident">Human</span>,
+    <span class="doccomment">/// Print values useful for debugging</span>
+    <span class="ident">Debug</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Verbosity</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">n</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Verbosity</span> {
+        <span class="kw">match</span> <span class="ident">n</span> {
+            <span class="number">0</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Verbosity</span>::<span class="prelude-val">None</span>,
+            <span class="number">1</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Verbosity</span>::<span class="ident">Human</span>,
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">Verbosity</span>::<span class="ident">Debug</span>,
+        }
+    }
+}
 
 
 <span class="doccomment">/// Representation of the application&#39;s all configurable values.</span>
@@ -142,7 +186,7 @@
     <span class="doccomment">/// Default: &quot;&lt;stdin&gt;&quot; + `None`</span>
     <span class="kw">pub</span> <span class="ident">feed</span>: (<span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span>, <span class="ident">str</span><span class="op">&gt;</span>, <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PathBuf</span><span class="op">&gt;</span>),
     <span class="doccomment">/// Print what&#39;s happening to stdout</span>
-    <span class="kw">pub</span> <span class="ident">verbose</span>: <span class="ident">bool</span>,
+    <span class="kw">pub</span> <span class="ident">verbosity</span>: <span class="ident">Verbosity</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">Options</span> {
@@ -153,7 +197,7 @@
             .<span class="ident">setting</span>(<span class="ident">AppSettings</span>::<span class="ident">ColoredHelp</span>)
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;[MAILDIR] &#39;Where to write to the mails to. Default: .&#39;&quot;</span>).<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_maildir_path</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;[FEED] &#39;Where to read the feed from. Default: stdin&#39;&quot;</span>).<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_feed_path</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
-            .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;-v --verbose &#39;Print what&#39;s happening to stdout&#39;&quot;</span>))
+            .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;-v --verbose &#39;Print what&#39;s happening to stdout&#39;&quot;</span>).<span class="ident">multiple</span>(<span class="bool-val">true</span>))
             .<span class="ident">get_matches</span>();
 
         <span class="ident">Options</span> {
@@ -179,7 +223,7 @@
                 }
                 <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> (<span class="string">&quot;&lt;stdin&gt;&quot;</span>.<span class="ident">into</span>(), <span class="prelude-val">None</span>),
             },
-            <span class="ident">verbose</span>: <span class="ident">matches</span>.<span class="ident">is_present</span>(<span class="string">&quot;verbose&quot;</span>),
+            <span class="ident">verbosity</span>: <span class="ident">matches</span>.<span class="ident">occurrences_of</span>(<span class="string">&quot;verbose&quot;</span>).<span class="ident">into</span>(),
         }
     }
 

@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["assemble_mail",""]],"mod":[["util","Various utility functions."]],"struct":[["Options","Representation of the application's all configurable values."]]});
+initSidebarItems({"fn":[["assemble_mail",""]],"mod":[["options","This module contains the configuration of the application."],["util","Various utility functions."]]});

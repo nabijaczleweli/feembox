@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Verbosity","Verbosity level to print to stdout"]],"struct":[["Options","Representation of the application's all configurable values."]]});
