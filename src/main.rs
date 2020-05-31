@@ -149,7 +149,11 @@ fn actual_main() -> Result<(), i32> {
             7
         })?;
     for (i, (message_id, entry)) in entries_ids.into_iter().enumerate() {
-        let mail_data = feembox::assemble_mail(&feed, entry, message_id, &mail_ctx).into_encodable_mail(mail_ctx.clone())
+        let mail_data = feembox::assemble_mail(&feed, entry, message_id, &opts.alternatives_transformations, &mail_ctx).map_err(|e| {
+                eprintln!("Assembling mail for entry {}: {}", entry.id, e);
+                7
+            })?
+            .into_encodable_mail(mail_ctx.clone())
             .wait()
             .map_err(|e| {
                 eprintln!("Constructing mail for entry {}: {}", entry.id, e);

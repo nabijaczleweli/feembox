@@ -5,9 +5,9 @@
 //! # Examples
 //!
 //! ```no_run
-//! # use feembox::options::Options;
+//! # use feembox::options::{Verbosity, Options};
 //! let options = Options::parse();
-//! if options.verbose {
+//! if options.verbosity >= Verbosity::Human {
 //!     println!("{} -> {}", options.feed.0, options.maildir.0);
 //! }
 //! ```
@@ -16,7 +16,15 @@
 use std::path::{self, PathBuf, Path};
 use clap::{Arg, AppSettings};
 use std::borrow::Cow;
+use mime::Mime;
 use std::fs;
+
+
+#[cfg(target_os="windows")]
+static PATH_LIST_SEPARATOR: char = ';';
+
+#[cfg(not(target_os="windows"))]
+static PATH_LIST_SEPARATOR: char = ':';
 
 
 /// Verbosity level to print to stdout
@@ -56,17 +64,25 @@ pub struct Options {
     pub feed: (Cow<'static, str>, Option<PathBuf>),
     /// Print what's happening to stdout
     pub verbosity: Verbosity,
+    /// The program to invoke to transform the first mime-type to the second mime-type in `from:to:how` format.
+    ///
+    /// Default: empty.
+    pub alternatives_transformations: Vec<(Mime, Mime, String)>,
 }
 
 impl Options {
     /// Parse `env`-wide command-line arguments into an `Options` instance
     pub fn parse() -> Options {
+        let alternatives_transformations_arg = format!("-t --transform... [FROM{0}TO{0}HOW] \
+                                                        'Transfrom FROM mime-type to an alternative TO mime-type by running HOW'",
+                                                       PATH_LIST_SEPARATOR);
         #[allow(deprecated)]
         let matches = app_from_crate!("\n")
             .setting(AppSettings::ColoredHelp)
             .arg(Arg::from_usage("[MAILDIR] 'Where to write to the mails to. Default: .'").validator(|s| Options::parse_maildir_path(&s).map(|_| ())))
             .arg(Arg::from_usage("[FEED] 'Where to read the feed from. Default: stdin'").validator(|s| Options::parse_feed_path(&s).map(|_| ())))
-            .arg(Arg::from_usage("-v --verbose 'Print what's happening to stdout'").multiple(true))
+            .arg(Arg::from_usage("-v --verbose... 'Print what's happening to stdout'"))
+            .arg(Arg::from_usage(&alternatives_transformations_arg).validator(|s| Options::parse_alternatives_transformations(&s).map(|_| ())).number_of_values(1))
             .get_matches();
 
         Options {
@@ -93,6 +109,12 @@ impl Options {
                 None => ("<stdin>".into(), None),
             },
             verbosity: matches.occurrences_of("verbose").into(),
+            alternatives_transformations: matches.values_of("transform")
+                .into_iter()
+                .flatten()
+                .map(Options::parse_alternatives_transformations)
+                .map(|r| r.expect("Race between validation and parse"))
+                .collect(),
         }
     }
 
@@ -126,5 +148,20 @@ impl Options {
         } else {
             Err(format!("Feed file \"{}\" ({}) not a file", s, f.display()))
         })
+    }
+
+    fn parse_alternatives_transformations(s: &str) -> Result<(Mime, Mime, String), String> {
+        let mut itr = s.split(PATH_LIST_SEPARATOR);
+        match (itr.next(), itr.next(), itr.next(), itr.next()) {
+            (Some(from), Some(to), Some(how), None) => {
+                let from = from.parse().map_err(|e| format!("Transformation triple \"{}\"'s FROM not a mime-type: {}", s, e))?;
+                let to = to.parse().map_err(|e| format!("Transformation triple \"{}\"'s to not a mime-type: {}", s, e))?;
+                Ok((from, to, how.to_string()))
+            }
+            (_, _, _, Some(_)) => Err(format!("Transformation triple \"{}\" has four components", s)),
+            (_, Some(_), _, _) => Err(format!("Transformation triple \"{}\" has two components", s)),
+            (Some(_), _, _, _) => Err(format!("Transformation triple \"{}\" has one component", s)),
+            (_, _, _, _) => Err(format!("Transformation triple \"{}\" has no components", s)),
+        }
     }
 }

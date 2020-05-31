@@ -2,16 +2,17 @@
 
 
 use mail_headers::header_components::{Unstructured, MediaType, MessageId as MessageIdContent, DateTime as DateTimeContent};
-use mail_core::{Metadata as MailMetadata, Resource as MailResource, Data as MailData, Mail};
+use mail_core::{MailBody, Metadata as MailMetadata, Resource as MailResource, Data as MailData, Mail};
+use std::io::{ErrorKind as IoErrorKind, Error as IoError, Write, Read};
 use feed_rs::model::{Entry as FeedEntry, Feed, Link as FeedLink};
 use self::super::util::{DisplayFeedPerson, LINK_REL_FILTER};
 use mail_headers::headers::{MessageId, Subject, Date};
 use mail_core::context::Context as MailContext;
 use mail_headers::{HeaderKind, Header};
 use linked_hash_set::LinkedHashSet;
+use std::process::{Command, Stdio};
 use chrono::format as date_format;
 use std::borrow::Cow;
-use std::io::Write;
 use mime::Mime;
 use std::fmt;
 
@@ -24,7 +25,62 @@ def_headers! {
 }
 
 
-pub fn assemble_mail<Mc: MailContext>(feed: &Feed, entry: &FeedEntry, message_id: String, ctx: &Mc) -> Mail {
+#[cfg(target_os="windows")]
+static SHELL: &[&str] = &["cmd", "/C"];
+
+#[cfg(not(target_os="windows"))]
+static SHELL: &[&str] = &["/bin/sh", "-c"];
+
+
+pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: String, alt_transforms: Ai, ctx: &Mc) -> Result<Mail, IoError>
+    where Mc: MailContext,
+          Ai: IntoIterator<Item = &'a (Mime, Mime, String)>
+{
+    let mut contents: Vec<_> = (entry.content
+            .as_ref()
+            .and_then(|content| {
+                content.body
+                    .as_ref()
+                    .map(Cow::from)
+                    .or_else(|| content.src.as_ref().map(|l| format!("Links: {}", LinkWriter(l)).into()))
+                    .map(|b| (b, &content.content_type))
+            })
+            .iter()
+            .map(|(body, content_type)| (summary_to_mail(body, content_type, ctx), *content_type)))
+        .chain(entry.summary.iter().map(|summary| (summary_to_mail(&summary.content, &summary.content_type, ctx), &summary.content_type)))
+        .collect();
+    for (from, to, how) in alt_transforms {
+        let ids: Vec<_> = contents.iter().enumerate().filter(|(_, (_, ct))| *ct == from).map(|(i, _)| i).collect();
+        for i in ids {
+            let mut trans = Command::new(SHELL[0]).arg(SHELL[1]).arg(how).stdin(Stdio::piped()).stdout(Stdio::piped()).spawn()?;
+            trans.stdin
+                .take()
+                .unwrap()
+                .write_all(if let MailBody::SingleBody { body: MailResource::Data(body_data) } = contents[i].0.body() {
+                    body_data.buffer()
+                } else {
+                    unreachable!()
+                })?;
+
+            let mut new_body = Vec::new();
+            trans.stdout.take().unwrap().read_to_end(&mut new_body)?;
+
+            match trans.wait()?.code() {
+                Some(0) => {}
+                Some(c) => return Err(IoError::new(IoErrorKind::Other, format!("Subprocess \"{}\" exited with code {}", how, c))),
+                None => return Err(IoError::new(IoErrorKind::Other, format!("Subprocess \"{}\" killed by signal", how))),
+            }
+
+            contents.push((Mail::new_singlepart_mail(MailResource::Data(MailData::new(new_body,
+                                                                                      MailMetadata {
+                                                                                          file_meta: Default::default(),
+                                                                                          media_type: mime_to_medium(to),
+                                                                                          content_id: ctx.generate_content_id(),
+                                                                                      }))),
+                           to));
+        }
+    }
+
     let authors = entry.authors.iter().chain(&feed.authors).map(DisplayFeedPerson).collect();
     let mut mail = Mail::plain_text(EntryContextLineWriter {
                                             feed: feed,
@@ -33,13 +89,8 @@ pub fn assemble_mail<Mc: MailContext>(feed: &Feed, entry: &FeedEntry, message_id
                                         }
                                         .to_string(),
                                     ctx)
-        // TODO: choose one over the other? wq and kdist have just summary; lore.kernel.org has just content
-        .wrap_with_related((entry.summary.iter().map(|summary| summary_to_mail(&summary.content, &summary.content_type, ctx)))
-            .chain(entry.content.as_ref()
-                .and_then(|content| content.body.as_ref().map(Cow::from)
-                    .or_else(|| content.src.as_ref().map(|l| format!("Links: {}", LinkWriter(l)).into())).map(|b| (b, &content.content_type)))
-                .iter().map(|(body, content_type)| summary_to_mail(body, content_type, ctx)))
-            .collect());
+        .wrap_with_related(vec![Mail::new_multipart_mail(MediaType::new_with_params("multipart", "alternative", vec![("charset", "utf-8")]).unwrap(),
+                                                         contents.into_iter().map(|(m, _)| m).collect())]);
 
 
     let subject = entry.title.as_ref().map(|t| t.content.clone()).unwrap_or_else(|| entry.id.clone());
@@ -66,24 +117,26 @@ pub fn assemble_mail<Mc: MailContext>(feed: &Feed, entry: &FeedEntry, message_id
         mail.headers_mut().insert::<Date>(Header::new(DateTimeContent::new(*date)));
     }
     mail.headers_mut().insert::<RawFrom>(HeaderKind::auto_body(&from[..]).unwrap());
-    mail
+    Ok(mail)
 }
 
 fn summary_to_mail<Mc: MailContext>(content: &str, content_type: &Mime, ctx: &Mc) -> Mail {
-    let media_type = MediaType::new_with_params(content_type.type_().as_str(),
-                                                match content_type.suffix() {
-                                                    Some(suff) => format!("{}+{}", content_type.subtype().as_str(), suff.as_str()).into(),
-                                                    None => Cow::from(content_type.subtype().as_str()),
-                                                },
-                                                content_type.params())
-        .expect("media_type parse");
-
     Mail::new_singlepart_mail(MailResource::Data(MailData::new(content.as_bytes(), // Mostly an inlining of MailResource::plain_text()
                                                                MailMetadata {
                                                                    file_meta: Default::default(),
-                                                                   media_type: media_type,
+                                                                   media_type: mime_to_medium(content_type),
                                                                    content_id: ctx.generate_content_id(),
                                                                })))
+}
+
+fn mime_to_medium(content_type: &Mime) -> MediaType {
+    MediaType::new_with_params(content_type.type_().as_str(),
+                               match content_type.suffix() {
+                                   Some(suff) => format!("{}+{}", content_type.subtype().as_str(), suff.as_str()).into(),
+                                   None => Cow::from(content_type.subtype().as_str()),
+                               },
+                               content_type.params())
+        .expect("media_type parse")
 }
 
 

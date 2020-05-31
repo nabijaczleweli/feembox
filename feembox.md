@@ -3,19 +3,14 @@ feembox(1) -- What if a feed, but it's a mailbox?
 
 ## SYNOPSIS
 
-`feembox` [-v] [MAILDIR] [FEED]<br />
-`feembox` [-v] [MAILDIR] < feed.xml
+`feembox` [-v] [-t FROM:TO:HOW]... [MAILDIR] [FEED]<br />
+`feembox` [-v] [-t FROM:TO:HOW]... [MAILDIR] < feed.xml
 
 ## DESCRIPTION
 
 `feembox` represents an (RSS/Atom/JSON) feed as a mailbox in the [maildir](https://cr.yp.to/proto/maildir.html) format.
 
 ## OPTIONS
-
-  -v --verbose
-
-    Print what's happening to the standard output,
-    if specified twice: print parse debugging information.
 
   [MAILDIR]
 
@@ -28,6 +23,26 @@ feembox(1) -- What if a feed, but it's a mailbox?
     Read the feed from the specified file instead of stdin
 
     If "-" use stdin, otherwise must exist and be a file
+
+  -v --verbose
+
+    Print what's happening to the standard output,
+    if specified twice: print parse debugging information.
+
+  -t --transfrom <FROM:TO:HOW|FROM;TO;HOW>...
+
+    Define an alternative transformation invocation HOW
+    from the mime-type FROM to the mime-type TO.
+
+    If the post content type matches FROM, "/bin/sh -c HOW" ("cmd /C HOW" on NT)
+    is executed, its standard input tied thereto, and standard output
+    to the buffer for the new multipart/alternative part TO.
+
+    The separator between FROM, TO, and HOW is the platform's path list separator
+    (i.e. ";" on NT and ":" elsewhere).
+
+    Can be specified multiple times, in which case each transformation is invoked once,
+    in order, on the current set of parts.
 
 ## EXIT VALUES
 
