@@ -7,29 +7,15 @@
 \fBfeembox\fR \- What if a feed, but it\'s a mailbox?
 .
 .SH "SYNOPSIS"
-\fBfeembox\fR [\-v] [MAILDIR] [FEED]
+\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [MAILDIR] [FEED]
 .
 .br
-\fBfeembox\fR [\-v] [MAILDIR] < feed\.xml
+\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [MAILDIR] < feed\.xml
 .
 .SH "DESCRIPTION"
 \fBfeembox\fR represents an (RSS/Atom/JSON) feed as a mailbox in the maildir \fIhttps://cr\.yp\.to/proto/maildir\.html\fR format\.
 .
 .SH "OPTIONS"
-\-v \-\-verbose
-.
-.IP "" 4
-.
-.nf
-
-Print what\'s happening to the standard output,
-if specified twice: print parse debugging information\.
-.
-.fi
-.
-.IP "" 0
-.
-.P
 [MAILDIR]
 .
 .IP "" 4
@@ -54,6 +40,44 @@ Parents must exist, all directory and its subdirs will be created as necessary
 Read the feed from the specified file instead of stdin
 
 If "\-" use stdin, otherwise must exist and be a file
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\-v \-\-verbose
+.
+.IP "" 4
+.
+.nf
+
+Print what\'s happening to the standard output,
+if specified twice: print parse debugging information\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\-t \-\-transfrom <FROM:TO:HOW|FROM;TO;HOW>\.\.\.
+.
+.IP "" 4
+.
+.nf
+
+Define an alternative transformation invocation HOW
+from the mime\-type FROM to the mime\-type TO\.
+
+If the post content type matches FROM, "/bin/sh \-c HOW" ("cmd /C HOW" on NT)
+is executed, its standard input tied thereto, and standard output
+to the buffer for the new multipart/alternative part TO\.
+
+The separator between FROM, TO, and HOW is the platform\'s path list separator
+(i\.e\. ";" on NT and ":" elsewhere)\.
+
+Can be specified multiple times, in which case each transformation is invoked once,
+in order, on the current set of parts\.
 .
 .fi
 .
