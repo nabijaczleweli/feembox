@@ -3,8 +3,8 @@ feembox(1) -- What if a feed, but it's a mailbox?
 
 ## SYNOPSIS
 
-`feembox` [-v] [-t FROM:TO:HOW]... [MAILDIR] [FEED]<br />
-`feembox` [-v] [-t FROM:TO:HOW]... [MAILDIR] < feed.xml
+`feembox` [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] [FEED]<br />
+`feembox` [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] < feed.xml
 
 ## DESCRIPTION
 
@@ -43,6 +43,15 @@ feembox(1) -- What if a feed, but it's a mailbox?
 
     Can be specified multiple times, in which case each transformation is invoked once,
     in order, on the current set of parts.
+
+  -f --force <MIME>
+
+    Force the post content type to be MIME, overriding what's specified therein.
+
+    This is done before any transformations.
+
+    Some feeds specify they're text/plain but are HTML,
+    this can be used to massage them right.
 
 ## EXIT VALUES
 

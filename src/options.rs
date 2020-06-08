@@ -68,6 +68,10 @@ pub struct Options {
     ///
     /// Default: empty.
     pub alternatives_transformations: Vec<(Mime, Mime, String)>,
+    /// What mime-type to set the content to before transformations.
+    ///
+    /// Default: `None`
+    pub mime_override: Option<Mime>,
 }
 
 impl Options {
@@ -82,7 +86,10 @@ impl Options {
             .arg(Arg::from_usage("[MAILDIR] 'Where to write to the mails to. Default: .'").validator(|s| Options::parse_maildir_path(&s).map(|_| ())))
             .arg(Arg::from_usage("[FEED] 'Where to read the feed from. Default: stdin'").validator(|s| Options::parse_feed_path(&s).map(|_| ())))
             .arg(Arg::from_usage("-v --verbose... 'Print what's happening to stdout'"))
-            .arg(Arg::from_usage(&alternatives_transformations_arg).validator(|s| Options::parse_alternatives_transformations(&s).map(|_| ())).number_of_values(1))
+            .arg(Arg::from_usage(&alternatives_transformations_arg)
+                .validator(|s| Options::parse_alternatives_transformations(&s).map(|_| ()))
+                .number_of_values(1))
+            .arg(Arg::from_usage("-f --force [MIME] 'Type to force content to'").validator(|s| Options::parse_mime_override(&s).map(|_| ())))
             .get_matches();
 
         Options {
@@ -115,6 +122,7 @@ impl Options {
                 .map(Options::parse_alternatives_transformations)
                 .map(|r| r.expect("Race between validation and parse"))
                 .collect(),
+            mime_override: matches.value_of("force").map(Options::parse_mime_override).map(|m| m.expect("Race between validation and parse")),
         }
     }
 
@@ -163,5 +171,9 @@ impl Options {
             (Some(_), _, _, _) => Err(format!("Transformation triple \"{}\" has one component", s)),
             (_, _, _, _) => Err(format!("Transformation triple \"{}\" has no components", s)),
         }
+    }
+
+    fn parse_mime_override(s: &str) -> Result<Mime, String> {
+        s.parse().map_err(|e| format!("Type override \"{}\" not a mime-type: {}", s, e))
     }
 }

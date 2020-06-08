@@ -32,7 +32,8 @@ static SHELL: &[&str] = &["cmd", "/C"];
 static SHELL: &[&str] = &["/bin/sh", "-c"];
 
 
-pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: String, alt_transforms: Ai, ctx: &Mc) -> Result<Mail, IoError>
+pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: String, alt_transforms: Ai, mime_override: Option<&Mime>, ctx: &Mc)
+                                 -> Result<Mail, IoError>
     where Mc: MailContext,
           Ai: IntoIterator<Item = &'a (Mime, Mime, String)>
 {
@@ -43,11 +44,14 @@ pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: Str
                     .as_ref()
                     .map(Cow::from)
                     .or_else(|| content.src.as_ref().map(|l| format!("Links: {}", LinkWriter(l)).into()))
-                    .map(|b| (b, &content.content_type))
+                    .map(|b| (b, mime_override.unwrap_or(&content.content_type)))
             })
             .iter()
             .map(|(body, content_type)| (summary_to_mail(body, content_type, ctx), *content_type)))
-        .chain(entry.summary.iter().map(|summary| (summary_to_mail(&summary.content, &summary.content_type, ctx), &summary.content_type)))
+        .chain(entry.summary.iter().map(|summary| {
+            let content_type = mime_override.unwrap_or(&summary.content_type);
+            (summary_to_mail(&summary.content, content_type, ctx), content_type)
+        }))
         .collect();
     for (from, to, how) in alt_transforms {
         let ids: Vec<_> = contents.iter().enumerate().filter(|(_, (_, ct))| *ct == from).map(|(i, _)| i).collect();
