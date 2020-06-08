@@ -79,8 +79,8 @@
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>feembox</code> [-v] [-t FROM:TO:HOW]... [MAILDIR] [FEED]<br />
-<code>feembox</code> [-v] [-t FROM:TO:HOW]... [MAILDIR] &lt; feed.xml</p>
+<p><code>feembox</code> [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] [FEED]<br />
+<code>feembox</code> [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] &lt; feed.xml</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -124,6 +124,16 @@ Can be specified multiple times, in which case each transformation is invoked on
 in order, on the current set of parts.
 </code></pre>
 
+<p>  -f --force <var>MIME</var></p>
+
+<pre><code>Force the post content type to be MIME, overriding what's specified therein.
+
+This is done before any transformations.
+
+Some feeds specify they're text/plain but are HTML,
+this can be used to massage them right.
+</code></pre>
+
 <h2 id="EXIT-VALUES">EXIT VALUES</h2>
 
 <pre><code>1 - option parse error
@@ -162,7 +172,7 @@ Delivering urn:uuid:dccd47a2-d327-df9b-7ad1-9218d08a8349 to feedir/new/159161034
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>Written by наб &lt;<a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#110;&#x61;&#98;&#105;&#106;&#x61;&#x63;&#x7a;&#x6c;&#x65;&#x77;&#x65;&#108;&#105;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;" data-bare-link="true">&#x6e;&#x61;&#98;&#x69;&#x6a;&#97;&#99;&#x7a;&#x6c;&#101;&#x77;&#x65;&#x6c;&#105;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a>&gt;</p>
+<p>Written by наб &lt;<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#58;&#x6e;&#x61;&#x62;&#105;&#x6a;&#97;&#x63;&#122;&#108;&#101;&#x77;&#101;&#x6c;&#105;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;" data-bare-link="true">&#x6e;&#x61;&#x62;&#105;&#106;&#x61;&#99;&#x7a;&#108;&#101;&#x77;&#101;&#108;&#x69;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a>&gt;</p>
 
 <h2 id="SPECIAL-THANKS">SPECIAL THANKS</h2>
 

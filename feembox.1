@@ -7,10 +7,10 @@
 \fBfeembox\fR \- What if a feed, but it\'s a mailbox?
 .
 .SH "SYNOPSIS"
-\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [MAILDIR] [FEED]
+\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [\-f MIME] [MAILDIR] [FEED]
 .
 .br
-\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [MAILDIR] < feed\.xml
+\fBfeembox\fR [\-v] [\-t FROM:TO:HOW]\.\.\. [\-f MIME] [MAILDIR] < feed\.xml
 .
 .SH "DESCRIPTION"
 \fBfeembox\fR represents an (RSS/Atom/JSON) feed as a mailbox in the maildir \fIhttps://cr\.yp\.to/proto/maildir\.html\fR format\.
@@ -78,6 +78,24 @@ The separator between FROM, TO, and HOW is the platform\'s path list separator
 
 Can be specified multiple times, in which case each transformation is invoked once,
 in order, on the current set of parts\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+\-f \-\-force \fIMIME\fR
+.
+.IP "" 4
+.
+.nf
+
+Force the post content type to be MIME, overriding what\'s specified therein\.
+
+This is done before any transformations\.
+
+Some feeds specify they\'re text/plain but are HTML,
+this can be used to massage them right\.
 .
 .fi
 .
