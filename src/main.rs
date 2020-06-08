@@ -35,7 +35,6 @@ fn main() {
 
 fn actual_main() -> Result<(), i32> {
     let opts = feembox::options::Options::parse();
-    println!("{:#?}", opts);
 
     let feed = match opts.feed.1.as_ref() {
             Some(feed_path) => {
