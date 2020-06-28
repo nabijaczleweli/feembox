@@ -1,11 +1,79 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `feembox` crate."><meta name="keywords" content="rust, rustlang, rust-lang, feembox"><title>feembox - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../feembox/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate feembox</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all feembox's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'feembox', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/feembox/lib.rs.html#1-27' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>feembox</a></span></h1><div class='docblock'><p>What if a feed, but it's a mailbox?</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `feembox` crate."><meta name="keywords" content="rust, rustlang, rust-lang, feembox"><title>feembox - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../feembox/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate feembox</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all feembox's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'feembox', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/feembox/lib.rs.html#1-128' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>feembox</a></span></h1><div class='docblock'><p>What if a feed, but it's a mailbox?</p>
+<h1 id="howto" class="section-header"><a href="#howto">Howto</a></h1>
+<p>Use <a href="fn.assemble_mail.html"><code>assemble_mail()</code></a> once for each entry.</p>
+<p>Consult <a href="https://github.com/nabijaczleweli/feembox/blob/trunk/src/main.rs"><code>main.rs</code></a>
+for example parsing and maildir delivery.</p>
+<h1 id="manpage" class="section-header"><a href="#manpage">Manpage</a></h1><h2 id="synopsis" class="section-header"><a href="#synopsis">SYNOPSIS</a></h2>
+<p><code>feembox [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] [FEED]</code><br />
+<code>feembox [-v] [-t FROM:TO:HOW]... [-f MIME] [MAILDIR] &lt; feed.xml</code></p>
+<h2 id="description" class="section-header"><a href="#description">DESCRIPTION</a></h2>
+<p><code>feembox</code> represents an (RSS/Atom/JSON) feed as a mailbox in the <a href="https://cr.yp.to/proto/maildir.html">maildir</a> format.</p>
+<h2 id="options" class="section-header"><a href="#options">OPTIONS</a></h2>
+<p><code>[MAILDIR]</code></p>
+<p>Deliver to the specified directory instead of the CWD</p>
+<p>Parents must exist, all directory and its subdirs will be created as necessary</p>
+<p><code>[FEED]</code></p>
+<p>Read the feed from the specified file instead of stdin</p>
+<p>If &quot;-&quot; use stdin, otherwise must exist and be a file</p>
+<p><code>-v --verbose</code></p>
+<p>Print what's happening to the standard output,
+if specified twice: print parse debugging information.</p>
+<p><code>-t --transfrom &lt;FROM:TO:HOW|FROM;TO;HOW&gt;...</code></p>
+<p>Define an alternative transformation invocation HOW
+from the mime-type FROM to the mime-type TO.</p>
+<p>If the post content type matches FROM, &quot;/bin/sh -c HOW&quot; (&quot;cmd /C HOW&quot; on NT)
+is executed, its standard input tied thereto, and standard output
+to the buffer for the new multipart/alternative part TO.</p>
+<p>The separator between FROM, TO, and HOW is the platform's path list separator
+(i.e. &quot;;&quot; on NT and &quot;:&quot; elsewhere).</p>
+<p>Can be specified multiple times, in which case each transformation is invoked once,
+in order, on the current set of parts.</p>
+<p><code>-f --force &lt;MIME&gt;</code></p>
+<p>Force the post content type to be MIME, overriding what's specified therein.</p>
+<p>This is done before any transformations.</p>
+<p>Some feeds specify they're text/plain but are HTML,
+this can be used to massage them right.</p>
+<h2 id="exit-values" class="section-header"><a href="#exit-values">EXIT VALUES</a></h2><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>1</td><td>option parse error</td></tr>
+<tr><td>2</td><td>feed file open failed</td></tr>
+<tr><td>3</td><td>feed parse failed</td></tr>
+<tr><td>4</td><td>maildir subdirectory read failed</td></tr>
+<tr><td>5</td><td>existing mail open(2)/mmap(2) failed</td></tr>
+<tr><td>6</td><td>creating a MAILDIR/tmp or MAILDIR/new failed</td></tr>
+<tr><td>7</td><td>formatting mail failed</td></tr>
+<tr><td>8</td><td>creating/writing/delivering mail failed</td></tr>
+</tbody></table>
+<h2 id="examples" class="section-header"><a href="#examples">EXAMPLES</a></h2>
+<p>Turndown (here: https://github.com/domchristie/turndown/pull/209 lightly patched to always read from stdin),
+can be used to turn HTML feeds (i.e. most of them) into usually pretty readable plaintext:</p>
+<pre><code class="language-plaintext">P:\Rust\feembox&gt;cat test-data/util-linux-newer.atom |   target\debug\feembox -vt text/html;text/plain;turndown feedir
+~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/feembox/turndown/bin/turndown.js' feedir
+&lt;stdin&gt;: feed ID mailto:util-linux@vger.kernel.org, title &quot;Util-Linux Archive on lore.kernel.org&quot;, updated 2020-05-18T11:41:20+00:00
+25 entries:
+    entry ID                                       title                                                                    updated                    published
+    urn:uuid:d2c69230-d7ba-e4cf-ee51-2b25d53119a1  &quot;Re: [PATCH] util-linux: Some minor fixes in some manuals&quot;               2020-05-18T11:40:38+00:00  N/A
+    urn:uuid:d9e31d9a-5d6c-8403-9661-2d303e6fb24a  &quot;Re: [PATCH] Fix dead references to kernel documentation&quot;                2020-05-18T11:39:59+00:00  N/A
+    urn:uuid:dccd47a2-d327-df9b-7ad1-9218d08a8349  &quot;Re: Consistency fixes in util-linux man pages&quot;                          2020-05-18T10:36:15+00:00  N/A
+    urn:uuid:ba1cf039-280f-f33d-199d-86f5a9c1bb1b  &quot;Re: Consistency fixes in util-linux man pages&quot;                          2020-05-18T08:28:25+00:00  N/A
+    urn:uuid:98e3d4cd-17c1-ac1d-3dd9-7bbe87f6402e  &quot;[PATCH] Fix dead references to kernel documentation&quot;                    2020-05-17T15:13:35+00:00  N/A
+    urn:uuid:68946069-8d16-0362-57e6-feba21ebbecb  &quot;Consistency fixes in util-linux man pages&quot;                              2020-05-16T08:25:11+00:00  N/A
+    urn:uuid:94158972-3786-e3c6-7e0a-dec2988cd32b  &quot;[PATCH] ipcs.1: ipcs no longer needs read permission on IPC resources&quot;  2020-05-16T08:10:32+00:00  N/A
+    urn:uuid:37f8f0a9-d285-b8f9-5269-6eeb2475f9ba  &quot;plan for v2.35.2&quot;                                                       2020-05-15T13:05:16+00:00  N/A
+
+Delivering urn:uuid:ba1cf039-280f-f33d-199d-86f5a9c1bb1b to feedir/new/1591610344.M981513P12500Q1.nabuter
+Delivering urn:uuid:d2c69230-d7ba-e4cf-ee51-2b25d53119a1 to feedir/new/1591610346.M86312P12500Q2.nabuter
+Delivering urn:uuid:d9e31d9a-5d6c-8403-9661-2d303e6fb24a to feedir/new/1591610347.M339148P12500Q3.nabuter
+Delivering urn:uuid:dccd47a2-d327-df9b-7ad1-9218d08a8349 to feedir/new/1591610348.M505433P12500Q4.nabuter
+</code></pre>
 <h1 id="special-thanks" class="section-header"><a href="#special-thanks">Special thanks</a></h1>
 <p>To all who support further development on <a href="https://patreon.com/nabijaczleweli">Patreon</a>, in particular:</p>
 <ul>
 <li>ThePhD</li>
+<li>Embark Studios</li>
 </ul>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table><tr class='module-item'><td><a class="mod" href="options/index.html" title='feembox::options mod'>options</a></td><td class='docblock-short'><p>This module contains the configuration of the application.</p>
 </td></tr><tr class='module-item'><td><a class="mod" href="util/index.html" title='feembox::util mod'>util</a></td><td class='docblock-short'><p>Various utility functions.</p>
 </td></tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
-<table><tr class='module-item'><td><a class="fn" href="fn.assemble_mail.html" title='feembox::assemble_mail fn'>assemble_mail</a></td><td class='docblock-short'></td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "feembox";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
+<table><tr class='module-item'><td><a class="fn" href="fn.assemble_mail.html" title='feembox::assemble_mail fn'>assemble_mail</a></td><td class='docblock-short'><p>Make a mail for the specified entry from the specified feed, running transformations and overrides</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../";window.currentCrate = "feembox";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

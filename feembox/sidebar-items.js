@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["assemble_mail",""]],"mod":[["options","This module contains the configuration of the application."],["util","Various utility functions."]]});
+initSidebarItems({"fn":[["assemble_mail","Make a mail for the specified entry from the specified feed, running transformations and overrides"]],"mod":[["options","This module contains the configuration of the application."],["util","Various utility functions."]]});
