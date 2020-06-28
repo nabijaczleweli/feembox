@@ -32,6 +32,27 @@ static SHELL: &[&str] = &["cmd", "/C"];
 static SHELL: &[&str] = &["/bin/sh", "-c"];
 
 
+/// Make a mail for the specified entry from the specified feed, running transformations and overrides
+///
+/// The resulting mail consists of the following:
+///   * if `entry.content` then `entry.content.body` or `"Link: {content.src}"`, then
+///   * `entry.summary`, if any.
+/// Both have their original MIME types unless `mime_override` is set.
+///
+/// Then, for each element of `alt_transforms`:
+///   * for each submail that matches the `from` content type
+///   * append a new submail consisting of the output of the command with the `to` content type.
+///
+/// Then, each submail is wrapped in a `multipart/alternative` under the status mail consisting of:
+///   * Authors (entry, then contributors, then feed, unique), according to [`DisplayFeedPerson`](util/struct.DisplayFeedPerson.html),
+///   * Publication and update dates (if present),
+///   * Links (entry, then feed, trailing slash removed, unique), except those matched by [`LINK_REL_FILTER`](util/static.LINK_REL_FILTER.html).
+///
+/// The headers are:
+///   * `MessageId`: same as `message_id`,
+///   * `Subject`: entry title, if any, or entry ID,
+///   * `From`: same as authors, if any, or the feed title, or the feed description, or the feed ID,
+///   * `Date`: entry updated, or published time, or feed updated, or published time.
 pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: String, alt_transforms: Ai, mime_override: Option<&Mime>, ctx: &Mc)
                                  -> Result<Mail, IoError>
     where Mc: MailContext,
@@ -43,7 +64,7 @@ pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: Str
                 content.body
                     .as_ref()
                     .map(Cow::from)
-                    .or_else(|| content.src.as_ref().map(|l| format!("Links: {}", LinkWriter(l)).into()))
+                    .or_else(|| content.src.as_ref().map(|l| format!("Link: {}", LinkWriter(l)).into()))
                     .map(|b| (b, mime_override.unwrap_or(&content.content_type)))
             })
             .iter()
@@ -85,7 +106,7 @@ pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: Str
         }
     }
 
-    let authors = entry.authors.iter().chain(&feed.authors).map(DisplayFeedPerson).collect();
+    let authors = entry.authors.iter().chain(&entry.contributors).chain(&feed.authors).map(DisplayFeedPerson).collect();
     let mut mail = Mail::plain_text(EntryContextLineWriter {
                                             feed: feed,
                                             entry: entry,

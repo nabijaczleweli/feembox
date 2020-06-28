@@ -69,7 +69,8 @@ feembox(1) -- What if a feed, but it's a mailbox?
   Turndown (here: https://github.com/domchristie/turndown/pull/209 lightly patched to always read from stdin),
   can be used to turn HTML feeds (i.e. most of them) into usually pretty readable plaintext:
 
-    P:\Rust\feembox>cat test-data/util-linux-newer.atom | target\debug\feembox -vt text/html;text/plain;turndown feedir
+    P:\Rust\feembox>cat test-data/util-linux-newer.atom |   target\debug\feembox -vt text/html;text/plain;turndown feedir
+    ~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/feembox/turndown/bin/turndown.js' feedir
     <stdin>: feed ID mailto:util-linux@vger.kernel.org, title "Util-Linux Archive on lore.kernel.org", updated 2020-05-18T11:41:20+00:00
     25 entries:
         entry ID                                       title                                                                    updated                    published
