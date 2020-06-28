@@ -54,3 +54,4 @@ Installation should be a matter of downloading and unpacking them, and copying s
 To all who support further development on Patreon, in particular:
 
   * ThePhD
+  * Embark Studios
