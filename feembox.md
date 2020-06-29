@@ -97,6 +97,7 @@ Written by наб &lt;<nabijaczleweli@gmail.com>&gt;
 To all who support further development, in particular:
 
   * ThePhD
+  * Embark Studios
 
 ## REPORTING BUGS
 
