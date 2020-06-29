@@ -70,7 +70,7 @@ feembox(1) -- What if a feed, but it's a mailbox?
   can be used to turn HTML feeds (i.e. most of them) into usually pretty readable plaintext:
 
     P:\Rust\feembox>cat test-data/util-linux-newer.atom |   target\debug\feembox -vt text/html;text/plain;turndown feedir
-    ~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/feembox/turndown/bin/turndown.js' feedir
+    ~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/turndown/bin/turndown.js' feedir
     <stdin>: feed ID mailto:util-linux@vger.kernel.org, title "Util-Linux Archive on lore.kernel.org", updated 2020-05-18T11:41:20+00:00
     25 entries:
         entry ID                                       title                                                                    updated                    published
