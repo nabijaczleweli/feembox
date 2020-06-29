@@ -22,9 +22,13 @@ use std::fs;
 
 #[cfg(target_os="windows")]
 static PATH_LIST_SEPARATOR: char = ';';
-
 #[cfg(not(target_os="windows"))]
 static PATH_LIST_SEPARATOR: char = ':';
+
+#[cfg(target_os="windows")]
+static ALTERNATIVES_TRANSFORMATIONS_ARG: &str = "-t --transform... [FROM;TO;HOW] 'Transfrom FROM mime-type to an alternative TO mime-type by running HOW'";
+#[cfg(not(target_os="windows"))]
+static ALTERNATIVES_TRANSFORMATIONS_ARG: &str = "-t --transform... [FROM:TO:HOW] 'Transfrom FROM mime-type to an alternative TO mime-type by running HOW'";
 
 
 /// Verbosity level to print to stdout
@@ -77,16 +81,13 @@ pub struct Options {
 impl Options {
     /// Parse `env`-wide command-line arguments into an `Options` instance
     pub fn parse() -> Options {
-        let alternatives_transformations_arg = format!("-t --transform... [FROM{0}TO{0}HOW] \
-                                                        'Transfrom FROM mime-type to an alternative TO mime-type by running HOW'",
-                                                       PATH_LIST_SEPARATOR);
         #[allow(deprecated)]
         let matches = app_from_crate!("\n")
             .setting(AppSettings::ColoredHelp)
             .arg(Arg::from_usage("[MAILDIR] 'Where to write to the mails to. Default: .'").validator(|s| Options::parse_maildir_path(&s).map(|_| ())))
             .arg(Arg::from_usage("[FEED] 'Where to read the feed from. Default: stdin'").validator(|s| Options::parse_feed_path(&s).map(|_| ())))
             .arg(Arg::from_usage("-v --verbose... 'Print what's happening to stdout'"))
-            .arg(Arg::from_usage(&alternatives_transformations_arg)
+            .arg(Arg::from_usage(ALTERNATIVES_TRANSFORMATIONS_ARG)
                 .validator(|s| Options::parse_alternatives_transformations(&s).map(|_| ()))
                 .number_of_values(1))
             .arg(Arg::from_usage("-f --force [MIME] 'Type to force content to'").validator(|s| Options::parse_mime_override(&s).map(|_| ())))
