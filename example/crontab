@@ -1,0 +1,2 @@
+# min hour dom month dow command
+  0   *    *   *     *   ~/bin/update-feeds ~/.feeds

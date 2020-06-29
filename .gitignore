@@ -15,5 +15,7 @@
 !src/**
 !tests
 !tests/**
+!example
+!example/**
 !test-data
 !test-data/**

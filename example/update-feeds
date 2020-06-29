@@ -1,0 +1,36 @@
+#!/bin/gawk -f
+
+BEGIN {
+	feembox="$HOME/.cargo/bin/feembox"
+	datadir="/run/user/" PROCINFO["uid"] "/feeds/"
+	system("mkdir -p " datadir)
+	outdir=""
+	transes=""
+}
+
+/^OUTDIR/ {
+	outdir=gensub("/$", "", "g", $2) "/"
+	next
+}
+
+/^TRANS/ {
+	transes="-t \"" $2 "\""
+	next
+}
+
+!/^#/ && !/^$/ {
+	name=$1
+	subdir=gensub("/$", "", "g", $2)
+	url=$3
+	$1 = $2 = $3 = ""
+	leftovers=$0
+
+	#print("curl -s --etag-compare " datadir name ".etag --etag-save " datadir name ".etag -o " datadir name ".feed \"" url "\"") | "/bin/sh"
+	print("curl -s -z " datadir name ".feed -o " datadir name ".feed \"" url "\"")            | "/bin/sh"
+	print(feembox " " transes " " leftovers " \"" outdir subdir "\" " datadir name ".feed &") | "/bin/sh"
+}
+
+END {
+	print("wait") | "/bin/sh"
+	close("/bin/sh")
+}
