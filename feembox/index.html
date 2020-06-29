@@ -47,7 +47,7 @@ this can be used to massage them right.</p>
 <p>Turndown (here: https://github.com/domchristie/turndown/pull/209 lightly patched to always read from stdin),
 can be used to turn HTML feeds (i.e. most of them) into usually pretty readable plaintext:</p>
 <pre><code class="language-plaintext">P:\Rust\feembox&gt;cat test-data/util-linux-newer.atom |   target\debug\feembox -vt text/html;text/plain;turndown feedir
-~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/feembox/turndown/bin/turndown.js' feedir
+~/code/feembox$ cat test-data/util-linux-newer.atom | ./target/debug/feembox -vt 'text/html:text/plain;charset=utf-8:~/code/turndown/bin/turndown.js' feedir
 &lt;stdin&gt;: feed ID mailto:util-linux@vger.kernel.org, title &quot;Util-Linux Archive on lore.kernel.org&quot;, updated 2020-05-18T11:41:20+00:00
 25 entries:
     entry ID                                       title                                                                    updated                    published

@@ -177,6 +177,7 @@
 <span id="177">177</span>
 <span id="178">178</span>
 <span id="179">179</span>
+<span id="180">180</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! This module contains the configuration of the application.</span>
 <span class="doccomment">//!</span>
@@ -202,9 +203,13 @@
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span><span class="op">=</span><span class="string">&quot;windows&quot;</span>)]</span>
 <span class="kw">static</span> <span class="ident">PATH_LIST_SEPARATOR</span>: <span class="ident">char</span> <span class="op">=</span> <span class="string">&#39;;&#39;</span>;
-
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">target_os</span><span class="op">=</span><span class="string">&quot;windows&quot;</span>))]</span>
 <span class="kw">static</span> <span class="ident">PATH_LIST_SEPARATOR</span>: <span class="ident">char</span> <span class="op">=</span> <span class="string">&#39;:&#39;</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span><span class="op">=</span><span class="string">&quot;windows&quot;</span>)]</span>
+<span class="kw">static</span> <span class="ident">ALTERNATIVES_TRANSFORMATIONS_ARG</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;-t --transform... [FROM;TO;HOW] &#39;Transfrom FROM mime-type to an alternative TO mime-type by running HOW&#39;&quot;</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">target_os</span><span class="op">=</span><span class="string">&quot;windows&quot;</span>))]</span>
+<span class="kw">static</span> <span class="ident">ALTERNATIVES_TRANSFORMATIONS_ARG</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;-t --transform... [FROM:TO:HOW] &#39;Transfrom FROM mime-type to an alternative TO mime-type by running HOW&#39;&quot;</span>;
 
 
 <span class="doccomment">/// Verbosity level to print to stdout</span>
@@ -257,16 +262,13 @@
 <span class="kw">impl</span> <span class="ident">Options</span> {
     <span class="doccomment">/// Parse `env`-wide command-line arguments into an `Options` instance</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Options</span> {
-        <span class="kw">let</span> <span class="ident">alternatives_transformations_arg</span> <span class="op">=</span> <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;-t --transform... [FROM{0}TO{0}HOW] \
-                                                        &#39;Transfrom FROM mime-type to an alternative TO mime-type by running HOW&#39;&quot;</span>,
-                                                       <span class="ident">PATH_LIST_SEPARATOR</span>);
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
         <span class="kw">let</span> <span class="ident">matches</span> <span class="op">=</span> <span class="macro">app_from_crate</span><span class="macro">!</span>(<span class="string">&quot;\n&quot;</span>)
             .<span class="ident">setting</span>(<span class="ident">AppSettings</span>::<span class="ident">ColoredHelp</span>)
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;[MAILDIR] &#39;Where to write to the mails to. Default: .&#39;&quot;</span>).<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_maildir_path</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;[FEED] &#39;Where to read the feed from. Default: stdin&#39;&quot;</span>).<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_feed_path</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;-v --verbose... &#39;Print what&#39;s happening to stdout&#39;&quot;</span>))
-            .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="kw-2">&amp;</span><span class="ident">alternatives_transformations_arg</span>)
+            .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="ident">ALTERNATIVES_TRANSFORMATIONS_ARG</span>)
                 .<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_alternatives_transformations</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ()))
                 .<span class="ident">number_of_values</span>(<span class="number">1</span>))
             .<span class="ident">arg</span>(<span class="ident">Arg</span>::<span class="ident">from_usage</span>(<span class="string">&quot;-f --force [MIME] &#39;Type to force content to&#39;&quot;</span>).<span class="ident">validator</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">Options</span>::<span class="ident">parse_mime_override</span>(<span class="kw-2">&amp;</span><span class="ident">s</span>).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> ())))
