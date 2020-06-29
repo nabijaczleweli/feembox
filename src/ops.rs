@@ -35,8 +35,8 @@ static SHELL: &[&str] = &["/bin/sh", "-c"];
 /// Make a mail for the specified entry from the specified feed, running transformations and overrides
 ///
 /// The resulting mail consists of the following:
-///   * if `entry.content` then `entry.content.body` or `"Link: {content.src}"`, then
-///   * `entry.summary`, if any.
+///   * `entry.summary`, if any, then
+///   * if `entry.content` then `entry.content.body` or `"Link: {content.src}"`.
 /// Both have their original MIME types unless `mime_override` is set.
 ///
 /// Then, for each element of `alt_transforms`:
@@ -44,9 +44,11 @@ static SHELL: &[&str] = &["/bin/sh", "-c"];
 ///   * append a new submail consisting of the output of the command with the `to` content type.
 ///
 /// Then, each submail is wrapped in a `multipart/alternative` under the status mail consisting of:
-///   * Authors (entry, then contributors, then feed, unique), according to [`DisplayFeedPerson`](util/struct.DisplayFeedPerson.html),
+///   * Authors (entry, then contributors, then feed, unique), according to
+///     [`DisplayFeedPerson`](util/struct.DisplayFeedPerson.html),
 ///   * Publication and update dates (if present),
-///   * Links (entry, then feed, trailing slash removed, unique), except those matched by [`LINK_REL_FILTER`](util/static.LINK_REL_FILTER.html).
+///   * Links (entry, then feed, trailing slash removed, unique), except those matched by
+///     [`LINK_REL_FILTER`](util/static.LINK_REL_FILTER.html).
 ///
 /// The headers are:
 ///   * `MessageId`: same as `message_id`,
@@ -58,7 +60,11 @@ pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: Str
     where Mc: MailContext,
           Ai: IntoIterator<Item = &'a (Mime, Mime, String)>
 {
-    let mut contents: Vec<_> = (entry.content
+    let mut contents: Vec<_> = (entry.summary.iter().map(|summary| {
+            let content_type = mime_override.unwrap_or(&summary.content_type);
+            (summary_to_mail(&summary.content, content_type, ctx), content_type)
+        }))
+        .chain(entry.content
             .as_ref()
             .and_then(|content| {
                 content.body
@@ -69,10 +75,6 @@ pub fn assemble_mail<'a, Mc, Ai>(feed: &Feed, entry: &FeedEntry, message_id: Str
             })
             .iter()
             .map(|(body, content_type)| (summary_to_mail(body, content_type, ctx), *content_type)))
-        .chain(entry.summary.iter().map(|summary| {
-            let content_type = mime_override.unwrap_or(&summary.content_type);
-            (summary_to_mail(&summary.content, content_type, ctx), content_type)
-        }))
         .collect();
     for (from, to, how) in alt_transforms {
         let ids: Vec<_> = contents.iter().enumerate().filter(|(_, (_, ct))| *ct == from).map(|(i, _)| i).collect();

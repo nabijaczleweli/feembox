@@ -5,7 +5,7 @@ skip_tags: false
 platform: x64
 configuration: Release
 
-clone_folder: C:\pir-8-emu
+clone_folder: C:\feembox
 
 install:
   - set PATH=C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%;C:\Users\appveyor\.cargo\bin
@@ -23,15 +23,15 @@ build: off
 build_script:
   - cargo build --verbose --release
   -
-  - cp target\release\feedbox.exe feedbox-v0.1.0.exe
-  - strip --strip-all --remove-section=.comment --remove-section=.note feedbox-v0.1.0.exe
+  - cp target\release\feembox.exe feembox-v0.1.0.exe
+  - strip --strip-all --remove-section=.comment --remove-section=.note feembox-v0.1.0.exe
 
 test: off
 test_script:
   - cargo test --verbose --release
 
 artifacts:
-  - path: feedbox-v0.1.0.exe
+  - path: feembox-v0.1.0.exe
 
 deploy:
   provider: GitHub

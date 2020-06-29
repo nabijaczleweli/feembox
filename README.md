@@ -16,9 +16,9 @@ cargo install feembox
 ```
 
 After the installation process finishes,
-  move onto the [manpages](https://rawcdn.githack.com/nabijaczleweli/feembox/man/feembox.1.html) to see how to emulate or {dis,}assemble your code.
+  move onto the [manpage](https://rawcdn.githack.com/nabijaczleweli/feembox/man/feembox.1.html) or example cronjob/subscription in `example/` to set up feed acquisition.
 
-If you've encountered a problem during the installation, do not hesitate to open an issue [here](https://github.com/nabijaczleweli/feembox/issues/new).
+If you've encountered a problem during the installation or configuration, do not hesitate to open an issue [here](https://github.com/nabijaczleweli/feembox/issues/new).
 
 #### From Debian repository
 
@@ -47,7 +47,7 @@ See the [repository README](https://debian.nabijaczleweli.xyz/README) for more i
 
 Alternatively, have a glance over at the [releases page](https://github.com/nabijaczleweli/feembox/releases), which hosts Windows and Linux x86_64 binaries.
 
-Installation should be a matter of downloading and unpacking them, and copying somewhere to your `$PATH` and/or `$LD_LIBRARY_PATH`.
+Installation should be a matter of downloading and unpacking them, and copying somewhere to your `$PATH`.
 
 ## Special thanks
 
