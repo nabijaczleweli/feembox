@@ -1,4 +1,4 @@
-version: 0.1.0-{build}
+version: 0.1.1-{build}
 
 skip_tags: false
 
@@ -23,15 +23,15 @@ build: off
 build_script:
   - cargo build --verbose --release
   -
-  - cp target\release\feembox.exe feembox-v0.1.0.exe
-  - strip --strip-all --remove-section=.comment --remove-section=.note feembox-v0.1.0.exe
+  - cp target\release\feembox.exe feembox-v0.1.1.exe
+  - strip --strip-all --remove-section=.comment --remove-section=.note feembox-v0.1.1.exe
 
 test: off
 test_script:
   - cargo test --verbose --release
 
 artifacts:
-  - path: feembox-v0.1.0.exe
+  - path: feembox-v0.1.1.exe
 
 deploy:
   provider: GitHub

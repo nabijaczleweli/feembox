@@ -8,7 +8,7 @@ keywords = ["rss", "feed", "mbox", "maildir"]
 categories = ["email"]
 license = "MIT"
 # Remember to also update in appveyor.yml
-version = "0.1.0"
+version = "0.1.1"
 # Remember to also update in feembox.md
 authors = ["наб <nabijaczleweli@nabijaczleweli.xyz>"]
 exclude = ["*.enc"]
