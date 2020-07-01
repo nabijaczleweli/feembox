@@ -48,7 +48,23 @@ impl Eq for DisplayFeedPerson<'_> {}
 
 /// Get the Message-ID corresponding to the specified entry in the specified feed
 ///
-/// This amounts to `"entry.id@feed.id"`
+/// This amounts to `"entry.id@feed.id"`, but non-ASCII characters of either are Unicode-escaped
 pub fn message_id_for_feed_entry(feed: &Feed, entry: &FeedEntry) -> String {
-    format!("{}@{}", entry.id, feed.id)
+    fn expand(whom: &mut String, with: &str) {
+        for c in with.chars() {
+            if !c.is_ascii() {
+                for u in c.escape_unicode() {
+                    whom.push(u);
+                }
+            } else {
+                whom.push(c);
+            }
+        }
+    }
+
+    let mut ret = String::with_capacity(entry.id.len() + 1 + feed.id.len());
+    expand(&mut ret, &entry.id);
+    ret.push('@');
+    expand(&mut ret, &feed.id);
+    ret
 }

@@ -10,7 +10,7 @@ license = "MIT"
 # Remember to also update in appveyor.yml
 version = "0.1.0"
 # Remember to also update in feembox.md
-authors = ["наб <nabijaczleweli@gmail.com>"]
+authors = ["наб <nabijaczleweli@nabijaczleweli.xyz>"]
 exclude = ["*.enc"]
 
 
