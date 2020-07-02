@@ -25,9 +25,9 @@ BEGIN {
 	$1 = $2 = $3 = ""
 	leftovers=$0
 
-	#print("curl -sL --etag-compare " datadir name ".etag --etag-save " datadir name ".etag -o " datadir name ".feed \"" url "\"") | "/bin/sh"
-	print("curl -sL -z " datadir name ".feed -o " datadir name ".feed \"" url "\"")            | "/bin/sh"
-	print(feembox " " transes " " leftovers " \"" outdir subdir "\" " datadir name ".feed &") | "/bin/sh"
+	#print("curl -sL --etag-compare \"" datadir name ".etag\" --etag-save \"" datadir name ".etag\" -o \"" datadir name ".feed\" \"" url "\"") | "/bin/sh"
+	print("curl -sL -z \"" datadir name ".feed\" -o \"" datadir name ".feed\" \"" url "\"")       | "/bin/sh"
+	print(feembox " " transes " " leftovers " \"" outdir subdir "\" \"" datadir name ".feed\" &") | "/bin/sh"
 }
 
 END {
