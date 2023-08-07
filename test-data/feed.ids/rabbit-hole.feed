@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/static/rss.xsl"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:rp="https://w3id.org/rp/v1"
+     version="2.0">
+<channel>
+<title>The Rabbit Hole Podcast</title>
+<link>https://soundcloud.com/therhpodcast</link>
+<atom:link href="https://pinecast.com/feed/the-rabbit-hole-podcast" rel="self" type="application/rss+xml" />
+<generator>Pinecast (https://pinecast.com)</generator>
+<language>en-US</language><itunes:author>Lauren Murrah &amp; Emily Carpenter </itunes:author>
+<description><![CDATA[Unraveling the stories, controversies, and phenomenon you find yourself reading at 2 am. Emily and Lauren explore the most bizarre corners of the internet.]]></description>
+<itunes:owner>
+<itunes:name>Lauren Murrah &amp; Emily Carpenter </itunes:name>
+<itunes:email>therhpodcast@gmail.com</itunes:email>
+</itunes:owner>
+<itunes:explicit>yes</itunes:explicit>
+<itunes:image href="https://storage.pinecast.net/podcasts/covers/6e2e727d-00f4-4862-aa3e-2d14d9270e48/Rabbit_Hole_1.jpg" />
+<image>
+<title>The Rabbit Hole Podcast</title>
+<link>https://soundcloud.com/therhpodcast</link>
+<url>https://storage.pinecast.net/podcasts/covers/6e2e727d-00f4-4862-aa3e-2d14d9270e48/Rabbit_Hole_1.jpg</url>
+</image><itunes:type>episodic</itunes:type>
+<copyright>Copyright 2018</copyright>
+<itunes:category text="Society &amp; Culture" />
+<item><title>Feral Children / The 1st Publicly Traded Man</title>
+<guid isPermaLink="false">https://pinecast.com/guid/49dd7db2-fb81-4230-9fa8-4385a3472755</guid>
+<pubDate>Tue, 22 May 2018 10:23:00 -0000</pubDate>
+
+<itunes:duration>00:57:56</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/49dd7db2fb814230/feral-children-the-1st-publicly-traded-man</link>
+<itunes:image href="https://storage.pinecast.net/podcasts/507ab555-9be7-41a2-892f-c675f3f75625/image/902399c1-c6b8-4e57-9afd-56e06c1acdf2/RabbitHole-Cover_01-06_copy.jpg" />
+<description><![CDATA[<p>Some people are raised by birds, it's just how the world works now. There's also a guy out there selling stock in himself so he doesn't have to make any decisions in life and Emily is only 5% jealous.</p>
+
+<p>Email us your fave internet rabbit holes and general life advice to theRHpodcast@gmail.com</p>
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/49dd7db2-fb81-4230-9fa8-4385a3472755.mp3?source=rss&amp;ext=asset.mp3" length="56194302" type="audio/mp3" />
+</item>
+<item><title>Nigerian Prince Scam / Otherkin</title>
+<guid isPermaLink="false">https://pinecast.com/guid/5ea97eb8-2394-4061-8e2e-849fb85ce8b2</guid>
+<pubDate>Tue, 13 Mar 2018 10:56:00 -0000</pubDate>
+
+<itunes:duration>00:50:14</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/5ea97eb823944061/nigerian-prince-scam-otherkin</link>
+<description><![CDATA[<p>So if you get an email regarding a ‘Nigerian Prince Stuck in Space’, best just throw that guy in your spam OR, ya know, forward it to us. </p>
+
+<p>Secondly, a wolf?!! wear PANTS?! Ridiculous. #justotterthings</p>
+
+<p>email us at: therhpodcast@gmail.com</p>
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/5ea97eb8-2394-4061-8e2e-849fb85ce8b2.mp3?source=rss&amp;ext=asset.mp3" length="48237749" type="audio/mp3" />
+</item>
+<item><title>Nasubi / Fruititarians</title>
+<guid isPermaLink="false">https://pinecast.com/guid/a792bcac-99dd-42e3-b5b5-d172410123e0</guid>
+<pubDate>Mon, 05 Mar 2018 17:43:14 -0000</pubDate>
+
+<itunes:duration>00:43:52</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/a792bcac99dd42e3/nasubi-fruititarians</link>
+<description><![CDATA[<p>Emily unpacks what might be the most twisted Japanese reality show on God’s green earth. </p>
+
+<p>Then, if any of you dumb-dumbs are eating 52 bananas for breakfast, we need to have a word with you. And then you need to take a vitamin and sit TF down.</p>
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/a792bcac-99dd-42e3-b5b5-d172410123e0.mp3?source=rss&amp;ext=asset.mp3" length="42124660" type="audio/mp3" />
+</item>
+<item><title>Faking Your Own Death / Terry Davis</title>
+<guid isPermaLink="false">https://pinecast.com/guid/8229792c-c39f-49d6-9090-934a3a794813</guid>
+<pubDate>Wed, 21 Feb 2018 11:38:00 -0000</pubDate>
+
+<itunes:duration>00:34:54</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/8229792cc39f49d6/faking-your-own-death-terry-davis</link>
+<description><![CDATA[All we’re saying is if you DO decide to fake your own death, delete your GOD 👏DAMN👏 FACE👏BOOK👏 (looking at you Diane). Also, Lauren learns how to talk to God through a computer.
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/8229792c-c39f-49d6-9090-934a3a794813.mp3?source=rss&amp;ext=asset.mp3" length="33517652" type="audio/mp3" />
+</item>
+<item><title>Subliminal Messaging / The Black Market</title>
+<guid isPermaLink="false">https://pinecast.com/guid/43480232-3a53-4644-9858-94b1d90c2ab2</guid>
+<pubDate>Thu, 15 Feb 2018 22:21:41 -0000</pubDate>
+
+<itunes:duration>00:44:17</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/434802323a534644/subliminal-messaging-the-black-market</link>
+<description><![CDATA[Is subliminal messaging a real thing? Probably. Is Disney trying to corrupt our children and sell us 7 Up? Definitely. Also, let’s all take a moment to consider how much money we could make by selling our eyeballs on the black market.]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/43480232-3a53-4644-9858-94b1d90c2ab2.mp3?source=rss&amp;ext=asset.mp3" length="42532204" type="audio/mp3" />
+</item>
+<item><title>The Jim Twins / Furries </title>
+<guid isPermaLink="false">https://pinecast.com/guid/57e08368-fd6b-4c3a-a716-5aa587c74950</guid>
+<pubDate>Fri, 02 Feb 2018 19:02:00 -0000</pubDate>
+
+<itunes:duration>00:33:44</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/57e08368fd6b4c3a/the-jim-twins-furries</link>
+<description><![CDATA[Do twins creep you out? Think furries are all about boning in the woods somewhere? Same! Let’s talk about it.
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/57e08368-fd6b-4c3a-a716-5aa587c74950.mp3?source=rss&amp;ext=asset.mp3" length="32389976" type="audio/mp3" />
+</item>
+<item><title>Pickup Artists / Celebs Who Murder</title>
+<guid isPermaLink="false">https://pinecast.com/guid/df80f9a3-6b2e-485d-bdd6-137f54e205c8</guid>
+<pubDate>Fri, 02 Feb 2018 19:01:00 -0000</pubDate>
+
+<itunes:duration>00:49:46</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/df80f9a36b2e485d/pickup-artists-celebs-who-murder</link>
+<description><![CDATA[Lauren explores a few online seduction communities and it gets a little gross. Emily discusses all our favorite celebrities who...whoopsies! Turned out to murder people.
+]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/df80f9a3-6b2e-485d-bdd6-137f54e205c8.mp3?source=rss&amp;ext=asset.mp3" length="47789703" type="audio/mp3" />
+</item>
+<item><title>Elsagate / The Chamber</title>
+<guid isPermaLink="false">https://pinecast.com/guid/5878f3e4-4ad9-4a2e-bd9a-15b765f5a711</guid>
+<pubDate>Fri, 02 Feb 2018 19:00:00 -0000</pubDate>
+
+<itunes:duration>00:31:42</itunes:duration>
+<link>https://the-rabbit-hole-podcast.pinecast.co/episode/5878f3e44ad94a2e/elsagate-the-chamber</link>
+<description><![CDATA[In our first episode, Lauren dives into the disturbing trend targeting kids on youtube, known as Elsagate. Emily discovers a long lost 2000’s game show that was cancelled because, well, it was effing crazy.]]></description>
+<itunes:explicit>yes</itunes:explicit>
+<enclosure url="https://pinecast.com/listen/5878f3e4-4ad9-4a2e-bd9a-15b765f5a711.mp3?source=rss&amp;ext=asset.mp3" length="30446462" type="audio/mp3" />
+</item>
+</channel>
+<!-- generated in 0s 20764us -->
+</rss>

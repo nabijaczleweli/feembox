@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>eater</title>
+        <description>it&#039;s normal i swear</description>
+        <link>https://blog.eater.me/</link>
+        <ttl>1800</ttl>
+                    <item>
+                <title>The NAS pre-flight checklist</title>
+                <description>A small list of things to take into account when planning your NAS</description>
+                <link>https://blog.eater.me/post/pre-flight-nas-checklist.md</link>
+                <guid isPermaLink="false">pre-flight-nas-checklist.md</guid>
+                <pubDate>Fri, 23 Oct 2020 13:07:00 +0000</pubDate>
+            </item>
+                    <item>
+                <title>eater&#039;s Ero Evaluations: Gal*Gun 2</title>
+                <description>It&#039;s good that I let go of my shame ages ago</description>
+                <link>https://blog.eater.me/post/games/galgun2.md</link>
+                <guid isPermaLink="false">games/galgun2.md</guid>
+                <pubDate>Wed, 27 May 2020 19:40:35 +0000</pubDate>
+            </item>
+                    <item>
+                <title>Blog speedrun any%</title>
+                <description>Writing a blog in like 4 hours</description>
+                <link>https://blog.eater.me/post/blog-speedrun-anyp.md</link>
+                <guid isPermaLink="false">blog-speedrun-anyp.md</guid>
+                <pubDate>Tue, 19 May 2020 23:11:00 +0000</pubDate>
+            </item>
+            </channel>
+</rss>

@@ -1,5 +1,7 @@
 use feembox::util::{self, MESSAGE_ID_HEADER, LINK_REL_FILTER};
 use feed_rs::parser::parse as parse_feed;
+use std::collections::BTreeSet;
+use std::fs;
 
 mod display_feed_person;
 
@@ -38,5 +40,22 @@ fn message_id_for_feed_entry() {
 
     for (entry, entry_id) in kdist_feed.entries.iter().zip(KDIST_ENTRY_IDS.iter()) {
         assert_eq!(util::message_id_for_feed_entry(&kdist_feed, entry), format!("{}@{}", entry_id, KDIST_ID));
+    }
+}
+
+
+#[test]
+fn message_id_for_feed_entry_feeds() {
+    for mut path in fs::read_dir("test-data/feed.ids").unwrap().map(|e| e.unwrap().path()) {
+        if path.extension().unwrap() != "ids" {
+            continue;
+        }
+        let ids_s = fs::read_to_string(&path).unwrap();
+        let ids = ids_s.lines().collect::<BTreeSet<_>>();
+
+        path.set_extension("feed");
+        let feed = parse_feed(&fs::read(&path).unwrap()[..]).unwrap();
+        let feed_ids = feed.entries.iter().map(|entry| util::message_id_for_feed_entry(&feed, entry)).collect::<Vec<_>>();
+        assert_eq!(feed_ids.iter().map(|s| s.as_str()).collect::<BTreeSet<_>>(), ids, "{}", path.display());
     }
 }

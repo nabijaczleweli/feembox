@@ -1,0 +1,1285 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>RustSec Advisories</title><id>https://rustsec.org/feed.xml</id><updated>2023-08-07T12:00:00+00:00</updated><author><name>RustSec</name></author><icon>https://rustsec.org/favicon.ico</icon><link href="https://rustsec.org/feed.xml" rel="self" type="application/atom+xml"/><link href="https://rustsec.org/" rel="alternate" type="text/html"/><subtitle xml:lang="en">Security advisories filed against Rust crates</subtitle><entry><title>RUSTSEC-2023-0049: tui is unmaintained</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0049.html</id><updated>2023-08-07T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0049.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0049: tui is unmaintained"/><published>2023-08-07T12:00:00+00:00</published><summary xml:lang="en">`tui` is unmaintained; use `ratatui` instead</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/tui/RUSTSEC-2023-0049.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/tui/RUSTSEC-2023-0049.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0049
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;&lt;code&gt;tui&lt;/code&gt; is unmaintained; use &lt;code&gt;ratatui&lt;/code&gt; instead&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-08-07&quot;&gt;
+          August  7, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-08-07&quot;&gt;
+          August  7, 2023
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/tui.html&quot;&gt;tui&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/tui&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unmaintained
+        
+      &lt;/dd&gt;
+
+      
+
+      
+
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/fdehau/tui-rs/issues/654&quot;&gt;
+          https://github.com/fdehau/tui-rs/issues/654
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        no patched versions
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;The &lt;a href=&quot;https://crates.io/crates/tui&quot;&gt;&lt;code&gt;tui&lt;/code&gt;&lt;/a&gt; crate is no longer maintained.&lt;/p&gt;
+&lt;p&gt;Consider using the &lt;a href=&quot;https://crates.io/crates/ratatui&quot;&gt;&lt;code&gt;ratatui&lt;/code&gt;&lt;/a&gt; crate instead.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0048: Unsoundness in intaglio</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0048.html</id><updated>2023-07-29T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0048.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0048: Unsoundness in intaglio"/><published>2023-07-26T12:00:00+00:00</published><summary xml:lang="en">Unsoundness in `intern` methods on `intaglio` symbol interners</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/intaglio/RUSTSEC-2023-0048.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/intaglio/RUSTSEC-2023-0048.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0048
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;Unsoundness in &lt;code&gt;intern&lt;/code&gt; methods on &lt;code&gt;intaglio&lt;/code&gt; symbol interners&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-07-26&quot;&gt;
+          July 26, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-07-26&quot;&gt;
+          July 26, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-29&quot;&gt;
+          (last modified: July 29, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/intaglio.html&quot;&gt;intaglio&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/intaglio&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unsound
+        
+      &lt;/dd&gt;
+
+      
+
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-gch5-hwqf-mxhp&quot;&gt;GHSA-gch5-hwqf-mxhp&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/artichoke/intaglio/pull/236&quot;&gt;
+          https://github.com/artichoke/intaglio/pull/236
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;gt;=1.9.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+    &lt;dl&gt;
+      &lt;dt&gt;Affected Functions&lt;/dt&gt;
+      &lt;dd&gt;Version&lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;intaglio::SymbolTable::intern&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;1.9.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;intaglio::bytes::SymbolTable::intern&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;1.9.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;intaglio::cstr::SymbolTable::intern&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;1.9.0, &amp;gt;=1.5.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;intaglio::osstr::SymbolTable::intern&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;1.9.0, &amp;gt;=1.5.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;intaglio::path::SymbolTable::intern&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;1.9.0, &amp;gt;=1.5.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+    &lt;/dl&gt;
+    
+
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;Affected versions of this crate have a stacked borrows violation when creating
+references to interned contents. All interner types are affected.&lt;/p&gt;
+&lt;p&gt;The flaw was corrected in version 1.9.0 by reordering move and borrowing
+operations and storing interned contents by raw pointer instead of as a &lt;code&gt;Box&lt;/code&gt;.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0047: Unsoundness in lmdb-rs</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0047.html</id><updated>2023-07-29T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0047.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0047: Unsoundness in lmdb-rs"/><published>2023-07-18T12:00:00+00:00</published><summary xml:lang="en">impl `FromMdbValue` for bool is unsound</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/lmdb-rs/RUSTSEC-2023-0047.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/lmdb-rs/RUSTSEC-2023-0047.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0047
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;impl &lt;code&gt;FromMdbValue&lt;/code&gt; for bool is unsound&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-26&quot;&gt;
+          June 26, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-07-18&quot;&gt;
+          July 18, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-29&quot;&gt;
+          (last modified: July 29, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/lmdb-rs.html&quot;&gt;lmdb-rs&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/lmdb-rs&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unsound
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      &lt;dt id=&quot;keywords&quot;&gt;Keywords&lt;/dt&gt;
+      &lt;dd&gt;
+        
+          &lt;a href=&quot;/keywords/unsound.html&quot;&gt;#unsound&lt;/a&gt;
+        
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-f9g6-fp84-fv92&quot;&gt;GHSA-f9g6-fp84-fv92&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/vhbit/lmdb-rs/issues/67&quot;&gt;
+          https://github.com/vhbit/lmdb-rs/issues/67
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        no patched versions
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;The implementation of &lt;code&gt;FromMdbValue&lt;/code&gt; have several unsoundness issues. First of all, it allows to reinterpret arbitrary bytes as a bool and could make undefined behavior happen with safe function. Secondly, it allows transmuting pointer without taking memory layout into consideration. The details of reproducing the bug were included in url above.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0046: Unsoundness in cyfs-base</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0046.html</id><updated>2023-07-08T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0046.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0046: Unsoundness in cyfs-base"/><published>2023-06-22T12:00:00+00:00</published><summary xml:lang="en">Misaligned pointer dereference in `ChunkId::new`</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/cyfs-base/RUSTSEC-2023-0046.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/cyfs-base/RUSTSEC-2023-0046.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0046
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;Misaligned pointer dereference in &lt;code&gt;ChunkId::new&lt;/code&gt;&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-15&quot;&gt;
+          June 15, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-22&quot;&gt;
+          June 22, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-08&quot;&gt;
+          (last modified: July  8, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/cyfs-base.html&quot;&gt;cyfs-base&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/cyfs-base&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unsound
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      &lt;dt id=&quot;keywords&quot;&gt;Keywords&lt;/dt&gt;
+      &lt;dd&gt;
+        
+          &lt;a href=&quot;/keywords/alignment.html&quot;&gt;#alignment&lt;/a&gt;
+        
+          &lt;a href=&quot;/keywords/unsound.html&quot;&gt;#unsound&lt;/a&gt;
+        
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-g753-ghr7-q33w&quot;&gt;GHSA-g753-ghr7-q33w&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/buckyos/CYFS/issues/275&quot;&gt;
+          https://github.com/buckyos/CYFS/issues/275
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        no patched versions
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;The function &lt;code&gt;ChunkId::new&lt;/code&gt; creates a misaligned pointer by casting mutable pointer of &lt;code&gt;u8&lt;/code&gt; slice which has alignment 1 to the mutable pointer of &lt;code&gt;u32&lt;/code&gt; which has alignment 4, and dereference the misaligned pointer leading UB, which should not be allowed in safe function.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0045: Unsoundness in memoffset</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0045.html</id><updated>2023-07-08T12:00:00+00:00</updated><category term="memory-corruption"/><link href="https://rustsec.org/advisories/RUSTSEC-2023-0045.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0045: Unsoundness in memoffset"/><published>2023-06-21T12:00:00+00:00</published><summary xml:lang="en">memoffset allows reading uninitialized memory</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/memoffset/RUSTSEC-2023-0045.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/memoffset/RUSTSEC-2023-0045.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0045
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;memoffset allows reading uninitialized memory&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-21&quot;&gt;
+          June 21, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-21&quot;&gt;
+          June 21, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-08&quot;&gt;
+          (last modified: July  8, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/memoffset.html&quot;&gt;memoffset&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/memoffset&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unsound
+        
+      &lt;/dd&gt;
+
+      
+      &lt;dt id=&quot;categories&quot;&gt;Categories&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;a href=&quot;/categories/memory-corruption.html&quot;&gt;memory-corruption&lt;/a&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;keywords&quot;&gt;Keywords&lt;/dt&gt;
+      &lt;dd&gt;
+        
+          &lt;a href=&quot;/keywords/memoffset.html&quot;&gt;#memoffset&lt;/a&gt;
+        
+          &lt;a href=&quot;/keywords/offset.html&quot;&gt;#offset&lt;/a&gt;
+        
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-wfg4-322g-9vqv&quot;&gt;GHSA-wfg4-322g-9vqv&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/Gilnaa/memoffset/issues/24&quot;&gt;
+          https://github.com/Gilnaa/memoffset/issues/24
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;gt;=0.6.2&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+    &lt;dl&gt;
+      &lt;dt&gt;Affected Functions&lt;/dt&gt;
+      &lt;dd&gt;Version&lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;memoffset::offset_of&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;0.6.2&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+    &lt;/dl&gt;
+    
+
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;memoffset allows attempt of reading data from address &lt;code&gt;0&lt;/code&gt; with arbitrary type. This behavior is an undefined behavior because address &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;std::mem::size_of&amp;lt;T&amp;gt;&lt;/code&gt; may not have valid bit-pattern with &lt;code&gt;T&lt;/code&gt;. Old implementation dereferences uninitialized memory obtained from &lt;code&gt;std::mem::align_of&lt;/code&gt;. Older implementation prior to it allows using uninitialized data obtained from &lt;code&gt;std::mem::uninitialized&lt;/code&gt; with arbitrary type then compute offset by taking the address of field-projection. This may also result in an undefined behavior for &amp;quot;father&amp;quot; that includes (directly or transitively) type that &lt;a href=&quot;https://doc.rust-lang.org/nightly/reference/behavior-considered-undefined.html&quot;&gt;does not allow to be uninitialized&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This flaw was corrected by using &lt;code&gt;std::ptr::addr_of&lt;/code&gt; in &lt;a href=&quot;https://github.com/Gilnaa/memoffset/pull/50&quot;&gt;https://github.com/Gilnaa/memoffset/pull/50&lt;/a&gt;.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0044: Vulnerability in openssl</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0044.html</id><updated>2023-07-08T12:00:00+00:00</updated><category term="memory-exposure"/><link href="https://rustsec.org/advisories/RUSTSEC-2023-0044.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0044: Vulnerability in openssl"/><published>2023-06-20T12:00:00+00:00</published><summary xml:lang="en">`openssl` `X509VerifyParamRef::set_host` buffer over-read</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/openssl/RUSTSEC-2023-0044.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/openssl/RUSTSEC-2023-0044.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0044
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;&lt;code&gt;openssl&lt;/code&gt; &lt;code&gt;X509VerifyParamRef::set_host&lt;/code&gt; buffer over-read&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-20&quot;&gt;
+          June 20, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-20&quot;&gt;
+          June 20, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-08&quot;&gt;
+          (last modified: July  8, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/openssl.html&quot;&gt;openssl&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/openssl&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        Vulnerability
+        
+      &lt;/dd&gt;
+
+      
+      &lt;dt id=&quot;categories&quot;&gt;Categories&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;a href=&quot;/categories/memory-exposure.html&quot;&gt;memory-exposure&lt;/a&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-xcf7-rvmh-g6q4&quot;&gt;GHSA-xcf7-rvmh-g6q4&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/sfackler/rust-openssl/issues/1965&quot;&gt;
+          https://github.com/sfackler/rust-openssl/issues/1965
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;gt;=0.10.55&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+    &lt;dl&gt;
+      &lt;dt&gt;Affected Functions&lt;/dt&gt;
+      &lt;dd&gt;Version&lt;/dd&gt;
+      
+      &lt;dt&gt;&lt;code&gt;openssl::x509::verify::X509VerifyParamRef::set_host&lt;/code&gt;&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;lt;0.10.55, &amp;gt;=0.10.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+    &lt;/dl&gt;
+    
+
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;When this function was passed an empty string, &lt;code&gt;openssl&lt;/code&gt; would attempt to call &lt;code&gt;strlen&lt;/code&gt; on it, reading arbitrary memory until it reached a NUL byte.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0043: ftp is unmaintained</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0043.html</id><updated>2023-06-14T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0043.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0043: ftp is unmaintained"/><published>2023-06-14T12:00:00+00:00</published><summary xml:lang="en">ftp is unmaintained, use suppaftp instead</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/ftp/RUSTSEC-2023-0043.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/ftp/RUSTSEC-2023-0043.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0043
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;ftp is unmaintained, use suppaftp instead&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-02-20&quot;&gt;
+          February 20, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-14&quot;&gt;
+          June 14, 2023
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/ftp.html&quot;&gt;ftp&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/ftp&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unmaintained
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      &lt;dt id=&quot;keywords&quot;&gt;Keywords&lt;/dt&gt;
+      &lt;dd&gt;
+        
+          &lt;a href=&quot;/keywords/ssl.html&quot;&gt;#ssl&lt;/a&gt;
+        
+          &lt;a href=&quot;/keywords/wont-build.html&quot;&gt;#wont-build&lt;/a&gt;
+        
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/mattnenterprise/rust-ftp/pull/92&quot;&gt;
+          https://github.com/mattnenterprise/rust-ftp/pull/92
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        no patched versions
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;The &lt;a href=&quot;https://crates.io/crates/ftp&quot;&gt;&lt;code&gt;ftp&lt;/code&gt;&lt;/a&gt; crate is not maintained any more;
+use &lt;a href=&quot;https://crates.io/crates/suppaftp&quot;&gt;&lt;code&gt;suppaftp&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0042: Unsoundness in ouroboros</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0042.html</id><updated>2023-07-08T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0042.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0042: Unsoundness in ouroboros"/><published>2023-06-12T12:00:00+00:00</published><summary xml:lang="en">Ouroboros is Unsound</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/ouroboros/RUSTSEC-2023-0042.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/ouroboros/RUSTSEC-2023-0042.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0042
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;Ouroboros is Unsound&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-11&quot;&gt;
+          June 11, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-12&quot;&gt;
+          June 12, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-07-08&quot;&gt;
+          (last modified: July  8, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/ouroboros.html&quot;&gt;ouroboros&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/ouroboros&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unsound
+        
+      &lt;/dd&gt;
+
+      
+
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-87mf-9wg6-ppf8&quot;&gt;GHSA-87mf-9wg6-ppf8&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/joshua-maros/ouroboros/issues/88&quot;&gt;
+          https://github.com/joshua-maros/ouroboros/issues/88
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;gt;=0.16.0&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Ouroboros has a soundness problem, but a fix has been implemented in 0.16.0.&lt;/p&gt;
+&lt;h2&gt;More details:&lt;/h2&gt;
+&lt;p&gt;In 0.15.0, Ouroboros works internally by creating a struct where all
+uses of &apos;this are replaced by &apos;static. However, a recent addition to
+Miri checks that references passed to functions are valid during the
+entire execution of the function, even when those references are
+passed inside a struct. This poses an issue for dropping
+self-referencing values, as the reference becomes invalid during the
+dropping process. Effectively, since self-referencing structs are
+not allowed in vanilla Rust, there is no allowance for dropping data
+during a function that has also been given a reference to that data.
+There&apos;s usually no way to pass a and &amp;amp;a to the same function.&lt;/p&gt;
+&lt;p&gt;A fix was attempted, where the struct would be turned in to a raw
+byte array and only transformed back into the underlying data type
+inside each function. This is allowable as a reference can be
+created and die over the body of a function, as long as the
+reference was created inside the function. However, this is also
+not sound if the original struct contains padding. There is no
+way to initialize padding bytes to a known value that Miri will
+accept, so when it is cast to an array some of the bytes contain
+uninitialized values. This is not acceptable (despite the fact
+that these bytes are never read) due to the potential for
+optimizations that may read from the uninitialized bytes. Besides
+which, this fix does not allow for template or constant parameters
+as there is no way to check the size of a templated type without
+giving specific, concrete values for the template parameters.&lt;/p&gt;
+&lt;p&gt;The final solution was to use this fix while wrapping the raw byte
+array in &lt;code&gt;MaybeUninit&amp;lt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0041: Vulnerability in trust-dns-server</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0041.html</id><updated>2023-06-13T12:00:00+00:00</updated><category term="denial-of-service"/><link href="https://rustsec.org/advisories/RUSTSEC-2023-0041.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0041: Vulnerability in trust-dns-server"/><published>2023-06-03T12:00:00+00:00</published><summary xml:lang="en">Remote Attackers can cause Denial-of-Service (packet loops) with crafted DNS packets</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/trust-dns-server/RUSTSEC-2023-0041.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/trust-dns-server/RUSTSEC-2023-0041.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0041
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;Remote Attackers can cause Denial-of-Service (packet loops) with crafted DNS packets&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-01&quot;&gt;
+          June  1, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-03&quot;&gt;
+          June  3, 2023
+        &lt;/time&gt;
+        
+        &lt;time datetime=&quot;2023-06-13&quot;&gt;
+          (last modified: June 13, 2023)
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/trust-dns-server.html&quot;&gt;trust-dns-server&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/trust-dns-server&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        Vulnerability
+        
+      &lt;/dd&gt;
+
+      
+      &lt;dt id=&quot;categories&quot;&gt;Categories&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;a href=&quot;/categories/denial-of-service.html&quot;&gt;denial-of-service&lt;/a&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;keywords&quot;&gt;Keywords&lt;/dt&gt;
+      &lt;dd&gt;
+        
+          &lt;a href=&quot;/keywords/packet-loop.html&quot;&gt;#packet-loop&lt;/a&gt;
+        
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;aliases&quot;&gt;Aliases&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;ul&gt;
+          
+          &lt;li&gt;
+            
+            &lt;a href=&quot;https://github.com/advisories/GHSA-5fm9-h728-fwpj&quot;&gt;GHSA-5fm9-h728-fwpj&lt;/a&gt;
+            
+          &lt;/li&gt;
+          
+        &lt;/ul&gt;
+      &lt;/dd&gt;
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/bluejekyll/trust-dns/pull/1952&quot;&gt;
+          https://github.com/bluejekyll/trust-dns/pull/1952
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;ul&gt;
+          
+          &lt;li&gt;&lt;code&gt;^0.22.1&lt;/code&gt;&lt;/li&gt;
+          
+          &lt;li&gt;&lt;code&gt;&amp;gt;=0.23.0-alpha.3&lt;/code&gt;&lt;/li&gt;
+          
+        &lt;/ul&gt;
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;trust-dns and trust-dns-server are vulnerable to remotely triggered denial-of-service attacks, consuming both network and CPU resources.
+DNS messages with the QR=1 bit set are responded to with a &lt;code&gt;FormErr&lt;/code&gt; response.
+This allows creating a traffic loop, in which these &lt;code&gt;FormErr&lt;/code&gt; responses are sent nonstop between vulnerable servers.&lt;/p&gt;
+&lt;p&gt;There are two scenarios how this can be exploited: 1) Create a loop between two instances of trust-dns, consuming network resources, or 2) consuming the CPU of a single instance.&lt;/p&gt;
+&lt;p&gt;With two instances &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;B&lt;/em&gt; an attacker sends a DNS query with a spoofed source IP address to &lt;em&gt;A&lt;/em&gt;.
+&lt;em&gt;A&lt;/em&gt; replies with a &lt;code&gt;FormErr&lt;/code&gt; to &lt;em&gt;B&lt;/em&gt;.
+Now both servers with ping-pong the message back and forth until by chance the packet is dropped in the network.
+Multiple spoofed packets can be sent by the attacker, increasing resource consumption.&lt;/p&gt;
+&lt;p&gt;A single server can get locked up replying to itself.
+Same setup as above, but now &lt;em&gt;A&lt;/em&gt; sends the reply to itself.
+The packet is sent out as fast as the CPU and network stack manage.
+This locks up a CPU core.
+Multiple packets from the attacker consume multiple CPU cores.&lt;/p&gt;
+
+  &lt;/article&gt;</content></entry><entry><title>RUSTSEC-2023-0040: users is unmaintained</title><id>https://rustsec.org/advisories/RUSTSEC-2023-0040.html</id><updated>2023-06-01T12:00:00+00:00</updated><link href="https://rustsec.org/advisories/RUSTSEC-2023-0040.html" rel="alternate" type="text/html" title="RUSTSEC-2023-0040: users is unmaintained"/><published>2023-06-01T12:00:00+00:00</published><summary xml:lang="en">`users` crate is unmaintained</summary><content xml:lang="en" type="html">  &lt;article&gt;
+    
+        &lt;span class=&quot;floating-menu&quot;&gt;
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/commits/main/crates/users/RUSTSEC-2023-0040.md&quot;&gt;History&lt;/a&gt; ⋅ 
+          &lt;a href=&quot;https://github.com/RustSec/advisory-db/edit/main/crates/users/RUSTSEC-2023-0040.md&quot;&gt;Edit&lt;/a&gt;
+        &lt;/span&gt;
+    
+
+    &lt;header&gt;
+      &lt;h1&gt;
+        
+        RUSTSEC-2023-0040
+        
+      &lt;/h1&gt;
+      &lt;span class=&quot;subtitle&quot;&gt;&lt;p&gt;&lt;code&gt;users&lt;/code&gt; crate is unmaintained&lt;/p&gt;
+&lt;/span&gt;
+    &lt;/header&gt;
+
+    
+
+    &lt;dl&gt;
+      &lt;dt id=&quot;reported&quot;&gt;Reported&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-01&quot;&gt;
+          June  1, 2023
+        &lt;/time&gt;
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;issued&quot;&gt;Issued&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;time datetime=&quot;2023-06-01&quot;&gt;
+          June  1, 2023
+        &lt;/time&gt;
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;package&quot;&gt;Package&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        
+        &lt;a href=&quot;/packages/users.html&quot;&gt;users&lt;/a&gt;
+          (&lt;a href=&quot;https://crates.io/crates/users&quot;&gt;crates.io&lt;/a&gt;)
+        
+        
+      &lt;/dd&gt;
+
+      &lt;dt id=&quot;type&quot;&gt;Type&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        &lt;span class=&quot;tag info&quot;&gt;INFO&lt;/span&gt;
+        Unmaintained
+        
+      &lt;/dd&gt;
+
+      
+
+      
+
+      
+
+      
+      &lt;dt id=&quot;details&quot;&gt;Details&lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href=&quot;https://github.com/ogham/rust-users/issues/54&quot;&gt;
+          https://github.com/ogham/rust-users/issues/54
+        &lt;/a&gt;
+      &lt;/dd&gt;
+      
+
+      
+
+      
+      
+
+      &lt;dt id=&quot;patched&quot;&gt;Patched&lt;/dt&gt;
+      &lt;dd&gt;
+        
+        no patched versions
+        
+      &lt;/dd&gt;
+
+      
+
+      
+      
+    &lt;/dl&gt;
+
+    
+    
+
+    &lt;h3 id=&quot;description&quot;&gt;Description&lt;/h3&gt;
+    &lt;p&gt;The &lt;code&gt;users&lt;/code&gt; crate hasn&apos;t seen any action since 2020-10-08. The developer seems &lt;a href=&quot;https://github.com/ogham/rust-users/issues/54&quot;&gt;MIA&lt;/a&gt; since.&lt;/p&gt;
+&lt;h2&gt;Recommended alternatives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://crates.io/crates/sysinfo&quot;&gt;&lt;code&gt;sysinfo&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/article&gt;</content></entry></feed>

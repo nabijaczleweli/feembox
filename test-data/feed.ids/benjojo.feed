@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>benjojo blog</title>
+    <link>https://blog.benjojo.co.uk</link>
+    <description>Programming, Networking and some things I found hard to fix at some point</description>
+    <managingEditor>ben@benjojo.co.uk (Ben Cartwright-Cox)</managingEditor>
+    <pubDate>Fri, 21 Jul 2023 10:26:35 +0000</pubDate>
+    <item>
+      <title>Driver adventures for a 1999 webcam&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/quickcam-usb-userspace-driver</link>
+      <description>&lt;h1&gt;Driver adventures for a 1999 webcam&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/tSCFLRXleK&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;We generally know that when we buy a piece of technology that it will not last forever, connectors wear out and/or go out of fashion. But I think the most frust&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>62497cd5-986b-40cd-729f-0c2ff59423e</guid>
+      <pubDate>Fri, 28 Apr 2023 10:18:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Going multipath without Multipath TCP&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/multipath-without-mptcp</link>
+      <description>&lt;h1&gt;Going multipath without Multipath TCP&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/9YYyTX5q2s&#34; alt=&#34;title card&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Gigabit ethernet has been around for a long time, it&amp;rsquo;s so ubiquitous that there is a very strong chance that if you have a RJ-45 port on your compu&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>d768bfa-1534-4025-6742-8ab8f82dcd1</guid>
+      <pubDate>Thu, 24 Feb 2022 11:40:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Who is squatting IPv4 addresses?&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ip-address-squatting</link>
+      <description>&lt;h1&gt;Who is squatting IPv4 addresses?&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/RQtdF3XiHz&#34; alt=&#34;title card&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;It&amp;rsquo;s an established fact on the internet that we have &lt;a href=&#34;https://en.wikipedia.org/wiki/IPv4_address_exhaustion&#34;&gt;ran out of IP(v4) addresses&lt;/a&gt;, and we are st&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>7af1cf7e-93a0-40cb-78f7-f7ff8cbf9a</guid>
+      <pubDate>Thu, 17 Feb 2022 11:30:04 +0000</pubDate>
+    </item>
+    <item>
+      <title>LTO Tape data storage for Linux nerds&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/lto-tape-backups-for-linux-nerds</link>
+      <description>&lt;h1&gt;LTO Tape data storage for Linux nerds&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/ar4TGMG8ol&#34; alt=&#34;The insides of a LTO-5 tape&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Tape storage is surprisingly not dead! If you are here then you may be considering using LTO tape as part of your backup or your long t&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>1bbbb7c2-7c72-40d9-8e0-fd82fdea3677</guid>
+      <pubDate>Thu, 27 Jan 2022 11:23:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ghost in the ethernet optic&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/smart-sfp-linux-inside</link>
+      <description>&lt;h1&gt;Ghost in the ethernet optic&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/lLAtOGxGk6&#34; alt=&#34;A Smart SFP&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;A few months ago I stumbled on a &lt;a href=&#34;https://twitter.com/astraleureka/status/1435853842160095232&#34;&gt;tweet&lt;/a&gt; pointing out a kind of [SFP optic](&lt;a href=&#34;https://en.wikiped&#34;&gt;https://en.wikiped&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>105d74c-958a-4042-70d6-adea6cc8f541</guid>
+      <pubDate>Thu, 13 Jan 2022 11:43:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>One of these JPEGs is not like the other&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/not-all-jpegs-are-the-same</link>
+      <description>&lt;h1&gt;One of these JPEGs is not like the other&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&amp;ldquo;JPEG&amp;rdquo; or the image encoding specification by the &amp;ldquo;Joint Photographic Experts Group&amp;rdquo; (JPEG) is a truly universal format at this stage. You really cannot go very far on the internet without seeing a JPEG file&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>29a2b6ad-ddf7-40a5-2c71-edb9333e34b</guid>
+      <pubDate>Fri, 19 Nov 2021 10:47:26 +0000</pubDate>
+    </item>
+    <item>
+      <title>Imaging mounted disk volumes under duress &#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/imaging-mounted-disk-volumes-live</link>
+      <description>&lt;h1&gt;Imaging mounted disk volumes under duress&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/5Jgns9NmP0&#34; alt=&#34;drive-jenga&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Backups are critical. If you are lucky and organised you have a set of useful backup primitives, such as Point in Time snapshots on your Infra&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>741a4420-141c-4010-322-703384b78ce8</guid>
+      <pubDate>Mon, 20 Sep 2021 11:25:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hunting down the stuck BGP routes&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/bgp-stuck-routes-tcp-zero-window</link>
+      <description>&lt;h1&gt;Hunting down the stuck BGP routes&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;BGP is the glue between all of the thousands of border routers that make up the internet (you can find &lt;a href=&#34;https://blog.benjojo.co.uk/post/bgp-battleships&#34;&gt;this post (battleships)&lt;/a&gt; and [this post (EvE)](&lt;a href=&#34;https://blog.b&#34;&gt;https://blog.b&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>45d6dd92-84cd-4053-77cc-53fdab90aa69</guid>
+      <pubDate>Wed, 21 Apr 2021 10:12:35 +0000</pubDate>
+    </item>
+    <item>
+      <title>Splitting the ping&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ping-with-loss-latency-split</link>
+      <description>&lt;h1&gt;Splitting the ping&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/2k8lf46vtp&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Ping_(networking_utility)&#34;&gt;Ping&lt;/a&gt; is one of the fundamental pillars of networking. It&amp;rsquo;s simple, universally supported, and is normally one of the f&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>de46a0e1-f75d-403c-5656-bb62cc1eac0</guid>
+      <pubDate>Mon, 01 Mar 2021 11:57:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Hacking Ethernet out of Fibre Channel cards&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ip-over-fibre-channel-hack</link>
+      <description>&lt;h1&gt;Hacking Ethernet out of Fibre Channel cards&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/CtSNenJ5eB&#34; alt=&#34;A Fibre Channel Card&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;This story, &lt;a href=&#34;https://blog.benjojo.co.uk/post/userspace-usb-drivers&#34;&gt;like another in the past&lt;/a&gt;, started as an eBay purchase that I wo&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>c3bbf41-de6d-4029-701-35c0ab7e20</guid>
+      <pubDate>Wed, 09 Sep 2020 10:32:42 +0000</pubDate>
+    </item>
+    <item>
+      <title>Stressing the network when it&#39;s already down&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/speedtest-congestion-feedback-loop</link>
+      <description>&lt;h1&gt;Stressing the network when it&amp;rsquo;s already down&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/U6eZCfA74F&#34; alt=&#34;A rough demo of what it feels like when your customers make more load as a result of you being overloaded&#34; /&gt;&#xA;[Impact by Eric Wienke, edits by Ben Cartwright-&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>342a38e4-ab0-408a-40b9-203df4f927bb</guid>
+      <pubDate>Thu, 30 Apr 2020 10:08:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>How 1500 bytes became the MTU of the internet&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/why-is-ethernet-mtu-1500</link>
+      <description>&lt;h1&gt;How 1500 bytes became the MTU of the internet&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div class=&#34;warningbox&#34; style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>3786a7d8-80de-4028-649b-c8cea4eb8a7d</guid>
+      <pubDate>Wed, 19 Feb 2020 11:48:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>Writing userspace USB drivers for abandoned devices&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/userspace-usb-drivers</link>
+      <description>&lt;h1&gt;Writing userspace USB drivers for abandoned devices&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div class=&#34;warningbox&#34; style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Transl&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>c5ea77ac-68e-4026-175f-9ad3c1ccc5e3</guid>
+      <pubDate>Sun, 17 Nov 2019 12:39:16 +0000</pubDate>
+    </item>
+    <item>
+      <title>You cannot cURL under pressure&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/you-cant-curl-under-pressure</link>
+      <description>&lt;h1&gt;You cannot cURL under pressure&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;a href=&#34;https://curl.haxx.se/&#34;&gt;cURL&lt;/a&gt;. The wonderful HTTP plumbing tool that powers both a lot of command line debugging and bash scripts, but also exists as a strong foundation in our applications in the form of libcurl.&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>f92a8512-c364-401c-47d-c63496256dde</guid>
+      <pubDate>Sat, 12 Oct 2019 11:54:07 +0000</pubDate>
+    </item>
+    <item>
+      <title>The year of RPKI on the control plane&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/the-year-of-rpki-on-the-control-plane</link>
+      <description>&lt;h1&gt;The year of RPKI on the control plane&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;This post is a textual version of the talk I gave at NLNOG 2019, You can watch the recording of the talk on youtube below if that&amp;rsquo;s your preferred medium:&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&amp;lt;iframe width=&amp;ldquo;700&amp;rdquo; height=&amp;ldquo;328&amp;rdquo; src=&amp;ldquo;&lt;a href=&#34;https://www&#34;&gt;https://www&lt;/a&gt;.&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>6ea328fa-bee-4078-6bb1-485f25f6aacf</guid>
+      <pubDate>Mon, 09 Sep 2019 12:38:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Teaching a cheap ethernet switch new tricks&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/dell-switch-hacking</link>
+      <description>&lt;h1&gt;Teaching a cheap ethernet switch new tricks&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/gCEgcMRz09&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Ethernet rules everything around us, a large proportion of our systems communicate to each other with ethernet somewhere in the line. And the fast pac&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>95381c-3eca-40c3-2376-a6249eeb6fed</guid>
+      <pubDate>Thu, 13 Jun 2019 11:01:50 +0000</pubDate>
+    </item>
+    <item>
+      <title>The speed of BGP network propagation&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/speed-of-bgp-network-propagation</link>
+      <description>&lt;h1&gt;The speed of BGP network propagation&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;style type=&#34;text/css&#34;&gt;td &amp;gt; p{margin:0;color:#000000;font-size:11pt;}table td,table th{padding:0}.c5{border-right-style:solid;padding:2pt 2pt 2pt 2pt;border-bottom-color:#cccccc;border-top-width:1pt;border-right&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>47353581-5b9-40a-8fca-609e12f9cab7</guid>
+      <pubDate>Sat, 04 May 2019 12:28:41 +0000</pubDate>
+    </item>
+    <item>
+      <title>What would a EvE online Internet look like?&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/eve-online-bgp-internet</link>
+      <description>&lt;h1&gt;What would a EvE online Internet look like?&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div class=&#34;warningbox&#34; style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations a&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>2ccbbcad-5674-40dd-65fc-288627c63e</guid>
+      <pubDate>Sun, 03 Feb 2019 15:33:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>A dive into the world of MS-DOS viruses&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/dive-into-the-world-of-dos-viruses</link>
+      <description>&lt;h1&gt;A dive into the world of MS-DOS viruses&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations are available in: &amp;lt;a hre&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>794314e-e1ca-40f5-3bc3-29855499e5c7</guid>
+      <pubDate>Fri, 04 Jan 2019 15:14:43 +0000</pubDate>
+    </item>
+    <item>
+      <title>The state of RPKI: Q4 2018&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/state-of-rpki-in-2018</link>
+      <description>&lt;h1&gt;The state of RPKI: Q4 2018&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;In the fall I did a &lt;a href=&#34;https://blog.benjojo.co.uk/post/are-bgps-security-features-working-yet-rpki&#34;&gt;blog post and talk&lt;/a&gt; on RPKI about how the current methods of measuring RPKI deployment are broken&#xA;because they do not take&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>226dfae9-4dc4-406d-597-6372715b8ae1</guid>
+      <pubDate>Thu, 20 Dec 2018 21:57:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>From VNC to reverse shell&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/qemu-monitor-socket-rce-vnc</link>
+      <description>&lt;h1&gt;From VNC to reverse shell&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Personal websites are weird. We are mostly past the era of having them, as things like twitter and hosted blog services like Medium have taken them over, but I&amp;rsquo;m a hold out. I run both my own blog, and have a landing page&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>4b305031-bcc7-40cc-a05d-832c79090c1</guid>
+      <pubDate>Sun, 23 Sep 2018 14:29:45 +0000</pubDate>
+    </item>
+    <item>
+      <title>Are BGPs security features working yet?&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/are-bgps-security-features-working-yet-rpki</link>
+      <description>&lt;h1&gt;Are BGPs security features working yet?&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div class=&#34;warningbox&#34; style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations are a&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>865ca351-f8b6-407e-c43-5c5f7e0ea34</guid>
+      <pubDate>Mon, 10 Sep 2018 10:15:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building telemetry for tea aka Tealemetry&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/tealemetry-IOT-tea-coaster</link>
+      <description>&lt;h1&gt;Building telemetry for tea aka Tealemetry&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;As a British person, I admittedly conform to the stereotype of tea consumption, and giving I’ve been consuming tea for most of my life I have gained opinions on all kinds of tea based variables. The bigge&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>5cbec2d-5bb5-4081-3471-c313514144</guid>
+      <pubDate>Mon, 06 Aug 2018 10:00:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>The death of a TLD&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/the-death-of-a-tld</link>
+      <description>&lt;h1&gt;The death of a TLD&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Another one bites the dust. The &lt;a href=&#34;https://en.wikipedia.org/wiki/Generic_top-level_domain&#34;&gt;gTLD&lt;/a&gt; gold rush is now seeing a steady flow of TLD&amp;rsquo;s that clearly just didnt work out.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;In the last week, ICANN removed the documentation&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>1661467d-f49-40cc-d677-211e18ca70e9</guid>
+      <pubDate>Thu, 26 Jul 2018 21:35:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Calling the world cup goals 5 seconds before they happen&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/beating-the-broadcast-delay-world-cup</link>
+      <description>&lt;h1&gt;Calling the world cup goals 5 seconds before they happen&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;It&amp;rsquo;s that time again where once every 4 years people get very hyped over kicking a ball around a grass pitch, however this time my own country is actually doing pretty well! At the time of wr&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>8f595cc2-7ff0-4090-7b67-d5b47df82fb</guid>
+      <pubDate>Tue, 10 Jul 2018 11:05:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>The ISPs sharing your DNS query data&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ISPs-sharing-DNS-query-data</link>
+      <description>&lt;h1&gt;The ISPs sharing your DNS query data&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;DNS is fundamental to how the web works, and for most of the population it&amp;rsquo;s completely transparent. Everything on the web is accessed by a DNS name.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Since DNS is an old protocol ([November 1987 in fact](http&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>703d875e-8991-40ed-6e32-2830299f9f34</guid>
+      <pubDate>Mon, 25 Jun 2018 15:10:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>x86 assembly doesn&#39;t have to be scary (interactive)&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/interactive-x86-bootloader-tutorial</link>
+      <description>&lt;h1&gt;x86 assembly doesn&amp;rsquo;t have to be scary (interactive)&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Assembly programming can be intimidating for people who have never looked into it any deeper than a glance, but giving that it underpins how the computers we use work it can be helpful having cont&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>6b6b51-8a72-4029-d835-82faf80e148</guid>
+      <pubDate>Mon, 18 Jun 2018 16:07:05 +0000</pubDate>
+    </item>
+    <item>
+      <title>Payments with less of the evil&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/payments-with-less-evil</link>
+      <description>&lt;h1&gt;Payments with less of the evil&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;I hate card networks.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Visa and MasterCard are a pair of companies that I feel definitely make the world a worse place to live in, due to the fact that they sit in front of a critical part of how modern society wo&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>1cd66e68-fdc1-4054-defc-17cfac73351c</guid>
+      <pubDate>Sat, 02 Jun 2018 18:24:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Playing battleships over BGP&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/bgp-battleships</link>
+      <description>&lt;h1&gt;Playing battleships over BGP&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;BGP is the glue of the internet. For a protocol that was produced on &lt;a href=&#34;http://www.computerhistory.org/atchm/the-two-napkin-protocol/&#34;&gt;two napkins in 1989&lt;/a&gt; it is both amazing and horrifying that it runs almost all of the&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>8dafb9c6-4998-40b-24d6-5c4b48e5325a</guid>
+      <pubDate>Mon, 21 May 2018 12:24:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>Yubikey/Smartcard backed TLS servers&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/tls-https-server-from-a-yubikey</link>
+      <description>&lt;h1&gt;Yubikey/Smartcard backed TLS servers&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/yKe0pA6tYk&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;It has become clear that storing secrets in computers is hard. The best demo to the world that storing secrets on “online” computers is hard and sometimes&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>6175f7d7-b6af-40b0-7ca-dcb7d1d2cc56</guid>
+      <pubDate>Thu, 03 May 2018 11:37:13 +0000</pubDate>
+    </item>
+    <item>
+      <title>Making art with SSH key randomart&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art</link>
+      <description>&lt;h1&gt;Making art with SSH key randomart&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;SSH is everywhere in the development or operations world now. For development it’s what allows you to push to GitHub. For operations it’s what allows you to reasonably securely log into Linux servers.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;SSH&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>7826f86-1c24-40a6-50d9-cb78b3a6ec31</guid>
+      <pubDate>Tue, 01 May 2018 12:10:34 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mapping the whole internet with Hilbert curves&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/scan-ping-the-internet-hilbert-curve</link>
+      <description>&lt;h1&gt;Mapping the whole internet with Hilbert curves&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations are available in:&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>ec3e5175-7665-4034-f5f6-f63df3bf7037</guid>
+      <pubDate>Fri, 20 Apr 2018 16:10:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>Encoding data in dubstep drops&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/encoding-data-into-dubstep-drops</link>
+      <description>&lt;h1&gt;Encoding data in dubstep drops&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;[Warning: Those who can&amp;rsquo;t stand EDM/dubstep, oh boy do I have bad news for you in regards to this blog post]&lt;/em&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Dubstep songs are often criticized as sounding extremely computer generated and often just too aggressi&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>4836bdf1-a9b5-402b-5b13-91e311d7683e</guid>
+      <pubDate>Thu, 12 Apr 2018 11:38:28 +0000</pubDate>
+    </item>
+    <item>
+      <title>Giving every Tor Hidden Service a IPv6 address &#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy</link>
+      <description>&lt;h1&gt;Giving every Tor Hidden Service a IPv6 address&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Tor has a neat feature called &lt;a href=&#34;https://www.torproject.org/docs/onion-services.html.en&#34;&gt;Onion Services&lt;/a&gt; [(A)](&lt;a href=&#34;https://web.archive.org/web/20180330000120/https://www.torproject.org/docs/onion-services.h&#34;&gt;https://web.archive.org/web/20180330000120/https://www.torproject.org/docs/onion-services.h&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>23fe775-e011-40ce-98af-3064c8d3784c</guid>
+      <pubDate>Wed, 04 Apr 2018 11:26:29 +0000</pubDate>
+    </item>
+    <item>
+      <title>DNSFS. Store your files in others DNS resolver caches&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/dns-filesystem-true-cloud-storage-dnsfs</link>
+      <description>&lt;h1&gt;DNSFS. Store your files in others DNS resolver caches&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;A while ago I did a blog post about how long DNS resolvers hold results in cache for, using RIPE Atlas probes testing against their default resolvers (in a lot of cases, the DNS cache on their m&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>8eb96221-cfdc-40a3-8975-3f9c3af56eb</guid>
+      <pubDate>Fri, 12 Jan 2018 16:23:33 +0000</pubDate>
+    </item>
+    <item>
+      <title>A surprising amount of people want to be in North Korea&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/north-korea-dprk-bgp-geoip-fruad</link>
+      <description>&lt;h1&gt;A surprising amount of people want to be in North Korea&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;While the president of the United States and the leader of North Korea were/are currently beefing on Twitter about who should destroy the world first, North Korea was also causing me some pers&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>481374c5-306-40f5-ae98-c5c560ed67f4</guid>
+      <pubDate>Wed, 25 Oct 2017 11:49:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>Email delivery is stuck on IPv4&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/email-delivery-stuck-on-ipv4</link>
+      <description>&lt;h1&gt;Email delivery is stuck on IPv4&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Generally speaking there is nothing that people want to talk about less than email delivery and for good reason, Email is continuously seen as one of those archaic protocols that everyone wants to improve but unfortu&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>83bf963c-704d-4045-f0a9-956eaa56abb6</guid>
+      <pubDate>Tue, 12 Sep 2017 13:26:38 +0000</pubDate>
+    </item>
+    <item>
+      <title>Traceroute Haiku’s&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/traceroute-haikus</link>
+      <description>&lt;h1&gt;Traceroute Haiku’s&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Sometimes I like to think that I do &amp;ldquo;serious&amp;rdquo; blog posts like &lt;a href=&#34;https://blog.benjojo.co.uk/post/linux-icmp-type-69&#34;&gt;&amp;ldquo;The strange case of ICMP Type 69 on Linux&amp;rdquo;&lt;/a&gt; or [&amp;ldquo;Anycast possibly done better&amp;rdquo;](&lt;a href=&#34;https://blog.benjojo.co.uk/post&#34;&gt;https://blog.benjojo.co.uk/post&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>f8def0-1362-4013-6bd0-b24401c553</guid>
+      <pubDate>Thu, 07 Sep 2017 10:50:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>IP over AX.25 over 802.11 with ESP8266&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/AX25-over-wifi-with-ESP8266</link>
+      <description>&lt;h1&gt;IP over AX.25 over 802.11 with ESP8266&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;I love obscure protocols, and while most of the world&amp;rsquo;s legacy X.25 equipment is slowly being shut down. It’s amateur radio derivative &lt;a href=&#34;https://en.wikipedia.org/wiki/AX.25&#34;&gt;AX.25&lt;/a&gt; is getting along pretty wel&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>2e69fa48-c76c-40c9-3751-5c1fb0efb3cc</guid>
+      <pubDate>Sat, 22 Jul 2017 22:17:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>IPv6 anycast possibly done better&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ipv6-backing-anycast-possibly-better</link>
+      <description>&lt;h1&gt;IPv6 anycast possibly done better&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Anycasting IP space has become quite a meme in the networking world in the last few years, with it being used sparsely in the past for UDP based services like DNS. Now it’s being used for TCP based services too,&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>83483fbf-ab7e-4087-c4b3-b42e535f8215</guid>
+      <pubDate>Thu, 20 Jul 2017 16:13:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building a legacy search engine for a legacy protocol&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/building-a-search-engine-for-gopher</link>
+      <description>&lt;h1&gt;Building a legacy search engine for a legacy protocol&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations are availa&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>cd48b59a-a05e-408d-4ce2-df6464c18183</guid>
+      <pubDate>Sun, 21 May 2017 12:26:48 +0000</pubDate>
+    </item>
+    <item>
+      <title>Just how long do DNS resolvers cache last?&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/dns-resolvers-ttl-lasts-over-one-week</link>
+      <description>&lt;h1&gt;Just how long do DNS resolvers cache last?&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;I&amp;rsquo;m sure this has been done before, but you do hear stories from time to time where someone will either drop or increase their DNS TTL&amp;rsquo;s and either see a massive difference, or none at all.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;A lot of pro&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>a595db8a-ed9b-4092-9ceb-1c6cfb613752</guid>
+      <pubDate>Wed, 26 Apr 2017 19:56:47 +0000</pubDate>
+    </item>
+    <item>
+      <title>Monitoring SNMP less devices with ease&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/monitoring-wifi-devices-without-snmp</link>
+      <description>&lt;h1&gt;Monitoring SNMP less devices with ease&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;In the consumer world you will likely encounter networking devices that don&amp;rsquo;t have a easy way to poll for their network stats,&#xA;or in some cases you hate &amp;lt;abbr style=&amp;ldquo;border-bottom: 1px dotted green;&amp;rdquo; title=&amp;ldquo;S&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>eb87f7c6-fc28-40f0-211-14cec9e5083</guid>
+      <pubDate>Sat, 07 Jan 2017 19:48:23 +0000</pubDate>
+    </item>
+    <item>
+      <title>Ludicrously cheap HDMI capture for Linux&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/cheap-hdmi-capture-for-linux</link>
+      <description>&lt;h1&gt;Ludicrously cheap HDMI capture for Linux&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;a href=&#34;https://blog.benjojo.co.uk/asset/HV1vqrFBOb&#34;&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/GLj5iyIgvy&#34; alt=&#34;the inside of the HDMI sender&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;Lately I have had the need to do real time video capture from HDMI devices as o&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>40b9d14-917-405b-37f9-a564177a8486</guid>
+      <pubDate>Mon, 27 Jun 2016 10:25:25 +0000</pubDate>
+    </item>
+    <item>
+      <title>TOTP SSH port fluxing&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/ssh-port-fluxing-with-totp</link>
+      <description>&lt;h1&gt;TOTP SSH port fluxing&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Some people change their SSH port on their servers so that it is slightly harder to find for bots or other nasties and while that is generally viewed as an action of [security through obscurity](&lt;a href=&#34;https://en.wikipedia.org/wiki/S&#34;&gt;https://en.wikipedia.org/wiki/S&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>7c513493-41be-4036-5dc7-d3b8765f4c3c</guid>
+      <pubDate>Sun, 22 May 2016 19:23:39 +0000</pubDate>
+    </item>
+    <item>
+      <title>I may be the only evil (bit) user on the internet&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/evil-bit-RFC3514-real-world-usage</link>
+      <description>&lt;h1&gt;I may be the only evil (bit) user on the internet&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Almost every year a joke &lt;a href=&#34;https://en.wikipedia.org/wiki/Request_for_Comments&#34;&gt;RFC&lt;/a&gt; is made on April 1st (these have caught on so well, that it’s now common to see more than one of these every year&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>90e0e648-96ef-40e5-95b2-17939d15f5d3</guid>
+      <pubDate>Thu, 26 Nov 2015 13:22:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>The strange case of ICMP Type 69 on Linux&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/linux-icmp-type-69</link>
+      <description>&lt;h1&gt;The strange case of ICMP Type 69 on Linux&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.benjojo.co.uk/asset/7LyiZAzskD&#34; alt=&#34;A collectd graph showing IMCP types&#34; /&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;I run &lt;a href=&#34;https://collectd.org/&#34;&gt;collectd stats&lt;/a&gt; on many of my servers and one thing I enable on some (but not all) of the&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>3f245c46-6cf-4065-dde7-e42e6ec0e079</guid>
+      <pubDate>Mon, 12 Oct 2015 18:12:30 +0000</pubDate>
+    </item>
+    <item>
+      <title>robots.txt usage over the Alexa million&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/robots-txt-over-1-million-sites</link>
+      <description>&lt;h1&gt;robots.txt usage over the Alexa million&lt;/h1&gt;&#xA;&#xA;&lt;style&gt;a:link{color: #02008A;};a:visited{color: #02008A;}&lt;/style&gt;&#xA;&#xA;&lt;p&gt;If you ever had to deal with bots while running a site you will have at least at some point looked into robots.txt, a system that isn&amp;rsquo;t rea&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>d2b884f8-5c79-4035-a619-8e21109d36e6</guid>
+      <pubDate>Sat, 05 Sep 2015 16:35:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Propagation slow? Sound the alarms!&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/cloudflare-blue-beacon</link>
+      <description>&lt;h1&gt;Propagation slow? Sound the alarms!&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;i&gt; This is a blog post that I had written for my employer &lt;a href=&#34;https://www.cloudflare.com&#34;&gt;CloudFlare&lt;/a&gt; You can find the full link &lt;a href=&#34;https://blog.cloudflare.com/blue-light-special/&#34;&gt;here&lt;/a&gt; &lt;/i&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;CloudFlare operates a&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>15dbc14-9afc-40be-1856-8ed1a1887be</guid>
+      <pubDate>Fri, 03 Jul 2015 14:39:24 +0000</pubDate>
+    </item>
+    <item>
+      <title>Auditing GitHub users&#39; SSH key quality&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/auditing-github-users-keys</link>
+      <description>&lt;h1&gt;Auditing GitHub users&amp;rsquo; SSH key quality&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;&lt;div style=&#34;color: #0b0c0c;padding: 12px;background-color: #dee0e2;border-style: solid;margin-bottom: 10px;font-weight: 700;border-color: rgb(0, 0, 0);border-width: 5px;&#34;&gt;Translations are available in: &amp;lt;a href&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>e4d01fbc-8dcb-4059-88b2-c11fe216b5ab</guid>
+      <pubDate>Tue, 02 Jun 2015 13:22:03 +0000</pubDate>
+    </item>
+    <item>
+      <title>YAMware Old Malware can still be fun!&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/yamware-msdos-malware-tear-down</link>
+      <description>&lt;h1&gt;YAMware Old Malware can still be fun!&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;(Side note, this blog post was written and then forgotten about quite a while ago, So I&amp;rsquo;ve finished it off, it was halfway done.)&lt;/p&gt;&#xA;&#xA;&lt;p&gt;While on holiday in the evenings with downtime to spare, I had realised that&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>943285-4734-401a-bfe-1f2bd49429a</guid>
+      <pubDate>Sun, 17 May 2015 16:54:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>Detecting anycast addresses and more&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/path-detection-for-anycast</link>
+      <description>&lt;h1&gt;Detecting anycast addresses and more&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Anycast networks are a pretty interesting way to fix quite a few issues with networked services that involve needing global spread.&#xA;One of the interesting things is that a computer cannot really tell (unless it&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>897d1abc-42e4-40bc-57b7-4471f876384</guid>
+      <pubDate>Thu, 23 Apr 2015 20:20:18 +0000</pubDate>
+    </item>
+    <item>
+      <title>A peek into the USM format&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/usm-video-format</link>
+      <description>&lt;h1&gt;A peek into the USM format&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;A game that I really liked the visuals off, Crysis 3 uses a video file format called USM, This is a rather odd to me, since when I am used to pulling games apart for their assets, I am used to BINK video being used for th&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>88e3fafb-77fe-40e0-5a6-b21045e512a4</guid>
+      <pubDate>Sat, 21 Mar 2015 23:41:20 +0000</pubDate>
+    </item>
+    <item>
+      <title>Reverse Proxy + Cache for Minecraft&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/minecraft-reverse-proxy-plus-cache-on-demand</link>
+      <description>&lt;h1&gt;Reverse Proxy + Cache for Minecraft&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;One of the things that I like to play from time to time is Minecraft, however one of things ( at least with me this is ) is that Minecraft is best played with other people, This however means you have to go throu&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>dfd47f7c-8f85-4058-83a-a7775d51dc8c</guid>
+      <pubDate>Sun, 08 Feb 2015 21:49:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>MITM&#39;ing TLS/SSL for debugging purposes&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/debug-ssl-tls-with-ssldump-https</link>
+      <description>&lt;h1&gt;MITM&amp;rsquo;ing TLS/SSL for debugging purposes&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;From time to time you may want to debug TLS, Now this is not as easy as you might think, Because of the nature of TLS, you don&amp;rsquo;t really want to have anyone (even if they technically may have the key on the se&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>e8d7add1-958b-405a-1cf0-33a8e09119d2</guid>
+      <pubDate>Thu, 05 Feb 2015 17:56:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thoughts on GitHub streaking</title>
+      <link>https://blog.benjojo.co.uk/post/2014-08-31-thoughts-on-github-streaking.md</link>
+      <description>&lt;h1&gt;Thoughts on GitHub streaking&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;Thought it might be a good idea to brain dump on my thoughts of &amp;ldquo;&lt;a href=&#34;http://ejohn.org/blog/write-code-every-day/&#34;&gt;Write Code Everyday&lt;/a&gt;&amp;rdquo; and more to the point the [github challenge](&lt;a href=&#34;http://ryanseys.com/blog/177-days-of-gith&#34;&gt;http://ryanseys.com/blog/177-days-of-gith&lt;/a&gt;&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>38d4dcc1-3a43-403a-ae54-2db657abffa8</guid>
+      <pubDate>Sun, 31 Aug 2014 18:21:56 +0000</pubDate>
+    </item>
+    <item>
+      <title>Mumble: A referral was returned from the server.&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/2014-05-31-Mumble-referral-was-returned-from-the.md</link>
+      <description>&lt;h1&gt;Mumble: A referral was returned from the server.&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;You may get &lt;code&gt;A referral was returned from the server.&lt;/code&gt; when launching Digitally signed applications like Mumble on windows.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;This is normally caused by the Digital Signature expiring. You can check&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>66bf1b9c-daaa-401c-e63d-8b341197ddec</guid>
+      <pubDate>Sat, 31 May 2014 19:05:22 +0000</pubDate>
+    </item>
+    <item>
+      <title>Lessons from APL, a &#34;lost&#34; language&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/2014-05-26-APL-the-lost-language.md</link>
+      <description>&lt;h1&gt;Lessons from APL, a &amp;ldquo;lost&amp;rdquo; language&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;A few weeks back the forum that I go on often held a obfuscation challenge, and people joked around about submitting a entry that was coded in APL.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;APL (A Programming Language) is a programming language that w&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>b6a0abef-6440-40e8-6af3-67d5b26ed243</guid>
+      <pubDate>Mon, 26 May 2014 19:03:53 +0000</pubDate>
+    </item>
+    <item>
+      <title>NPM build error&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/2014-04-19-npm-pre-versions-of-node.md</link>
+      <description>&lt;h1&gt;NPM build error&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;NPM has a bunch of useful stuff on it, however you could in life while using NPM get this:&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&lt;code&gt;stack Error: &amp;quot;pre&amp;quot; versions of node cannot be installed, use the --node dir flag instead&lt;/code&gt;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;This error basically says &amp;ldquo;Give me the node&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>f454a6bb-853-4029-1ea-fbad92af331d</guid>
+      <pubDate>Sat, 19 Apr 2014 19:03:08 +0000</pubDate>
+    </item>
+    <item>
+      <title>Dealing with MySQL resource shortage&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/2014-04-17-mysql-resource-shortage.md</link>
+      <description>&lt;h1&gt;Dealing with MySQL resource shortage&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;You may in life while working with mysql get the following errors:&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;ERROR 1016 (HY000) at line 1: Can&#39;t open file: &#39;./blah/table.frm&#39; (errno: 24)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;p&gt;or&lt;/p&gt;&#xA;&#xA;&lt;p&gt;```&#xA;SQL Error (23): Out of resources when o&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>282ae445-d449-40f3-ee34-f8f4f57917</guid>
+      <pubDate>Thu, 17 Apr 2014 19:02:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Super Easy Twitter Bots&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/2014-01-19-super-easy-twitter-bots.md</link>
+      <description>&lt;h1&gt;Super Easy Twitter Bots&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;I often get really quite mad ideas on writing twitter bots, But I often get pretty bored of&#xA;doing all of the boiler plate that is required when wanting to achieve these things.&lt;/p&gt;&#xA;&#xA;&lt;p&gt;The typical process to making a twitter bot&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>45d88b4-1ed5-40b5-9554-73bcae59f3</guid>
+      <pubDate>Sun, 19 Jan 2014 19:00:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Running around HTTP firewalls&#xD;</title>
+      <link>https://blog.benjojo.co.uk/post/running-around-firewalls.md</link>
+      <description>&lt;h1&gt;Running around HTTP firewalls&lt;/h1&gt;&#xA;&#xA;&lt;p&gt;When I was in 6th form and I wanted to get SSH access to my own systems&#xA;I had quite a few issues doing so, Since port 22 was blocked and just about&#xA;every other port was, For the first year that was fine however since&lt;/p&gt;&#xA;</description>
+      <author>ben@benjojo.co.uk</author>
+      <guid>1596a16-8a8f-40fa-8b7c-fc69defab56</guid>
+      <pubDate>Wed, 01 Jan 2014 20:58:36 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

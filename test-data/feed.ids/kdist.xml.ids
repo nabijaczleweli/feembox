@@ -1,0 +1,10 @@
+kernel.org,stable,5.6.11,2020-05-06@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,stable,5.5.19,2020-04-21@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,mainline,5.7-rc4,2020-05-03@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,5.4.39,2020-05-06@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,4.9.222,2020-05-05@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,4.4.222,2020-05-05@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,4.19.121,2020-05-06@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,4.14.179,2020-05-05@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,longterm,3.16.83,2020-04-28@7edcf1fbe86570753646f6eb75db4d55
+kernel.org,linux-next,next-20200508,2020-05-08@7edcf1fbe86570753646f6eb75db4d55

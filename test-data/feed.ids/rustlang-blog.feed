@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <generator uri="https://blog.rust-lang.org/" version="0.1.0">Rust Blog</generator>
+    <link href="https://blog.rust-lang.org/feed.xml" rel="self" type="application/atom+xml" />
+    <link href="https://blog.rust-lang.org/" rel="alternate" type="text/html" />
+    <id>https://blog.rust-lang.org/</id>
+    <title>Rust Blog</title>
+    <subtitle>Empowering everyone to build reliable and efficient software.</subtitle>
+    <author>
+        <name>Maintained by the Rust Teams.</name>
+        <uri>https://github.com/rust-lang/blog.rust-lang.org/</uri>
+    </author>
+    <updated>2023-08-07T12:48:56+00:00</updated>
+
+    
+    <entry>
+        <title>2022 Annual Rust Survey Results</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/08/07/Rust-Survey-2023-Results.html" type="text/html" title="2022 Annual Rust Survey Results" />
+        <published>2023-08-07T00:00:00+00:00</published>
+        <updated>2023-08-07T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/08/07/Rust-Survey-2023-Results.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/08/07/Rust-Survey-2023-Results.html">&lt;p&gt;Hello, Rustaceans!&lt;/p&gt;
+&lt;p&gt;For the 6th year in a row, the Rust Project &lt;a href&#x3D;&quot;https://blog.rust-lang.org/2022/12/05/survey-launch.html&quot;&gt;conducted a survey on the Rust programming language&lt;/a&gt;, with participation from project maintainers, contributors, and those generally interested in the future of Rust. This edition of the annual State of Rust Survey opened for submissions on December 5 and ran until December 22, 2022.&lt;/p&gt;
+&lt;p&gt;First, we&#x27;d like to thank you for your patience on these long delayed results. We hope to identify a more expedient and sustainable process going forward so that the results come out more quickly and have even more actionable insights for the community.&lt;/p&gt;
+&lt;p&gt;The goal of this survey is always to give our wider community a chance to express their opinions about the language we all love and help shape its future. We’re grateful to those of you who took the time to share your voice on the state of Rust last year.&lt;/p&gt;
+&lt;p&gt;Before diving into a few highlights, we would like to thank everyone who was involved in creating the State of Rust survey with special acknowledgment to the translators whose work allowed us to offer the survey in English, Simplified Chinese, Traditional Chinese, French, German, Japanese, Korean, Portuguese, Russian, Spanish, and Ukrainian.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#participation&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;participation&quot;&gt;&lt;/a&gt;Participation&lt;/h2&gt;
+&lt;p&gt;In 2022, we had 9,433 total survey completions and an increased survey completion rate of 82% vs. 76% in 2021. While the goal is always total survey completion for all participants, the survey requires time, energy, and focus – we consider this figure quite high and were pleased by the increase.&lt;/p&gt;
+&lt;p&gt;We also saw a significant increase in the number of people viewing but not participating in the survey (from 16,457 views in 2021 to 25,581 – a view increase of over 55%). While this is likely due to a number of different factors, we feel this information speaks to the rising interest in Rust and the growing general audience following its evolution.&lt;/p&gt;
+&lt;p&gt;In 2022, the survey had 11,482 responses, which is a slight decrease of 6.4% from 2021, however, the number of respondents that answered all survey questions has increased year over year. We were interested to see this slight decrease in responses, as this year’s survey was much shorter than in previous years – clearly, survey length is not the only factor driving participation.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#community&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;community&quot;&gt;&lt;/a&gt;Community&lt;/h2&gt;
+&lt;p&gt;We were pleased to offer the survey in 11 languages – more than ever before, with the addition of a Ukrainian translation in 2022. 77% of respondents took this year’s survey in English, 5% in Chinese (simplified), 4% in German and French, 2% in Japanese, Spanish, and Russian, and 1% in Chinese (traditional), Korean, Portuguese, and Ukrainian. This is our lowest percentage of respondents taking the survey in English to date, which is an exciting indication of the growing global nature of our community!&lt;/p&gt;
+&lt;p&gt;The vast majority of our respondents reported being most comfortable communicating on technical topics in English (93%), followed by Chinese (7%).&lt;/p&gt;
+&lt;p&gt;Rust user respondents were asked which country they live in. The top 13 countries represented were as follows: United States (25%), Germany (12%), China (7%), United Kingdom (6%), France (5%), Canada (4%), Russia (4%), Japan (3%), Netherlands (3%), Sweden (2%), Australia (2%), Poland (2%), India (2%). Nearly 72.5% of respondents elected to answer this question.&lt;/p&gt;
+&lt;p&gt;While we see global access to Rust education as a critical goal for our community, we are proud to say that Rust was used all over the world in 2022!&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#rust-usage&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;rust-usage&quot;&gt;&lt;/a&gt;Rust Usage&lt;/h2&gt;
+&lt;p&gt;More people are using Rust than ever before! Over 90% of survey respondents identified as Rust users, and of those using Rust, 47% do so on a daily basis – an increase of 4% from the previous year.&lt;/p&gt;
+&lt;p&gt;30% of Rust user respondents can write simple programs in Rust, 27% can write production-ready code, and 42% consider themselves productive using Rust.&lt;/p&gt;
+&lt;p&gt;Of the former Rust users who completed the survey, 30% cited difficulty as the primary reason for giving up while nearly 47% cited factors outside of their control.&lt;/p&gt;
+&lt;p&gt;&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/no-longer-using.png&quot; alt&#x3D;&quot;Graph: Why did you stop using Rust?&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Similarly, 26% of those who did not identify as Rust users cited the perception of difficulty as the primary reason for not having used it, (with 62% reporting that they simply haven’t had the chance to prioritize learning Rust yet).
+&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/dont-use.png&quot; alt&#x3D;&quot;Graph: Why don&#x27;t you use Rust?&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#rust-usage-at-work&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;rust-usage-at-work&quot;&gt;&lt;/a&gt;Rust Usage at Work&lt;/h2&gt;
+&lt;p&gt;The growing maturation of Rust can be seen through the increased number of different organizations utilizing the language in 2022. In fact, 29.7% of respondents stated that they use Rust for the majority of their coding work at their workplace, which is a 51.8% increase compared to the previous year.&lt;/p&gt;
+&lt;p&gt;&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/rust-work.png&quot; alt&#x3D;&quot;Graph: Are you using Rust at work?&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;There are numerous reasons why we are seeing increased use of Rust in professional environments. Top reasons cited for the use of Rust include the perceived ability to write &amp;quot;bug-free software&amp;quot; (86%), Rust&#x27;s performance characteristics (84%), and Rust&#x27;s security and safety guarantees (69%). We were also pleased to find that 76% of respondents continue to use Rust simply because they found it fun and enjoyable. (Respondents could select more than one option here, so the numbers don&#x27;t add up to 100%.)&lt;/p&gt;
+&lt;p&gt;&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/why-at-work.png&quot; alt&#x3D;&quot;Graph: Why do you use Rust at work?&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Of those respondents that used Rust at work, 72% reported that it helped their team achieve its goals (a 4% increase from the previous year) and 75% have plans to continue using it on their teams in the future.&lt;/p&gt;
+&lt;p&gt;But like any language being applied in the workplace, Rust’s learning curve is an important consideration; 39% of respondents using Rust in a professional capacity reported the process as “challenging” and 9% of respondents said that adopting Rust at work has “slowed down their team”. However, 60% of productive users felt Rust was worth the cost of adoption overall.
+&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/experiences.png&quot; alt&#x3D;&quot;Graph: Reasons for using Rust at work&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;It is exciting to see the continued growth of professional Rust usage and the confidence so many users feel in its performance, control, security and safety, enjoyability, and more!&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#supporting-the-future-of-rust&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;supporting-the-future-of-rust&quot;&gt;&lt;/a&gt;Supporting the Future of Rust&lt;/h2&gt;
+&lt;p&gt;A key goal of the State of Rust survey is to shed light on challenges, concerns, and priorities Rustaceans are currently sitting with.&lt;/p&gt;
+&lt;p&gt;Of those respondents who shared their main worries for the future of Rust, 26% have concerns that the developers and maintainers behind Rust are not properly supported – a decrease of more than 30% from the previous year’s findings. One area of focus in the future may be to see how the Project in conjunction with the Rust Foundation can continue to push that number towards 0%.&lt;/p&gt;
+&lt;p&gt;While 38% have concerns about Rust “becoming too complex”, only a small number of respondents were concerned about documentation, corporate oversight, or speed of evolution. 34% of respondents are not worried about the future of Rust at all.&lt;/p&gt;
+&lt;p&gt;This year’s survey reflects a 21% decrease in fears about Rust’s usage in the industry since the last survey. Faith in Rust’s staying power and general utility is clearly growing as more people find Rust and become lasting members of the community. As always, we are grateful for your honest feedback and dedication to improving this language for everyone.&lt;/p&gt;
+&lt;p&gt;&lt;img src&#x3D;&quot;../../../images/2023-08-rust-survey-2022/future.png&quot; alt&#x3D;&quot;Graph: Worries about the future of Rust&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#another-round-of-thanks&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;another-round-of-thanks&quot;&gt;&lt;/a&gt;Another Round of Thanks&lt;/h2&gt;
+&lt;p&gt;To quote an anonymous survey respondent, “Thanks for all your hard work making Rust awesome!” – Rust wouldn’t exist or continue to evolve for the better without the many Project members and the wider Rust community. Thank you to those who took the time to share their thoughts on the State of Rust in 2022!&lt;/p&gt;
+</content>
+
+        <author>
+            <name>The Rust Survey Working Group in partnership with the Rust Foundation</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Security advisory for Cargo (CVE-2023-38497)</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/08/03/cve-2023-38497.html" type="text/html" title="Security advisory for Cargo (CVE-2023-38497)" />
+        <published>2023-08-03T00:00:00+00:00</published>
+        <updated>2023-08-03T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/08/03/cve-2023-38497.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/08/03/cve-2023-38497.html">&lt;blockquote&gt;
+&lt;p&gt;This is a cross-post of &lt;a href&#x3D;&quot;https://groups.google.com/g/rustlang-security-announcements/c/PEZQleQ6IUY&quot;&gt;the official security advisory&lt;/a&gt;. The
+official advisory contains a signed version with our PGP key, as well.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The Rust Security Response WG was notified that Cargo did not respect the umask
+when extracting crate archives on UNIX-like systems. If the user downloaded a
+crate containing files writeable by any local user, another local user could
+exploit this to change the source code compiled and executed by the current
+user.&lt;/p&gt;
+&lt;p&gt;This vulnerability has been assigned CVE-2023-38497.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#overview&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;
+&lt;p&gt;In UNIX-like systems, each file has three sets of permissions: for the user
+owning the file, for the group owning the file, and for all other local users.
+The &amp;quot;&lt;a href&#x3D;&quot;https://en.wikipedia.org/wiki/Umask&quot;&gt;umask&lt;/a&gt;&amp;quot; is configured on most systems to limit those permissions
+during file creation, removing dangerous ones. For example, the default umask
+on macOS and most Linux distributions only allow the user owning a file to
+write to it, preventing the group owning it or other local users from doing the
+same.&lt;/p&gt;
+&lt;p&gt;When a dependency is downloaded by Cargo, its source code has to be extracted
+on disk to allow the Rust compiler to read as part of the build. To improve
+performance, this extraction only happens the first time a dependency is used,
+caching the pre-extracted files for future invocations.&lt;/p&gt;
+&lt;p&gt;Unfortunately, it was discovered that Cargo did not respect the umask during
+extraction, and propagated the permissions stored in the crate archive as-is.
+If an archive contained files writeable by any user on the system (and the
+system configuration didn&#x27;t prevent writes through other security measures),
+another local user on the system could replace or tweak the source code of a
+dependency, potentially achieving code execution the next time the project is
+compiled.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#affected-versions&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;affected-versions&quot;&gt;&lt;/a&gt;Affected Versions&lt;/h2&gt;
+&lt;p&gt;All Rust versions before 1.71.1 on UNIX-like systems (like macOS and Linux) are
+affected. Note that additional system-dependent security measures configured on
+the local system might prevent the vulnerability from being exploited.&lt;/p&gt;
+&lt;p&gt;Users on Windows and other non-UNIX-like systems are not affected.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#mitigations&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;mitigations&quot;&gt;&lt;/a&gt;Mitigations&lt;/h2&gt;
+&lt;p&gt;We recommend all users to update to Rust 1.71.1, which will be released later
+today, as it fixes the vulnerability by respecting the umask when extracting
+crate archives. If you build your own toolchain, patches for 1.71.0 source
+tarballs are &lt;a href&#x3D;&quot;https://github.com/rust-lang/wg-security-response/tree/main/patches/CVE-2023-38497&quot;&gt;available here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To prevent existing cached extractions from being exploitable, the Cargo binary
+included in Rust 1.71.1 or later will purge the caches it tries to access if
+they were generated by older Cargo versions.&lt;/p&gt;
+&lt;p&gt;If you cannot update to Rust 1.71.1, we recommend configuring your system to
+prevent other local users from accessing the Cargo directory, usually located
+in &lt;code&gt;~/.cargo&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod go&#x3D; ~/.cargo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#acknowledgments&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;acknowledgments&quot;&gt;&lt;/a&gt;Acknowledgments&lt;/h2&gt;
+&lt;p&gt;We want to thank Addison Crump for responsibly disclosing this to us according
+to the &lt;a href&#x3D;&quot;https://www.rust-lang.org/policies/security&quot;&gt;Rust security policy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We also want to thank the members of the Rust project who helped us disclose
+the vulnerability: Weihang Lo for developing the fix; Eric Huss for reviewing
+the fix; Pietro Albini for writing this advisory; Pietro Albini, Manish
+Goregaokar and Josh Stone for coordinating this disclosure; Josh Triplett, Arlo
+Siemen, Scott Schafer, and Jacob Finkelman for advising during the disclosure.&lt;/p&gt;
+</content>
+
+        <author>
+            <name>The Rust Security Response WG</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Announcing Rust 1.71.1</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/08/03/Rust-1.71.1.html" type="text/html" title="Announcing Rust 1.71.1" />
+        <published>2023-08-03T00:00:00+00:00</published>
+        <updated>2023-08-03T00:00:01+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/08/03/Rust-1.71.1.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/08/03/Rust-1.71.1.html">&lt;p&gt;The Rust team has published a new point release of Rust, 1.71.1. Rust is a
+programming language that is empowering everyone to build reliable and
+efficient software.&lt;/p&gt;
+&lt;p&gt;If you have a previous version of Rust installed via rustup, getting Rust
+1.71.1 is as easy as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rustup update stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you don&#x27;t have it already, you can &lt;a href&#x3D;&quot;https://www.rust-lang.org/install.html&quot;&gt;get &lt;code&gt;rustup&lt;/code&gt;&lt;/a&gt; from the
+appropriate page on our website.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#whats-in-1711-stable&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;whats-in-1711-stable&quot;&gt;&lt;/a&gt;What&#x27;s in 1.71.1 stable&lt;/h2&gt;
+&lt;p&gt;Rust 1.71.1 fixes Cargo not respecting the umask when extracting dependencies,
+which could allow a local attacker to edit the cache of extracted source code
+belonging to another local user, potentially executing code as another user.
+This security vulnerability is tracked as &lt;a href&#x3D;&quot;https://www.cve.org/CVERecord?id&#x3D;CVE-2023-38497&quot;&gt;CVE-2023-38497&lt;/a&gt;, and you can read
+more about it &lt;a href&#x3D;&quot;https://blog.rust-lang.org/2023/08/03/cve-2023-38497.html&quot;&gt;on the advisory we published earlier today&lt;/a&gt;. We
+recommend all users to update their toolchain as soon as possible.&lt;/p&gt;
+&lt;p&gt;Rust 1.71.1 also addresses several regressions introduced in Rust 1.71.0,
+including bash completion being broken for users of Rustup, and the
+&lt;code&gt;suspicious_double_ref_op&lt;/code&gt; being emitted when calling &lt;code&gt;borrow()&lt;/code&gt; even though it
+shouldn&#x27;t.&lt;/p&gt;
+&lt;p&gt;You can find more detailed information on the specific regressions, and other
+minor fixes, in the &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/blob/stable/RELEASES.md#version-1711-2023-08-03&quot;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#contributors-to-1711&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;contributors-to-1711&quot;&gt;&lt;/a&gt;Contributors to 1.71.1&lt;/h3&gt;
+&lt;p&gt;Many people came together to create Rust 1.71.1. We couldn&#x27;t have done it
+without all of you. &lt;a href&#x3D;&quot;https://thanks.rust-lang.org/rust/1.71.1/&quot;&gt;Thanks!&lt;/a&gt;&lt;/p&gt;
+</content>
+
+        <author>
+            <name>The Rust Release Team</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Announcing Rust 1.71.0</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/07/13/Rust-1.71.0.html" type="text/html" title="Announcing Rust 1.71.0" />
+        <published>2023-07-13T00:00:00+00:00</published>
+        <updated>2023-07-13T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/07/13/Rust-1.71.0.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/07/13/Rust-1.71.0.html">&lt;p&gt;The Rust team is happy to announce a new version of Rust, 1.71.0. Rust is a programming language empowering everyone to build reliable and efficient software.&lt;/p&gt;
+&lt;p&gt;If you have a previous version of Rust installed via rustup, you can get 1.71.0 with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-console&quot;&gt;rustup update stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you don&#x27;t have it already, you can &lt;a href&#x3D;&quot;https://www.rust-lang.org/install.html&quot;&gt;get &lt;code&gt;rustup&lt;/code&gt;&lt;/a&gt; from the appropriate page on our website, and check out the &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/releases/tag/1.71.0&quot;&gt;detailed release notes for 1.71.0&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;If you&#x27;d like to help us out by testing future releases, you might consider updating locally to use the beta channel (&lt;code&gt;rustup default beta&lt;/code&gt;) or the nightly channel (&lt;code&gt;rustup default nightly&lt;/code&gt;). Please &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/issues/new/choose&quot;&gt;report&lt;/a&gt; any bugs you might come across!&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#whats-in-1710-stable&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;whats-in-1710-stable&quot;&gt;&lt;/a&gt;What&#x27;s in 1.71.0 stable&lt;/h2&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#c-unwind-abi&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;c-unwind-abi&quot;&gt;&lt;/a&gt;C-unwind ABI&lt;/h3&gt;
+&lt;p&gt;1.71.0 stabilizes &lt;code&gt;C-unwind&lt;/code&gt; (and other &lt;code&gt;-unwind&lt;/code&gt; suffixed ABI variants&lt;sup class&#x3D;&quot;footnote-ref&quot;&gt;&lt;a href&#x3D;&quot;#fn1&quot; id&#x3D;&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;).&lt;/p&gt;
+&lt;p&gt;The behavior for unforced unwinding (the typical case) is specified in &lt;a href&#x3D;&quot;https://github.com/rust-lang/rfcs/blob/master/text/2945-c-unwind-abi.md#abi-boundaries-and-unforced-unwinding&quot;&gt;this
+table from the RFC which proposed this feature&lt;/a&gt;. To summarize:&lt;/p&gt;
+&lt;p&gt;Each ABI is mostly equivalent to the same ABI without &lt;code&gt;-unwind&lt;/code&gt;, except that
+with &lt;code&gt;-unwind&lt;/code&gt; the behavior is defined to be safe when an unwinding operation
+(&lt;code&gt;panic&lt;/code&gt; or C++ style exception) crosses the ABI boundary. For &lt;code&gt;panic&#x3D;unwind&lt;/code&gt;,
+this is a valid way to let exceptions from one language unwind the stack in
+another language without terminating the process (as long as the exception is
+caught in the same language from which it originated); for &lt;code&gt;panic&#x3D;abort&lt;/code&gt;, this
+will typically abort the process immediately.&lt;/p&gt;
+&lt;p&gt;For this initial stabilization, &lt;em&gt;no change&lt;/em&gt; is made to the existing ABIs (e.g.
+&lt;code&gt;&amp;quot;C&amp;quot;&lt;/code&gt;), and unwinding across them remains undefined behavior. A future Rust
+release will amend these ABIs to match the behavior specified in the RFC as the
+final part in stabilizing this feature (usually aborting at the boundary).
+Users are encouraged to start using the new unwind ABI variants in their code
+to remain future proof if they need to unwind across the ABI boundary.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#debugger-visualization-attributes&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;debugger-visualization-attributes&quot;&gt;&lt;/a&gt;Debugger visualization attributes&lt;/h3&gt;
+&lt;p&gt;1.71.0 stabilizes support for a new attribute, &lt;code&gt;#[debug_visualizer(natvis_file &#x3D; &amp;quot;...&amp;quot;)]&lt;/code&gt; and &lt;code&gt;#[debug_visualizer(gdb_script_file &#x3D; &amp;quot;...&amp;quot;)]&lt;/code&gt;, which allows
+embedding Natvis descriptions and GDB scripts into Rust libraries to
+improve debugger output when inspecting data structures created by those
+libraries. Rust itself has packaged similar scripts for some time for the
+standard library, but this feature makes it possible for library authors to
+provide a similar experience to end users.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href&#x3D;&quot;https://doc.rust-lang.org/nightly/reference/attributes/debugger.html#the-debugger_visualizer-attribute&quot;&gt;reference&lt;/a&gt;
+for details on usage.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#raw-dylib-linking&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;raw-dylib-linking&quot;&gt;&lt;/a&gt;raw-dylib linking&lt;/h3&gt;
+&lt;p&gt;On Windows platforms, Rust now supports using functions from dynamic libraries without requiring those libraries to be available at build time, using the new &lt;code&gt;kind&#x3D;&amp;quot;raw-dylib”&lt;/code&gt; option for &lt;code&gt;#[link]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This avoids requiring users to install those libraries (particularly difficult for cross-compilation), and avoids having to ship stub versions of libraries in crates to link against. This simplifies crates providing bindings to Windows libraries.&lt;/p&gt;
+&lt;p&gt;Rust also supports binding to symbols provided by DLLs by ordinal rather than named symbol, using the new &lt;code&gt;#[link_ordinal]&lt;/code&gt; attribute.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#upgrade-to-musl-12&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;upgrade-to-musl-12&quot;&gt;&lt;/a&gt;Upgrade to musl 1.2&lt;/h3&gt;
+&lt;p&gt;As &lt;a href&#x3D;&quot;https://blog.rust-lang.org/2023/05/09/Updating-musl-targets.html&quot;&gt;previously announced&lt;/a&gt;,
+Rust 1.71 updates the musl version to 1.2.3. Most users should not be affected by this change.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#const-initialized-thread-locals&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;const-initialized-thread-locals&quot;&gt;&lt;/a&gt;Const-initialized thread locals&lt;/h3&gt;
+&lt;p&gt;Rust 1.59.0 stabilized &lt;code&gt;const&lt;/code&gt; initialized thread local support in the standard
+library, which allows for more optimal code generation. However, until now this
+feature was missed in release notes and
+&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/macro.thread_local.html&quot;&gt;documentation&lt;/a&gt;.
+Note that this stabilization does not make &lt;code&gt;const { ... }&lt;/code&gt; a valid expression
+or syntax in other contexts; that is a separate and currently unstable
+&lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/issues/76001&quot;&gt;feature&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-rust&quot;&gt;use std::cell::Cell;
+
+thread_local! {
+    pub static FOO: Cell&amp;lt;u32&amp;gt; &#x3D; const { Cell::new(1) };
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#stabilized-apis&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;stabilized-apis&quot;&gt;&lt;/a&gt;Stabilized APIs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/ffi/struct.CStr.html#method.is_empty&quot;&gt;&lt;code&gt;CStr::is_empty&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/hash/trait.BuildHasher.html#method.hash_one&quot;&gt;&lt;code&gt;BuildHasher::hash_one&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.is_positive&quot;&gt;&lt;code&gt;NonZeroI*::is_positive&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.is_negative&quot;&gt;&lt;code&gt;NonZeroI*::is_negative&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.checked_neg&quot;&gt;&lt;code&gt;NonZeroI*::checked_neg&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.overflowing_neg&quot;&gt;&lt;code&gt;NonZeroI*::overflowing_neg&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.saturating_neg&quot;&gt;&lt;code&gt;NonZeroI*::saturating_neg&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#method.wrapping_neg&quot;&gt;&lt;code&gt;NonZeroI*::wrapping_neg&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#impl-Neg-for-NonZeroI32&quot;&gt;&lt;code&gt;Neg for NonZeroI*&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI32.html#impl-Neg-for-%26NonZeroI32&quot;&gt;&lt;code&gt;Neg for &amp;amp;NonZeroI*&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.array.html#impl-From%3C%5BT;+1%5D%3E-for-(T,)&quot;&gt;&lt;code&gt;From&amp;lt;[T; N]&amp;gt; for (T...)&lt;/code&gt;&lt;/a&gt;
+(array to N-tuple for N in 1..&#x3D;12)&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.array.html#impl-From%3C(T,)%3E-for-%5BT;+1%5D&quot;&gt;&lt;code&gt;From&amp;lt;(T...)&amp;gt; for [T; N]&lt;/code&gt;&lt;/a&gt;
+(N-tuple to array for N in 1..&#x3D;12)&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsHandle.html#impl-AsHandle-for-Box%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsHandle for Box&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsHandle.html#impl-AsHandle-for-Rc%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsHandle for Rc&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsHandle.html#impl-AsHandle-for-Arc%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsHandle for Arc&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsSocket.html#impl-AsSocket-for-Box%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsSocket for Box&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsSocket.html#impl-AsSocket-for-Rc%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsSocket for Rc&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/windows/io/trait.AsSocket.html#impl-AsSocket-for-Arc%3CT%3E&quot;&gt;&lt;code&gt;windows::io::AsSocket for Arc&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These APIs are now stable in const contexts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.pointer.html#method.read&quot;&gt;&lt;code&gt;&amp;lt;*const T&amp;gt;::read&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.pointer.html#method.read_unaligned&quot;&gt;&lt;code&gt;&amp;lt;*const T&amp;gt;::read_unaligned&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.pointer.html#method.read-1&quot;&gt;&lt;code&gt;&amp;lt;*mut T&amp;gt;::read&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.pointer.html#method.read_unaligned-1&quot;&gt;&lt;code&gt;&amp;lt;*mut T&amp;gt;::read_unaligned&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/ptr/fn.read.html&quot;&gt;&lt;code&gt;ptr::read&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/ptr/fn.read_unaligned.html&quot;&gt;&lt;code&gt;ptr::read_unaligned&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/primitive.slice.html#method.split_at&quot;&gt;&lt;code&gt;&amp;lt;[T]&amp;gt;::split_at&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#other-changes&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;other-changes&quot;&gt;&lt;/a&gt;Other changes&lt;/h3&gt;
+&lt;p&gt;Check out everything that changed in &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/releases/tag/1.71.0&quot;&gt;Rust&lt;/a&gt;, &lt;a href&#x3D;&quot;https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md#cargo-171-2023-07-13&quot;&gt;Cargo&lt;/a&gt;, and &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust-clippy/blob/master/CHANGELOG.md#rust-171&quot;&gt;Clippy&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#contributors-to-1710&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;contributors-to-1710&quot;&gt;&lt;/a&gt;Contributors to 1.71.0&lt;/h2&gt;
+&lt;p&gt;Many people came together to create Rust 1.71.0. We couldn&#x27;t have done it without all of you. &lt;a href&#x3D;&quot;https://thanks.rust-lang.org/rust/1.71.0/&quot;&gt;Thanks!&lt;/a&gt;&lt;/p&gt;
+&lt;section class&#x3D;&quot;footnotes&quot;&gt;
+&lt;ol&gt;
+&lt;li id&#x3D;&quot;fn1&quot;&gt;
+&lt;p&gt;List of stabilized ABIs can be found in &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/issues/74990#issuecomment-1363473645&quot;&gt;the stabilization report&lt;/a&gt; &lt;a href&#x3D;&quot;#fnref1&quot; class&#x3D;&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+
+        <author>
+            <name>The Rust Release Team</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Announcing regex 1.9</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/07/05/regex-1.9.html" type="text/html" title="Announcing regex 1.9" />
+        <published>2023-07-05T00:00:00+00:00</published>
+        <updated>2023-07-05T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/07/05/regex-1.9.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/07/05/regex-1.9.html">&lt;p&gt;The regex sub-team is announcing the release of &lt;code&gt;regex 1.9&lt;/code&gt;. The &lt;code&gt;regex&lt;/code&gt; crate
+is maintained by the Rust project and is the recommended way to use regular
+expressions in Rust. Its defining characteristic is its guarantee of worst case
+linear time searches with respect to the size of the string being searched.&lt;/p&gt;
+&lt;p&gt;Releases of the &lt;code&gt;regex&lt;/code&gt; crate aren&#x27;t normally announced on this blog, but
+since the majority of its internals have been rewritten in version 1.9, this
+announcement serves to encourage extra scrutiny. If you run into any problems
+or performance regressions, please report them on the &lt;a href&#x3D;&quot;https://github.com/rust-lang/regex/issues&quot;&gt;issue tracker&lt;/a&gt; or &lt;a href&#x3D;&quot;https://github.com/rust-lang/regex/discussions&quot;&gt;ask
+questions on the Discussion forum&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Few API additions have been made, but one worth calling out is the
+&lt;a href&#x3D;&quot;https://docs.rs/regex/1.*/regex/struct.Captures.html#method.extract&quot;&gt;&lt;code&gt;Captures::extract&lt;/code&gt;&lt;/a&gt; method that should make getting capture groups in some
+cases more convenient. Otherwise, the main change folks should see is hopefully
+faster search times.&lt;/p&gt;
+&lt;p&gt;You can read more in the &lt;a href&#x3D;&quot;https://github.com/rust-lang/regex/blob/master/CHANGELOG.md#190-2023-07-05&quot;&gt;CHANGELOG&lt;/a&gt; and in a more in depth blog post on
+&lt;a href&#x3D;&quot;https://blog.burntsushi.net/regex-internals/&quot;&gt;regex crate internals as a library&lt;/a&gt;.&lt;/p&gt;
+</content>
+
+        <author>
+            <name>Andrew Gallant</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Rustfmt support for let-else statements</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/07/01/rustfmt-supports-let-else-statements.html" type="text/html" title="Rustfmt support for let-else statements" />
+        <published>2023-07-01T00:00:00+00:00</published>
+        <updated>2023-07-01T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/07/01/rustfmt-supports-let-else-statements.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/07/01/rustfmt-supports-let-else-statements.html">&lt;p&gt;Rustfmt will add support for formatting &lt;a href&#x3D;&quot;https://doc.rust-lang.org/rust-by-example/flow_control/let_else.html&quot;&gt;let-else statements&lt;/a&gt; starting with the nightly 2023-07-02 toolchain, and then let-else formatting support should come to stable Rust as part of the 1.72 release.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#overview&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;
+&lt;p&gt;let-else statements were &lt;a href&#x3D;&quot;https://blog.rust-lang.org/2022/11/03/Rust-1.65.0.html#let-else-statements&quot;&gt;stabilized&lt;/a&gt; back in 2022 as part of the 1.65.0 release. However, the current and previous versions of Rustfmt did not have formatting support for let-else statements. When Rustfmt encountered a let-else statement it would leave it alone and maintain the manual styling originally authored by the developer.&lt;/p&gt;
+&lt;p&gt;After updating to one of the toolchains with let-else formatting support, you may notice that &lt;code&gt;cargo fmt&lt;/code&gt;/&lt;code&gt;rustfmt&lt;/code&gt; invocations want to &amp;quot;change&amp;quot; the formatting of your let-else statements. However, this isn&#x27;t actually a &amp;quot;change&amp;quot; in formatting, but instead is simply Rustfmt applying the &lt;a href&#x3D;&quot;https://doc.rust-lang.org/nightly/style-guide/statements.html#else-blocks-let-else-statements&quot;&gt;let-else formatting rules&lt;/a&gt; for the very first time.&lt;/p&gt;
+&lt;p&gt;Rustfmt support for let-else statements has been a long standing request, and the Project has taken a number of steps to prevent a recurrence of the delay between feature stabilization and formatting support, as well as putting additional procedures in place which should enable more expeditious formatting support for nightly-only syntax.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#background-and-context&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;background-and-context&quot;&gt;&lt;/a&gt;Background and Context&lt;/h2&gt;
+&lt;p&gt;Rust has an official &lt;a href&#x3D;&quot;https://doc.rust-lang.org/nightly/style-guide/&quot;&gt;Style Guide&lt;/a&gt; that articulates the default formatting style for Rust code. The Style Guide functions as a specification that defines the default formatting behavior for Rustfmt, and Rustfmt&#x27;s primary mission is to provide automated formatting capabilities based around that Style Guide specification. Rustfmt is a direct consumer of the Style Guide, but Rustfmt does not unilaterally dictate what the default formatting style of language constructs should be.&lt;/p&gt;
+&lt;p&gt;The initial Style Guide was developed many years ago (beginning in 2016), and was driven by a Style Team in collaboration with the community through an RFC process. The Style Guide was then made official in 2018 via &lt;a href&#x3D;&quot;https://rust-lang.github.io/rfcs/2436-style-guide.html&quot;&gt;RFC 2436&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;That initial Style Team was more akin to a Project Working Group in today&#x27;s terms, as they had a fixed scope with a main goal to simply pull together the initial Style Guide. Accordingly that initial Style Team was disbanded once the Guide was made official.&lt;/p&gt;
+&lt;p&gt;There was subsequently no designated group within the Rust Project that was
+explicitly responsible for the Style Guide, and no group explicitly focused on determining the official Style for new language constructs.&lt;/p&gt;
+&lt;p&gt;The absence of a team/group with ownership of the Style Guide didn&#x27;t really cause problems at first, as the new syntax that came along during the first few years was comparatively non-controversial when it came to default style and formatting. However, over time challenges started to develop when there was increasingly less community consensus and no governing team within the Project to make the final decision about how new language syntax should be styled.&lt;/p&gt;
+&lt;p&gt;This was certainly the case with let-else statements, with lots of varying perspectives on how they should be styled. Without any team/group to make the decision and update the Style Guide with the official rules for let-else statements, Rustfmt was blocked and was unable to proceed.&lt;/p&gt;
+&lt;p&gt;These circumstances around let-else statements resulted in a greater understanding across the Project of the need to establish a team to own and maintain the Style Guide. However, it was also well understood that spinning up a new team and respective processes would take some time, and the decision was made to not block the stabilization of features that were otherwise fully ready to be stabilized, like let-else statements, in the nascency of such a new team and new processes.&lt;/p&gt;
+&lt;p&gt;Accordingly, let-else statements were stabilized and released without formatting support and with an understanding that the new Style Team and then subsequently the Rustfmt Team would later complete the requisite work required to incorporate formatting support.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#steps-taken&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;steps-taken&quot;&gt;&lt;/a&gt;Steps Taken&lt;/h2&gt;
+&lt;p&gt;A number of steps have been taken to improve matters in this space. This includes steps to address the aforementioned issues and deal with some of the &amp;quot;style debt&amp;quot; that accrued over the years in the absence of a Style Team, and also to establish new processes and mechanisms to bring about other formatting/styling improvements.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://rust-lang.github.io/rfcs/3309-style-team.html&quot;&gt;Launched a new, permanent Style Team&lt;/a&gt; that&#x27;s responsible for the Style Guide.&lt;/li&gt;
+&lt;li&gt;Established a mechanism to evolve the default style while still maintaining stability guarantees (&lt;a href&#x3D;&quot;https://rust-lang.github.io/rfcs/3338-style-evolution.html&quot;&gt;RFC 3338&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Developed a &lt;a href&#x3D;&quot;https://github.com/rust-lang/style-team/blob/468570a02856a6bbe3994164e1a16a13b56b5cf4/nightly-style-procedure.md&quot;&gt;nightly-syntax-policy&lt;/a&gt; that provides clarity around style rules for unstable/nightly-only syntax, and enables Rustfmt to provide earlier support for such syntax.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Furthermore, the Style Team is also continuing to diligently work through the backlog of those &amp;quot;style debt&amp;quot; items, and the Rustfmt team is in turn actively working on respective formatting implementation. The Rustfmt team is also focused on growing the team in order to improve contributor and review capacity.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#conclusion&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;We know that many have wanted let-else formatting support for a while, and we&#x27;re sorry it&#x27;s taken this long. We also recognize that Rustfmt now starting to format let-else statements may cause some formatting churn, and that&#x27;s a highly undesirable scenario we strive to avoid.&lt;/p&gt;
+&lt;p&gt;However, we believe the benefits of delivering let-else formatting support outweigh those drawbacks. While it&#x27;s possible there may be another future case or two where we have to do something similar as we work through the style backlog, we&#x27;re hopeful that over time this new team and these new processes will reduce (or eliminate) the possibility of a recurrence by addressing the historical problems that played such an outsize role in the let-else delay, and also bring about various other improvements.&lt;/p&gt;
+&lt;p&gt;Both the Style and Rustfmt teams hang out on Zulip so if you&#x27;d like to get more involved or have any questions please drop by on &lt;a href&#x3D;&quot;https://rust-lang.zulipchat.com/#narrow/stream/346005-t-style&quot;&gt;T-Style&lt;/a&gt; and/or &lt;a href&#x3D;&quot;https://rust-lang.zulipchat.com/#narrow/stream/357797-t-rustfmt&quot;&gt;T-Rustfmt&lt;/a&gt;.&lt;/p&gt;
+</content>
+
+        <author>
+            <name>Caleb Cartwright</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Improved API tokens for crates.io</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/06/23/improved-api-tokens-for-crates-io.html" type="text/html" title="Improved API tokens for crates.io" />
+        <published>2023-06-23T00:00:00+00:00</published>
+        <updated>2023-06-23T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/06/23/improved-api-tokens-for-crates-io.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/06/23/improved-api-tokens-for-crates-io.html">&lt;p&gt;If you recently generated a new API token on crates.io, you might have noticed
+our new API token creation page and some of the new features it now supports.&lt;/p&gt;
+&lt;p&gt;Previously, when clicking the &amp;quot;New Token&amp;quot; button on &lt;a href&#x3D;&quot;https://crates.io/settings/tokens&quot;&gt;https://crates.io/settings/tokens&lt;/a&gt;,
+you were only provided with the option to choose a token name, without any
+additional choices. We knew that we wanted to offer our users more flexibility,
+but in the previous user interface that would have been difficult, so our first
+step was to build a proper &amp;quot;New API Token&amp;quot; page.&lt;/p&gt;
+&lt;p&gt;Our roadmap included two essential features known as &amp;quot;token scopes&amp;quot;. The first
+of them allows you to restrict API tokens to specific operations. For instance,
+you can configure a token to solely enable the publishing of new versions for
+existing crates, while disallowing the creation of new crates. The second one
+offers an optional restriction where tokens can be limited to only work for
+specific crate names. If you want to read more about how these features
+were planned and implemented you can take a look at our corresponding
+&lt;a href&#x3D;&quot;https://github.com/rust-lang/crates.io/issues/5443&quot;&gt;tracking issue&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To further enhance the security of crates.io API tokens, we prioritized the
+implementation of expiration dates. Since we had already touched most of the
+token-related code this was relatively straight-forward. We are delighted to
+announce that our &amp;quot;New API Token&amp;quot; page now supports endpoint scopes, crate
+scopes and expiration dates:&lt;/p&gt;
+&lt;p&gt;&lt;img src&#x3D;&quot;/images/2023-06-23-improved-api-tokens-for-crates-io/new-api-token-page.png&quot; alt&#x3D;&quot;Screenshot of the &amp;quot;New API Token&amp;quot; page&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Similar to the API token creation process on github.com, you can choose to not
+have any expiration date, use one of the presets, or even choose a custom
+expiration date to suit your requirements.&lt;/p&gt;
+&lt;p&gt;If you come across any issues or have questions, feel free to reach out to us on
+&lt;a href&#x3D;&quot;https://rust-lang.zulipchat.com/#narrow/stream/318791-t-crates-io/topic/token.20scopes&quot;&gt;Zulip&lt;/a&gt;
+or open an issue on &lt;a href&#x3D;&quot;https://github.com/rust-lang/crates.io/issues/new/choose&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Lastly, we, the crates.io team, would like to express our gratitude to the
+&lt;a href&#x3D;&quot;https://openssf.org/community/alpha-omega/&quot;&gt;OpenSSF&#x27;s Alpha-Omega Initiative&lt;/a&gt;
+and &lt;a href&#x3D;&quot;https://jfrog.com/blog/jfrog-joins-rust-foundation-as-platinum-member/&quot;&gt;JFrog&lt;/a&gt;
+for their contributions to the &lt;a href&#x3D;&quot;https://rustfoundation.org&quot;&gt;Rust Foundation&lt;/a&gt;
+security initiative. Their support has been instrumental in enabling us to
+implement these features and undertake extensive security-related work on the
+crates.io codebase over the past few months.&lt;/p&gt;
+</content>
+
+        <author>
+            <name>Tobias Bieniek</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Introducing the Rust Leadership Council</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/06/20/introducing-leadership-council.html" type="text/html" title="Introducing the Rust Leadership Council" />
+        <published>2023-06-20T00:00:00+00:00</published>
+        <updated>2023-06-20T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/06/20/introducing-leadership-council.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/06/20/introducing-leadership-council.html">&lt;p&gt;As of today, &lt;a href&#x3D;&quot;https://github.com/rust-lang/rfcs/pull/3392&quot;&gt;RFC 3392&lt;/a&gt; has been merged, forming the new top level governance body of the Rust Project: the Leadership Council. The creation of this Council marks the end of both the Core Team and the interim Leadership Chat.&lt;/p&gt;
+&lt;p&gt;The Council will assume responsibility for top-level governance concerns while most of the responsibilities of the Rust Project (such as maintenance of the compiler and core tooling, evolution of the language and standard libraries, administration of infrastructure, etc.) remain with the nine top level teams.&lt;/p&gt;
+&lt;p&gt;Each of these top level teams, &lt;a href&#x3D;&quot;https://rust-lang.github.io/rfcs/3392-leadership-council.html#initial-list-of-top-level-teams&quot;&gt;as defined in the RFC&lt;/a&gt;, has chosen a representative who collectively form &lt;a href&#x3D;&quot;https://www.rust-lang.org/governance/teams/leadership-council&quot;&gt;the Council&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Compiler: Eric Holk&lt;/li&gt;
+&lt;li&gt;Crates.io: Carol (Nichols || Goulding)&lt;/li&gt;
+&lt;li&gt;Dev Tools: Eric Huss&lt;/li&gt;
+&lt;li&gt;Infrastructure: Ryan Levick&lt;/li&gt;
+&lt;li&gt;Language: Jack Huey&lt;/li&gt;
+&lt;li&gt;Launching Pad&lt;sup class&#x3D;&quot;footnote-ref&quot;&gt;&lt;a href&#x3D;&quot;#fn1&quot; id&#x3D;&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;: Jonathan Pallant&lt;/li&gt;
+&lt;li&gt;Library: Mara Bos&lt;/li&gt;
+&lt;li&gt;Moderation: Khionu Sybiern&lt;/li&gt;
+&lt;li&gt;Release: Mark Rousskov&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;First, we want to take a moment to thank the Core Team and interim Leadership Chat for the hard work they&#x27;ve put in over the years. Their efforts have been critical for the Rust Project. However, we do recognize that the governance of the Rust Project has had its shortcomings. We hope to build on the successes and improve upon the failures to ultimately lead to greater transparency and accountability.&lt;/p&gt;
+&lt;p&gt;We know that there is a lot of work to do and we are eager to get started. In the coming weeks we will be establishing the basic infrastructure for the group, including creating a plan for regular meetings and a process for raising agenda items, setting up a team repository, and ultimately completing the transition from the former Rust leadership structures.&lt;/p&gt;
+&lt;p&gt;We will post more once this bootstrapping process has been completed.&lt;/p&gt;
+&lt;section class&#x3D;&quot;footnotes&quot;&gt;
+&lt;ol&gt;
+&lt;li id&#x3D;&quot;fn1&quot;&gt;
+&lt;p&gt;The RFC defines the launching pad team as a temporary umbrella team to represent subteams that do not currently have a top-level team. &lt;a href&#x3D;&quot;#fnref1&quot; class&#x3D;&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+
+        <author>
+            <name>Leadership Council</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>Announcing Rust 1.70.0</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/06/01/Rust-1.70.0.html" type="text/html" title="Announcing Rust 1.70.0" />
+        <published>2023-06-01T00:00:00+00:00</published>
+        <updated>2023-06-01T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/06/01/Rust-1.70.0.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/06/01/Rust-1.70.0.html">&lt;p&gt;The Rust team is happy to announce a new version of Rust, 1.70.0. Rust is a programming language empowering everyone to build reliable and efficient software.&lt;/p&gt;
+&lt;p&gt;If you have a previous version of Rust installed via rustup, you can get 1.70.0 with:&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-console&quot;&gt;rustup update stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you don&#x27;t have it already, you can &lt;a href&#x3D;&quot;https://www.rust-lang.org/install.html&quot;&gt;get &lt;code&gt;rustup&lt;/code&gt;&lt;/a&gt; from the appropriate page on our website, and check out the &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/releases/tag/1.70.0&quot;&gt;detailed release notes for 1.70.0&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;If you&#x27;d like to help us out by testing future releases, you might consider updating locally to use the beta channel (&lt;code&gt;rustup default beta&lt;/code&gt;) or the nightly channel (&lt;code&gt;rustup default nightly&lt;/code&gt;). Please &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/issues/new/choose&quot;&gt;report&lt;/a&gt; any bugs you might come across!&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#whats-in-1700-stable&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;whats-in-1700-stable&quot;&gt;&lt;/a&gt;What&#x27;s in 1.70.0 stable&lt;/h2&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#sparse-by-default-for-cratesio&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;sparse-by-default-for-cratesio&quot;&gt;&lt;/a&gt;Sparse by default for crates.io&lt;/h3&gt;
+&lt;p&gt;Cargo&#x27;s &amp;quot;sparse&amp;quot; protocol is now enabled by default for reading the index from crates.io. This feature was previously stabilized with &lt;a href&#x3D;&quot;https://blog.rust-lang.org/2023/03/09/Rust-1.68.0.html#cargos-sparse-protocol&quot;&gt;Rust 1.68.0&lt;/a&gt;, but still required configuration to use that with crates.io. The announced plan was to make that the default in 1.70.0, and here it is!&lt;/p&gt;
+&lt;p&gt;You should see substantially improved performance when fetching information from the crates.io index. Users behind a restrictive firewall will need to ensure that access to &lt;code&gt;https://index.crates.io&lt;/code&gt; is available. If for some reason you need to stay with the previous default of using the git index hosted by GitHub, the &lt;a href&#x3D;&quot;https://doc.rust-lang.org/cargo/reference/config.html#registriescrates-ioprotocol&quot;&gt;&lt;code&gt;registries.crates-io.protocol&lt;/code&gt;&lt;/a&gt; config setting can be used to change the default.&lt;/p&gt;
+&lt;p&gt;One side-effect to note about changing the access method is that this also changes the path to the crate cache, so dependencies will be downloaded anew. Once you have fully committed to using the sparse protocol, you may want to clear out the old &lt;code&gt;$CARGO_HOME/registry/*/github.com-*&lt;/code&gt; paths.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#oncecell-and-oncelock&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;oncecell-and-oncelock&quot;&gt;&lt;/a&gt;&lt;code&gt;OnceCell&lt;/code&gt; and &lt;code&gt;OnceLock&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Two new types have been stabilized for one-time initialization of shared data, &lt;code&gt;OnceCell&lt;/code&gt; and its thread-safe counterpart &lt;code&gt;OnceLock&lt;/code&gt;. These can be used anywhere that immediate construction is not wanted, and perhaps not even possible like non-&lt;code&gt;const&lt;/code&gt; data in global variables.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-rust&quot;&gt;use std::sync::OnceLock;
+
+static WINNER: OnceLock&amp;lt;&amp;amp;str&amp;gt; &#x3D; OnceLock::new();
+
+fn main() {
+    let winner &#x3D; std::thread::scope(|s| {
+        s.spawn(|| WINNER.set(&amp;quot;thread&amp;quot;));
+
+        std::thread::yield_now(); // give them a chance...
+
+        WINNER.get_or_init(|| &amp;quot;main&amp;quot;)
+    });
+
+    println!(&amp;quot;{winner} wins!&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Crates such as &lt;code&gt;lazy_static&lt;/code&gt; and &lt;code&gt;once_cell&lt;/code&gt; have filled this need in the past, but now these building blocks are part of the standard library, ported from &lt;code&gt;once_cell&lt;/code&gt;&#x27;s &lt;code&gt;unsync&lt;/code&gt; and &lt;code&gt;sync&lt;/code&gt; modules. There are still more methods that may be stabilized in the future, as well as companion &lt;code&gt;LazyCell&lt;/code&gt; and &lt;code&gt;LazyLock&lt;/code&gt; types that store their initializing function, but this first step in stabilization should already cover many use cases.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#isterminal&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;isterminal&quot;&gt;&lt;/a&gt;&lt;code&gt;IsTerminal&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;This newly-stabilized trait has a single method, &lt;code&gt;is_terminal&lt;/code&gt;, to determine if a given file descriptor or handle represents a terminal or TTY. This is another case of standardizing functionality that existed in external crates, like &lt;code&gt;atty&lt;/code&gt; and &lt;code&gt;is-terminal&lt;/code&gt;, using the C library &lt;code&gt;isatty&lt;/code&gt; function on Unix targets and similar functionality elsewhere. A common use case is for programs to distinguish between running in scripts or interactive modes, like presenting colors or even a full TUI when interactive.&lt;/p&gt;
+&lt;pre&gt;&lt;code class&#x3D;&quot;language-rust&quot;&gt;use std::io::{stdout, IsTerminal};
+
+fn main() {
+    let use_color &#x3D; stdout().is_terminal();
+    // if so, add color codes to program output...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#named-levels-of-debug-information&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;named-levels-of-debug-information&quot;&gt;&lt;/a&gt;Named levels of debug information&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;-Cdebuginfo&lt;/code&gt; compiler option has previously only supported numbers 0..&#x3D;2 for increasing amounts of debugging information, where Cargo defaults to 2 in dev and test profiles and 0 in release and bench profiles. These debug levels can now be set by name: &amp;quot;none&amp;quot; (0), &amp;quot;limited&amp;quot; (1), and &amp;quot;full&amp;quot; (2), as well as two new levels, &amp;quot;line-directives-only&amp;quot; and &amp;quot;line-tables-only&amp;quot;.&lt;/p&gt;
+&lt;p&gt;The Cargo and rustc documentation both called level 1 &amp;quot;line tables only&amp;quot; before, but it was more than that with information about all functions, just not types and variables. That level is now called &amp;quot;limited&amp;quot;, and the new &amp;quot;line-tables-only&amp;quot; level is further reduced to the minimum needed for backtraces with filenames and line numbers. This may eventually become the level used for &lt;code&gt;-Cdebuginfo&#x3D;1&lt;/code&gt;. The other &lt;code&gt;line-directives-only&lt;/code&gt; level is intended for NVPTX profiling, and is otherwise not recommended.&lt;/p&gt;
+&lt;p&gt;Note that these named options are not yet available to be used via &lt;code&gt;Cargo.toml&lt;/code&gt;. Support for that will be available in the next release 1.71.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#enforced-stability-in-the-test-cli&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;enforced-stability-in-the-test-cli&quot;&gt;&lt;/a&gt;Enforced stability in the &lt;code&gt;test&lt;/code&gt; CLI&lt;/h3&gt;
+&lt;p&gt;When &lt;code&gt;#[test]&lt;/code&gt; functions are compiled, the executable gets a command-line interface from the &lt;code&gt;test&lt;/code&gt; crate. This CLI has a number of options, including some that are not yet stabilized and require specifying &lt;code&gt;-Zunstable-options&lt;/code&gt; as well, like many other commands in the Rust toolchain. However, while that&#x27;s only intended to be allowed in nightly builds, that restriction wasn&#x27;t active in &lt;code&gt;test&lt;/code&gt; -- until now. Starting with 1.70.0, stable and beta builds of Rust will no longer allow unstable &lt;code&gt;test&lt;/code&gt; options, making them truly nightly-only as documented.&lt;/p&gt;
+&lt;p&gt;There are known cases where unstable options may have been used without direct user knowledge, especially &lt;code&gt;--format json&lt;/code&gt; used in IntelliJ Rust and other IDE plugins. Those projects are already adjusting to this change, and the status of JSON output can be followed in its &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/issues/49359&quot;&gt;tracking issue&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#stabilized-apis&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;stabilized-apis&quot;&gt;&lt;/a&gt;Stabilized APIs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/num/struct.NonZeroI8.html#associatedconstant.MIN&quot;&gt;&lt;code&gt;NonZero*::MIN/MAX&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/struct.BinaryHeap.html#method.retain&quot;&gt;&lt;code&gt;BinaryHeap::retain&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/binary_heap/struct.IntoIter.html&quot;&gt;&lt;code&gt;Default for std::collections::binary_heap::IntoIter&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_map/struct.IntoIter.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_map::{IntoIter, Iter, IterMut}&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_map/struct.IntoKeys.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_map::{IntoKeys, Keys}&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_map/struct.IntoKeys.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_map::{IntoValues, Values}&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_map/struct.Range.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_map::Range&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_set/struct.IntoIter.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_set::{IntoIter, Iter}&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/collections/btree_set/struct.Range.html&quot;&gt;&lt;code&gt;Default for std::collections::btree_set::Range&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/alloc/collections/linked_list/struct.IntoIter.html&quot;&gt;&lt;code&gt;Default for std::collections::linked_list::{IntoIter, Iter, IterMut}&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/alloc/vec/struct.IntoIter.html#impl-Default-for-IntoIter%3CT,+A%3E&quot;&gt;&lt;code&gt;Default for std::vec::IntoIter&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Chain.html&quot;&gt;&lt;code&gt;Default for std::iter::Chain&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Cloned.html&quot;&gt;&lt;code&gt;Default for std::iter::Cloned&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Copied.html&quot;&gt;&lt;code&gt;Default for std::iter::Copied&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Enumerate.html&quot;&gt;&lt;code&gt;Default for std::iter::Enumerate&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Flatten.html&quot;&gt;&lt;code&gt;Default for std::iter::Flatten&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Fuse.html&quot;&gt;&lt;code&gt;Default for std::iter::Fuse&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/iter/struct.Rev.html&quot;&gt;&lt;code&gt;Default for std::iter::Rev&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/slice/struct.Iter.html&quot;&gt;&lt;code&gt;Default for std::slice::Iter&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/slice/struct.IterMut.html&quot;&gt;&lt;code&gt;Default for std::slice::IterMut&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/alloc/rc/struct.Rc.html#method.into_inner&quot;&gt;&lt;code&gt;Rc::into_inner&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/alloc/sync/struct.Arc.html#method.into_inner&quot;&gt;&lt;code&gt;Arc::into_inner&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/cell/struct.OnceCell.html&quot;&gt;&lt;code&gt;std::cell::OnceCell&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/option/enum.Option.html#method.is_some_and&quot;&gt;&lt;code&gt;Option::is_some_and&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/ptr/struct.NonNull.html#method.slice_from_raw_parts&quot;&gt;&lt;code&gt;NonNull::slice_from_raw_parts&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/result/enum.Result.html#method.is_ok_and&quot;&gt;&lt;code&gt;Result::is_ok_and&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/result/enum.Result.html#method.is_err_and&quot;&gt;&lt;code&gt;Result::is_err_and&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/sync/atomic/struct.AtomicU8.html#method.as_ptr&quot;&gt;&lt;code&gt;std::sync::atomic::Atomic*::as_ptr&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/io/trait.IsTerminal.html&quot;&gt;&lt;code&gt;std::io::IsTerminal&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/linux/net/trait.SocketAddrExt.html&quot;&gt;&lt;code&gt;std::os::linux::net::SocketAddrExt&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/unix/net/struct.UnixDatagram.html#method.bind_addr&quot;&gt;&lt;code&gt;std::os::unix::net::UnixDatagram::bind_addr&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/unix/net/struct.UnixDatagram.html#method.connect_addr&quot;&gt;&lt;code&gt;std::os::unix::net::UnixDatagram::connect_addr&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/unix/net/struct.UnixDatagram.html#method.send_to_addr&quot;&gt;&lt;code&gt;std::os::unix::net::UnixDatagram::send_to_addr&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/os/unix/net/struct.UnixListener.html#method.bind_addr&quot;&gt;&lt;code&gt;std::os::unix::net::UnixListener::bind_addr&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/path/struct.Path.html#method.as_mut_os_str&quot;&gt;&lt;code&gt;std::path::Path::as_mut_os_str&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href&#x3D;&quot;https://doc.rust-lang.org/stable/std/sync/struct.OnceLock.html&quot;&gt;&lt;code&gt;std::sync::OnceLock&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href&#x3D;&quot;#other-changes&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;other-changes&quot;&gt;&lt;/a&gt;Other changes&lt;/h3&gt;
+&lt;p&gt;Check out everything that changed in &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust/releases/tag/1.70.0&quot;&gt;Rust&lt;/a&gt;, &lt;a href&#x3D;&quot;https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md#cargo-170-2023-06-01&quot;&gt;Cargo&lt;/a&gt;, and &lt;a href&#x3D;&quot;https://github.com/rust-lang/rust-clippy/blob/master/CHANGELOG.md#rust-170&quot;&gt;Clippy&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;&lt;a href&#x3D;&quot;#contributors-to-1700&quot; aria-hidden&#x3D;&quot;true&quot; class&#x3D;&quot;anchor&quot; id&#x3D;&quot;contributors-to-1700&quot;&gt;&lt;/a&gt;Contributors to 1.70.0&lt;/h2&gt;
+&lt;p&gt;Many people came together to create Rust 1.70.0. We couldn&#x27;t have done it without all of you. &lt;a href&#x3D;&quot;https://thanks.rust-lang.org/rust/1.70.0/&quot;&gt;Thanks!&lt;/a&gt;&lt;/p&gt;
+</content>
+
+        <author>
+            <name>The Rust Release Team</name>
+        </author>
+    </entry>
+    
+    <entry>
+        <title>On the RustConf keynote</title>
+        <link rel="alternate" href="https://blog.rust-lang.org/2023/05/29/RustConf.html" type="text/html" title="On the RustConf keynote" />
+        <published>2023-05-29T00:00:00+00:00</published>
+        <updated>2023-05-29T00:00:00+00:00</updated>
+        <id>https://blog.rust-lang.org/2023/05/29/RustConf.html</id>
+        <content type="html" xml:base="https://blog.rust-lang.org/2023/05/29/RustConf.html">&lt;p&gt;On May 26th 2023, &lt;a href&#x3D;&quot;https://thephd.dev/about/&quot;&gt;JeanHeyd Meneide&lt;/a&gt; announced they &lt;a href&#x3D;&quot;https://thephd.dev/i-am-no-longer-speaking-at-rustconf-2023&quot;&gt;would not speak at RustConf 2023 anymore&lt;/a&gt;. They were invited to give a keynote at the conference, only to be told two weeks later the keynote would be demoted to a normal talk, due to a decision made within the Rust project leadership.&lt;/p&gt;
+&lt;p&gt;That decision was not right, and first off we want to publicly apologize for the harm we caused. We failed you JeanHeyd. The idea of downgrading a talk after the invitation was insulting, and nobody in leadership should have been willing to entertain it.&lt;/p&gt;
+&lt;p&gt;Everyone in leadership chat is still working to fully figure out everything that went wrong and how we can prevent all of this from happening again. That work is not finished yet. Still, we want to share some steps we are taking to reduce the risk of something like this from happening again.&lt;/p&gt;
+&lt;p&gt;The primary causes of the failure were the decision-making and communication processes of leadership chat. Leadership chat has been the &lt;a href&#x3D;&quot;https://blog.rust-lang.org/inside-rust/2022/10/06/governance-update.html&quot;&gt;top-level governance structure created after the previous Moderation Team resigned in late 2021&lt;/a&gt;. It’s made of all leads of top-level teams, all members of the Core Team, all project directors on the Rust Foundation board, and all current moderators. This leadership chat was meant as a short-term solution and lacked clear rules and processes for decision making and communication. This left a lot of room for misunderstandings about when a decision had actually been made and when individuals were speaking for the project versus themselves.&lt;/p&gt;
+&lt;p&gt;In this post we focus on the organizational and process failure, leaving room for individuals to publicly acknowledge their own role. Nonetheless, formal rules or governance processes should not be required to identify that demoting JeanHeyd’s keynote was the wrong thing to do. The fact is that several individuals exercised poor judgment and poor communication. Recognizing their outsized role in the situation, those individuals have opted to step back from top-level governance roles, including leadership chat and the upcoming leadership council.&lt;/p&gt;
+&lt;p&gt;Organizationally, within leadership chat we will enforce a strict consensus rule for all decision making, so that there is no longer ambiguity of whether something is an individual opinion or a group decision. We are going to launch the new governance council as soon as possible. We’ll assist the remaining teams to select their representatives in a timely manner, so that the new governance council can start and the current leadership chat can disband.&lt;/p&gt;
+&lt;p&gt;We wish to close the post by reiterating our apology to JeanHeyd, but also the wider Rust community. You deserved better than you got from us.&lt;/p&gt;
+&lt;p&gt;-- The &lt;a href&#x3D;&quot;https://github.com/rust-lang/team/blob/2cea9916903fffafbfae6c78882d0924ce3c3a8a/teams/interim-leadership-chat.toml#L8-L25&quot;&gt;members of leadership chat&lt;/a&gt;&lt;/p&gt;
+</content>
+
+        <author>
+            <name>leadership chat membership</name>
+        </author>
+    </entry>
+    
+</feed>

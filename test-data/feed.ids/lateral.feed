@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:georss="http://www.georss.org/georss" xmlns:audioboom="https://audioboom.com/rss/1.0" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0" xml:base="https://audioboom.com/">
+<!--
+
+      ***************************************************************
+      * Hi! You're looking at an RSS feed. If you're not sure what  *
+      * to do here, you can visit our help center to find out more: *
+      *                https://support.audioboom.com                *
+      ***************************************************************
+
+-->
+<channel>
+<title>Lateral with Tom Scott</title>
+<description>Comedy panel game about weird questions with wonderful answers. Each week, Tom Scott is joined by three guests to ask each other questions with a sideways twist. There's no points or prizes - just reputation and bragging rights on the line. For business enquiries, contestants applications and question submissions, visit https://www.lateralcast.com</description>
+<link>https://www.lateralcast.com</link>
+<atom:link href="https://pubsubhubbub.appspot.com/" rel="hub" />
+<atom:link href="https://audioboom.com/channels/5097784.rss" rel="self" type="application/rss+xml" />
+<pubDate>Fri, 04 Aug 2023 14:15:00 +0000</pubDate>
+<language>en</language>
+<image>
+  <url>https://audioboom.com/i/40211109.jpg</url>
+  <title>Lateral with Tom Scott</title>
+  <link>https://www.lateralcast.com</link>
+</image>
+<itunes:image href="https://audioboom.com/i/40211109.jpg" />
+<audioboom:banner-image href="https://audioboom.com/i/40345812.jpg" />
+<itunes:category text="Education" />
+<itunes:category text="Leisure"><itunes:category text="Games" /></itunes:category>
+<itunes:category text="Comedy" />
+<itunes:explicit>no</itunes:explicit>
+<itunes:summary>Comedy panel game about weird questions with wonderful answers. Each week, Tom Scott is joined by three guests to ask each other questions with a sideways twist. There's no points or prizes - just reputation and bragging rights on the line. For business enquiries, contestants applications and question submissions, visit https://www.lateralcast.com</itunes:summary>
+<itunes:author>Tom Scott and David Bodycombe</itunes:author>
+<itunes:owner>
+  <itunes:name>Lateral with Tom Scott</itunes:name>
+  <itunes:email>rss+5097784-fdbc1160dcf62bdba95398ffd12f0d5184431ad5@audioboom.com</itunes:email>
+</itunes:owner>
+  <podcast:guid>35f70644-c74d-54b4-b9e1-b81bfa3223f5</podcast:guid>
+<copyright>Pad 26 Limited / Labyrinth Games Ltd</copyright>
+<itunes:new-feed-url>https://audioboom.com/channels/5097784.rss</itunes:new-feed-url>
+<itunes:type>episodic</itunes:type>
+
+<item>
+  <title>43: Six unopenable letterboxes</title>
+  <link>https://audioboom.com/posts/8336894</link>
+  <itunes:episode>43</itunes:episode>
+  <itunes:title>Six unopenable letterboxes</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8336894.mp3?modified=1689876406&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8336894.mp3?modified=1689876406&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2279" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40760278.jpg" />
+  <media:content url="https://audioboom.com/i/40760278.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8336894/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2279</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Jeremy Fielding, Estefannie and Inés Dawson ('Draw Curiosity') face questions about sporting sobbing, bad breakfasts and shorn sweethearts.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Zilland, Declan McGarva, Alexandra Fall, Greg Meredith, Youenn Fenard. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 04 Aug 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-07-18:/posts/8336894</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>42: Giant concrete balls</title>
+  <link>https://audioboom.com/posts/8333418</link>
+  <itunes:episode>42</itunes:episode>
+  <itunes:title>Giant concrete balls</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8333418.mp3?modified=1689286138&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8333418.mp3?modified=1689286138&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2681" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40740437.jpg" />
+  <media:content url="https://audioboom.com/i/40740437.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8333418/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2681</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Annie Rauwerda ('Depths of Wikipedia'), J. Draper and Geoff Marshall face questions about rumbling roads, sacred snacks and keyboard quirks.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Emil, Hugo Bush, August Sappho, Michael Nebesny. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 28 Jul 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-07-11:/posts/8333418</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>41: Barefoot job applications</title>
+  <link>https://audioboom.com/posts/8326632</link>
+  <itunes:episode>41</itunes:episode>
+  <itunes:title>Barefoot job applications</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8326632.mp3?modified=1689953794&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8326632.mp3?modified=1689953794&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2604" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40762796.jpg" />
+  <media:content url="https://audioboom.com/i/40762796.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8326632/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2604</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Caroline Roper, Ella Huber and Tom Lum from 'Let's Learn Everything' face questions about diamond dealing, disorganised diners and dodgy documents.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Lewis Tough, Matt Sheldon, Cressida, Cooper Wiseman, Jack Lawrence. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 21 Jul 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-07-01:/posts/8326632</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>40: Swimming without water</title>
+  <link>https://audioboom.com/posts/8325734</link>
+  <itunes:episode>40</itunes:episode>
+  <itunes:title>Swimming without water</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8325734.mp3?modified=1688060337&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8325734.mp3?modified=1688060337&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2829" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40691769.jpg" />
+  <media:content url="https://audioboom.com/i/40691769.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8325734/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2829</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Anna Ploszajski, Scott Manley and Bill Sunderland face questions about cheffy shortcuts, red ropes and pricey papers.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Leo, Mike Salter, Miriam Cronberg, Marcus Kontiokari. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 14 Jul 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-06-29:/posts/8325734</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>39: Dare you brave this shopping mall?</title>
+  <link>https://audioboom.com/posts/8318182</link>
+  <itunes:episode>39</itunes:episode>
+  <itunes:title>Dare you brave this shopping mall?</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8318182.mp3?modified=1688060749&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8318182.mp3?modified=1688060749&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2964" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40691771.jpg" />
+  <media:content url="https://audioboom.com/i/40691771.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8318182/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2964</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Ruth Amos and Shawn Brown ('Kids Invent Stuff') and Dani Siller ('Escape This Podcast') face questions about slapdash squiggles, poster positioning and fishy football fixtures.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Santiago, Dave, Richard Stamp, Dani Siller, Casimir Hudak, Sander Famil. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 07 Jul 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-06-15:/posts/8318182</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>38: Edward's buried paint</title>
+  <link>https://audioboom.com/posts/8321549</link>
+  <itunes:episode>38</itunes:episode>
+  <itunes:title>Edward's buried paint</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8321549.mp3?modified=1687560175&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8321549.mp3?modified=1687560175&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2691" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40676003.jpg" />
+  <media:content url="https://audioboom.com/i/40676003.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8321549/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2691</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>From 'Jet Lag: The Game', Sam Denby, Adam Chase and Ben Doyle face questions about copyright chicanery, microstate melodies and fruitless flights.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Paulo, Tim, Asger Harpøth Møller, Tom, Ben Tedds, Alex L. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 30 Jun 2023 13:05:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-06-21:/posts/8321549</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>37: Keep left at the quarry</title>
+  <link>https://audioboom.com/posts/8314678</link>
+  <itunes:episode>37</itunes:episode>
+  <itunes:title>Keep left at the quarry</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8314678.mp3?modified=1686776975&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8314678.mp3?modified=1686776975&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2588" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40644432.jpg" />
+  <media:content url="https://audioboom.com/i/40644432.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8314678/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2588</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Jeremy Fielding, Estefannie and Inés Dawson ('Draw Curiosity') face questions about treaty texts, shirt sequences and practical photocopies.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Alain Chen, Jonathan Levy, Nathan Lipke, Julian Atzlinger. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 23 Jun 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-06-08:/posts/8314678</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>36: The no-show French king</title>
+  <link>https://audioboom.com/posts/8314677</link>
+  <itunes:episode>36</itunes:episode>
+  <itunes:title>The no-show French king</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8314677.mp3?modified=1686861267&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8314677.mp3?modified=1686861267&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2804" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40627283.jpg" />
+  <media:content url="https://audioboom.com/i/40627283.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8314677/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2804</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Annie Rauwerda ('Depths of Wikipedia'), J. Draper and Geoff Marshall face questions about sporting schemes, misty mirrors and Boston billboards.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: The Podcast Studios, Dublin. EDITED BY: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Ricky James, Ryan G., Jared Pike, Charlie. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 16 Jun 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-06-08:/posts/8314677</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>35: Selfies with number 57</title>
+  <link>https://audioboom.com/posts/8305041</link>
+  <itunes:episode>35</itunes:episode>
+  <itunes:title>Selfies with number 57</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8305041.mp3?modified=1686529817&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8305041.mp3?modified=1686529817&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2696" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40589215.jpg" />
+  <media:content url="https://audioboom.com/i/40589215.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8305041/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2696</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Emily the Engineer, Wren Weichman and Kip Heath face questions about benefit bonuses, stationery sales and plummeting platforms.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Lewis Tough, Jackson S. Kilger, Chris Dickson, Mark Moorhead, Katharine Davis, Sky-guided Vulpine Friend. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 09 Jun 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-05-22:/posts/8305041</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>34: Six unnecessary doorknobs</title>
+  <link>https://audioboom.com/posts/8305039</link>
+  <itunes:episode>34</itunes:episode>
+  <itunes:title>Six unnecessary doorknobs</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8305039.mp3?modified=1686529958&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8305039.mp3?modified=1686529958&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2558" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40574075.jpg" />
+  <media:content url="https://audioboom.com/i/40574075.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8305039/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2558</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Melissa Fernandes, Sabrina Cruz and Taha Khan from 'Answer in Progress' face questions about generous grades, delayed days and spacious sidewalks.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Lewis Tough, Arun Uttamchandani, Phil, Joey R., Leonard. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 02 Jun 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-05-22:/posts/8305039</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>33: Crooked camel competitions</title>
+  <link>https://audioboom.com/posts/8297595</link>
+  <itunes:episode>33</itunes:episode>
+  <itunes:title>Crooked camel competitions</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8297595.mp3?modified=1686529988&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8297595.mp3?modified=1686529988&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2946" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40533290.jpg" />
+  <media:content url="https://audioboom.com/i/40533290.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8297595/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2946</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Bill Sunderland and Dani Siller (from 'Escape This Podcast') and Amelie Brodeur face questions about colour-coded kindness, curious keypads and cosmic kit.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Jewis Tough, Jasper Bodycombe, Robert Waelder, Peter Scandrett. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 26 May 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-05-09:/posts/8297595</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>32: Losing golf balls for fun</title>
+  <link>https://audioboom.com/posts/8290330</link>
+  <itunes:episode>32</itunes:episode>
+  <itunes:title>Losing golf balls for fun</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8290330.mp3?modified=1684513727&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8290330.mp3?modified=1684513727&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2229" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40567378.jpg" />
+  <media:content url="https://audioboom.com/i/40567378.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8290330/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2229</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Xyla Foxlin, Jordan Harrod and Becky Stern face questions about cable cutting, baking brilliance and ska band shenanigans.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com/">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com/">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Chris B., Harry. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com/">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 19 May 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-04-28:/posts/8290330</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>31: The genius of cheese slices</title>
+  <link>https://audioboom.com/posts/8287961</link>
+  <itunes:episode>31</itunes:episode>
+  <itunes:title>The genius of cheese slices</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8287961.mp3?modified=1682503189&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8287961.mp3?modified=1682503189&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2373" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40480781.jpg" />
+  <media:content url="https://audioboom.com/i/40480781.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8287961/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2373</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Brian McManus from 'Real Engineering', Sarah Renae Clark and Nicholas Johnson face questions about timely treatments, perceptive painters and bisected badges.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Sam,	Andrei Tuch. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 12 May 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-04-26:/posts/8287961</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>30: The orchestrated in-joke</title>
+  <link>https://audioboom.com/posts/8284475</link>
+  <itunes:episode>30</itunes:episode>
+  <itunes:title>The orchestrated in-joke</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8284475.mp3?modified=1681945587&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8284475.mp3?modified=1681945587&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2195" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40462994.jpg" />
+  <media:content url="https://audioboom.com/i/40462994.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8284475/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2195</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Mark Rober, Virginia Schutte and Jabrils face questions about rigorous racing, perceptive photography, and vexatious vexillology.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Francesco Falcone. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 05 May 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-04-19:/posts/8284475</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>29: The passenger going nowhere</title>
+  <link>https://audioboom.com/posts/8284465</link>
+  <itunes:episode>29</itunes:episode>
+  <itunes:title>The passenger going nowhere</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8284465.mp3?modified=1681944365&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8284465.mp3?modified=1681944365&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2486" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40462947.jpg" />
+  <media:content url="https://audioboom.com/i/40462947.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8284465/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2486</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Emily the Engineer, Wren Weichman and Kip Heath face questions about right-handed roads, tea taxonomy and broken bikes.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Raz Binyamin. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 28 Apr 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-04-19:/posts/8284465</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>28: An 'out of this world' lecture</title>
+  <link>https://audioboom.com/posts/8284461</link>
+  <itunes:episode>28</itunes:episode>
+  <itunes:title>An 'out of this world' lecture</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8284461.mp3?modified=1681943481&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8284461.mp3?modified=1681943481&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2569" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40462926.jpg" />
+  <media:content url="https://audioboom.com/i/40462926.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8284461/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2569</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Melissa Fernandes, Sabrina Cruz and Taha Khan from 'Answer in Progress' face questions about crafty clocks, remunerative records and veiled video games.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Lewis Tough, Nick VanAcker. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 21 Apr 2023 14:15:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-04-19:/posts/8284461</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>27: Extra-green cat trees</title>
+  <link>https://audioboom.com/posts/8272581</link>
+  <itunes:episode>27</itunes:episode>
+  <itunes:title>Extra-green cat trees</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8272581.mp3?modified=1680170702&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8272581.mp3?modified=1680170702&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2387" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40399361.jpg" />
+  <media:content url="https://audioboom.com/i/40399361.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8272581/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2387</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Bill Sunderland and Dani Siller (from 'Escape This Podcast') and Amelie Brodeur face questions about troublesome tower blocks, bonkers bookings and factually-incorrect films.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Ryan, Peter Ellis. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 14 Apr 2023 14:00:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-30:/posts/8272581</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>26: The car crash 'dummy'</title>
+  <link>https://audioboom.com/posts/8272346</link>
+  <itunes:episode>26</itunes:episode>
+  <itunes:title>The car crash 'dummy'</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8272346.mp3?modified=1680170624&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8272346.mp3?modified=1680170624&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2428" lang="en-US" />
+  <itunes:image href="https://audioboom.com/i/40397993.jpg" />
+  <media:content url="https://audioboom.com/i/40397993.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8272346/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2428</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Xyla Foxlin, Jordan Harrod and Becky Stern face questions about cheapo chicken, problematic passwords and bountiful bananas.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Marion Halim, Tom Hartley, Marcus Cameron Bent, Marian. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 07 Apr 2023 14:00:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-29:/posts/8272346</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>25: A deliberately bad program</title>
+  <link>https://audioboom.com/posts/8266755</link>
+  <itunes:episode>25</itunes:episode>
+  <itunes:title>A deliberately bad program</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8266755.mp3?modified=1679674997&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8266755.mp3?modified=1679674997&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2626" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40366643.jpg" />
+  <media:content url="https://audioboom.com/i/40366643.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8266755/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2626</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Brian McManus from 'Real Engineering', Sarah Renae Clark and Nicholas Johnson face questions about sincere symbols, shrewd signage and silly stickers.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Eglė Vaškevičiūtė, Nicholas Johnson, Adrian Miguel, Adam Austerberry. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 31 Mar 2023 14:00:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-20:/posts/8266755</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>24: The coins buried with Sinatra</title>
+  <link>https://audioboom.com/posts/8264935</link>
+  <itunes:episode>24</itunes:episode>
+  <itunes:title>The coins buried with Sinatra</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8264935.mp3?modified=1678964238&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8264935.mp3?modified=1678964238&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2643" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40355241.jpg" />
+  <media:content url="https://audioboom.com/i/40355241.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8264935/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2643</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Mark Rober, Jabrils and Virginia Schutte face questions about football faults, soil secrets, and educational eats.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT: Podcasts NZ Studios. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Norman Liang, Vishy Iyer, Lewis Tough. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 24 Mar 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-16:/posts/8264935</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>23: Naval gazing</title>
+  <link>https://audioboom.com/posts/8261149</link>
+  <itunes:episode>23</itunes:episode>
+  <itunes:title>Naval gazing</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8261149.mp3?modified=1678384580&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8261149.mp3?modified=1678384580&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2041" lang="en-US" />
+  <itunes:image href="https://audioboom.com/i/40334588.jpg" />
+  <media:content url="https://audioboom.com/i/40334588.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8261149/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2041</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>'Karen Puzzles' Kavett, Rebecca 'Dr Becky' Smethurst and Stuart 'Ashens' Ashen face questions about medical methods, musical murders, and McDonald's marketing.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Eglė Vaškevičiūtė, Felix, Oliver Forrest, Soos. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 17 Mar 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-09:/posts/8261149</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>22: A carousel's little secret</title>
+  <link>https://audioboom.com/posts/8261146</link>
+  <itunes:episode>22</itunes:episode>
+  <itunes:title>A carousel's little secret</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8261146.mp3?modified=1678384782&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8261146.mp3?modified=1678384782&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2249" lang="en-US" />
+  <itunes:image href="https://audioboom.com/i/40334575.jpg" />
+  <media:content url="https://audioboom.com/i/40334575.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8261146/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2249</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>'SuperSaf' AhmedMia, Ali Spagnola and Mehdi 'ElectroBOOM' Sadaghdar face questions about rigging research, dating dwellings and exploiting extras.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Eglė Vaškevičiūtė, Nick Landis, Dhruv Gandhi, Josie, Sarthak Chandra. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 10 Mar 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-03-09:/posts/8261146</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>21: The bandit that gives back</title>
+  <link>https://audioboom.com/posts/8253081</link>
+  <itunes:episode>21</itunes:episode>
+  <itunes:title>The bandit that gives back</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8253081.mp3?modified=1677264140&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8253081.mp3?modified=1677264140&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2503" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40290337.jpg" />
+  <media:content url="https://audioboom.com/i/40290337.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8253081/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2503</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Sabrina Cruz, Melissa Fernandes and Taha Khan from 'Answer in Progress' face questions about deceptive dates, brick buildings and baseball baiting.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Asger Harpøth Møller, Lewis F.S., Deniz Montagner. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 03 Mar 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-02-24:/posts/8253081</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>20: The rigged JFK election</title>
+  <link>https://audioboom.com/posts/8253047</link>
+  <itunes:episode>20</itunes:episode>
+  <itunes:title>The rigged JFK election</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8253047.mp3?modified=1677260661&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8253047.mp3?modified=1677260661&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2445" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40290103.jpg" />
+  <media:content url="https://audioboom.com/i/40290103.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8253047/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2445</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>William Osman, Dani Siller and Bill Sunderland face questions about statesmanly statues, parking perks and bountiful birthdays.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Matt Jones, Ben Tedds, Jake Ng. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 24 Feb 2023 17:43:19 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-02-24:/posts/8253047</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>19: 315,000 obsolete index cards</title>
+  <link>https://audioboom.com/posts/8245882</link>
+  <itunes:episode>19</itunes:episode>
+  <itunes:title>315,000 obsolete index cards</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8245882.mp3?modified=1676650402&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8245882.mp3?modified=1676650402&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2641" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40267773.jpg" />
+  <media:content url="https://audioboom.com/i/40267773.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8245882/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2641</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Cleo Abram, Simone Giertz and 'Legal Eagle' Devin Stone face questions about confusing conveyors, flooded fields and bad-faith baseball.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Sarthak Chandra, Aidan Henson, David Fichtmueller. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 17 Feb 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-02-11:/posts/8245882</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>18: Making cosplay worthwhile</title>
+  <link>https://audioboom.com/posts/8241435</link>
+  <itunes:episode>18</itunes:episode>
+  <itunes:title>Making cosplay worthwhile</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8241435.mp3?modified=1675988680&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8241435.mp3?modified=1675988680&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2235" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40223496.jpg" />
+  <media:content url="https://audioboom.com/i/40223496.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8241435/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2235</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Jay Foreman, Kip Heath and Jason Slaughter ('Not Just Bikes') face questions about awkward animals, Indian ingenuity, and a Peter Pan problem.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Ben Tedds, Lewis Tough. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 10 Feb 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-02-03:/posts/8241435</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>17: Some 3-D movies from 1903</title>
+  <link>https://audioboom.com/posts/8237619</link>
+  <itunes:episode>17</itunes:episode>
+  <itunes:title>Some 3-D movies from 1903</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237619.mp3?modified=1675465920&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237619.mp3?modified=1675465920&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2625" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40201011.jpg" />
+  <media:content url="https://audioboom.com/i/40201011.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237619/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2625</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>'Karen Puzzles' Kavett, Rebecca 'Dr Becky' Smethurst and Stuart 'Ashens' Ashen face questions about political powercuts, red rectangles, and astonishing anvils.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Deniz Montagner, Adam Austerberry, Karen Kavett, Lewis Tough. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 03 Feb 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">tag:audioboom.com,2023-01-27:/posts/8237619</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>16: The 2-year-old newborn</title>
+  <link>https://audioboom.com/posts/8237543</link>
+  <itunes:episode>16</itunes:episode>
+  <itunes:title>The 2-year-old newborn</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237543.mp3?modified=1675988699&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237543.mp3?modified=1675988699&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2429" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200566.jpg" />
+  <media:content url="https://audioboom.com/i/40200566.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237543/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2429</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>'SuperSaf' AhmedMia, Ali Spagnola and Mehdi 'ElectroBOOM' Sadaghdar face questions about scientific statues, slashed screens, and a silly sequence.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: Julie Hassett at The Podcast Studios, Dublin. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Joe Zeng, Josh Halbur. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 27 Jan 2023 14:00:04 +0000</pubDate>
+  <guid isPermaLink="false">63d2741b3aa98e0011a9f851</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>15: Elfrida, dog detective</title>
+  <link>https://audioboom.com/posts/8237544</link>
+  <itunes:episode>15</itunes:episode>
+  <itunes:title>Elfrida, dog detective</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237544.mp3?modified=1675988709&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237544.mp3?modified=1675988709&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2626" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200570.jpg" />
+  <media:content url="https://audioboom.com/i/40200570.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237544/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2626</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Sabrina Cruz, Melissa Fernandes and Taha Khan from 'Answer in Progress' face questions about baffling bans, Australian emblems, and stamp sales.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Eglė Vaškevičiūtė, Samuel, Manfred Paul. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 20 Jan 2023 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">63ca4acb36308100103872ed</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>14: A flaming good flight</title>
+  <link>https://audioboom.com/posts/8237545</link>
+  <itunes:episode>14</itunes:episode>
+  <itunes:title>A flaming good flight</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237545.mp3?modified=1675988723&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237545.mp3?modified=1675988723&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2757" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200572.jpg" />
+  <media:content url="https://audioboom.com/i/40200572.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237545/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2757</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Dani Siller &amp; Bill Sunderland ('Escape This Podcast') and William Osman face questions about crooning tunes, morning mishaps and enigmatic elevators.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Lewis Tough, Manuel Omil. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 13 Jan 2023 15:37:31 +0000</pubDate>
+  <guid isPermaLink="false">63b76534d490b600112cb966</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>13: A glassware tax affair</title>
+  <link>https://audioboom.com/posts/8237546</link>
+  <itunes:episode>13</itunes:episode>
+  <itunes:title>A glassware tax affair</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237546.mp3?modified=1675988722&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237546.mp3?modified=1675988722&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2280" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200575.jpg" />
+  <media:content url="https://audioboom.com/i/40200575.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237546/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2280</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Cleo Abram, Simone Giertz and 'Legal Eagle' Devin Stone face questions about colossal chains, prudish paintings, and golden goblets.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTION: Devin Stone. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2023.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 06 Jan 2023 15:45:30 +0000</pubDate>
+  <guid isPermaLink="false">63b7639b071f8e0010c7c284</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>12: The most-kissed woman in history</title>
+  <link>https://audioboom.com/posts/8237547</link>
+  <itunes:episode>12</itunes:episode>
+  <itunes:title>The most-kissed woman in history</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237547.mp3?modified=1675989077&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237547.mp3?modified=1675989077&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="1888" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200578.jpg" />
+  <media:content url="https://audioboom.com/i/40200578.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237547/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>1888</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Trace Dominguez, Nahre Sol and Jordan Harrod face questions about crafty candidates, protective parking and goofy glasses.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 30 Dec 2022 15:45:39 +0000</pubDate>
+  <guid isPermaLink="false">639c8fedfff91900113497b8</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>11: Who uses the 10-08-42 rule?</title>
+  <link>https://audioboom.com/posts/8237548</link>
+  <itunes:episode>11</itunes:episode>
+  <itunes:title>Who uses the 10-08-42 rule?</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237548.mp3?modified=1675988746&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237548.mp3?modified=1675988746&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2447" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200582.jpg" />
+  <media:content url="https://audioboom.com/i/40200582.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237548/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2447</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Rowan Ellis, Vanessa Hill and Grady Hillhouse face questions about diehard disease, pill-popping performers, and ridiculous room numbers.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 23 Dec 2022 15:30:48 +0000</pubDate>
+  <guid isPermaLink="false">639c8ca1dccad9001135cdf4</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>10: The day that cost $700m</title>
+  <link>https://audioboom.com/posts/8237549</link>
+  <itunes:episode>10</itunes:episode>
+  <itunes:title>The day that cost $700m</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237549.mp3?modified=1675988748&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237549.mp3?modified=1675988748&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2379" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200587.jpg" />
+  <media:content url="https://audioboom.com/i/40200587.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237549/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2379</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Marques Brownlee, Wren Weichman and Hayley Loren discuss questions about clever communications, ridiculous registrations and distant destinations.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 16 Dec 2022 15:45:51 +0000</pubDate>
+  <guid isPermaLink="false">638a088319718c0011e5e3bf</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>9: The purple seats mystery</title>
+  <link>https://audioboom.com/posts/8237550</link>
+  <itunes:episode>9</itunes:episode>
+  <itunes:title>The purple seats mystery</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237550.mp3?modified=1675988748&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237550.mp3?modified=1675988748&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2652" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200590.jpg" />
+  <media:content url="https://audioboom.com/i/40200590.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237550/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2652</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Corry Will, Luke Cutforth and Jade Tan-Holmes face questions about mysterious medicines, calamitous currency and dodgy dealings.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 09 Dec 2022 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">6389a19ea986f30012b57b6b</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>8: What Liechtenstein shares with England</title>
+  <link>https://audioboom.com/posts/8237551</link>
+  <itunes:episode>8</itunes:episode>
+  <itunes:title>What Liechtenstein shares with England</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237551.mp3?modified=1675988752&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237551.mp3?modified=1675988752&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2459" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200596.jpg" />
+  <media:content url="https://audioboom.com/i/40200596.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237551/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2459</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Brady Haran, Mary Spender and Eric Johnson face questions about an unwanted win, a gruesome graveyard and a lucky performance.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 02 Dec 2022 15:21:02 +0000</pubDate>
+  <guid isPermaLink="false">6389980bade609001067e211</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>7: The brilliant burger chain ruse</title>
+  <link>https://audioboom.com/posts/8237552</link>
+  <itunes:episode>7</itunes:episode>
+  <itunes:title>The brilliant burger chain ruse</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237552.mp3?modified=1675988763&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237552.mp3?modified=1675988763&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2709" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200599.jpg" />
+  <media:content url="https://audioboom.com/i/40200599.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237552/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2709</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Dani Siller, Bill Sunderland and Matt Parker face questions about plastic plates, academic awards and creative cereals.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 25 Nov 2022 17:40:53 +0000</pubDate>
+  <guid isPermaLink="false">636ecc46ef3e200012bc8360</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>6: Solve a 13th Century murder!</title>
+  <link>https://audioboom.com/posts/8237553</link>
+  <itunes:episode>6</itunes:episode>
+  <itunes:title>Solve a 13th Century murder!</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237553.mp3?modified=1675988770&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237553.mp3?modified=1675988770&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2239" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200602.jpg" />
+  <media:content url="https://audioboom.com/i/40200602.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237553/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2239</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Trace Dominguez, Nahre Sol and Jordan Harrod face questions about profitable collisions, familiar flags, and knotty problems.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 18 Nov 2022 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">6363a89e58f8560012829f22</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>5: When time goes up to 30 o'clock</title>
+  <link>https://audioboom.com/posts/8237554</link>
+  <itunes:episode>5</itunes:episode>
+  <itunes:title>When time goes up to 30 o'clock</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237554.mp3?modified=1675988774&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237554.mp3?modified=1675988774&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2548" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200607.jpg" />
+  <media:content url="https://audioboom.com/i/40200607.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237554/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2548</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Rowan Ellis, Vanessa Hill and Grady Hillhouse face questions about logo longevity, Kodak complaints, and perplexing playgrounds.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a>.<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 11 Nov 2022 15:45:00 +0000</pubDate>
+  <guid isPermaLink="false">6361793c4842a9001228c32b</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>4: The currency that cuts crime</title>
+  <link>https://audioboom.com/posts/8237555</link>
+  <itunes:episode>4</itunes:episode>
+  <itunes:title>The currency that cuts crime</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237555.mp3?modified=1675988781&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237555.mp3?modified=1675988781&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2571" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200610.jpg" />
+  <media:content url="https://audioboom.com/i/40200610.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237555/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2571</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Marques Brownlee, Hayley Loren and Wren Weichman face questions about crime-busting currency, a sporting crisis and night-inspired combat.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 04 Nov 2022 15:14:27 +0000</pubDate>
+  <guid isPermaLink="false">6356a31092f06b0012b23da4</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>3: Why did 1959's album charts vanish?</title>
+  <link>https://audioboom.com/posts/8237556</link>
+  <itunes:episode>3</itunes:episode>
+  <itunes:title>Why did 1959's album charts vanish?</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237556.mp3?modified=1675988795&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237556.mp3?modified=1675988795&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2346" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200626.jpg" />
+  <media:content url="https://audioboom.com/i/40200626.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237556/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2346</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Jade Tan-Holmes, Corry Will and Luke Cutforth face questions about missing album charts, an evasive painter and a flaw in 'Lord of the Flies'.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 28 Oct 2022 14:50:00 +0000</pubDate>
+  <guid isPermaLink="false">63527e4969595200127f94b0</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>2: What was measured in 'gillettes'?</title>
+  <link>https://audioboom.com/posts/8237557</link>
+  <itunes:episode>2</itunes:episode>
+  <itunes:title>What was measured in 'gillettes'?</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237557.mp3?modified=1675988796&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237557.mp3?modified=1675988796&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2551" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200624.jpg" />
+  <media:content url="https://audioboom.com/i/40200624.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237557/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2551</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Brady Haran, Mary Spender and Eric Johnson face questions about a creative fire, bloodless hitmen and partly-useless products.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 21 Oct 2022 14:49:28 +0000</pubDate>
+  <guid isPermaLink="false">6351732cc3f6ff0012d6a71d</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>1: The elevator where you're &quot;born again&quot;</title>
+  <link>https://audioboom.com/posts/8237558</link>
+  <itunes:episode>1</itunes:episode>
+  <itunes:title>The elevator where you're &quot;born again&quot;</itunes:title>
+  <enclosure url="https://audioboom.com/posts/8237558.mp3?modified=1675988803&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237558.mp3?modified=1675988803&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="2574" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200631.jpg" />
+  <media:content url="https://audioboom.com/i/40200631.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237558/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>2574</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>full</itunes:episodeType>
+  <description><![CDATA[<div>Matt Parker, Bill Sunderland and Dani Siller face questions about a 'born again' elevator, a bronze medal failure and a very expensive Danish supermarket.<br>
+LATERAL is a weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). ADDITIONAL QUESTIONS: Josh Halbur, Ben Justice, Lewis Tough, Arun Uttamchandani, Eglė Vaškevičiūtė. FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Fri, 14 Oct 2022 15:00:56 +0000</pubDate>
+  <guid isPermaLink="false">63404f5270ee48001287f8cd</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+<item>
+  <title>Lateral: Trailer</title>
+  <link>https://audioboom.com/posts/8237559</link>
+  <enclosure url="https://audioboom.com/posts/8237559.mp3?modified=1677428096&amp;sid=5097784&amp;source=rss" length="0" type="audio/mpeg" />
+  <media:content url="https://audioboom.com/posts/8237559.mp3?modified=1677428096&amp;sid=5097784&amp;source=rss" type="audio/mpeg" medium="audio" duration="45" lang="en-GB" />
+  <itunes:image href="https://audioboom.com/i/40200636.jpg" />
+  <media:content url="https://audioboom.com/i/40200636.jpg" type="image/jpg" medium="image"  />
+  <podcast:transcript url="https://audioboom.com/posts/8237559/transcript.srt" type="application/x-subrip" />
+  <itunes:duration>45</itunes:duration>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:episodeType>trailer</itunes:episodeType>
+  <description><![CDATA[<div>A weekly podcast about interesting questions and even more interesting answers, hosted by Tom Scott. For business enquiries, contestant appearances or question submissions, visit <a href="https://www.lateralcast.com">https://www.lateralcast.com</a><br>
+<br>
+HOST: Tom Scott. QUESTION PRODUCER: David Bodycombe. RECORDED AT &amp; EDITED BY: The Podcast Studios, Dublin. EDITOR: Julie Hassett. MUSIC: Karl-Ola Kjellholm ('Private Detective'/'Agrumes', courtesy of <a href="http://epidemicsound.com">epidemicsound.com</a>). FORMAT: Pad 26 Limited/Labyrinth Games Ltd. EXECUTIVE PRODUCERS: David Bodycombe and Tom Scott. © Pad 26 Limited (<a href="https://www.pad26.com">https://www.pad26.com</a>) / Labyrinth Games Ltd. 2022.</div>
+]]></description>
+  <itunes:summary>A weekly podcast about interesting questions</itunes:summary>
+  <pubDate>Mon, 03 Oct 2022 15:33:30 +0000</pubDate>
+  <guid isPermaLink="false">633b00c96400e800117e5113</guid>
+  <itunes:author>Tom Scott and David Bodycombe</itunes:author>
+  <dc:creator>Tom Scott and David Bodycombe</dc:creator>
+  <media:rights status="userCreated" />
+</item>
+</channel>
+</rss>

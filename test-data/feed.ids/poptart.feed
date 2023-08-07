@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>Hosaka Corporation: RSS Feed</title>
+<link>https://hosakacorp.net</link>
+<description>Digital voodoo, cyber-witchcraft, and shell conjuring.</description>
+<item>
+	<title>Karensasui: The Garden</title>
+	<link>https://hosakacorp.net/p/net.hmtl</link>
+	<description>A description of my network and some of the layout, also serves as my continuous internal network documentation effort.</description>
+</item>
+<item>
+	<title>Truly Responsible Disclosure</title>
+	<link>https://hosakacorp.net/p/truly-responsible-disclosure.html</link>
+	<description>Truly responsible disclosure - why I decided not to report critical vulnerabilities this time.</description>
+</item>
+<item>
+	<title>Smack: Slack Post-Exploitation and Exfil Tools</title>
+	<link>https://hosakacorp.net/p/smack.html</link>
+	<description>A tool to assist with post-exploitation activities of Slack servers. Uses the user interaction internal API to enable searching messages, downloading files, and channels.</description>
+</item>
+<item>
+	<title>Using ifstated(8) for Laptop Network Management</title>
+	<link>https://hosakacorp.net/p/ifstated-net-management.html</link>
+	<description>Using OpenBSD ifstated(8) to manage wireless and wired networkstate and connections.</description>
+</item>
+<item>
+	<title>Installing and configuring stagit on OpenBSD 6.6 with privilege separation</title>
+	<link>https://hosakacorp.net/p/stagit-server.html</link>
+	<description>Setting up and configuring a small stagit(1) instance on OpenBSD with privilege separation and with some helpful management scripts.</description>
+</item>
+<item>
+	<title>Installing Graylog on OpenBSD from Scratch</title>
+	<link>https://hosakacorp.net/p/graylog-openbsd.html</link>
+	<description>A step by step guide on configuring a Graylog CE instance on OpenBSD. Including init scripts and more.</description>
+</item>
+<item>
+	<title>PKI for OpenSSH</title>
+	<link>https://hosakacorp.net/p/ssh-pki.html</link>
+	<description>Deploying and maintining an OpenSSH PKI using certificates and principals.</description>
+</item>
+<item>
+	<title>Hosakahashi: Takahashi in Pure CSS</title>
+	<link>https://hosakacorp.net/p/slides.html</link>
+	<description>Hosakahashi: suckless sent(1) compatable slides using only CSS and HTML</description>
+</item>
+<item>
+	<title>using voidmap for penetration test project management</title>
+	<link>https://hosakacorp.net/p/voidmap-pentest.html</link>
+	<description>How voidmap can help project management inside of complex, fast-paced, large scale penetration tests.</description>
+</item>
+<item>
+	<title>Hashcat and LD_PRELOAD</title>
+	<link>https://hosakacorp.net/p/ldpreload-hashcat.html</link>
+	<description>An example of how to use LD_PRELOAD for quick patching, with an example using Hashcat</description>
+</item>
+<item>
+	<title>RISC-V Shellcoding: Part 1</title>
+	<link>https://hosakacorp.net/p/riscv-asm-1.html</link>
+	<description>Part 1 of the RISC-V Research and Blog post series</description>
+</item>
+<item>
+	<title>RISC-V Shellcoding: Part 2</title>
+	<link>https://hosakacorp.net/p/riscv-asm-2.html</link>
+	<description>Part 2 of the RISC-V Research and Blog post series</description>
+</item>
+<item>
+	<title>RISC-V Assembly and Shellcoding</title>
+	<link>https://hosakacorp.net/p/riscv-asm.html</link>
+	<description>Index of RISC-V Research and Blog post series. Focuses on shellcoding and assembly payload creation</description>
+</item>
+<item>
+	<title>Adding systemd --user to Metasploit</title>
+	<link>https://hosakacorp.net/p/systemd-user-msf.html</link>
+	<description>Adding systemd user mode backdoors and post-exploitation to Metasploit</description>
+</item>
+<item>
+	<title>WireGuard Quickstart</title>
+	<link>https://hosakacorp.net/p/wireguard-basic.html</link>
+	<description>An introduction to WireGuard and a quickstart guide on installation instructions</description>
+</item>
+<item>
+	<title>Abusing systemd --user services</title>
+	<link>https://hosakacorp.net/p/systemd-user.html</link>
+	<description>Abusing systemd user mode services for stealthy backdoors</description>
+</item>
+<item>
+	<title>tinc 1.1 Overview</title>
+	<link>https://hosakacorp.net/p/tinc-1.1-tutorial.html</link>
+	<description>An overview of tinc version 1.1, how it is different, and how to set it up.</description>
+</item>
+<item>
+	<title>Unicode Rotation Cipher</title>
+	<link>https://hosakacorp.net/p/unicode-rot.html</link>
+	<description>Unicode rotation cipher</description>
+</item>
+</channel>
+</rss>

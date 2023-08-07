@@ -1,0 +1,1660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thecoshman</title>
+    <description>Personal Website of thecoshman</description>
+    <language>en-uk</language>
+    <link>http://thecoshman.com</link>
+    <atom:link href="http://thecoshman.com/rss.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 24 Mar 2021 22:19:23 +0000</pubDate>
+    <lastBuildDate>Wed, 24 Mar 2021 22:19:23 +0000</lastBuildDate>
+
+    
+    <item>
+      <title>TheEnd</title>
+      <description>&lt;h2 id=&quot;the-end&quot;&gt;The End!&lt;/h2&gt;
+
+&lt;p&gt;Yeah, I did it, it’s a click bait title.
+But let’s not get ahead of ourselves;
+am I perhaps teasing too much?
+Any way, V7 really doesn’t offer much from a player’s point of view besides, perhaps, a slightly better FPS.
+There’s two main things I’ve managed to implement this time, funnily enough, the two mains things I planned.
+We now have a texture atlas and meshes per chunk, for efficient rendering!
+Combined, this seems to have restored a reasonable frame rate for me.
+Contrary to my usual, I’m not going to bother uploading a copy - is it really worth it?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v7/sample.png&quot; alt=&quot;Sample of V7&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;texture-atlas&quot;&gt;Texture Atlas&lt;/h2&gt;
+
+&lt;p&gt;A texture atlas is a method/technique where you combine multiple smaller textures into a single larger one, thus helping reduce the amount of times you need to swap it.
+Commonly these would be pre-built along with some sort of configuration data saying what parts of the atlas are what.
+I know that I want to make it easy to ‘just add’ new textures, or to possibly swap the textures that are used, I therefore wanted a way to dynamically build the atlas.&lt;/p&gt;
+
+&lt;p&gt;Whilst I’m sure there are better solutions out there, I went with putting each texture into a grid cell in the atlas.
+Down the line I’m sure there’s better ways to build this, but still, here’s roughly the steps I take to build the texture atlas:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Load each individual texture into memory (not to the GPU though)&lt;/li&gt;
+  &lt;li&gt;Determine the size of the largest texture, as a ‘smallest power of two’, this will be how big each cell needs to be
+    &lt;ul&gt;
+      &lt;li&gt;This is done dynamically, even though my textures are all 16x16&lt;/li&gt;
+      &lt;li&gt;If I had a texture that was 20px wide, I’d calculate each atlas grid cell would need to be 32px&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Work out how large a grid of textures I would need
+    &lt;ul&gt;
+      &lt;li&gt;As I have three textures, I would need a grid that is 2x2 cells&lt;/li&gt;
+      &lt;li&gt;This again this is done as a ‘smallest power of two’; with five textures, it’d be a 4x4 grid that is used&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;At this stage, I know the smallest ‘power of two’ sized image that can fit every texture, and how many grid cells my atlas needs to have.
+That means I can create an OpenGL texture buffer that is large enough for all my textures and is a power of two size.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;I can now ‘blit’ each individual texture into the larger atlas texture, tracking what cell the texture is being put
+    &lt;ul&gt;
+      &lt;li&gt;This allows me to return the UV coordinates for a given texture within the atlas later on&lt;/li&gt;
+      &lt;li&gt;And this is where the ‘block registry’ fits in too, by they way&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As you can tell, I’m making a few presumptions here.
+Chiefly, that the textures are all the same square size.
+As my textures are all 16x16, my solution currently works fine with these presumptions.
+However, if I had some textures that were 32x32, I could actually fit four 16x16 textures into one grid cell, but my crude solution would make those four smaller textures consume a larger 32x32 cell each.
+Whilst not space efficient, my solution would at least handle this.
+Packing the atlas more efficiently is something I will worry about later;
+it’s hardly an issue when I only have three textures.
+Another presumption I’m making is that ‘power of two’ sized textures are indeed something to aim for - some further research is in order I think here.&lt;/p&gt;
+
+&lt;p&gt;It’s also obvious that doing this atlas build every time the game is run is less than ideal.
+Later I could look to add a way to save the atlas so that you don’t have to wait for each time you start the game.
+As long as I can determine if the input textures are the same, I should be able to simple load a pre build texture atlas.&lt;/p&gt;
+
+&lt;h2 id=&quot;chunk-meshing&quot;&gt;Chunk Meshing&lt;/h2&gt;
+
+&lt;p&gt;Previously, my chunk rendering was a rather ‘brute force’ afair, drawing each block one by one.
+There was a minor optimisation, I would create a ‘display chunk’ that would work out, and cache, for each block in the data chunk, is it something to render (ie, not air), and is it possible to be rendered (not surround on all six sides by blocks that can’t be seen through).
+This did help a little bit, but still allows for potentially thousands of individual draw calls, each one needing to swap the texture;
+though, during development of this version the atlas was used once made by updating the shader uniforms to use for this block.
+A solution here then, is to build a single buffer object for the entire chunk so that it can be drawn in a single draw call.&lt;/p&gt;
+
+&lt;p&gt;As I already had the logic in place that that checks each block to see if it should be drawn, I retained that;
+a minor reduction in the amount of data in the mesh perhaps, but why not take that?
+For each block then, I determine what the vertex coordinates within the chunk are, what the texture coordinates (from the atlas) this block needs and finally the indexes that would draw this block.
+This produces three temporary &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::vector&lt;/code&gt;s, which I can combine into three large ones as I build the chunk mesh and then buffer into OpenGL.
+And like that, I got nearly significant increase in frame rate.&lt;/p&gt;
+
+&lt;p&gt;Some minor things I could look at improving in the future is further culling faces that could never be seen.
+Two blocks that are touching would share a common face that could never be seen, thus never need to be added to the mesh.
+With a bit more work, I could allow the display chunk building logic to check blocks in neighbouring chunks to detect even more blocks that never be seen.
+A slightly more in-depth thing to investigate is how I shift memory around as this data is built, it’s rather simplistic at the moment.&lt;/p&gt;
+
+&lt;h2 id=&quot;dealing-with-cut-corners&quot;&gt;Dealing with Cut Corners&lt;/h2&gt;
+
+&lt;p&gt;When I first implemented the procedural generation for the world, I had an issue that resulted in chunks going up/down in the y axis being duplicated.
+To get around this, I simple generate those as empty chunks (just 16x16x16 air blocks), and ‘hacked’ the physics to stop you falling below y=0.
+These two hacks were put in place in the interest of moving forward with what I wanted to focus on at the time, but I felt now was a good time to revisit this.&lt;/p&gt;
+
+&lt;p&gt;Indeed the solution to my world generation issue was fairly simple to fix.
+I think that stands as a good example of not getting to hung up on issues you can safely move on from for now.
+However, this now meant that world generation was more intensive, you feel a big lag spike every time you move such that new terrain needs to be generated;
+not to mention starting the game.&lt;/p&gt;
+
+&lt;p&gt;The problem now, single threaded code.&lt;/p&gt;
+
+&lt;h2 id=&quot;and-so-to-frustration&quot;&gt;And so to Frustration&lt;/h2&gt;
+
+&lt;p&gt;When the game first loads and wants to display that first frame, it needs to generate the world as ‘data chunks’ and from those ‘display chunks’.
+Setting the chunk range to even a fairly small number, like two, can result in a large number of chunks being required, in this example 125.
+A chunk render distance of five is where you start to get a nice view distance, and that’s now 1331 chunks that need to be made ready.
+Even if it only takes about 10ms per chunk, that’s 13 seconds where the game is locked up not responding at all.
+As you move around, and cause new chunks to need to be generated, you get noticeable lag spikes whilst the game works on generating new data.
+This is so badly handled that when the game loads, you get the OS reporting that the application is not responding to user input and asking if it should be terminated!&lt;/p&gt;
+
+&lt;p&gt;In theory, C++ offers a solution to handle this, in practice… I’m giving up with C++.
+The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::future&lt;/code&gt;, despite having been around for a few versions of the standard now, still doesn’t have a proper way to test if it is ready (yes, I know there’s solutions).
+This, along with much discussion amongst friends was one of many an issue, and the prevailing advice on how to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::future&lt;/code&gt; and other such classes was… “don’t”.&lt;/p&gt;
+
+&lt;p&gt;So, it’s time to get back into Rust;
+at least, I’m fairly sure that’s what I’ll use - already started to refresh myself with it anyway.
+Many a winter ago, back when Rust was in it’s early days, I did start looking into it, and I did quite enjoy it.
+However, skill rot being what it is, I’m coming back at it now fairly fresh faced, not to mention how much more it has improved over the years.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-big-rewrite&quot;&gt;The Big Rewrite&lt;/h2&gt;
+
+&lt;p&gt;So there we have it, after seven versions developed in C++ over a span of five years (five, &lt;em&gt;very&lt;/em&gt; lazy years) I’m going to basically rewrite everything from scratch.
+As I said, I believe I’ll take this on now in Rust, but Kotlin &lt;em&gt;is&lt;/em&gt; tempting me;
+I’m perhaps more familiar with Kotlin, and the JVM does offer me, potentially, an easy way to brining in dynamic logic (for mods).&lt;/p&gt;
+
+&lt;p&gt;Feature wise, I don’t think I’ll have anything different in the new version - other than having the chunk generation handled asynchronously.
+As you move around, whilst you might only have a range of five chunks rendered to you, the engine will attempt to generate chunks up to a range of perhaps ten blocks.
+This forces the engine to generate more chunks than you need to render, but it means as you explore the world, they can be generated ready for you to display.
+I could perhaps do similar for generating the display chunks, this could help reduce a minor delay of them popping into view.&lt;/p&gt;
+
+&lt;p&gt;Along with this rewrite into version eight, I might (don’t hold me to it) look to start towards a client-server model.
+Introducing multi-player is something I would want to tackle sooner rather than later, just looking at the substantial tweaks I had to do to start to attempt to get just chunk generation asynchronous was bad enough.
+And whilst I’m throwing ideas out there, why not perhaps start looking at some way of having parameters/properties, removing some of the hard coded values.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/tag/2021/03/24/TheEnd/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2021/03/24/TheEnd/</guid>
+    </item>
+    
+    <item>
+      <title>SkyBox</title>
+      <description>&lt;h2 id=&quot;abandonware&quot;&gt;Abandonware?&lt;/h2&gt;
+
+&lt;p&gt;It’s been quite some time since I last published an updated for this project.
+I never fully stopped looking at or thinking about it though, life just got in the way and interest waned a bit.
+Version 6 has actually been mostly ready to ‘release’ for quite some time, I just kept putting of writing this article;
+in fact, I am fairly sure I did actually write this at least once and then loose track of it.&lt;/p&gt;
+
+&lt;p&gt;Still, it’s here now.
+The shiny new version, with gamma correct rendering, a thrilling sky box and less terrible FPS!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v6/sample.png&quot; alt=&quot;Sample of V6&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-frame-rate&quot;&gt;What is Frame Rate?&lt;/h2&gt;
+
+&lt;p&gt;I’m still not satisfied with the FPS I’m getting, but I have found that running the release build helps a huge amount.
+Considering the rendering is so simple at the moment, I would have thought this would be much higher.
+There are some things that could help, one of the ideas I have is re-work the way the chunks are rendered.
+I’m thinking I might look to cache the entire chunk as a single object to render.
+One of thing that I think holds this back is the lack of texture atlas - so that’s one thing to add onto the ‘todo list’ for the next version.&lt;/p&gt;
+
+&lt;h2 id=&quot;crude-sky-box&quot;&gt;Crude Sky Box&lt;/h2&gt;
+
+&lt;p&gt;As is the theme with my development for this project, I did a pretty bare minimum for the sky box.
+It’s just a basic static cube that invites a certain sense of dread.
+Down the line, I will certainly want to come back to make this more interesting looking, especially if I get a day/night cycle going and animated textures.
+For now though, I think it suffices;
+at the least the unsettling infinite white is gone.&lt;/p&gt;
+
+&lt;h2 id=&quot;gamma-rays-man&quot;&gt;Gamma Rays, Man&lt;/h2&gt;
+
+&lt;p&gt;I am fairly sure I got this implemented correctly.
+I’ll probably have to come back at some stage to fix this up, really looking forward to that.
+There’s not really much to see with though, but should make things look better for all;
+when things get that far.&lt;/p&gt;
+
+&lt;h2 id=&quot;blocks-on-blocks&quot;&gt;Blocks on Blocks&lt;/h2&gt;
+
+&lt;p&gt;I started working on setting up a block registry for this, but then the great silence fell onto this project.
+For now, I’ll wrap up where I got with it so that I can push out a new version.
+In the next version, I want to also work on establishing a texture atlas and that will work nicely with a block registry.&lt;/p&gt;
+
+&lt;h2 id=&quot;eta-2025&quot;&gt;ETA 2025&lt;/h2&gt;
+
+&lt;p&gt;There’s two key things I want to get done as part of the next version.
+Well, three if you want to count ‘publish it before the year is out’.&lt;/p&gt;
+
+&lt;h3 id=&quot;texture-atlas&quot;&gt;Texture Atlas&lt;/h3&gt;
+
+&lt;p&gt;I want to be loading all the textures for the blocks into a single large texture.
+The use of a texture atlas should help simplify and speed up the rendering code;
+I would not have check on every block if the texture needs to be swap, as it never would (per block).
+Not &lt;em&gt;every&lt;/em&gt; texture would be thrown into a single texture atlas though.
+For example, the green, red and white block textures I currently have would be thrown into this one atlas whilst the skybox would be stored in it’s own texture object.
+This means each frame would only require two calls to set textures, one to set the blocks texture atlas, one to set the sky boxes texture.&lt;/p&gt;
+
+&lt;h3 id=&quot;block-registry&quot;&gt;Block Registry&lt;/h3&gt;
+
+&lt;p&gt;This will allow me to start to store all the properties for blocks in a more ordered fashion.
+Obviously one of the main things would be working with the texture atlas to know what texture co-ordinates to use to draw the texture you want.
+This can then be used when building the ‘render chunks’, these could become single large models, combining all the visible cube surfaces together.
+I expect this too will also help improve the frame rate.&lt;/p&gt;
+
+</description>
+      <link>http://thecoshman.com/tag/2020/03/25/SkyBox/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2020/03/25/SkyBox/</guid>
+    </item>
+    
+    <item>
+      <title>CRUD HTTP Mapping</title>
+      <description>&lt;h1 id=&quot;i-shall-say-this-only-once&quot;&gt;I Shall Say This Only Once&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt; is a rather well known backronym to describe the set of basic actions that is supported by virtually every persistence system, more specifically databases. 
+Whilst the HTTP methods have a striking resemblance to the classic ‘CRUD’ operations, they do not map one to one! 
+I personally think this comparison should never be made.&lt;/p&gt;
+
+&lt;h2 id=&quot;crud&quot;&gt;CRUD&lt;/h2&gt;
+
+&lt;h3 id=&quot;create&quot;&gt;Create&lt;/h3&gt;
+
+&lt;p&gt;HTTP does not create resources.&lt;/p&gt;
+
+&lt;p&gt;That I shall repeat, the HTTP protocol says nothing at all about creating anything.&lt;/p&gt;
+
+&lt;p&gt;You think I’m crazy? 
+Tell me then, how do you create a resource with HTTP? 
+With POST, or maybe PUT, you say? 
+Oh no no no, just think about what you said. 
+“The act of POSTing a thing makes the thing come into existence.” 
+Do you see the flaw in that thinking?
+You cannot create a resource with POST, for it must already exist for you to POST it. 
+The client must make the resource, with POST all you are doing is asking the server to take care of this resource.&lt;/p&gt;
+
+&lt;p&gt;Oh yes, I am getting &lt;em&gt;that&lt;/em&gt; pedantic. 
+The resource is created entirely by the client, and then a representation is POSTed to the server. 
+The server then stores a resource that was created by the client; 
+you &lt;em&gt;do&lt;/em&gt; want to validate it though. 
+This pedantic view is not entirely without merit, it’s all part of trying to maintain separation of concerns. 
+For those new to REST it can help with the ‘stateless mindset’ to think that the client should not rely on the server for creating resources;
+though of course, the server should &lt;em&gt;never&lt;/em&gt; trust the client to get things right.&lt;/p&gt;
+
+&lt;h3 id=&quot;read&quot;&gt;Read&lt;/h3&gt;
+
+&lt;p&gt;Yeah, OK, this does map to GET rather well.
+The only clarification I feel never hurts to restate is that you are GETting a &lt;em&gt;representation&lt;/em&gt;, not the data as it is stored. 
+With an SQL SELECT the data you are pulling out is more or less exactly like it is in the DB. 
+The representation that is sent back to you via HTTP could be transformed, or completely synthesised for this request. 
+It can be very easy to overlook that you can GET anything, just so long as you do so responsibly.&lt;/p&gt;
+
+&lt;h3 id=&quot;update&quot;&gt;Update&lt;/h3&gt;
+
+&lt;p&gt;This is where my patience can be really tested. 
+PUT does not modify, it &lt;em&gt;replaces&lt;/em&gt;; 
+it quite literally PUTs a brand new thing in a given location. 
+Whatever data was originally at the URI is overwritten. 
+Now, yes, you can try to leave it to the client manage this, and hope they can handle what is effectively transactions; 
+the client has to GET the original version (which could be &lt;em&gt;huge&lt;/em&gt;), make a change to one tiny part and finally PUT this new version back (sending that huge thing a second time).
+Oh sure, that can work, but please, PATCH it!&lt;/p&gt;
+
+&lt;p&gt;I touched on this in my last post, PATCH is a perfectly valid method to use. 
+The only (honestly rather trivial) issue is to decide just &lt;em&gt;how&lt;/em&gt; you want the information about the PATCHing to be represented.&lt;/p&gt;
+
+&lt;p&gt;I am well aware that this is controversial stance to take. 
+PUT is so often used as the ‘modify’ method, that doesn’t make it right though. 
+If you refer back to the original RFC that defined PUT, it states “If the Request-URI refers to an already existing resource, the enclosed entity SHOULD be considered as a modified version of the one residing on the origin server.”
+Now yes, I see how one could take this to mean that PUT is for updating a resource, but consider the following.&lt;/p&gt;
+
+&lt;p&gt;We &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET /user/6&lt;/code&gt;, from our system, and the following is returned:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;thecoshman&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;reputation&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Asgard&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Next, we want to update the location, so we &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PUT /user/6&lt;/code&gt; the following:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Terra&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If the server handles PUT as the specification says it should, the user will be confused when the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET /user/6&lt;/code&gt; and find that the username and reputation are nowhere to be seen. 
+There are ways to handle this, but it doesn’t change the fact that the user asked to store this JSON object with one field at this location “as a modified version” of what was already there; 
+the user said “change the location, and remove the username and reputation field”.
+If they wanted to modify the data that was at the given URI, leaving whatever was not mentioned as it was, they should of used an appropriate method, PATCH.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete&quot;&gt;Delete&lt;/h3&gt;
+
+&lt;p&gt;Yeah, this is just what HTTP DELETE is.
+Wish I could say more, but this at least really is that simple.&lt;/p&gt;
+
+&lt;h2 id=&quot;bread&quot;&gt;BREAD&lt;/h2&gt;
+
+&lt;p&gt;Not only is it a marvelous substrate for some maple-cured ham, sharp extra mature cheddar, tangy onion pickle and crisp fresh lettuce, but it turns out to be a far superior acronym.
+Bread stands for “Browse, Read, Edit, Add, Delete”, and this can map to the HTTP methods much better.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Browse -&amp;gt; GET&lt;/li&gt;
+  &lt;li&gt;Read -&amp;gt; GET&lt;/li&gt;
+  &lt;li&gt;Edit -&amp;gt; PATCH&lt;/li&gt;
+  &lt;li&gt;Add -&amp;gt; POST&lt;/li&gt;
+  &lt;li&gt;Delete -&amp;gt; Delete&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, that set of words is from the Wiki page on CRUD, it was added back in 2012, but I can’t seem to find where it came from (this is why we use citations people!). 
+Personally, I think this can be improved. 
+Really, Browse and Read are the same thing, and map to the same HTTP method, and whilst PATCH is the method you should use for modifications, we have neglected PUT.
+As such, I’d propose the following:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;BREAD&lt;/th&gt;
+      &lt;th&gt;HTTP&lt;/th&gt;
+      &lt;th&gt;CRUD&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Browse&lt;/td&gt;
+      &lt;td&gt;GET&lt;/td&gt;
+      &lt;td&gt;Read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Replace&lt;/td&gt;
+      &lt;td&gt;PUT&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edit&lt;/td&gt;
+      &lt;td&gt;PATCH&lt;/td&gt;
+      &lt;td&gt;Update&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Add&lt;/td&gt;
+      &lt;td&gt;POST&lt;/td&gt;
+      &lt;td&gt;Create&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Delete&lt;/td&gt;
+      &lt;td&gt;Delete&lt;/td&gt;
+      &lt;td&gt;Delete&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;parting-crumbs&quot;&gt;Parting Crumbs&lt;/h2&gt;
+
+&lt;p&gt;So yes, I think it’s worthy of a slap when someone starts talking about HTTP methods in comparison to CRUD.
+It’s worthy of a second one if that discussion is not about how CRUD is not really appropriate when talk about HTTP methods.
+The BREAD acronym is the way forward, as it better matches what you can do with HTTP and how. 
+You might also start to realise I am quite the PATCH atavist, and anti-PUT.&lt;/p&gt;
+
+&lt;p&gt;Oh, and if you didn’t get the classic TV reference, &lt;a href=&quot;https://www.youtube.com/watch?v=A4I9DMSvJxg&quot;&gt;‘Allo ‘Allo&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/rest/2015/05/22/CRUD/</link>
+      <pubDate>Fri, 22 May 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2015/05/22/CRUD/</guid>
+    </item>
+    
+    <item>
+      <title>Word</title>
+      <description>&lt;h2 id=&quot;a-thousandth-of-a-picture&quot;&gt;A thousandth of a Picture&lt;/h2&gt;
+
+&lt;p&gt;From a players point of view, all this update brings is obnoxious text on the screen.
+There is not much else either to be honest, CI and testing being the only other things of note.
+I shall cover these more boring topics first.
+On account of their basically being nothing really any different, from last version, no download for this one.&lt;/p&gt;
+
+&lt;p&gt;I’ve set up &lt;a href=&quot;https://travis-ci.org/thecoshman/tag&quot;&gt;Travis CI&lt;/a&gt; for automated builds;
+it was fairly simple to set up, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; file was mostly standard stuff.
+Unit testing has also started using Catch.
+I need to look to ramp up what I am covering with the tests, but I’m using OpenGL, thus require a context, which could make this awkward; that said, I don’t see why I couldn’t have a window opened up for the purpose of running the tests.
+Definitely something to look into, but I’m not that concerned about it right now.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v5/sample.png&quot; alt=&quot;Sample of V5&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;short-and-sweet-next&quot;&gt;Short and Sweet, NEXT!&lt;/h2&gt;
+
+&lt;p&gt;Really isn’t much else to say about what I’ve done in this version;
+I’ve been distracted by other things, so it’s taken me a long time to get not much done (like a week to write this).
+The font rendering is handled via a few classes, and most of the actual logic for it was provided by a friend and tweaked to fit my code so far.
+When I need to, I will look to expand this font rendering code to give me more control over where exactly text is drawn, and some ‘style’ features, but later.&lt;/p&gt;
+
+&lt;p&gt;On to the next version then.
+A small list of things stick out in my mind that I want to focus on next.
+Firstly, good lord that FPS is terrible!
+Either I am doing something horribly wrong in calculating it, or I my rendering code is disgustingly bad;
+I may not be rocking a beastly GPU, but it’s not &lt;em&gt;that&lt;/em&gt; bad!
+I know that I can look to optimise the render chunks to have less data in them.
+Considering that when I stand still, they are not (should not) be getting re-generated I’m not sure if that will resolve the issues.
+I think that it would be of great relief to get a sky box added, it will help to remove the insanity inducing white.
+Gamma correct rendering is another thing to address; shouldn’t take too much work I think, but will be nice to have in place.&lt;/p&gt;
+
+&lt;p&gt;Finally, one last thing I want to take a look at, and this might be pushed out to V7, is starting to introduce ‘smarter’ block data.
+I’d like to have the list of blocks registered somewhat dynamic, though I might leave it to a later version to come up with some file format to load this data from.
+Some sort of ‘block database’ is needed, that can allow a unique id to be assigned to each block type, and each type have properties such as ‘ignore_gravity’, ‘solid_ground’ etc.
+Along with that, I want to look at introduce per-block instance data.
+For something like ‘ore’, it might want to have it as ‘per block’ how much ore each block has, but it might be better to have distinct types of block, something to play around with.
+I also like the idea of being able ‘combine’ blocks, so I can have ‘grey stone’ and ‘iron ore’ dynamically combined, layering the two textures together.&lt;/p&gt;
+
+&lt;h2 id=&quot;onwards-to-version-six&quot;&gt;Onwards to Version Six&lt;/h2&gt;
+
+&lt;p&gt;So a quick short-list of what I want to look to take on in this next version:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Investigate terrible FPS&lt;/li&gt;
+  &lt;li&gt;Add a sky box&lt;/li&gt;
+  &lt;li&gt;Use gamma correct rendering&lt;/li&gt;
+  &lt;li&gt;Block database and/or instance data&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      <link>http://thecoshman.com/tag/2015/05/20/Word/</link>
+      <pubDate>Wed, 20 May 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/05/20/Word/</guid>
+    </item>
+    
+    <item>
+      <title>Infinite!</title>
+      <description>&lt;h2 id=&quot;an-infinite-world-of-insanity&quot;&gt;An Infinite World of Insanity&lt;/h2&gt;
+
+&lt;p&gt;Given enough RAM you can now explore the terrain until your sanity runs out.
+I really need to sort out some nicer textures though, the three blocks I have ‘designed’ so far just terrible, truly terrible. 
+But here we are folks, version four of my wee project. 
+As always, I’ll offer a build of the game &lt;a href=&quot;/downloads/tag/TAGDV4&quot;&gt;here&lt;/a&gt;; 
+in fine tradition, it is a 64-bit build for linux.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v4/sample.png&quot; alt=&quot;Sample of V4&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-great-chunkification&quot;&gt;The Great Chunkification!&lt;/h2&gt;
+
+&lt;p&gt;I knew I would have to do it eventually, it turned out now was the time, although it was one of the last things done for this update.
+For no better reason than Minecraft does, I made the chunk size 16 blocks, though unlike Minecraft, my chunks are only 16 blocks high. 
+Previously I stored the entire world in a single std::map&amp;lt;world_coord, cube&amp;gt;, which meant it only stored as many blocks as were actually blocks;
+the empty air spaces wouldn’t use any memory.
+Now though, I’ve changed to std::map&amp;lt;chunk_coord, chunk&amp;gt;, with each of these having a fixed size 16*16*16 array of cubes.&lt;/p&gt;
+
+&lt;p&gt;At just over 4k blocks per chunk, I might look at doing some sort of basic compression later on, maybe something simple like “run length encoding”, so an ‘empty’ chunk of air is just “air block x 4096”.
+As with most things, it would be trade of, more CPU time for using less ram, something to consider later perhaps or not at all even.
+On a similar train of thought, brute force rendering this many cubes just kills performance. 
+My PC is not &lt;em&gt;terrible&lt;/em&gt;, but once I start trying to render around 16 chunks (a 4 by 4 area around the player) frame rate starts to suffer noticeably; 
+that is 65k cubes, each one making lookups and requests to the GPU.
+I have started to put in place a solution to this though, display chunks!&lt;/p&gt;
+
+&lt;p&gt;I have one class that manages the entire voxel grid, it abstracts away this notion of chunks (mostly).
+The actual world data is stored in instances of ‘data_chunk’, which is used for almost everything. 
+The key exception is when it comes to rendering, which due to it’s different requirements, is done using instances of ‘display_chunk’. 
+Right now, the main display function will iterate through a collection of these display chunks around the player; 
+for each display chunk, the main render function will loop over each cube rendering it one at a time.
+All told, far too leaky an abstraction for my liking, also not really that smart.&lt;/p&gt;
+
+&lt;p&gt;In latter versions, smartening up the rendering of terrain should restore reasonable rendering performance. 
+When you think about it, a chunk is not updated that often, most of the time you will be rendering the same chunk over and over. 
+This means that it is most certainly worth buffering data on the GPU that can render the chunk much more efficiently. 
+It will be a lot ‘cleaner’ to just call ‘world.render()’, and let it take care of all this chunk nonsense.&lt;/p&gt;
+
+&lt;h2 id=&quot;advanced-movement&quot;&gt;Advanced Movement&lt;/h2&gt;
+
+&lt;p&gt;One of the other aims of this update was improving movement. 
+The most notable change is that you can now &lt;a href=&quot;https://www.youtube.com/watch?v=KZaz7OqyTHQ&quot;&gt;jump around&lt;/a&gt; and fall down by the mystical force that is gravity. 
+I want to play around with the mechanics of the jumping though as it feels floaty to me. 
+Walking has also been made ‘not sticky’, in earlier versions I crudely stopped any movement if the player touches the walls, this has now been fixed so you can strafe against them.
+The movement also has a very slight inertia so the player does not stop instantly if they let go of the keys, it’s a very subtle thing but I like the feel of it. 
+Whilst failing you also have some control over movement, I know it’s not realistic, but ‘air walking’ is so natural in games.&lt;/p&gt;
+
+&lt;h2 id=&quot;smarter-algorithms&quot;&gt;Smarter Algorithms&lt;/h2&gt;
+
+&lt;p&gt;There were two main algorithms interacting with the voxel grid, both were pretty dumb. 
+One was for the players AABB and the other was for ‘rays’ from the player, detecting what block is being hit. 
+The actual AABB-AABB or Ray-AABB algorithm has not changed, what has changed is no longer checking &lt;em&gt;every&lt;/em&gt; cube in the world. 
+For the players AABB, I build a small collection of cube co-ordinates that the player might be interacting with.
+As the player is only two blocks high, it means that at most, there is only a maximum of 12 possible cubes the player could be interacting with.&lt;/p&gt;
+
+&lt;p&gt;For the ray tracing, I now work out what cube the ray starts in and what direction it is moving. 
+From there I move one block at a time, testing if it is hit by the ray. 
+This drastically reduces the number of checks that are required.
+If a ray starts at (2.5, 2.5, 3.9) and has a direction of (3.2,0.1, -2.3), converted to the grid, it starts in cube (2, 2, 3) and ends in (5, 2, 1), moving in (1,0,-1) direction.
+I then loop until my ‘current cube’ (which is initially the ‘start cube’) is the ‘end cube’, each loop I test what would happen if I advanced one cube in certain direction.
+As a slight optomisiation, I have a vector of potential advancements ie (1,0,0) and (0,0,-1) to loop through (notice how I never check for cubes at a different y position). 
+If I try a cube and find that it is hit by the ray, I add it to my collection of cubes that I know are on the ray, and then make this my current cube.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v4/raytrace.png&quot; alt=&quot;Diagram of the ray tracing&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So that’s my attempt at a diagram to explain the logic of this ray tracing, reduced to just two dimensions, but it’s the same principle in 3D. 
+We start in the green square, and want to trace to the red square. 
+Each number shows the order in which the squares are checked, the little arrows are red if the square is found to not be on the line, and green if it is. 
+For this example, each time a new square is found on the line, we first check the square below, then to the right. 
+A total of eight checks are made, of which three return ‘no hit’, a roughly 40% fail rate, which I believe gets worse as you move through higher dimensions. 
+If the order was swapped, attempting to move right then down, we’d have seven checks with only two ‘no hit’ checks, but that would require first working out there was a better order.&lt;/p&gt;
+
+&lt;h2 id=&quot;terrain-generation&quot;&gt;Terrain Generation&lt;/h2&gt;
+
+&lt;p&gt;I put in a simplex noise algorithm that can generate a noise value for a given point on the 2D plane that is the world. 
+I then use that noise value to work out how high the ground should be at that point, and then stack cubes to match that. 
+Good terrain it most certainly is not, but at least it’s something that I can move on with. 
+Due to the limitations in it’s design (ie aka corner cutting), I had to limit the generation to only work for chunks at y 0. 
+The terrain is generated made up using only one type of cube, when I start to add more cubes, I can look to do things like ‘top soil’, mineral deposits, caves, all the normal things you would expect really.&lt;/p&gt;
+
+&lt;h2 id=&quot;huds-and-stuff&quot;&gt;HUDs and stuff&lt;/h2&gt;
+
+&lt;p&gt;For the next update I am going to focus on the HUD, primarily getting text rendered to the screen. 
+This will allow me to free myself from the console, as I believe that presently, you can’t actually start the game without doing so from the console. 
+As I said, I would mostly like to focus on getting text drawn, then I can start to put information on screen such as the sacred FPS value, but also things such as how many chunks (of each type) are loaded, where the player is and so on.&lt;/p&gt;
+
+&lt;p&gt;Some other things that I want to start looking into in general is logging, testing and build automation. 
+Logging is low down on that list to be fair, it will be useful later on for sure, when I get to it I’ll have a proper look around, but I’m thinking &lt;a href=&quot;http://sourceforge.net/p/log4cplus/wiki/Home/&quot;&gt;log4cplus&lt;/a&gt;.
+Testing is mostly functional testing, for which I will probably use &lt;a href=&quot;https://github.com/philsquared/Catch&quot;&gt;Catch&lt;/a&gt;, but I might also look at using &lt;a href=&quot;https://github.com/rmartinho/nonius&quot;&gt;Nonius&lt;/a&gt; to put put some timing tests. 
+Accurate timing will be &lt;em&gt;very&lt;/em&gt; useful later on when I  am trying to improve the performance in trouble areas, though of course just some good old fashioned thinking about stuff can help a lot there too.
+In fact, logging will be helpful there too… but yeah, for now logging and timing is not really required. 
+Build automation is one of those things that just needs to be done, especially if I want to get build for other platforms. 
+I’m going to have to look into this a bit more, but I currently thinking &lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis&lt;/a&gt;.
+Out of all of this, I may find that my current premake build scripts become tiresome to work with, so that might change too.&lt;/p&gt;
+
+&lt;p&gt;So all told, version five will rather dull from a player point of view, but these technical back end things have to be done at some point.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/tag/2015/04/11/Infinite/</link>
+      <pubDate>Sat, 11 Apr 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/04/11/Infinite/</guid>
+    </item>
+    
+    <item>
+      <title>Destructible</title>
+      <description>&lt;h2 id=&quot;call-a-clone-a-clone&quot;&gt;Call a Clone a Clone&lt;/h2&gt;
+
+&lt;p&gt;Even if it is not a very good one.&lt;/p&gt;
+
+&lt;p&gt;So yeah, it’s hard to deny this is starting to show similarities to a popular game.
+Yes I know, Minecraft was not the first of it’s kind, but face it, it’s &lt;em&gt;the&lt;/em&gt; archetype for well… quite a few styles of games I suppose.
+Anyway, I’m not there yet.
+This version does add one of those core features that I would say makes Minecraft what it is;
+You can place and break cubes!
+Again, &lt;a href=&quot;/downloads/tag/TAGDV3&quot;&gt;here&lt;/a&gt; is a 64-bit build for linux, one of these days I’ll sort out builds for other platforms, honest!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v3/sample.png&quot; alt=&quot;Sample of V3&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-latest-features&quot;&gt;The Latest Features&lt;/h3&gt;
+
+&lt;p&gt;A quick summary of the features so far:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WASD keys to walk around and mouse to look about (If you didn’t notice, this is taking things slowly)&lt;/li&gt;
+  &lt;li&gt;Walk into a box to remove it&lt;/li&gt;
+  &lt;li&gt;Left click a box will also remove it&lt;/li&gt;
+  &lt;li&gt;Right click on the side of a box to place a new one&lt;/li&gt;
+  &lt;li&gt;the keys ‘1’, ‘2’ and ‘3’ swap between the three colours you can place&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;technicalities&quot;&gt;Technicalities&lt;/h3&gt;
+
+&lt;p&gt;From a technical point of view, things are still not that great.
+There is AABB-AABB collisions as well as Ray-AABB, which I might do another article about, maybe.
+I do currently brute force my way through the collision checks;
+somewhat excusable when there is only a handful of checks to make, but sure as hell is not going scale.
+The rendering is still rather primitive too, again just brute forcing, drawing each cube in the world one after the other.
+There is some respite in that by way of being so limited, I always have the correct data buffers bound, but I am swapping out the texture for each cube.
+I’m honestly not sure how much &lt;em&gt;precious performance&lt;/em&gt; swapping textures back and forth actually wastes compared to working out all the cubes that would want the same.
+The cubes are stored in a map keyed on their position, so I suppose you could argue it’s very efficient for empty spaces!&lt;/p&gt;
+
+&lt;h2 id=&quot;the-end&quot;&gt;The End?&lt;/h2&gt;
+
+&lt;p&gt;When I started working on this little project, the point was to just complete &lt;em&gt;something&lt;/em&gt;.
+I did that.
+Then I started to work in small steps, adding one or two small things at a time.
+The scope was kept &lt;em&gt;very&lt;/em&gt; small, and I think that has helped me keep focused on what I wanted to do each time.
+But let’s face it, what I have is not really a game of any merit.
+Yes technically it does meet the criteria at a very simplistic level, but it’s not a decent attempt at a game.&lt;/p&gt;
+
+&lt;p&gt;So what now?
+Do I try and see this through to a fully realised Minecraft clone?
+Maybe I should start over and focus on doing some other game, working on an original idea all of my own!
+Does it even matter!?
+Have I even ‘finished’ this project?
+Argh, decisions!&lt;/p&gt;
+
+&lt;p&gt;I think the hardest part is getting that idea or inspiration.
+Once I know what I want to aim towards, all I need to do is enjoy the ride.
+I don’t mean to say that it’s easy, if anything, quite the opposite.
+Whilst I have done this sort of stuff before, I have left it far too long, I’ve had to remind myself of most of getting this far.
+Challenges come up all the time, and it’s far to easy to start over.&lt;/p&gt;
+
+&lt;h3 id=&quot;embrace-the-clone&quot;&gt;Embrace the Clone&lt;/h3&gt;
+
+&lt;p&gt;I honestly do feel a bit cheap making yet another clone of it, but I do really like that damn game.
+At least I have a fairly clear end goal for myself, and I’ll say it now, it’s not making something that is indistinguishable from Minecraft.
+Creativity is not my strongest area, especially when it comes to making games;
+maybe this is one of those things that will become easier the more I do it;
+but where I can, I will put my own spin on things.
+This will sort of be like making a complete mod for Minecraft, so if I want to have erm… thinking… climbing!
+Yeah, if I wanted climbing, where blocks can have ledges that players can jump up to and climb up, I can just make that part of the game.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-feature-list&quot;&gt;The Feature List!&lt;/h2&gt;
+
+&lt;p&gt;I do have some grand ideas of where I would like to take this.
+It would be cool to implement my own version of most of the ‘features’ Mincraft has, more for the challenge of it.
+So, obviously, the procedural generation thing has to be done but also multiple ‘dimensions’, AI entities, inventory etc.
+I am not too concerned about getting the breadth of content though, if I can generate two types of ore, I can generate all the types of ore I can tolerate providing the assets for.
+Crafting is something I’m not too sure about… I think I’ll have a go at copying the ‘crafting grid’ approach, but I also like the simple ‘here is what you can craft with what you have’ menu system.&lt;/p&gt;
+
+&lt;p&gt;If you permit me to talk about grand ideas, it would cool if more or less everything was modded into the ‘game’.
+Obviously some things are best just being part of the core game it self, but I want to be able to make it so that more or less everything can be done via mods.
+This is fairly easy with Minecraft as it’s not &lt;em&gt;that&lt;/em&gt; hard to patch the ‘compiled’ code.
+For the level of control I want to be able to expose, a proper mod api would have to be designed, actually exporting control out to an interpreted language, Lua sounds tempting for this.&lt;/p&gt;
+
+&lt;h3 id=&quot;small-steps-though&quot;&gt;Small Steps Though&lt;/h3&gt;
+
+&lt;p&gt;Sticking to these very small and focused updates seems to have worked well for me so far, so here we are.
+I want to get some sort of terrain generation implemented, and this will probably be the biggest thing for this update.
+There are a lot of ways this could be done, I don’t think I’ll get too hung up on really good generation… probably just something with a distinct ‘unbreakable’ bottom layer, then hills of random heights, probably with a top layer.
+So, three block types.
+Along with this very basic terrain generation, I want to ensure I have a few things.
+Firstly, I need to actually be able to walk over these blocks and have them block the movement, rather than removing them as I currently do.
+Then I need to get jumping and falling added so I can get up and over all this glorious terrain.
+I also need to ensure that this terrain generation is predictable, for a given ‘seed’ the terrain should always be generated the same way.
+There’s also the ‘chunking’ problem… this is something I know will be needed, and I don’t think is going to be &lt;em&gt;that&lt;/em&gt; hard to do… yet I can’t help but feel I should simply ignore this one for now.
+Finally, learn how to write a list and not a paragraph.&lt;/p&gt;
+
+&lt;p&gt;Until next time then!&lt;/p&gt;
+
+</description>
+      <link>http://thecoshman.com/tag/2015/03/14/Destructible/</link>
+      <pubDate>Sat, 14 Mar 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/03/14/Destructible/</guid>
+    </item>
+    
+    <item>
+      <title>Quality Graphics</title>
+      <description>&lt;h2 id=&quot;its-all-behind-the-curtains&quot;&gt;It’s all Behind the Curtains&lt;/h2&gt;
+
+&lt;p&gt;It’s still not the prettiest hunk of junk, but textures really do help out, even if they do look like something from an acid trip.
+The implementation is most certainly still rough as as all hell, but at least it is starting to take on a more reasonable quality. 
+Most of the ‘good code’ is thanks to including GLDR (&lt;a href=&quot;https://github.com/GLDRorg/GLDR&quot;&gt;OpenGL Done Right&lt;/a&gt;). 
+I think I might also have revealed that I am most certainly not a graphics artist.
+As was planned though, this iteration was mostly about updating the code rather than enhancing the gripping game mechanics or deep graphics.&lt;/p&gt;
+
+&lt;p&gt;As with last time, &lt;a href=&quot;/downloads/tag/TAGDV2&quot;&gt;here&lt;/a&gt; is a pre-built version of the game. 
+It is still just a linux 64-bit build.
+At some stage I might look into building for other platforms with some service or something.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v2/sample.png&quot; alt=&quot;Sample of V2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gldr&quot;&gt;GLDR&lt;/h2&gt;
+
+&lt;p&gt;GLDR is a library I started working on with a friend, about two years ago now, it sort of got abandoned though. 
+The idea is to provide modern, sensible, nice to use C++ classes that can provide an easier way of dealing with OpenGL resources. 
+I think in the end we found other libraries offered more or less what we were aiming for and other interests pulled us away form working on it. 
+One of the core ideas that we came up with was a type that can manage the lifetime of OpenGL resources that normally you only have a number to track.&lt;/p&gt;
+
+&lt;p&gt;This type was called ‘glid’ and is a template type, meaning that if a ‘texture’ type wants to use this (which it should) it would need to have a ‘glid&amp;lt;texture&amp;gt;’ variable. 
+However, glid has a constructor and destructor that will call ‘GLuint T::Create()’ and ‘void T::destroy(GLuint)’ respectively, anything that wants to have a glid has to provide these static functions.
+By doing this, anything that uses a glid for managing OpenGL resources now has automatic lifetime; 
+if a ‘texture’ ever goes out of scope, it’s resources will automatically be released, and you wouldn’t have to worry about acquiring those resources in the first place! 
+The only requirement is that you need to provide the logic to get and release those resources from OpenGL via static functions in the form that glid expects. 
+For some reason when we developed this glid we didn’t also require that classes using a glid provide a ‘bind()’ function; 
+it seems like a good idea, but with ‘programs’ the function is ‘use’ so that could be a bit jarring, but then, maybe that is just a wrong doing in OpenGL.
+Ahh decisions like this is why we didn’t get that far!&lt;/p&gt;
+
+&lt;p&gt;Back when we were working on this, we only got as far as agreeing on the glid type. 
+As a way of testing and trying out ideas, we both worked on our own branches developing classes like ‘texture’, ‘shader’ and ‘buffer’. 
+We would bounce ideas of each other until we were happy, then look to bring one of those classes over to the main branch once happy with it.
+You can probably tell that we didn’t get that far, I think we were on the verge of agreeing on the Vertex Array Object though.
+Still, I plan to continue with these classes, trying to ensure all that low level stuff I use is neatly wrapped up.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-smells&quot;&gt;Code Smells&lt;/h2&gt;
+
+&lt;p&gt;One of the main focuses of this iteration was improving the code itself. 
+I know full well, there are still some nasty nasty things going on in there! 
+I still have a global ‘camera’ object, but apart from that, all objects are created within the main function now. 
+This is mostly because I have to ensure that they are not constructed until after the OpenGL context has been created; 
+I’d call that a nice little bonus feature of using the gldr types, it forces you to do things better. 
+As such, the initialisation and draw functions are now passed the objects they need to work on, rather than accessing globals.&lt;/p&gt;
+
+&lt;p&gt;Speaking of the draw function, it has not improved much. 
+The screen is cleared and the OpenGL ‘things’ are bound as before. 
+When you think about it, nothing else is ever bound so why re-bind it? 
+It’s not a huge deal, and as I work towards fancier things, I will need to be binding like this… well, except better. 
+Now I &lt;em&gt;really&lt;/em&gt; got fancy, I pass a vector of positions to a ‘draw box’ function, along with a lambda that can be used to set the ‘model view project matrix’. 
+The draw box function works out what the current box’s ‘model matrix’ should be, and needs to be able to set that in the shader, but I wanted to avoid the function having either the shader program object or the uniform location in the shader. 
+So the lambda that I pass in will take the model matrix, and combine it the ‘view project’ matrix and then set that in the shader. 
+I’ll admit, it was mostly so I could play around with lambda things, there are other, better ways of doing this!&lt;/p&gt;
+
+&lt;p&gt;The update process has not changed a lot either. 
+The user input is still done via the keyboard, it works, but I’ll improve that soon. 
+I also have yet to move past the terrible “as fast as possible” game loop, but that’s not a concern right now for me. 
+The update itself allows the player to move to where ever the keys dictate, then checks for collisions with all the boxes. 
+This collision has been improved slightly, as I now use axis aligned bounding boxes (AABB) for both the player and the cubes. 
+The main advantage here is the player is no longer treated as a single point, they actually have some volume!&lt;/p&gt;
+
+&lt;p&gt;It took me some time to settle on a way of storing the AABB, thinking too much about how to store the data. 
+Either I can store two position vectors, a minimum and maximum, or I can store a ‘centre point’ along with the size (width, height, depth) of the AABB, either way it’s six numbers to store. 
+On reflection, I took the wrong option. 
+I figured it was easier to create and update where the AABB is if I stored the midpoint and size, as I only have to update one vector as the box moves. 
+However, the collision detection uses the min and max value anyway and is going to be using those values a lot more than they need to be updated. 
+It makes a lot more sense to store that data directly rather than having to calculate them each time they are required, especially when you consider I cache that value anyway.&lt;/p&gt;
+
+&lt;h2 id=&quot;game-mechanics&quot;&gt;Game Mechanics&lt;/h2&gt;
+
+&lt;p&gt;These really didn’t get improved that much to be honest, as planned. 
+The challenge has been really ramped up, as now you have to get to three different boxes! 
+Each time you hit one of the boxes, it will pop up into the air meaning you will have to find your way to another box. 
+OK… not exactly ground breaking things. 
+There really isn’t much more to say about this.&lt;/p&gt;
+
+&lt;h2 id=&quot;version-three&quot;&gt;Version Three&lt;/h2&gt;
+
+&lt;p&gt;So far I’ve been trying to give myself short specifications to keep myself focused, and I think it’s been working well.
+For the next iteration then, I’d say it’s about time I got the mouse in on this action, the WASD keys can then take on their typical movement functions. 
+For now, I’ll stick to the single plane of movement, so no jumping around quite yet. 
+But I do want to play around with being able to interact more with these boxes, so maybe some way of adding and removing them. 
+Graphically I think I should attempt actually get other styles of boxes going on, purely cosmetic for now.&lt;/p&gt;
+
+&lt;h2 id=&quot;compulsory-conclusion&quot;&gt;Compulsory Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Another version down, another starting off. 
+One thing I am very aware of is that I feel myself working towards a bit of a MineCraft clone. 
+Though really, I don’t see what’s wrong with that. 
+Either way, I am doing stuff!&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/tag/2015/03/01/QualityGraphics/</link>
+      <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/03/01/QualityGraphics/</guid>
+    </item>
+    
+    <item>
+      <title>Version One</title>
+      <description>&lt;h2 id=&quot;say-what-you-want-its-still-a-game&quot;&gt;Say what you want, it’s still a game!&lt;/h2&gt;
+
+&lt;p&gt;Well then, there we go; as utterly terrible as it might be, it most certainly is a game! 
+I am not looking for reassurance that I’ve not made something utterly sinful; and I am not quite cheeky enough to dare claim this is some bold statement about what makes a game. 
+This is something that you can interact with and have a way of ‘winning’, you really can’t argue that it isn’t a game!
+I aimed to just get a game completed, and I did it.&lt;/p&gt;
+
+&lt;p&gt;Now, I’m not going to make any promises about weather or not you can run this, but if you want to try it, &lt;a href=&quot;/downloads/tag/TAGDV1&quot;&gt;here&lt;/a&gt; is a pre-built version of the game. 
+This is built for 64-bit linux, Ubuntu specifically. 
+I don’t think you will need anything specific, other than being able to run at least OpenGL 3.3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tag/v1/sample.png&quot; alt=&quot;Sample of V1&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;game-review&quot;&gt;Game Review&lt;/h2&gt;
+
+&lt;p&gt;So, I guess I should get into the self improving mindset and break this game down as a sort of review. 
+This game uses &lt;em&gt;just&lt;/em&gt; the keyboard for input, the mouse wasn’t required so wasn’t used. 
+The ‘A’ and ‘D’ keys are used to rotate left and right respectively, with ‘W’ and ‘S’ to move forwards and backwards. 
+If you find yourself unable to handle the frantic excitement, then you can quit using the ever classic ‘Esc’.
+The aim of the game is to move towards the ominous black box, and to do so a few times to then win.&lt;/p&gt;
+
+&lt;p&gt;There is no fail state, you just have to keep going. 
+Menus are nowhere to be found, the game starts up and throws you right into the gripping action. 
+Not everything is even done ‘in the game’, I cut corners and used the console to print messages for when you get the box and win. 
+The astute and avid TAG player might notice that when you get the box, it moves to the same spot each time. 
+Again, in the interest of ‘just make &lt;em&gt;any&lt;/em&gt; game’ I didn’t take the time to bother with randomising it’s location.&lt;/p&gt;
+
+&lt;h3 id=&quot;meet-the-spec&quot;&gt;Meet the spec?&lt;/h3&gt;
+
+&lt;p&gt;So, in my previous post I laid out a sort of specification for this game. 
+It was primarily a way to help me focus on completing something and not sidetracking trying to do fancy things.
+Did I meet that specification? 
+No.
+Do I care?
+No. 
+To be fair, I was nearly spot on with it, only two real differences from the spec.
+I had the game win with only a few points rather than ten, but come on, that’s nothing really.
+I also didn’t bother to add a way to loose the game, but I felt like it was better to finish this and move on then get hung up that.&lt;/p&gt;
+
+&lt;h2 id=&quot;technical-review&quot;&gt;Technical review&lt;/h2&gt;
+
+&lt;p&gt;Man, this reminds me of when you’ve caused some trouble in school and you know the teachers know you did it, but still they insist on waiting for you admit it.
+Feel free to take a look at the ‘amazing’ code &lt;a href=&quot;https://github.com/thecoshman/tag/tree/v1&quot;&gt;here&lt;/a&gt; on github. 
+Seriously though, please keep in mind what the purpose is here, to complete the project quickly, and as such, I know full well this code is terrible. 
+I did a quick hack and slash to get something finished, something I can move on from.
+The entire game (well, &lt;em&gt;my&lt;/em&gt; side of it) is in just one file, oh yes it’s that level of bad! 
+Most of the code is copied over from an example provided by the main library that I used, &lt;a href=&quot;http://glsdk.sourceforge.net/docs/html/index.html&quot;&gt;glsdk&lt;/a&gt;; 
+well ok, it’s set of libraries really.&lt;/p&gt;
+
+&lt;p&gt;The ‘game loop’ for this is about as simplistic as you can get, it just does a render and then updates, each loop as fast as it can. 
+There is lots to be said about how a game loop can be done, and most tutorials or discussions will show this approach as the starting point and then quickly move onto better things. 
+From the example I have some functions that initialise most of the stuff, though not quite everything is done in there.
+The display loop is effectively binding and then unbinding the resources for no reason.
+Shader code is baked into the C++ rather than loaded from disk. 
+I did put some effort into ‘upgrading’ the example so that it uses an index buffer, rather than just a big long list of (mostly repeated) vertex data.
+All in all, probably the worst thing about the use of OpenGL in this is that I am using it directly, rather than making use of some wrappers that I had worked on before with a friend.&lt;/p&gt;
+
+&lt;p&gt;The build system that glsdk comes with is premake4, something I’ve never really used before, but I stuck with it none the less. 
+If I wasn’t using an IDE, I got on relatively fine using raw make files. 
+In fact, I’ve even messed around with writing my own build system in Perl that I called &lt;a href=&quot;https://github.com/thecoshman/pinkpill&quot;&gt;Pink Pill&lt;/a&gt;, though that was more about getting more familiar with the C++ build system than actually trying to make a viable tool.
+Still, I’ve got to say, using premake4 was relatively simple. 
+In about an hour I managed to take the examples and work out how to wrangle it into doing what I want to do. 
+And whilst cross platform development is something I certainly am not bothering with for now, it is nice to know that (at least in theory) premake will ease going to other platforms.&lt;/p&gt;
+
+&lt;p&gt;I was going to make my code compile for C++14, but when I realised that my compiler needed updating I took the quick (ie almost instant) option and settled for C++11. 
+Something that I need to rectify before I press on, starting a project on anything but the latest technology at the time is hard thing to excuse.&lt;/p&gt;
+
+&lt;h2 id=&quot;v2&quot;&gt;V2&lt;/h2&gt;
+
+&lt;p&gt;Sadly, this will not involve rockets; maybe some jazzed up graphics.&lt;/p&gt;
+
+&lt;p&gt;I think my next step will be more of technical update. 
+Like I said, I have previously worked on some abstractions of low level things, like buffers, textures and shaders. 
+So one of the first things I’ll do is look to pull those in, though it seems since they were written glsdk has subtly changed the way it names things in the ‘gl’ namespace that it provides, nothing major. 
+This will also mean that I have to take the time to work out how to organise the project with premake, meaning I have to yet again work out if I want to have just one ‘src’ folder or also have an ‘includes’ folder. 
+And then, I should be able to tart up the graphics a bit and have a texture applied to that black box, something more fitting of it’s crate like nature, because what game is complete without crates!&lt;/p&gt;
+
+&lt;p&gt;I guess I should aim to make the game more ‘game’ like as well, so I might look to make those boxes spawn in random locations (rather than moving the player, if you didn’t spot that trick). 
+I might also have multiple boxes at once that you have to get to instead of just one box over and over. 
+As a final touch, maybe start do some proper collision detection &amp;amp; resolution and so prevent the player moving into the boxes.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/tag/2015/02/21/VersionOne/</link>
+      <pubDate>Sat, 21 Feb 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/02/21/VersionOne/</guid>
+    </item>
+    
+    <item>
+      <title>In The Beginning</title>
+      <description>&lt;h2 id=&quot;start-at-the-beginning&quot;&gt;Start at the Beginning&lt;/h2&gt;
+
+&lt;p&gt;So, a bit of history about myself. 
+By profession I am sadist, I work with Java (Java 7… damn I want lambdas).
+It earns the money sure, and Stockholm syndrome really does help cope with it; I rather like reflection and since I started I feel I’ve learnt how to weild the flacid stick of celeraly that is Java.
+However, by education, I am C++ games programmer! 
+It’s a far cry form the stagnant server side (stop alliterating) stuff I work with to pay the bills, and I most certainly want to get back into games.&lt;/p&gt;
+
+&lt;p&gt;Sure I could have kept at it, but what can I say, laziness sets in. 
+Then you start to realise it’s not quite as second nature as you like to pretend it still is.
+So, it’s back to basics for me!&lt;/p&gt;
+
+&lt;h2 id=&quot;keep-it-simple-stupid&quot;&gt;Keep It Simple Stupid&lt;/h2&gt;
+
+&lt;p&gt;Back to basics I say. 
+What makes a bit of software, a ‘game’… no, I’m not going to get all fussy and debate this; 
+as far as I’m concerned, for my purposes, a game is something interactive, that you can win or loose. 
+If you just play with it, yeah OK, it might be a game, but it’s more a ‘toy’ really. 
+Frankly, not too bothered about these technicalities, what I’m trying to do is define a &lt;em&gt;really&lt;/em&gt; simple specification for a game.&lt;/p&gt;
+
+&lt;p&gt;I am going to make a basic game, it’s going to terrible, both as a game and from an implementation point of view. 
+But it will with out a doubt be, at least technically, a game. 
+And that’s how you name stuff by the way!&lt;/p&gt;
+
+&lt;h2 id=&quot;technically-a-game&quot;&gt;Technically A Game&lt;/h2&gt;
+
+&lt;p&gt;So, basic game right? 
+Not too hard! 
+I suppose games a meant to have an elevator pitch, here’s mine; 
+“It’s Technically A Game” (shrug shoulders).
+It will do the following…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Keyboard interaction - Doom rocked without a mouse&lt;/li&gt;
+  &lt;li&gt;No sound - Just put your own background music on&lt;/li&gt;
+  &lt;li&gt;No saving or loading - not that there will be progress worth saving&lt;/li&gt;
+  &lt;li&gt;No fancy graphics - like flat coloured cubes&lt;/li&gt;
+  &lt;li&gt;Simple to win - get ten points&lt;/li&gt;
+  &lt;li&gt;Simple to get points - move to cube&lt;/li&gt;
+  &lt;li&gt;Simple to lose - run out of time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Oh, and yeah, it’s only going to target me. 
+If others happen to be able to take the code and compile for them selves to also run, good for them, but I don’t care if they can’t&lt;/p&gt;
+
+&lt;h2 id=&quot;go-go-go&quot;&gt;Go Go Go!&lt;/h2&gt;
+
+&lt;p&gt;So, a sort of clear plan… 
+Nothing stopping me really. 
+Let’s not dwell too much on the fact that I’ve spent the last hour or so writing this instead of writing this ‘basic’ game.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/tag/2015/02/16/InTheBeginning/</link>
+      <pubDate>Mon, 16 Feb 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/tag/2015/02/16/InTheBeginning/</guid>
+    </item>
+    
+    <item>
+      <title>The Other Verbs</title>
+      <description>&lt;h2 id=&quot;a-quick-recap&quot;&gt;A quick recap&lt;/h2&gt;
+
+&lt;p&gt;In the last article, I gave a fairly detailed description of the methods that HTTP 1.0 offered; 
+in this article, I will carry on with that and describe those methods added in HTTP 1.1, as defined by &lt;a href=&quot;http://tools.ietf.org/html/rfc2616&quot;&gt;rfc2616&lt;/a&gt;. 
+Fear not though, most of them are not worth much time so this should be rather quick.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-lesser-methods&quot;&gt;The Lesser Methods&lt;/h3&gt;
+
+&lt;h4 id=&quot;options&quot;&gt;OPTIONS&lt;/h4&gt;
+
+&lt;p&gt;This method basically just let’s a client ask what ‘methods’ would make sense for a given URI. 
+I find it hard to see why you would use this these days to be honest. 
+It would have been used for more automated exploration of what a service offered, ie crawlers. 
+Sounds like if you do need this to be used, your service is not that well designed and/or badly documented.&lt;/p&gt;
+
+&lt;h4 id=&quot;trace&quot;&gt;TRACE&lt;/h4&gt;
+
+&lt;p&gt;More or less a ‘ping’ like method. 
+I’m sure if you are trying to debug some issues it could be handy, but for the now I’m just going to leave it be.&lt;/p&gt;
+
+&lt;h4 id=&quot;connect&quot;&gt;CONNECT&lt;/h4&gt;
+
+&lt;p&gt;OK, now this is something that you shouldn’t have to think twice about. 
+It’s used to help upgrade from HTTP to HTTPS. 
+I’m not an expert on the old security stuff, but as I understand it, most frameworks will manage this for you.
+So, don’t think for a second you can avoid using it, equally don’t waste time managing this yourself.&lt;/p&gt;
+
+&lt;h3 id=&quot;methods-of-merit&quot;&gt;Methods of Merit&lt;/h3&gt;
+
+&lt;h4 id=&quot;delete&quot;&gt;DELETE&lt;/h4&gt;
+
+&lt;p&gt;I really wish I could have been there when they realised that HTTP 1.0 didn’t allow resources to be deleted. 
+I’m sure they had their reasoning, but still, it’s there now. 
+There are a few interesting points with this method. 
+Firstly, the server does not have to actually delete the resource, it’s perfectly reasonable to simply make it such that the URI no longer GETs that resource; 
+you could move it to an ‘admin only’ area, or require special permissions to see it (though this is probably not sticking to what DELETE &lt;em&gt;should&lt;/em&gt; do). 
+Equally, you could simply return a 202 (Accepted) response; 
+in which case the resource can still be reached, but you have ‘promised’ that at some stage it will be removed, a concept I find very odd. 
+The DELETE method is of course, idempotent; if you ask to delete the same URI twice, you’ll get the same response “sure thing, that’s gone now”.&lt;/p&gt;
+
+&lt;h5 id=&quot;put&quot;&gt;PUT&lt;/h5&gt;
+
+&lt;p&gt;This is a method that most people seem to use wrong for the most part. 
+The basic detail that everyone seems fine with is that it is PUTting a resource to a specific URI, unlike POST which leaves it to the server to decide what the URI will be. 
+The idea would be that a user might GET a resource, make some modifications to it locally, and then PUT it back at the same URI they got it from. 
+Of course, your server could apply some user permissions to restrict who can PUT that resource back.&lt;/p&gt;
+
+&lt;p&gt;You don’t just have to replace the resource though, you could PUT a brand new resource at a specific location and this is where people start to get things wrong. 
+It is so common to overlook that that you are PUTting an entirely new resource at that URI!
+What ever was there is (well, should) be completely obliterated by this new version.
+As such, if a user wishes to just make a slight modification, they have to send the entire new version, even if it is a huge resource.&lt;/p&gt;
+
+&lt;h3 id=&quot;but-you-just-want-to-patch&quot;&gt;But You Just Want to PATCH?&lt;/h3&gt;
+
+&lt;p&gt;So, all you want to do is provide a partial modification to a resource, you just want to PATCH it up a bit.
+This method is not described in the ‘official’ HTTP 1.1 specification but in &lt;a href=&quot;http://tools.ietf.org/html/rfc5789&quot;&gt;rfc5789&lt;/a&gt;.
+Do not discard this method simply because it’s not an ‘official’ method, HTTP does permit your server to define any method you wish, you could define a TRANSFORM method that will manipulate a resource based on some provided data.
+PATCH &lt;em&gt;is&lt;/em&gt; a perfectly reasonable method to use, it is semantic and very easy to support.&lt;/p&gt;
+
+&lt;p&gt;Exactly how you implement PATCH is up to you, you could have the client send some key:value data and just update the fields mentioned in the request. 
+For more text document like resources, a more standardised ‘diff’ might make sense. 
+I could go on with more examples, but really how to encapsulate the differences really is outside the scope of this article. 
+Thinking more in terms of ‘RESTful’ web applications, PATCH might not be a bad way to send frequent data, such as users sending text in a chat application; 
+though really that’s entering the world of stream and sockets, which is another thing altogether.&lt;/p&gt;
+
+&lt;h2 id=&quot;parting-words&quot;&gt;Parting words&lt;/h2&gt;
+
+&lt;p&gt;So yeah, HTTP 1.1 provided some missing functionality, but still left some confusion regarding how to modify resources. 
+Please do use PATCH when you need to just modify are resource, reserve PUT to complete replacements.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/rest/2015/01/05/TheOtherVerbs/</link>
+      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2015/01/05/TheOtherVerbs/</guid>
+    </item>
+    
+    <item>
+      <title>Verbs, Nouns and Adjectives?</title>
+      <description>&lt;h2 id=&quot;lets-talk-http&quot;&gt;Let’s talk HTTP&lt;/h2&gt;
+
+&lt;p&gt;I have said in previous articles how REST should not automatically imply HTTP; for this article at least, I will concede that REST is in-fact almost always implemented over HTTP.
+Whilst I am getting these confession out of the way, adjectives are not a part of this article.
+This article is going to look at the ‘verbs’ of HTTP, otherwise known as the ‘methods’.
+The nouns are just the resources that a user calls methods on. 
+A HTTP request contains a verb for what they want to do along with a URI to say on what noun you want to do this action.&lt;/p&gt;
+
+&lt;p&gt;HTTP1.0 got the ball rolling with three methods; GET, POST and HEAD. HTTP1.1 introduced five more; OPTIONS, PUT, DELETE, TRACE and CONNECT. 
+That’s it: as far as &lt;a href=&quot;http://tools.ietf.org/html/rfc2616&quot;&gt;RFC2616&lt;/a&gt; is concerned there are only eight types of request to make all the magic work. 
+Well, not exactly, as the protocol does allow for a server to accept other methods. 
+It also fails to cater for what I would consider a rather ‘normal’ task, but I will leave you in suspense about this until later.&lt;/p&gt;
+
+&lt;h2 id=&quot;dissection-time&quot;&gt;Dissection Time&lt;/h2&gt;
+
+&lt;p&gt;Before I start explaining what the HTTP methods mean and how they are intended to be used I shall cover the concept of ‘safe’ and ‘idempotent’ methods. 
+A method is considered ‘safe’ if it does not present to the user any side effects on the server. 
+A GET method is a fine example of this, when a user GETs a resource they should not expect (to be able to observe) anything changing on the server beyond them being sent the resource they requested. 
+The server is not forbidden from making changes, such as logging that user X requested resource Y, but the key is that the the user is not exposed to such changes. 
+The user should feel safe to make ‘safe’ request knowing that they are not about to see some other resource deleted.
+A stress is made within the specification that methods that are not safe should be presented by the user agent as significant; 
+If the user asks to GET a resource, just go for it, all that &lt;em&gt;should&lt;/em&gt; do is retrieve the resource; but if the user wants to DELETE a resource you had best make sure because that is not ‘safe’.&lt;/p&gt;
+
+&lt;p&gt;Idempotent methods are ‘those that have the property of idempotence’, which seem like the specification is saying “hot things are hot”. 
+In laymen’s terms, idempotent methods would be ones that you can apply repeatedly without the effect changing. 
+Again, GET is a good example, no matter how many times you GET a single resource, the result is the same (dynamic sites, such as a forum can muddy this up).
+DELETE is also considered idempotent, obviously you can only delete a resource once, but think not of the action of deleting, but the effect of a resource no longer existing.
+According to the specification it is possible, though I do struggle think how, that a series of idempotent requests is not itself idempotent.&lt;/p&gt;
+
+&lt;p&gt;For the sake of brevity and keeping focused on the methods themselves, I will refrain from talking about all the other things that a server could respond with, like authentication requests.&lt;/p&gt;
+
+&lt;h3 id=&quot;get&quot;&gt;GET&lt;/h3&gt;
+
+&lt;p&gt;The GET method is a straight forward method to understand. 
+It is both safe and idempotent. 
+A client will ‘GET’ a URI and the server will respond with the resource. 
+There is potential for a client to indicate in the headers how they want the resource presented, xml or json for example. 
+Along with the resource, the server can provide some meta data, such as how to interpret the resource.&lt;/p&gt;
+
+&lt;p&gt;Usually, there would be no need for a clients GET request to contain a body.
+Why would you need such a body in a GET request, can you even do that?
+For most situations, you wouldn’t, but the fact that you even can seems often overlooked.
+If your GET request is just trying to get one static resource from one URI, there is not much more that the request needs to say (beyond what the header would be used for).
+It can be very useful when the URI is used to access ‘dynamic data’, for example if you want to GET search results or multiple ‘things’. 
+A common solution to providing ‘meta data’ for a GET request is to use a ‘query’ string at the end of the URI.
+Query strings can look ugly and can get a bit hard to manage when dealing with complex data sets, so it is nice to have the request body as an alternative.
+I’m not advocating either way, your application will dictate what makes the most sense.&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;POST&lt;/h3&gt;
+
+&lt;p&gt;The POST method is used to store a ‘thing’ on the server ‘somewhere’ - fuzzy I know, sit tight.
+Obviously this method is not safe. 
+If it was, that would imply that once a ‘thing’ was POSTed to the server a client could never see it, and so POSTed that ‘thing’ for no reason.
+Neither is this method idempotent, every time a client POSTs a ‘thing’ to a server, it should return a new URI that can be used to GET that ‘thing’ back again (in some form).&lt;/p&gt;
+
+&lt;p&gt;I keep saying ‘thing’ because there really is no limit on what the client can send to the server, nor what the server then does with that.
+A client could POST some data in XML, with which the server could then process and store in a relational data base and offer a URI that can retrieve this new data in some bespoke format.
+Of course, the server is under no obligation to actually store what it is sent (such as if the URI does not except POST requests), but if it does store what it is sent, it should be telling the client where it is stored.
+You also need to consider that the URI that is to be used to GET the new resource is completely up to the server.&lt;/p&gt;
+
+&lt;h3 id=&quot;head&quot;&gt;HEAD&lt;/h3&gt;
+
+&lt;p&gt;A HEAD request is just like a GET request in more or less every way. 
+It differs in that the server must only send the header information that it would send.
+I can only guess that in the early days when HTTP was being thought up, it was useful to have some sort of ‘probe’.
+Perhaps it was useful to be able to see if a resource is still at a URI without having to actually transfer it.
+Just like GET, this is safe and idempotent.
+I wouldn’t go as far as to say you &lt;em&gt;shouldn’t&lt;/em&gt; use use this method, but I doubt you will have much use for it.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-bail-out&quot;&gt;The Bail Out&lt;/h2&gt;
+
+&lt;p&gt;As short as this article is, it is actually taking me longer than I expected to write. 
+This is partial because I want to make sure I don’t get things wrong; 
+but a good part of it is because I have not spared enough for this.
+So far I have covered the three methods that HTTP 1.0 started with.
+I will tackle the methods introduced by HTTP 1.1 in my next post.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/rest/2013/12/02/VerbsNounsAdjectives/</link>
+      <pubDate>Mon, 02 Dec 2013 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2013/12/02/VerbsNounsAdjectives/</guid>
+    </item>
+    
+    <item>
+      <title>What is 'RE-S-T'</title>
+      <description>&lt;h2 id=&quot;so-what-does-rest-mean&quot;&gt;So What does ‘REST’ mean?&lt;/h2&gt;
+
+&lt;p&gt;In this article, I will take a high level look at what REST means.
+The word itself is just an acronym; REpresentational State Transfer.
+People will often use the word to describe a service as ‘RESTful’,
+that &lt;em&gt;should&lt;/em&gt; mean that the service is transferring representations of the state.
+Sounds easy, yet it’s all to easy to miss the point.
+I shall attempt to explain what these three core concepts mean, trying very hard to focus on REST it self, and not details such as HTTP - I will pick on that another time.&lt;/p&gt;
+
+&lt;h3 id=&quot;transfer&quot;&gt;Transfer&lt;/h3&gt;
+
+&lt;p&gt;This should be the easiest part to understand about REST.
+The whole point of a REST architecture is to transfer data, even if that is just sending ‘commands’ to execute.
+With out data transfer, not much exciting is going to happen.
+What form this transfer takes does not really matter (carrier pigeons would be a bit slow perhaps).&lt;/p&gt;
+
+&lt;p&gt;However, the usual transport choice for REST is HTTP, which has a built-in caching mechanisms (I know, I promised not to dive into HTTP).
+When a server responds to a ‘GET’ request with a resource there can (hint - will almost always) also be some meta-data;
+one piece of this meta-data will tell the client for how long it should cache this resource.
+If clients respect this properly, it can really help reduce server load, and thus response times for clients.&lt;/p&gt;
+
+&lt;p&gt;There are of course some resources that cannot readily be cached.
+Take an example site that offers conversion rates for currencies, it has a URI like ‘http://convertor.com/USD/EUR’.
+GETting this URI will return a simple string such as ‘0.74763’ as well as a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cache-control&lt;/code&gt; header value such as ‘max-stale=600’.
+The server is basically saying that if a user wishes to GET this URI within ten minutes, it should just use the same response.
+This is particularly useful when it comes to content that can take time to generate.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, details such as caching are some what superfluous to REST.
+Yes, you do need to consider such details; but it should be considered as a separate problem really.
+Knowing how long to tell a client to ‘cache’ a result should not impact &lt;em&gt;how&lt;/em&gt; a client actually gets that result in the first place.
+So, although &lt;em&gt;some&lt;/em&gt; behaviour can be implemented there,  the ‘transfer’ side of things within REST is kind of boring.&lt;/p&gt;
+
+&lt;h3 id=&quot;state&quot;&gt;State&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;But I thought REST was about stateless client server model?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Yes, it is, and it does that by ensuring each request contains the full state required to carry out the request.
+The state is ‘stored’ within the requests themselves rather than on the server as some ‘magic’ data the server knows about the client.&lt;/p&gt;
+
+&lt;h4 id=&quot;stateful&quot;&gt;Stateful&lt;/h4&gt;
+
+&lt;p&gt;I think it is easier to first explain what a state-full protocol looks like.
+With a stateful protocol, individual messages rely on messages that are exchanged to provide context.
+Take careful note, previous messages provide &lt;strong&gt;context&lt;/strong&gt; to the later messages.
+There is also the presumption that the server knows who the client it is and what the client is up to;
+the server is expected to be able to take two isolated requests from a client and know how they relate.&lt;/p&gt;
+
+&lt;p&gt;An example of a well known stateful protocol is FTP.
+When you use FTP, you do so in a clearly defined session;
+there is well defined begin and end, and any other action takes place within this session.
+Once logged in, the FTP server keeps track of your current directory, so that when you ask ‘what directory am I in’ (ls), It can tell you.
+Changing directory is done by just naming a directory you wish to go into, relative to where you &lt;em&gt;currently are&lt;/em&gt;, such as ‘up to the parent folder’ (cd ..), ‘go into the sub folder &lt;em&gt;sample&lt;/em&gt;’ (cd sample) etc.
+It gets even more stateful when you ‘put’ a file onto the server.
+You just issue the command ‘put this file called phonebook.txt’ (put phonebook.txt), you never say where to put it, as the server knows (and thus puts the file) where you currently are.
+When you ask for a ‘directory listing’, you do not need to say which folder to list, the FTP server knows what folder you are in and thus lists that folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;stateless&quot;&gt;Stateless&lt;/h4&gt;
+
+&lt;p&gt;If we compare stateful FTP to what a stateless version of FTP would be like, the first thing you will get rid of is this idea of a session.
+A ‘session’ would be some magical construct that ties multiple requests together, it simple does not exist in a stateless protocol.
+Instead of a defined ‘I am logging in now’ step, each request you make &lt;strong&gt;has&lt;/strong&gt; to carry that data to authenticate your stateless FTP request;
+‘here is my ID, do this’.&lt;/p&gt;
+
+&lt;p&gt;As there is no session, there is no session data, so all ‘session’ data (such as ‘current folder’) will have to be supplied as well.
+The request ‘list current directory contents’ no longer makes sense;
+instead, you have to ask ‘here is my ID, list directory contents for directory XXXX’, explicitly stating what directory you wish to have the contents listed for.
+The same logic applies when it comes to putting a file on an FTP server, the request has to contain the full path of where to put the file.
+That command contains everything the server needs; who to execute the command as, their password, the action they want to do (list directory contents), and the options required for that action (a directory to list contents for).&lt;/p&gt;
+
+&lt;p&gt;As an example, here is what some of these commands &lt;em&gt;could&lt;/em&gt; look like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user:password put myLocalFileToUpload.log /tmp/myUploadedFile.log&lt;/code&gt; - upload a file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user:password rm /home/user/myShamefullPartyPhoto.png&lt;/code&gt; - remove a file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user:password ls /home/user/&lt;/code&gt; - list a directory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;in-short&quot;&gt;In Short&lt;/h4&gt;
+
+&lt;p&gt;The ‘stateless’ nature of REST is not that there is no state at all, but that the server does not track what state the client is in.
+Each and every request from a client must carry all the information required to complete the request in full,
+it cannot rely on the server ‘just knowing’ what the client had previously done.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-bother&quot;&gt;Why Bother?&lt;/h4&gt;
+
+&lt;p&gt;Now, there are obvious disadvantages to a stateless protocol.
+For example, you have to go through the authentication procedure more often (every single time).
+You should certainly keep this in mind when designing the security:
+those knowledgeable about security could tell you if it’s easy to ‘weaken’ the system,
+but that is out of the scope of what I am covering here.
+The gains though are rather great.&lt;/p&gt;
+
+&lt;p&gt;For a stateless server, you have to do less work.
+Either way you need to implement the actual business logic, the code that actually performs the actions you wish your system to provide.
+Either way you need to implement some way of authenticating the actions a user wishes to make.
+The difference though is that for a stateless system, that is it;
+request comes in, you authenticate it, you perform the action.&lt;/p&gt;
+
+&lt;p&gt;A stateful system though needs a way to manage the session;
+you have to authenticate the initial login, and each request you have to still ensure it is part of that session.
+I would also argue the business logic is easier to implement statelessly;
+you can, well have to, enforce that the clients send all the details they require for a request.&lt;/p&gt;
+
+&lt;h4 id=&quot;proceed-with-caution&quot;&gt;Proceed With Caution&lt;/h4&gt;
+
+&lt;p&gt;However, this can be taken too far.
+Consider a user wishing to delete two files, so sends two ‘delete’ requests;
+but what if the user is mistaken, and the second file has already been deleted and so will fail to delete.
+You could (mistakingly) argue that the delete request should fail because the ‘state’ was not ‘correct’.
+This is an understandable assumption, but missing the point.
+The delete request (for a file that did not exist) was itself a well formed request, it is just one that a server cannot successfully complete.
+It was still stateless, as the request from the user did not require the server to know about any previous actions;
+in particular, it did not matter if the user had created that file in the first place or not, either way the delete request still made sense and so the server can act on the request; how it responds in this situation is another issue;
+either report the delete was successful as it is the same end result, or report it as a error as the file requested to be deleted could not be found.&lt;/p&gt;
+
+&lt;h3 id=&quot;representational&quot;&gt;Representational&lt;/h3&gt;
+
+&lt;p&gt;When you use a REST interface, you are working with representations.
+Consider this in terms of the web.
+A URI such as ‘mysite.com/example’ is a way of identifying a resource.
+When you make a request to GET this ‘example’ resource, you are not (normally) saying anything about how you wish it to be represented.
+When you are presented the resource, it will come with some meta data saying what form the representation is in.
+This ‘meta data’ will allow you, the client program, to know how to interpret the raw data just sent you.
+This idea is actually just common sense;
+remember that REST is describing a generic program architecture, it is rather obvious that you can not dictate a one data format.
+Different applications will place different needs on the format of the data they need to send.&lt;/p&gt;
+
+&lt;p&gt;Part of the theory would leave clients having to react to whatever representation the server provides.
+This would be a programming nightmare.
+Luckily, it is very easy for a service to only provide one consistent format; it also lines up with idea of ‘caching’ resources.
+A client need not request the same resource a second time if the max-age has not yet been reached; the logic being, the resource will still be exactly the same and it is bad to ‘waste’ bandwidth, so don’t re-request it.
+If each time the client requested a resource it got a different representation, it could still function, but the merit of its cache is servilely diminished.
+Again, much like the shocking fact REST involves transferring data, this ‘representational’ business is rather sedate.
+It boils down to a simple, and rather obvious, represent data how it best suits &lt;em&gt;your&lt;/em&gt; application.&lt;/p&gt;
+
+&lt;p&gt;The ‘representational’ aspect to REST is also referring to the ‘state’ of the client.
+As the server does not store any state data, it is up to the client to transfer it to the server.
+It is the clients responsibility to send to the server details such as what items a client has in its ‘shopping cart’ (when it needs to send that information). Yes, constructs such a shopping cart should only exist on the clients machine.
+There is no need for a client to tell the server what items it is thinking about, until it wishes to purchase those items.
+This goes directly against what most shop sites would want.
+As much as it may not be ‘REST’, knowing what potential customers are looking at and what they are thinking of buying is very interesting information.&lt;/p&gt;
+
+&lt;p&gt;To preemptively shoot down ideas that it is all about shops, allow me to provide a real world game as a bit a study, &lt;a href=&quot;http://candies.aniwey.net/index.php&quot;&gt;Candy Box&lt;/a&gt;.
+In this web based game, the progress of the player is kept client side, in fact all the processing is done client side.
+The aspect of Candy Box that I want to focus on is how the game is saved.
+It provides a ‘save’ button, and on clicking it you are presented a message saying your game is saved under a random name, this name can used as part of the URI to restore the state of your game.
+You could write command-line version of this game and still interface with the same save server that the web based version uses.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-it-up&quot;&gt;Wrap It Up&lt;/h2&gt;
+
+&lt;p&gt;To try to condense that all down to a few key points about what REST is / means.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Representational - Clients send a representation of what ‘state’ they are in, they are given representations of the resources they request&lt;/li&gt;
+  &lt;li&gt;State - The server does not store state about clients or sessions, it is the clients responsibility to send all required data&lt;/li&gt;
+  &lt;li&gt;Transfer - At the end of the day, it’s about moving data from A to B&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The stateless nature is the biggest aspect, and has strong influence on the other two.
+Representation of the state means sending only what is required by a server to complete a request.
+As the architect of a system, you are free to apply the principles of REST as strictly as you wish, there are situations where being a bit stateful has advantages.
+Whilst the representations can take any form, it is better to decided what one form you will use, and again it is up the you the architect to work out which to use.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/rest/2013/10/07/WhatIsRE-S-T/</link>
+      <pubDate>Mon, 07 Oct 2013 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2013/10/07/WhatIsRE-S-T/</guid>
+    </item>
+    
+    <item>
+      <title>What REST Is Not</title>
+      <description>&lt;h2 id=&quot;what-rest-is-not&quot;&gt;What REST Is Not&lt;/h2&gt;
+
+&lt;p&gt;To give the shortest answer to “what REST isn’t” I would probably just say “a protocol”.
+It may seem trivial, but I think it is a &lt;em&gt;very&lt;/em&gt; important detail.
+In fact, I might even go as a far to say that it is the most important detail, and hopefully after this article you will understand why I think this.
+What it tells you, at the most simplistic of levels, is that you have to remember ‘REST’ is nothing more than guidelines, there is no right or wrong.
+That said, whilst there is no right and wrong, there is still good and bad.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-protocol&quot;&gt;What &lt;em&gt;is&lt;/em&gt; a Protocol&lt;/h3&gt;
+
+&lt;p&gt;Taking the definition from the &lt;a href=&quot;http://oxforddictionaries.com/definition/english/protocol&quot;&gt;OED&lt;/a&gt; a protocol is defined as, in the context of computing:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A set of rules governing the exchange or transmission of data between devices&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The key word there is ‘rules’, it is this idea that REST is ‘rules’ that I find most disturbing.
+There are no rules regarding REST saying you must work in a certain way; 
+do not confuse the rules from technology you are using (HTTP for example) with rules from REST.
+If you attempt to follow a set of rules for REST you will likely find yourself attempting to design a terrible API.&lt;/p&gt;
+
+&lt;h3 id=&quot;time-for-a-cup-of-tea&quot;&gt;Time for a Cup of Tea&lt;/h3&gt;
+
+&lt;p&gt;There is a mildly amusing ISO standard for brewing a cup of tea, &lt;a href=&quot;http://en.wikipedia.org/wiki/ISO_3103&quot;&gt;ISO 3103&lt;/a&gt;.
+Now, to be fair, there is a reasonable purpose for such a standard, comparing ‘blends’ of tea is ‘easier’ or ‘better’ when brewed in a consistent manner.
+The point I want to consider with this standard is that it defines ‘rules’ for making a cup of tea.
+In practice people are not going to claim your tea is not tea because you brewed it for only three minutes rather then the six minutes the standard dictates, but nonetheless we have a set of rules as to what constitutes tea.&lt;/p&gt;
+
+&lt;p&gt;Brewing tea is a rather abstract concept, one that does not map well to a protocol, in my opinion.
+Again, going to the &lt;a href=&quot;http://oxforddictionaries.com/definition/english/tea&quot;&gt;OED&lt;/a&gt;, tea is basically just tea leaves infused into boiling water.
+There are a few guidelines that I am sure every one would agree on though:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use hot water&lt;/li&gt;
+  &lt;li&gt;Soak the tea in the water&lt;/li&gt;
+  &lt;li&gt;Remove the bag once it is brewed ‘enough’&lt;/li&gt;
+  &lt;li&gt;Add some milk to suit your taste&lt;/li&gt;
+  &lt;li&gt;Add some sugar to suit your taste&lt;/li&gt;
+  &lt;li&gt;Have a few biscuits on the side&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But then again…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How hot? Does it even &lt;em&gt;have&lt;/em&gt; to be hot, what about iced tea?&lt;/li&gt;
+  &lt;li&gt;‘bag? Surely you use loose tea leaves good sir!’&lt;/li&gt;
+  &lt;li&gt;Milk and sugar? ‘to suit your taste’? No fixed amounts? I’ve seen people have nearly half the cup as milk!&lt;/li&gt;
+  &lt;li&gt;Biscuits… can’t I just have biscuits?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So what’s my point?
+Whilst protocols can be good, they can also be bad. 
+The ISO 3103, might allow you compare tea in a more uniform way, but it obliterates the freedom people have to enjoy tea that suites their tastes.
+And it is that analogy I want to bring over to REST.
+REST is not a protocol, and that is a brilliant thing!
+There are certain protocols you would make use of, JSON and HTTP come to mind, but the meat of your API design is unconstrained.
+Keep in mind though, there are still expectations of how REST will work, just like people tend to expect tea to  be served in a cup or pot.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-else-is-it-not&quot;&gt;What else is it not?&lt;/h3&gt;
+
+&lt;p&gt;REST is not about (focused on) transferring data.
+It is about presenting an interface in a ‘nice style’, and whilst this will obviously involve sending data, the data itself is of little concern to REST design.
+Within the REST mindset, data is no more than an abstract concept, it is a payload that is requested by a client, modified by a client, sent from a client.
+The data you are sending could even be physical money and physical sandwiches, like in real life shop.&lt;/p&gt;
+
+&lt;p&gt;You could go to an extreme with this thought and say that really, REST doesn’t even require the concept of computers.
+Yes it does build on the ideas of HTTP, but the core concepts of REST do not depend on it really.
+To take the sandwich shop example to an extreme, you have an underlying ‘protocol’ of human interactions, which has a some basic ‘methods’.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ASK a question -
+  “How much is it for a BLT?”, to which the standard response is along the lines of “A BLT is three Euro”&lt;/li&gt;
+  &lt;li&gt;REQUEST an item -
+  “Can I have a BLT”, to which the response would be “No, you did not give me the three Euro it costs”&lt;/li&gt;
+  &lt;li&gt;REQUEST an item, handing over money (a payload) -
+  “Can I have a BLT, here is three Euro”, to which you hope you get the response “Yes, here is your BLT”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, this is not the perfect analogy I grant you, but hopefully you can see my point; 
+the principles of REST have been applied to the process of ordering a sandwich, using a basic ‘protocol’ for human interaction.
+I do not want to jump ahead of myself here, but I must seize the opportunity to point out how I framed that as a stateless series of actions; 
+when it came to paying for the sandwich, it did not rely on having previously asked about the BLT, you could jump directly to “Can I have a BLT, here is three Euro”.
+Like I said, I do not want to get carried away with such details, it is for a later article.
+The analogy also helps show how the data that is being transferred is rather trivial, what matters is &lt;em&gt;how&lt;/em&gt; it is transferred.
+Again, sort of jumping the gun here, but the sandwich you are given by the sandwich master is not the exact BLT in the picture, but a &lt;em&gt;representation&lt;/em&gt; of it; 
+it just so happens that the representation you are given is a deliciously edible one.&lt;/p&gt;
+
+&lt;p&gt;To toy with pedant-ism, some people might claim that one of the strengths of REST is that it is ‘lightweight’.
+‘Lightweight’ is a relative term, a blue whale is lightweight compared to our planet, itself lightweight compared to the Sun, itself lightweight compared to &lt;a href=&quot;http://en.wikipedia.org/wiki/Betelgeuse&quot;&gt;Betelgeuse&lt;/a&gt;.
+It is true that a REST interface does not add much ‘overhead’ to HTTP, which it is so often used with, but that does not make it ‘lightweight’.
+HTTP is a rather ‘chatty’ protocol, and if you were &lt;em&gt;really&lt;/em&gt; concerned about the amount of data being sent, you would not use long wordy string based messages to communicate with a server.
+Yet people do use long wordy string based messages to communicate with servers, because it works.
+I am sure you could make a binary version of HTTP, reducing the size of messages dramatically, and use binary payloads for the data you send back and forth.
+Practicality steps in the way though, it takes time and effort to ensure you have done it correctly and HTTP has already solved these problems.
+You would need a good reason to wish to break away from such a wide spread system for which nearly every one has a client, their web browsers.
+So to say REST is lightweight is not really saying anything, what you really mean is that it does not impose any unnecessary overhead to existing protocols.&lt;/p&gt;
+
+&lt;p&gt;As a final thing that REST is not, I will say that it is not an amazing new technology.
+Firstly, it’s a fairly old now, the term itself ‘coined’ over ten years ago.
+It is not really technology in and of itself, it is just a way of using existing technology.
+And while it is nice, it is not &lt;em&gt;amazing&lt;/em&gt;.
+REST is just guidelines for good practice of existing technology.
+I’ve seen this sort of ‘hype’ around REST, that by adopting it all your problems can go away.
+Sure, REST can be a very nice style to solve your problem, but you shouldn’t go shoehorning the problem to fit a REST solution.
+Maybe, &lt;em&gt;maybe&lt;/em&gt;, you really do need to have a state-full system to solve your problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;parting-thought&quot;&gt;Parting Thought&lt;/h3&gt;
+
+&lt;p&gt;When it comes to designing your own API for a service, I think it is important to remember, there are no rules to REST.
+It is a style, and just like styles in real life, it can change with time, especially when it has to fit in with &lt;em&gt;your&lt;/em&gt; scenario.
+Use REST as a guideline, but make sure &lt;em&gt;your&lt;/em&gt; API makes sense for &lt;em&gt;your&lt;/em&gt; situation.&lt;/p&gt;
+
+</description>
+      <link>http://thecoshman.com/rest/2013/09/04/WhatRestIsNot/</link>
+      <pubDate>Wed, 04 Sep 2013 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2013/09/04/WhatRestIsNot/</guid>
+    </item>
+    
+    <item>
+      <title>RESTless Thoughts - Introduction</title>
+      <description>&lt;h2 id=&quot;restful-design---restless-thoughts&quot;&gt;RESTful Design - RESTless Thoughts&lt;/h2&gt;
+
+&lt;p&gt;Let me preface this series by stating very clearly, I am in no way an experienced or authoritative source when it comes to the subject of REST. 
+I am not a veteran designer of websites or web services. 
+By profession, I am a ‘standard’ software developer. 
+What I say in this series is based purely on my own experience with designing the grand total of one ‘REST API’ and all the ‘research’ that has gone into it.&lt;/p&gt;
+
+&lt;p&gt;I feel this series needs to be written to cover one particular aspect of ‘REST APIs’ that is hard to find clear concise information on; 
+dealing with multiple resources at once. 
+However, I do not feel that I can rightly jump straight to that particular subject until I have established some solid ground work.
+Hopefully, as I go through the process of trying to really think about the details, the later complexities will be easier to wrangle.&lt;/p&gt;
+
+&lt;p&gt;In this series I plan to cover all aspects of what I understand to be ‘REST’.
+Each article will (hopefully) be a rather short concise piece, doing my best to back up what I say.
+Remaining impartial will be a strong focus for me, so some articles may not actually come to any conclusion, they will just present some information.
+This is just a list of subjects I think I will be covering, at some stage, in some order, under some name.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What REST isn’t&lt;/li&gt;
+  &lt;li&gt;What is the ‘RE’ and what is the ‘ST’&lt;/li&gt;
+  &lt;li&gt;Basic operations&lt;/li&gt;
+  &lt;li&gt;The URI&lt;/li&gt;
+  &lt;li&gt;Dissection of HTTP&lt;/li&gt;
+  &lt;li&gt;A look at Roy Fielding’s thesis&lt;/li&gt;
+  &lt;li&gt;Sending data&lt;/li&gt;
+  &lt;li&gt;More than one resource at a time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So if you fancy reading along with me, watch this space.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/rest/2013/08/21/introduction/</link>
+      <pubDate>Wed, 21 Aug 2013 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/rest/2013/08/21/introduction/</guid>
+    </item>
+    
+    <item>
+      <title>Remote Tech</title>
+      <description>&lt;p&gt;This mod is great! 
+Basically, it makes the antennas matter and prevents you from just casually using probes for everything and spamming the science. 
+With this mod, your remote probes can only be controlled if they have a connection back to Kerbal Space Centre.
+You will not be able to just head into space and spam science, you will have to wait for alignment so that your ship can ‘see’ home to transmit data back.
+This really does help address the problem I have with science at the moment, you could just spam science.&lt;/p&gt;
+
+&lt;p&gt;All the antennas now have a range, some are short range omni-directional and some are long ranged directional antenna.
+There are some new antenna added as well, so there is plenty to pick from; 
+and chose you will have to, longer range means more power!
+Power usage is also something that becomes very important, you will have to make sure your satellites have enough power to maintain connection.
+No longer will a huge bank of batteries and gigantic solar arrays seems so silly.&lt;/p&gt;
+
+&lt;p&gt;This mod integrates with the tech tree, unlocking a nice progression of transmitters with more range and better efficiency.&lt;/p&gt;
+
+&lt;p&gt;Frankly, it feels like cheating to &lt;em&gt;not&lt;/em&gt; use this mod!&lt;/p&gt;
+
+&lt;p&gt;Sadly, whilst the code for this mod is free to use, the art assets are not, and so I am not able to include it directly in my pack. I strongly advise you do download and add it though.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Mon, 31 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Deadly Reentry</title>
+      <description>&lt;p&gt;Yes, the name is right on, you now have to be careful about how to approach your re-entry to Kerbin, or any planet with an atmosphere really. 
+This mod just works so smoothly, and &lt;em&gt;really&lt;/em&gt; does need to be added to the core game  if you ask me. 
+Don’t let the name fool you, re-entry is not an automatic death wish, you just can no longer let your ships drop into the atmosphere at high speeds. 
+Aim to cut through the atmosphere at around 50 km and you should be fine, should be.
+There are a few additional parts, heat shields mostly, but everything fits in well, helped by good use of the tech tree.&lt;/p&gt;
+
+&lt;p&gt;Oh, due to a detail in the original licence, I need to say “ialdabaoth is awesome” in my readme…&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sun, 30 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Ferram Aerospace Research</title>
+      <description>&lt;p&gt;It’s hard to not understate this mod, it basically completely replaces the stock aerodynamics model. 
+You are almost guaranteed to have all of the planes and rockets ‘broken’ by this mod, but in my opinion it is worth it. 
+Everything ‘feels’ more balanced with this mod.
+For example, nose cones actually &lt;em&gt;help&lt;/em&gt; now! 
+It also provides some (optional) enhancements to the SAS and a way to control what flaps are used for (pitch,yaw,roll) that can help prevent wobbling.&lt;/p&gt;
+
+&lt;p&gt;The mod author has said he would prefer I do not include it, which is fair enough. 
+Like ferram said himself, this reall does change the game. 
+So it is up to you, I advise you do get it, and keep it up-to-date (like all mods really).&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sat, 29 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>City Lights and Clouds</title>
+      <description>&lt;p&gt;This is a purely cosmetic mod, and one I do not use out of the box. 
+It adds some very beautiful clouds to Kerbin, which just adds so much ambience to the game. 
+There is also a night time effect of city lights, but I have chosen to not use this; it just does not feel right to me for there to be these phantom cities that glow at night, but are no were to be seen.&lt;/p&gt;
+
+&lt;p&gt;If you are the sort of person who feels mod can ruin the game, this is the mod to prove you wrong. 
+Unless of course you like Kerbin looking bland, sterile and with out any interesting atmosphere.&lt;/p&gt;
+
+&lt;p&gt;I have permision to include this mod, so it will be in, I just need to sort out the initial version of my pack.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Fri, 28 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Editor Extensions</title>
+      <description>&lt;p&gt;This is a nice simple mod that allows you to switch between VAB and SPH style building.
+I find it is mostly useful when in the SPH and you want to do something with rotational symmetry.
+It also provides the ability to do up to 50 way rotational symmetry and control the ‘snap angle’ to a more useful values.
+There are a few other features that it offers for your ship building, so check out the link.
+It is worth remembering that it is the stock editor that limits what you can build, not the game engine itself, this mod just helps remove some of those limitations.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Thu, 27 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>KSP Interstellar</title>
+      <description>&lt;p&gt;OK, to be honest, whilst I have this one installed I have yet to get to use it in career mode. 
+From what I have seen of it from videos, it looks great. 
+It introduces the new parts towards the end of the tech tree.
+I do wander what use faster then light travel will be once you have maxed out the tech tree, what science will there be left to get?
+That said, perhaps I will look at getting a mod that adds somewhere to go in the mean time I could just enjoy exploring the kerbin system.
+As I understand it, unlike most ‘wrap drive’ style parts packs, this one does not fell over powered, you have work towards getting the very high end engines.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Tue, 25 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Mk2 Cockpit Internals</title>
+      <description>&lt;p&gt;This provides a beautifully detailed model for the Mk2 cockpit. 
+In my opinion, IVAs are mostly just a cosmetic thing, so why not make it look amazing.
+Squad have not got around to adding this yet, so this mod provides it for you.&lt;/p&gt;
+
+&lt;p&gt;Sadly, no visible licence, so having to ask author for permision to find out.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Mon, 24 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Enhanced Navball</title>
+      <description>&lt;p&gt;The navball is a crucial bit of equipment, with out it, it would be nearly impossible to control ships.
+This mod adds some additional details that make it even more crucial.
+It adds a few additional markers on the ball, the best one in my opinion is a ‘ghost’ marker for the manoeuvre node.
+No longer will you need to hunt around randomly to line up a manoeuvre, now when the manoeuvre is on the other side of the ball, you get a faint marker at the edge of the ball showing which way to rotate to align with it.&lt;/p&gt;
+
+&lt;p&gt;‘Software’ is GNU GPL, but not sure about the art work, so seeking permision from the author.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sun, 23 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Kerbal Joint Reinforcement</title>
+      <description>&lt;p&gt;A simple mod that just makes all of the joints between parts much stronger.
+Ships will not wobble and snap quite as easily, they still can mind you.&lt;/p&gt;
+
+&lt;p&gt;Ferram made this mod too, and has asked that I do not include his mods in packs.
+I do advise you add this mod yourself though, it allows your ships to be built with a more reliastic feelnig rigidity.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sat, 22 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>RealChute Parachute Systems</title>
+      <description>&lt;p&gt;The stock parachutes in KSP are rather blunt instruments, and not hugely flexible. 
+This mod provides three types of parachutes in three mounts each.
+Drag-chutes are a new type of parachute, designed for use as your aircraft land to bring them to a halt fast.
+The way parachutes work has been reworked to, they now deploy at more sensible heights and deploying gradually so as to not rip off.&lt;/p&gt;
+
+&lt;p&gt;A subtle tweak needs to be made to fit better with FAR, a reduction in ‘stowed drag’, this change has already been in my pack.&lt;/p&gt;
+
+&lt;p&gt;At the moment, this can be included in my pack. This mod currently reuses existing part models, but has some specialised parts being made. Hopefully those parts will also be ok to include in my pack.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Fri, 21 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Kerbal Alarm Clock</title>
+      <description>&lt;p&gt;Are you the sort of person who flies one ship at a time?
+Just time warping that one vessel years at a time, whilst the Kerbals back home sit idle.
+Don’t think it would be better to have many missions ongoing at once?
+Problem with doing so is that you end up missing important manoeuvres.
+well not any more!
+Not only can this alarm clock remind when you a manoeuvre, sphere of influence, apo- or periapsis is close, but it can also save that previous manoeuvre node you spent ten minutes getting just right.&lt;/p&gt;
+
+&lt;p&gt;Seeking confirmation of permision from author regarding artwork.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Wed, 19 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>kOS Scriptable Autopilot System</title>
+      <description>&lt;p&gt;I use this a lot less than I would like.
+Early in the tech tree, you will unlock a special part. 
+Adding this part to your ship provides an on-board computer through which you can script more or less anything you want.
+In theory, you can write a script that can take a satellite from the launch pad to geo-synch orbit; use this three times, a third of an in game day apart and you will have a nice satellite constellation set up in no time.
+Like I said, I hardly use this, mostly because I just never get around to writing those scripts, but I still think this mod is great.&lt;/p&gt;
+
+&lt;p&gt;Seeking confirmation for permission regarding artwork.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Tue, 18 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>TAC Life Support</title>
+      <description>&lt;p&gt;Kerbals can no longer live forever surviving of nothing but the fear of imminent explosions!
+This mods implements a life support system, you must make sure your kerbals are stocked up on food, water and oxygen before they head out to space.
+It also increase the amount of electricity manned capsules use dramatically, to keep the we kerbals warm inside.
+Basically, it makes getting kerbals to other planets much harder, and combined with remote tech provides a great balance, kerbals are hard to keep stocked up, but they can always control their ships without satellite links.&lt;/p&gt;
+
+&lt;p&gt;Sadly this mod is still using mock part models, but the mechanics are well in place. 
+Hopefully soon someone will be able to provide the author with some nice models to use.
+In the mean time, a forum user ‘regex’ has made some &lt;a href=&quot;http://forum.kerbalspaceprogram.com/threads/40667?p=692832&amp;amp;viewfull=1#post692832&quot;&gt;replacement textures&lt;/a&gt;, which I have included in my pack.&lt;/p&gt;
+
+&lt;p&gt;Just awaitng confirmation about licening regariding the artwork by the author.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Mon, 17 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>KDEX - Kerbal Dust Experiment</title>
+      <description>&lt;p&gt;A very small mod, just one part, but lord is it nicely made. 
+This adds a new experiment to the game, providing a bit more science to be earned. 
+I was hesitant at first about adding a new way to get science, fearing it might make it too easy, but this experiment only offers a small amount of science per ‘biome’, so no worries there.
+Factor in how Remote Tech and TAC Life Support make things harder, I feel this experiment is very justifiable.
+And did I mention just how nicely made this is?&lt;/p&gt;
+
+&lt;p&gt;Awaiting confirmation that the licence covers the artwork too, and man do I hope it does, it is such a grougous but of work.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sun, 16 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>L-Tech Scientific Stuff</title>
+      <description>&lt;p&gt;This is another pure parts pack, adding a few science experiments things.
+Nothing over powered in my opinion, you can’t get vast mounts of additional science with ease. 
+There is a camera experiment, that lets the Kerbals back home see what your ship is getting up to. 
+There is also a ‘parts bin’, that let’s you store EVA surface samples and reports, which jut helps take away the grind of having get in and out to get and report one sample at a time.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Sat, 15 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Station Science</title>
+      <description>&lt;p&gt;This is another mod that adds some science experiments, this time focusing on space stations.
+It introduces a new mechanic to the game, you have to build up ‘Eurekas’ to then use on the actual experiments. 
+Sadly this is another mod that does not have proper models in place, instead relying on ‘welded parts’.&lt;/p&gt;
+
+&lt;p&gt;The the sake of keeping things managable to start with, I am not included this mod. I like the idea of this mod, so perhaps I will reconsider at a later date, especially when it gets proper models for itself.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Fri, 14 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Kethane</title>
+      <description>&lt;p&gt;This mod adds a new resource to the game - Kethane.
+It also adds mechanics for scanning for it and mining it.
+Once you have detected a Kethane deposit and mined it, you can then convert it more useful supplies.
+This will allow you to send large ships to other planets that only carry enough fuel for one direction, they can then refuel on arrival so that they can return home.&lt;/p&gt;
+
+&lt;p&gt;Sadly the licence for the Kethane mod means I can not add it to my pack.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Thu, 13 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Sounds for your ion drives!</title>
+      <description>&lt;p&gt;The stock ion drive is dead silent. 
+That may be realistic, but frankly I don’t care. 
+This is a game, and it’s cooler to have you ion drives make a sweet hum. 
+come on, how can you not like this?&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Wed, 12 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Select Root</title>
+      <description>&lt;p&gt;A simple mod this one, just lets you change what the ‘root’ of your ship is whilst building it. 
+Very handy from times to time.&lt;/p&gt;
+
+&lt;p&gt;Just getting confirmation from the author first.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Tue, 11 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+    <item>
+      <title>Stack Inline Lights</title>
+      <description>&lt;p&gt;This mod comes in three flavours, all aimed at a offering a ring light that can sit in-line with your rocket, rather than sitting out like the normal lights do.
+The first is an amazingly well made part, the second being a lower quality version. 
+These are both just one part, offering a lovely blue-white bright light that can illuminate the area around your craft.
+The third variant of this mod offers the light in four radial sizes, and more awesomely, a colour picker.
+Yeah that’s right, you can have your ring light in any colour you could wish for!&lt;/p&gt;
+
+&lt;p&gt;I have not yet added it to the pack, as I want to make sure it is set up right.&lt;/p&gt;
+</description>
+      <link>http://thecoshman.com/ksp</link>
+      <pubDate>Mon, 10 Jan 2000 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">http://thecoshman.com/ksp</guid>
+    </item>
+    
+  </channel>
+</rss>

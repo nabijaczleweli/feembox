@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="html"><![CDATA[Kate Murphy]]></title>
+  <link href="https://kate.io/feed.xml" rel="self"/>
+  <link href="https://kate.io/"/>
+  <updated>2018-09-30T00:00:00+00:00</updated>
+  <id>https://kate.io/</id>
+  <author>
+    <name>Kate Murphy</name>
+  </author>
+  <entry>
+    <title type="html"><![CDATA[Simple Hash Collisions in Lua]]></title>
+    <link href="https://kate.io/blog/simple-hash-collisions-in-lua/"/>
+    <id>urn:uuid:26a15fc6-fb83-4c70-a47d-e4f536a6375a</id>
+    <published>2017-11-02T00:00:00+00:00</published>
+    <updated>2017-11-02T21:24:40+00:00</updated>
+    <content type="html"><![CDATA[<p>After investigating the CRuby source code for hash tables, my interest was piqued, and I decided to look into another hash table implementation before leaving Recurse Center. I chose to investigate Lua because the hash table is the central abstraction of the language. I don&rsquo;t actually know Lua, but luckily I spent most of my investigation in a debugger or C source code.</p>
+
+<p>One of the first things that jumped out at me was that there didn&rsquo;t seem to be any mention of <code>siphash</code> in the Lua source code. Ruby and Python use <code>siphash</code> with a per-session key to generate hashes. You can easily verify that the hash of a string changes in different Ruby sessions:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ irb
+irb<span class="o">(</span>main<span class="o">)</span>:001:0&gt; <span class="s2">&quot;hello!&quot;</span>.hash
+<span class="o">=</span>&gt; -3270480275822396260
+irb<span class="o">(</span>main<span class="o">)</span>:002:0&gt; <span class="nb">exit</span>
+$ irb
+irb<span class="o">(</span>main<span class="o">)</span>:001:0&gt; <span class="s2">&quot;hello!&quot;</span>.hash
+<span class="o">=</span>&gt; -4583553666733776547
+</code></pre></div>
+
+
+<p>Using a debugger, I saw that strings in Lua also have different hashes between different sessions. However, Lua doesn&rsquo;t appear to use <code>siphash</code>, so I decided to investigate exactly what it does instead. The Lua hashing approach for strings is nearly at the top of <code>lstring.c</code>:</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">luaS_hash</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">l</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">seed</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">h</span> <span class="o">=</span> <span class="n">seed</span> <span class="o">^</span> <span class="n">cast</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="n">l</span><span class="p">);</span>
+  <span class="kt">size_t</span> <span class="n">step</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">&gt;&gt;</span> <span class="n">LUAI_HASHLIMIT</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(;</span> <span class="n">l</span> <span class="o">&gt;=</span> <span class="n">step</span><span class="p">;</span> <span class="n">l</span> <span class="o">-=</span> <span class="n">step</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">^=</span> <span class="p">((</span><span class="n">h</span><span class="o">&lt;&lt;</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">h</span><span class="o">&gt;&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">cast_byte</span><span class="p">(</span><span class="n">str</span><span class="p">[</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]));</span>
+  <span class="k">return</span> <span class="n">h</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Reading this code, it is pretty obvious that most of the string is ignored when it is hashed. This makes it very easy to generate collisions! For example, in Lua, all these strings have the same hash:</p>
+
+<p><div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span><span class="s2">&quot;0000000000000000000000000000000000&quot;</span>
+<span class="s2">&quot;f0l0l0w0m0e0n0t0w0i0t0t0e0r0?0:0)0&quot;</span>
+<span class="s2">&quot;x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0x0&quot;</span>
+</code></pre></div>
+</p>
+
+<p>I wrote up a quick script to generate collisions and tested with 50,000 values of length 34 compared to random strings in a similar setup. Parsing a json file that uses these strings as keys with rapidjson (a popular Lua library) showed stark results:</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ lua parse-json.lua
+<span class="m">0</span>.04s user <span class="m">0</span>.01s system <span class="m">82</span>% cpu <span class="m">0</span>.067 total
+$ <span class="nb">time</span> lua parse-json-collision.lua
+<span class="m">13</span>.68s user <span class="m">0</span>.07s system <span class="m">99</span>% cpu <span class="m">13</span>.841 total
+</code></pre></div>
+
+
+<p>The test with colliding hashes took <strong>more than 300&times; longer</strong> to process. The growth is not linear: a larger file could take significantly longer.</p>
+
+<p>This problem of Hash DoSing is mentioned on <a href="http://lua-users.org/wiki/HashDos" target="_blank">lua-users Wiki</a>, and there is discussion about this on their mailing in 2012. However, in 2017 using the latest version of Lua, it is still trivial to generate collisions.</p>
+
+<p>Thank you to <a href="http://blog.wesleyac.com/" target="_blank">Wesley</a> and Jake for pairing on debugging Lua, and reading the source code.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Making Your Own Git Bombs]]></title>
+    <link href="https://kate.io/blog/making-your-own-exploding-git-repos/"/>
+    <id>urn:uuid:81e20e47-a809-4749-921c-13bfd6cca908</id>
+    <published>2017-10-12T00:00:00+00:00</published>
+    <updated>2017-10-12T00:00:00+00:00</updated>
+    <content type="html"><![CDATA[<p>Note: This is all Python 3 code. Other versions of Python may handle subprocesses and bytearrays differently.</p>
+
+<p>A Git bomb is a compact repository that explodes to consume extreme size on disk and in memory. Read more about them in the <a href="https://kate.io/blog/git-bomb/" target="_blank">original git bomb post</a>. This post walks through some code to create them. A full script to create them is available in the <a href="https://github.com/Katee/git-bomb#readme" target="_blank">Git Bomb Readme</a>.</p>
+
+<p>The basic outline:</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="n">depth</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># how many layers deep</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># how many files or folders per depth level</span>
+<span class="n">blob_body</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;one laugh&#39;</span>  <span class="c1"># content of blob at bottom</span>
+
+<span class="c1"># Create base blob</span>
+<span class="n">blob_hash</span> <span class="o">=</span> <span class="n">write_git_object</span><span class="p">(</span><span class="n">blob_body</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;blob&#39;</span><span class="p">)</span>
+
+<span class="c1"># Dirs is an array of (name, hash) pairs</span>
+<span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;f&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">blob_hash</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)]</span>
+<span class="n">file_permission</span> <span class="o">=</span> <span class="s1">&#39;100644&#39;</span>
+<span class="c1"># Write tree object containing the blob `width` times</span>
+<span class="n">tree_hash</span> <span class="o">=</span> <span class="n">write_git_object</span><span class="p">(</span><span class="n">create_tree</span><span class="p">(</span><span class="n">dirs</span><span class="p">,</span> <span class="n">file_permission</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;tree&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make layers of tree objects using the previous tree object</span>
+<span class="c1"># Each tree contains the last tree `width` times</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">depth</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># again dirs is an array of (name, hash) pairs</span>
+    <span class="n">dirs</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;d&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">tree_hash</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">)]</span>
+    <span class="n">tree_permission</span> <span class="o">=</span> <span class="s1">&#39;40000&#39;</span> <span class="c1"># trees and blobs need different permissions</span>
+    <span class="n">tree_hash</span> <span class="o">=</span> <span class="n">write_git_object</span><span class="p">(</span><span class="n">create_tree</span><span class="p">(</span><span class="n">dirs</span><span class="p">,</span> <span class="n">tree_permission</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;tree&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a commit pointing at our topmost tree</span>
+<span class="n">commit_hash</span> <span class="o">=</span> <span class="n">write_git_commit</span><span class="p">(</span><span class="n">tree_hash</span><span class="p">)</span>
+
+<span class="c1"># Update master ref to point to new commit</span>
+<span class="nb">open</span><span class="p">(</span><span class="s1">&#39;.git/refs/heads/master&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">commit_hash</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The bodies of <code>write_git_object</code> and <code>write_git_commit</code> simply call the appropriate git commands (<code>git hash-object</code> and <code>git commit-tree</code>). There is nothing magic about those commands, you can achieve the same thing using <code>hashlib</code> and <code>zlib</code> if you want to learn more about git internals.</p>
+
+<p><div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="k">def</span> <span class="nf">write_git_object</span><span class="p">(</span><span class="n">object_body</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;tree&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Writes a git object and returns the hash&#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">object_body</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;hash-object&#39;</span><span class="p">,</span> <span class="s1">&#39;-w&#39;</span><span class="p">,</span> <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">write_git_commit</span><span class="p">(</span><span class="n">tree_hash</span><span class="p">,</span> <span class="n">commit_message</span><span class="o">=</span><span class="s1">&#39;Create a git bomb&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Writes a git commit and returns the hash&#39;&#39;&#39;</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;commit-tree&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="n">commit_message</span><span class="p">,</span> <span class="n">tree_hash</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+</p>
+
+<p><code>create_tree</code> makes a valid tree object. Git tree objects are quite simple, they are a concatenated list of <code>{permission} {sub-tree or blob name}\x00{sub-tree or blob hash as binary}</code>.</p>
+
+<p><div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="k">def</span> <span class="nf">create_tree</span><span class="p">(</span><span class="n">dirs</span><span class="p">,</span> <span class="n">perm</span><span class="p">):</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dirs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">body</span> <span class="o">+=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">perm</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x20</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">a_dir</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="n">body</span> <span class="o">+=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">binascii</span><span class="o">.</span><span class="n">unhexlify</span><span class="p">(</span><span class="n">a_dir</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">body</span>
+</code></pre></div>
+</p>
+
+<p>That&rsquo;s it! Different paramaters for <code>depth</code> and <code>width</code> will have different properties. I chose <code>10</code> for both in my original post to be similar to the &ldquo;billion laughs&rdquo; XML bomb. Choosing very high values for <code>depth</code> (around ~10,000 on my machine) will cause git to segfault after running out of stack space.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Exploding Git Repositories]]></title>
+    <link href="https://kate.io/blog/git-bomb/"/>
+    <id>urn:uuid:6521e39d-2489-4163-85c3-0a62e8dc71e7</id>
+    <published>2017-10-10T00:00:00+00:00</published>
+    <updated>2017-10-10T00:00:00+00:00</updated>
+    <content type="html"><![CDATA[
+
+<p>If you are an adventurous sort (and can handle a potential reboot) I invite you to clone this <a href="https://github.com/Katee/git-bomb" target="_blank">tiny repo</a>:</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git clone https://github.com/Katee/git-bomb.git
+</code></pre></div>
+
+
+<p>Were you able to clone it? Unless you have quite a lot of memory (both RAM and storage) git was killed, ran out of memory, or you had to reboot. Why is this? It is a perfectly formed repo made of only <a href="https://gist.github.com/Katee/5fb430ca4e13d3b7c0baf844a71246db" target="_blank">12 objects</a>.</p>
+
+<p>How does a tiny repo cause git to run out of memory? The secret is that git de-duplicates “blobs” (which are used to store files) to make repositories smaller and allow using the same blob when a file remains unchanged between commits. Git also allows de-duplication of &ldquo;tree&rdquo; objects (which define the directory structure in a repository). <code>git-bomb</code> tries to make a billion files, however it only has 10 references to the file blob and only has 10 tree objects in all.</p>
+
+<p>This is extremely similar to the “billion laughs” (aka “XML bomb”) hence the name “git bomb”.</p>
+
+<h2 id="structure">Structure</h2>
+
+<h3 id="bottom">Bottom</h3>
+
+<figure id="git-bomb-bottom-layer">
+<img alt="Diagram of above network showing multiple devices at step #5" width="895" height="616" class="responsive" src="/images/posts/git-bomb.png"></img>
+</figure>
+
+<p>At the bottom there is a file blob containing “one laugh”:</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git show 5faa3895522087022ba6fc9e64b02653bd7c4283
+one laugh
+</code></pre></div>
+
+
+<p>There is one tree object that refers to this blob 10 times</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git ls-tree 6961ae061a9b89b91162c00d55425b39a19c9f90
+<span class="m">100644</span> blob 5faa3895522087022ba6fc9e64b02653bd7c4283	f0
+<span class="m">100644</span> blob 5faa3895522087022ba6fc9e64b02653bd7c4283	f1
+<span class="c1"># … snipped</span>
+<span class="m">100644</span> blob 5faa3895522087022ba6fc9e64b02653bd7c4283	f9
+</code></pre></div>
+
+
+<h3 id="middle">Middle</h3>
+
+<p>Then 9 layers of tree objects that refer to the tree object below them (here is the top tree object):</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git ls-tree 106d3b1c00034193bbe91194eb8a90fc45006377
+<span class="m">040000</span> tree 8d106ebc17b2de80acefd454825d394b9bc47fe6	d0
+<span class="m">040000</span> tree 8d106ebc17b2de80acefd454825d394b9bc47fe6	d1
+<span class="c1"># … snipped</span>
+<span class="m">040000</span> tree 8d106ebc17b2de80acefd454825d394b9bc47fe6	d9
+</code></pre></div>
+
+
+<h3 id="top">Top</h3>
+
+<p>The master ref just points to the top-most tree object:</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git log --pretty<span class="o">=</span>format:<span class="s2">&quot;%s | tree: %T&quot;</span>
+Create a git bomb <span class="p">|</span> tree: 106d3b1c00034193bbe91194eb8a90fc45006377
+</code></pre></div>
+
+
+<p>Trying to interact with this repo using anything that has to walk the tree (<code>git status</code>, <code>git checkout</code>) runs into memory issues because git builds the tree in memory before writing files to disk. That means the process is killed instead of filling up your disk space.</p>
+
+<h2 id="other-git-bombs">Other Git Bombs</h2>
+
+<p>Here is a slightly different version of the same idea. This repo has 15,000 nested tree objects. On my laptop this ends up blowing up the stack and causing a segfault.</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ git clone https://github.com/Katee/git-bomb-segfault.git
+</code></pre></div>
+
+
+<p>If you&rsquo;d like to make your own git bombs read the next post <a href="https://kate.io/blog/making-your-own-exploding-git-repos/" target="_blank">Making Your Own Git Bombs</a>.</p>
+
+<h3 id="updates">Updates</h3>
+
+<p>2017-10-11: Got a go-ahead from Github on Hackerone to post this.<br />
+2017-10-12: Was awarded a bounty by Github on Hackerone.<br />
+2017-10-12: This post was on the front page of Hacker News and received <a href="https://news.ycombinator.com/item?id=15457076" target="_blank">comments</a>.<br />
+2017-10-13: There is a discussion of this on the <a href="https://public-inbox.org/git/20171013123521.hop5hrfsyagu7znl@sigill.intra.peff.net/T/#m58c560c18f93476e23110a0656a8d525170d14a2" target="_blank">git mailing list</a>. It includes a mention of a repo of this nature being uploaded to Github in 2014.<br />
+2017-10-14: <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-15298" target="_blank">CVE-2017-15298</a> 💫<br />
+2017-10-15: <a href="https://github.com/jleedev" target="_blank">Josh Lee</a> uploaded a similar repo to GitHub long before me and even gave it a very similar name! The actual repo is disabled, and he never wrote about it publicly.</p>
+
+<p>Thank you <a href="http://blog.wesleyac.com/" target="_blank">Wesley</a> for pairing on many weird git repos. He is currently looking for a job, and I can say from experience pairing with him is fantastic. If you are hiring get in touch with him <a href="mailto:w.aptekar@gmail.com" target="_blank">w.aptekar@gmail.com</a>.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Strange Hash Instances in Ruby]]></title>
+    <link href="https://kate.io/blog/strange-hash-instances-in-ruby/"/>
+    <id>urn:uuid:b20b1985-0683-4b70-9b3c-d7c45decf236</id>
+    <published>2017-09-23T00:00:00+00:00</published>
+    <updated>2017-09-23T00:00:00+00:00</updated>
+    <content type="html"><![CDATA[
+
+<p>Note: All code was run using Ruby MRI 2.4.1 and is not guaranteed to behave the same in other implementations (JRuby, mruby, etc). <em>Also you probably don&rsquo;t want to do this in a real project.</em></p>
+
+<hr />
+
+<p>Like (every?) user of Ruby I constantly use the built-in <code>Hash</code> class. I&rsquo;ve made my own classes usable as keys and know that there are <a href="https://ruby-doc.org/core-2.4.2/Object.html#method-i-eql-3F" target="_blank">multiple equality methods</a>. With this understanding I decided to try and make strange <code>Hash</code> instances.</p>
+
+<h2 id="strange-hash-1-non-unique-keys">Strange Hash #1: Non-unique keys</h2>
+
+<p>How about a hash that only allows one value for any <code>Integer</code> key regardless of the integer value? From the documentation it seems that this is as simple as changing <code>Integer#hash</code> to always return the same value and <code>Integer#eql?</code> to always return true:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">class</span> <span class="nc">Integer</span>
+   <span class="k">def</span> <span class="nf">eql?</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+     <span class="kp">true</span>
+   <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hash</span>
+     <span class="mi">0</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">table</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;one&#39;</span>
+<span class="n">table</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;five&#39;</span>
+<span class="nb">puts</span> <span class="n">table</span>
+<span class="c1">#=&gt; {1=&gt;&quot;one&quot;, 5=&gt;&quot;five&quot;}</span>
+</code></pre></div>
+
+
+<p>Strange, that wasn&rsquo;t what I expected. The table has entries for both <code>1</code> and <code>5</code> even though I don&rsquo;t expect <code>Hash</code> to be able to differentiate these keys anymore. Playing around with some of these monkey-patched integers shows them working how I expect:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="n">eql?</span> <span class="mi">2</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span><span class="n">hash</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">2</span><span class="o">.</span><span class="n">hash</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+</code></pre></div>
+
+
+<p>I know I&rsquo;ve defined <code>eql?</code> and <code>hash</code> on my own classes before and had it work the way the Ruby documentation describes. How about trying the same patch but for the Array class instead?</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">eql?</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="kp">true</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hash</span>
+    <span class="mi">0</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">table</span><span class="o">[[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;array with one&#39;</span>
+<span class="n">table</span><span class="o">[[</span><span class="mi">5</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;array with five&#39;</span>
+<span class="nb">puts</span> <span class="n">table</span>
+<span class="c1">#=&gt; {[1]=&gt;&quot;array with five&quot;}</span>
+</code></pre></div>
+
+
+<p>Both <code>[1]</code> and <code>[5]</code> were treated as the same key! <code>table[[5]] = 'array with five'</code> caused the value for <code>[1]</code> to be over-written. Any lookup with an array key will return the last value stored in <code>table</code> with an array key 🎉</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">table</span><span class="o">[[</span><span class="mi">1</span><span class="o">]]</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;array with five&quot;</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">table</span><span class="o">[[</span><span class="mi">5</span><span class="o">]]</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;array with five&quot;</span>
+<span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">table</span><span class="o">[[</span><span class="s1">&#39;hello&#39;</span><span class="o">]]</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;array with five&quot;</span>
+</code></pre></div>
+
+
+<h3 id="solving-the-mystery">Solving the Mystery</h3>
+
+<p>At this point I wasn&rsquo;t satisfied with my understanding. Why does monkey-patching <code>Array</code> work when <code>Integer</code> doesn&rsquo;t? Some more testing shows that other classes like <code>Symbol</code> and <code>String</code> also stubbornly continue to be treated as unique keys with the monkey-patch. The documentation doesn&rsquo;t mention any special cases and the monkey patch works, just not when used as a key for a <code>Hash</code>.</p>
+
+<p>Having tried documentation and experimentation I decide to move on to my next favourite option: looking at the MRI source code! Some relevant code in <a href="https://github.com/ruby/ruby/blob/820605ba3c/hash.c#L99-L116" target="_blank">hash.c</a> jumps out:</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span></span><span class="n">rb_any_cmp</span><span class="p">(</span><span class="n">VALUE</span> <span class="n">a</span><span class="p">,</span> <span class="n">VALUE</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ... snip</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">FIXNUM_P</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">FIXNUM_P</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">RB_TYPE_P</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">T_STRING</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">RBASIC</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">klass</span> <span class="o">==</span> <span class="n">rb_cString</span> <span class="o">&amp;&amp;</span>
+      <span class="n">RB_TYPE_P</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">T_STRING</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">RBASIC</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">klass</span> <span class="o">==</span> <span class="n">rb_cString</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rb_str_hash_cmp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// ... snip</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">SYMBOL_P</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">SYMBOL_P</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// ... snip</span>
+</code></pre></div>
+
+
+<p>This certainly looks like optimizations for handling string, number and symbol keys. There is also some similar code in the <a href="https://github.com/ruby/ruby/blob/820605ba3c/hash.c#L171-L199" target="_blank"><code>any_hash</code> function</a>. Now that I know these are special cases I can steer clear when creating strange <code>Hash</code> instances.</p>
+
+<h2 id="strange-hash-2-duplicate-keys">Strange Hash #2: Duplicate Keys</h2>
+
+<p>How about storing multiple values for the same key? If an object returns inconsistent values for <code>hash</code> then the <code>Hash</code> class won&rsquo;t consider it to be the same object:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">class</span> <span class="nc">Array</span>
+  <span class="vc">@@last_id</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span> <span class="nf">eql?</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="kp">false</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hash</span>
+    <span class="vc">@@last_id</span> <span class="o">=</span> <span class="vc">@@last_id</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">table</span><span class="o">[[</span><span class="mi">0</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;array with zero&#39;</span>
+<span class="n">table</span><span class="o">[[</span><span class="mi">0</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;another array with zero&#39;</span>
+
+<span class="nb">puts</span> <span class="n">table</span>
+<span class="c1">#=&gt; {[0]=&gt;&quot;array with zero&quot;, [0]=&gt;&quot;another array with zero&quot;}</span>
+<span class="nb">puts</span> <span class="n">table</span><span class="o">.</span><span class="n">keys</span>
+<span class="c1">#=&gt; [[0], [0]]</span>
+</code></pre></div>
+
+
+<p>As expected <code>table</code> has multiple entries with for a single key 🎉</p>
+
+<p>However getting back values stored using <code>Array</code> keys no longer works:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">table</span><span class="o">[[</span><span class="mi">0</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;array with zero&#39;</span>
+<span class="nb">puts</span> <span class="n">table</span><span class="o">[[</span><span class="mi">0</span><span class="o">]]</span>
+<span class="c1">#=&gt; nil</span>
+</code></pre></div>
+
+
+<h2 id="strange-hash-3-expiring-key">Strange Hash #3: Expiring Key</h2>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">eql?</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="vc">@@key_expires_at</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">hash</span>
+    <span class="vc">@@key_expires_at</span> <span class="o">||=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">to_i</span> <span class="o">+</span> <span class="mi">3</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">table</span><span class="o">[[</span><span class="s1">&#39;expires&#39;</span><span class="o">]]</span> <span class="o">=</span> <span class="s1">&#39;this value is only available for 3 seconds&#39;</span>
+<span class="nb">puts</span> <span class="n">table</span><span class="o">[[</span><span class="s1">&#39;expires&#39;</span><span class="o">]]</span>
+<span class="c1">#=&gt; &#39;this value is only available for 3 seconds&#39;</span>
+
+<span class="nb">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">table</span><span class="o">[[</span><span class="s1">&#39;expires&#39;</span><span class="o">]]</span>
+<span class="c1">#=&gt; nil</span>
+</code></pre></div>
+
+
+<p>Now an array can only be used to retrieve a value within a set time period. This also causes all array keys to be seen as identical just like the first example.</p>
+
+<h2 id="future-fun">Future Fun</h2>
+
+<p>I would love to be able to modify <code>Array#hash</code> and <code>Array#eql?</code> to behave differently when called by <code>Hash</code> for insertion vs. retrieval. Unfortunately I don&rsquo;t see anything in <code>caller</code> to let me differentiate.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Weird Python Integers Part II: Constants in Bytecode]]></title>
+    <link href="https://kate.io/blog/2017/08/24/python-constants-in-bytecode/"/>
+    <id>urn:uuid:43ffbd20-75cb-433b-ac66-c542e33ff490</id>
+    <published>2017-08-24T22:05:50-04:00</published>
+    <updated>2017-08-24T22:05:50-04:00</updated>
+    <content type="html"><![CDATA[
+
+<p>This is a quick follow-up to <a href="https://kate.io/blog/2017/08/22/weird-python-integers/" target="_blank">Weird Python Integers</a>. While writing that post, I saw some Python behaviour I didn&rsquo;t understand. Then I read some comments by <a href="https://news.ycombinator.com/item?id=15094345" target="_blank">kmill and squeaky-clean</a> in response to my original post, and now I can explain Python&rsquo;s behaviour.</p>
+
+<p>If you don&rsquo;t know about the &ldquo;small integers&rdquo; table in Python, I recommend reading the original post first or this might be confusing.</p>
+
+<hr />
+
+<p>Given the small integers table, these lines make sense to me:</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">100</span> <span class="ow">is</span> <span class="mi">100</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">is</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+
+
+<ul>
+<li><code>100</code> is in the small integers table</li>
+<li><code>(10 ** 2)</code> is evaluated to <code>100</code> which is the same number in the small integers table.</li>
+</ul>
+
+<p>Even these lines make sense:</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
+<span class="kc">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">is</span> <span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>
+<span class="kc">False</span>
+</code></pre></div>
+
+
+<p>Both <code>x</code> and <code>y</code> are too large to be in the small integers table, so they are not the same object.</p>
+
+<p><strong>However, this did not make sense to me:</strong></p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">1000</span> <span class="ow">is</span> <span class="mi">1000</span>
+<span class="kc">True</span>
+</code></pre></div>
+
+
+<h2 id="figuring-it-out-with-dis">Figuring it out with <code>dis</code></h2>
+
+<p>Clearly something different is happening for <code>1000 is 1000</code> vs. <code>(100 ** 2) is (100 ** 2)</code>. I&rsquo;m not familiar with Python&rsquo;s disassembler, but I know it exists so I tried it out:</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">dis</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">disassemble</span><span class="p">(</span><span class="n">code_str</span><span class="p">):</span>
+<span class="o">...</span>   <span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="nb">compile</span><span class="p">(</span><span class="n">code_str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;single&#39;</span><span class="p">))</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">disassemble</span><span class="p">(</span><span class="s1">&#39;1000 is 1000&#39;</span><span class="p">)</span>
+  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">4</span> <span class="n">COMPARE_OP</span>               <span class="mi">8</span> <span class="p">(</span><span class="ow">is</span><span class="p">)</span>
+              <span class="mi">6</span> <span class="n">PRINT_EXPR</span>
+              <span class="mi">8</span> <span class="n">LOAD_CONST</span>               <span class="mi">1</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+             <span class="mi">10</span> <span class="n">RETURN_VALUE</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">disassemble</span><span class="p">(</span><span class="s1">&#39;(10 ** 3) is (10 ** 3)&#39;</span><span class="p">)</span>
+  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">3</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">4</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">4</span> <span class="n">COMPARE_OP</span>               <span class="mi">8</span> <span class="p">(</span><span class="ow">is</span><span class="p">)</span>
+              <span class="mi">6</span> <span class="n">PRINT_EXPR</span>
+              <span class="mi">8</span> <span class="n">LOAD_CONST</span>               <span class="mi">2</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+             <span class="mi">10</span> <span class="n">RETURN_VALUE</span>
+</code></pre></div>
+
+
+<p>Looking at this output, I was still confused why <code>(100 ** 2) is (100 ** 2)</code> wasn&rsquo;t <code>True</code>. The <a href="https://github.com/python/cpython/blob/5fd33b5926eb8c9352bf5718369b4a8d72c4bb44/Python/peephole.c#L247-L249" target="_blank">Python peephole optimizer</a> changes my line to only be a comparison of constants just like <code>1000 is 1000</code>.</p>
+
+<p>Do you see my mistake? I had completely missed the <code>0</code> in <code>0 (1000)</code> vs the <code>3</code> in <code>3 (1000)</code>. Both lines load and compare constants, just not the <em>same</em> constants. Now it is very clear that they are loading different constants:</p>
+
+<p><div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">disassemble_with_constants</span><span class="p">(</span><span class="n">code_str</span><span class="p">):</span>
+<span class="o">...</span>   <span class="n">code</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">code_str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;single&#39;</span><span class="p">)</span>
+<span class="o">...</span>   <span class="n">dis</span><span class="o">.</span><span class="n">dis</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="o">...</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Constants:&quot;</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_consts</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">disassemble_with_constants</span><span class="p">(</span><span class="s1">&#39;1000 is 1000&#39;</span><span class="p">)</span>
+  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">0</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">4</span> <span class="n">COMPARE_OP</span>               <span class="mi">8</span> <span class="p">(</span><span class="ow">is</span><span class="p">)</span>
+              <span class="mi">6</span> <span class="n">PRINT_EXPR</span>
+              <span class="mi">8</span> <span class="n">LOAD_CONST</span>               <span class="mi">1</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+             <span class="mi">10</span> <span class="n">RETURN_VALUE</span>
+<span class="n">Constants</span><span class="p">:</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">disassemble_with_constants</span><span class="p">(</span><span class="s1">&#39;(10 ** 3) is (10 ** 3)&#39;</span><span class="p">)</span>
+  <span class="mi">1</span>           <span class="mi">0</span> <span class="n">LOAD_CONST</span>               <span class="mi">3</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">2</span> <span class="n">LOAD_CONST</span>               <span class="mi">4</span> <span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="mi">4</span> <span class="n">COMPARE_OP</span>               <span class="mi">8</span> <span class="p">(</span><span class="ow">is</span><span class="p">)</span>
+              <span class="mi">6</span> <span class="n">PRINT_EXPR</span>
+              <span class="mi">8</span> <span class="n">LOAD_CONST</span>               <span class="mi">2</span> <span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+             <span class="mi">10</span> <span class="n">RETURN_VALUE</span>
+<span class="n">Constants</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+</code></pre></div>
+</p>
+
+<p>Even after being optimized the constants used in the calculation are still kept. Also there is no optimization to make two identical constants not in the small integers table use the same object.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Weird Python Integers]]></title>
+    <link href="https://kate.io/blog/2017/08/22/weird-python-integers/"/>
+    <id>urn:uuid:2cff8cc5-8554-4ab2-a1c3-c15bfc4d41d4</id>
+    <published>2017-08-22T17:00:27-04:00</published>
+    <updated>2017-08-22T17:00:27-04:00</updated>
+    <content type="html"><![CDATA[
+
+<p>Note: all of this code was run on my machine using Python 3.6.1. Not everything will work the same if you test using Python 2.</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="kc">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">316</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">316</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<span class="kc">False</span>
+</code></pre></div>
+
+
+<p>That is suprising! It turns out that all &ldquo;small integers&rdquo; with the same value point to the same memory. We can use the Python built-in function <code>id</code> which returns a value you can think of as a memory address to investigate.</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="mi">4504844960</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="mi">4504849056</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="mf">32.0</span>
+</code></pre></div>
+
+
+<p>It looks like there is a table of tiny integers and each integer takes up 32 bytes.</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="mi">4508143344</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="mi">4508143312</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nb">id</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="mi">32</span>
+</code></pre></div>
+
+
+<p>It looks like integers that aren&rsquo;t in the small integers table also take up 32 bytes. The <code>id</code> for these is way larger than for the small integers which means they are stored somewhere else.</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nb">id</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>
+<span class="mi">3294288</span>
+</code></pre></div>
+
+
+<h2 id="editing-integers">Editing Integers?</h2>
+
+<p>What happens if we change the value of an integer in this table? Python has a module called <a href="https://docs.python.org/3/library/ctypes.html" target="_blank">ctypes</a> that can be misused to directly edit memory. (We could also use a debugger but this way all the examples are in Python.)</p>
+
+<p>Note: this code is very platform dependent. If it doesn&rsquo;t work you might be using Python 2 instead of Python 3. In Python 2 changing <code>mutate_int</code> so that both instances of 24 are 16 may work.</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">ctypes</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">mutate_int</span><span class="p">(</span><span class="n">an_int</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+<span class="o">...</span>   <span class="n">ctypes</span><span class="o">.</span><span class="n">memmove</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">an_int</span><span class="p">)</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span> <span class="o">+</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a_number</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">another_number</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mutate_int</span><span class="p">(</span><span class="n">a_number</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a_number</span>
+<span class="mi">13</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">another_number</span>
+<span class="mi">13</span>
+</code></pre></div>
+
+
+<p>Not only have we changed <code>a_number</code> and <code>another_number</code> but all new references to <code>7</code>:</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="o">...</span>   <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+<span class="mi">6</span>
+<span class="mi">13</span>
+<span class="mi">8</span>
+<span class="mi">9</span>
+</code></pre></div>
+
+
+<p>Even doing math with <code>7</code> no longer works correctly 🎉</p>
+
+<div class="highlight"><pre><code class="language-python3" data-lang="python3"><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span>
+<span class="mi">13</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="mi">13</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="mi">14</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="mi">13</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="mi">26</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mb">0b1111</span> <span class="o">^</span> <span class="mb">0b1000</span>
+<span class="mi">13</span>
+</code></pre></div>
+
+
+<p>P.S. You can read more about the table of small integers in the <a href="https://github.com/python/cpython/blob/918403cfc3304d27e80fb792357f40bb3ba69c4e/Objects/longobject.c#L37-L43" target="_blank">CPython source code</a>.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title type="html"><![CDATA[Traceroute and Other Tools]]></title>
+    <link href="https://kate.io/blog/2017/08/17/traceroute-and-other-tools/"/>
+    <id>urn:uuid:337bbdb9-7394-4fa2-8d40-0a0de5a22a0e</id>
+    <published>2017-08-17T00:00:00+00:00</published>
+    <updated>2017-08-17T00:00:00+00:00</updated>
+    <content type="html"><![CDATA[
+
+<p>When you connect to another computer on a network your data usually travels through many devices (also called &ldquo;hops&rdquo;, &ldquo;gateways&rdquo;, or &ldquo;routers&rdquo;). I can use traceroute to list the devices my packets travel through to arrive at <code>steampowered.com</code> from the <a href="https://www.recurse.com/" target="_blank">Recurse Center</a>.</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ <span class="nb">time</span> traceroute steampowered.com
+traceroute to steampowered.com <span class="o">(</span><span class="m">104</span>.88.12.183<span class="o">)</span>, <span class="m">64</span> hops max, <span class="m">52</span> byte packets
+ <span class="m">1</span>  gateway.net.recurse.com <span class="o">(</span><span class="m">10</span>.0.0.1<span class="o">)</span>  <span class="m">6</span>.991 ms  <span class="m">1</span>.959 ms  <span class="m">1</span>.961 ms
+ <span class="m">2</span>  <span class="m">207</span>.251.103.45 <span class="o">(</span><span class="m">207</span>.251.103.45<span class="o">)</span>  <span class="m">3</span>.264 ms  <span class="m">2</span>.433 ms  <span class="m">3</span>.217 ms
+ <span class="m">3</span>  te0-7-0-18.ccr21.jfk04.atlas.cogentco.com <span class="o">(</span><span class="m">38</span>.104.73.241<span class="o">)</span>  <span class="m">6</span>.573 ms  <span class="m">4</span>.164 ms  <span class="m">4</span>.728 ms
+ <span class="m">4</span>  be2325.ccr42.jfk02.atlas.cogentco.com <span class="o">(</span><span class="m">154</span>.54.47.29<span class="o">)</span>  <span class="m">3</span>.179 ms  <span class="m">2</span>.550 ms  <span class="m">14</span>.625 ms
+ <span class="m">5</span>  be2057.ccr21.jfk10.atlas.cogentco.com <span class="o">(</span><span class="m">154</span>.54.80.178<span class="o">)</span>  <span class="m">4</span>.080 ms
+    be2056.ccr21.jfk10.atlas.cogentco.com <span class="o">(</span><span class="m">154</span>.54.44.218<span class="o">)</span>  <span class="m">5</span>.944 ms
+    be2057.ccr21.jfk10.atlas.cogentco.com <span class="o">(</span><span class="m">154</span>.54.80.178<span class="o">)</span>  <span class="m">5</span>.057 ms
+ <span class="m">6</span>  ae-13.r08.nycmny01.us.bb.gin.ntt.net <span class="o">(</span><span class="m">129</span>.250.8.145<span class="o">)</span>  <span class="m">3</span>.689 ms  <span class="m">3</span>.687 ms  <span class="m">3</span>.398 ms
+ <span class="m">7</span>  ae-3.r07.nycmny01.us.bb.gin.ntt.net <span class="o">(</span><span class="m">129</span>.250.6.176<span class="o">)</span>  <span class="m">25</span>.137 ms  <span class="m">16</span>.652 ms  <span class="m">12</span>.502 ms
+ <span class="m">8</span>  a104-88-12-183.deploy.static.akamaitechnologies.com <span class="o">(</span><span class="m">104</span>.88.12.183<span class="o">)</span>  <span class="m">4</span>.710 ms  <span class="m">7</span>.913 ms  <span class="m">4</span>.445 ms
+traceroute steampowered.com  <span class="m">0</span>.00s user <span class="m">0</span>.01s system <span class="m">3</span>% cpu <span class="m">0</span>.214 total
+</code></pre></div>
+
+
+<p>Here&rsquo;s a diagram representing the route:</p>
+
+<figure>
+<img alt="Diagram of above network showing multiple devices at step #5" width="1000" height="250" class="responsive" src="/images/traceroute-example.png"></img>
+</figure>
+
+<p>I found a couple of the steps interesting:</p>
+
+<ul>
+<li>#1 is over Wifi to a router in the same room as me. It can take a long time to reach this!</li>
+<li>#2 is ISP Stealth Communications which provides fiber optic internet in NYC. However no &ldquo;symbolic name&rdquo; was found for it, stealthy.</li>
+<li>#5 has multiple lines because not all replies came from the same IP address. I think this might be the result of load balancing.</li>
+<li>#8 is a response from the IP for <code>steampowered.com</code> and ends the route. Now I know it is served by Akamai.</li>
+</ul>
+
+<h2 id="how-do-you-trace-a-route">How do you trace a route?</h2>
+
+<p>Traceroute sends out <a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol" target="_blank">UDP</a> packets with &ldquo;time-to-live&rdquo; (TTL) values starting at 1 and increasing by 1. The TTL field is special because every device that processes a packet decrements it by 1. When a device decrements the TTL on a packet to 0 the packet is &ldquo;dropped&rdquo; and not sent to any other devices. Instead a <a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol" target="_blank">Internet Control Message Protocol</a> (ICMP) &ldquo;Time-to-live exceeded&rdquo; packet is dispatched back to the original sender. When traceroute sends a packet with a high enough TTL to actually reach the final destination you usually get back &ldquo;Destination unreachable (Port unreachable)&rdquo; because the UDP packets sent to a destination port that is unlikely to be open.</p>
+
+<p>I found the name &ldquo;time-to-live&rdquo; initially confusing because in other contexts &ldquo;time-to-live&rdquo; refers to actual <em>time</em> not &ldquo;number of devices travelled through&rdquo;.</p>
+
+<h2 id="is-it-fast">Is it fast?</h2>
+
+<p>In the example the entire process took 214 milliseconds with 153 milliseconds of that spent waiting for packets to return. On the same network <code>ping steampowered.com</code> gets results in about 8 milliseconds (with some results coming significantly faster). However ping and traceroute aren&rsquo;t directly comparable because ping only needs to make one round trip while traceroute makes at least one round trip per device between you and the destination.</p>
+
+<figure>
+<img alt="Diagram of network showing ping taking one step and traceroute taking multiple steps" width="1000" height="217" class="responsive" src="/images/ping-traceroute-comparison.png"></img>
+<figcaption>Example of ping vs. traceroute on a fictitious route</figcaption>
+</figure>
+
+<p>Another thing that makes traceroute slower is that by default three packets (called probes in the manual) are sent at each step. Also getting the symbolic names (e.g. <code>gateway.net.recurse.com</code>) isn&rsquo;t free! Unless the name has already been cached a <abbr title="Domain Name System">DNS</abbr> query is made.</p>
+
+<p>The closest I can get to making traceroute behave like the simplified diagram above is to send only one packet per TTL (<code>-q</code> option) and disable looking up symbolic names (<code>-n</code> flag):</p>
+
+<p><div class="highlight"><pre><code class="language-sh" data-lang="sh"><span></span>$ <span class="nb">time</span> traceroute -q <span class="m">1</span> -n steampowered.com
+traceroute to steampowered.com <span class="o">(</span><span class="m">23</span>.33.112.147<span class="o">)</span>, <span class="m">64</span> hops max, <span class="m">52</span> byte packets
+ <span class="m">1</span>  <span class="m">10</span>.0.0.1  <span class="m">4</span>.793 ms
+ <span class="m">2</span>  <span class="m">207</span>.251.103.45  <span class="m">7</span>.811 ms
+ <span class="m">3</span>  <span class="m">38</span>.104.73.241  <span class="m">5</span>.402 ms
+ <span class="m">4</span>  <span class="m">154</span>.54.47.17  <span class="m">5</span>.815 ms
+ <span class="m">5</span>  <span class="m">154</span>.54.80.2  <span class="m">9</span>.054 ms
+ <span class="m">6</span>  <span class="m">38</span>.104.74.6  <span class="m">6</span>.528 ms
+ <span class="m">7</span>  <span class="m">216</span>.151.177.249  <span class="m">7</span>.988 ms
+ <span class="m">8</span>  <span class="m">23</span>.33.112.147  <span class="m">9</span>.635 ms
+traceroute -n -q <span class="m">1</span> steampowered.com  <span class="m">0</span>.00s user <span class="m">0</span>.00s system <span class="m">4</span>% cpu <span class="m">0</span>.100 total
+</code></pre></div>
+</p>
+
+<p>The total time here 100 is milliseconds with 57 milliseconds being accounted for by the time spent waiting for the responses. That is fast enough for human consumption.</p>
+
+<h2 id="can-it-be-faster">Can it be faster?</h2>
+
+<p>It might be possible to speed up traceroute by sending out many probes with different TTLs simultaneously. The ICMP response includes part of the original UDP packet making it possible to identify responses even if they return out of order if you include something unique in the original packet (like a unique destination port). The manual mentions that &ldquo;Some systems such as Solaris and routers such as Ciscos rate limit ICMP messages.&rdquo;. I sent 30 packets with TTLs between 1-30 simultaneously as a test and it mostly worked. However I only received a few responses for messages with a high enough TTL to reach the final destination which could be from rate-limiting.</p>
+
+<p>Another big slowdown I experienced was the timeout when a hop returns no response. In that case traceroute waits <code>number_of_probes × timeout</code> before trying the next TTL. With the default settings the wait is 15 seconds (3 probes &times; 5 seconds).</p>
+
+<h2 id="other-tools">Other tools</h2>
+
+<p>There is a useful tool <a href="https://github.com/traviscross/mtr" target="_blank">mtr</a> which is like a combination of traceroute and ping. It first gets ICMP responses like traceroute. Then it continually pings each device to display ongoing statistics. Unlike traceroute it will not find multiple IP addresses responding to the same TTL. I was happy to see that mtr is much faster that traceroute when a hop does not return anything.</p>
+
+<p>I did experience something odd in mtr for hops where traceroute showed multiple IP addresses (e.g. #5 in the first example). For those hops mtr sometimes reports high rates of packet loss even though packet loss for the final destination is very low. This isn&rsquo;t a bug with mtr but instead says something about the underlying route!</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="https://opensource.apple.com/source/network_cmds/network_cmds-77/traceroute.tproj/traceroute.c.auto.html" target="_blank">Code of Apple&rsquo;s traceroute</a></li>
+<li><a href="https://github.com/traviscross/mtr" target="_blank">mtr</a></li>
+</ul>
+]]></content>
+  </entry>
+</feed>
