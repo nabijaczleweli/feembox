@@ -7,7 +7,7 @@ extern crate hostname;
 extern crate feembox;
 extern crate feed_rs;
 extern crate futures;
-extern crate memmap;
+extern crate memmap2;
 #[macro_use]
 extern crate clap;
 
@@ -25,7 +25,7 @@ use std::time::SystemTime;
 use std::fs::{self, File};
 use tabwriter::TabWriter;
 use std::borrow::Cow;
-use memmap::Mmap;
+use memmap2::Mmap;
 
 
 fn main() {
