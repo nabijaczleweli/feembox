@@ -96,15 +96,17 @@ fn actual_main() -> Result<(), i32> {
                     4
                 })?;
 
-            let mail_path = mail.path();
-            let mail_file = File::open(&mail_path).map_err(|e| {
-                    eprintln!("Opening {}{} failed: {}", dir_name, mail.file_name().to_string_lossy(), e);
-                    5
-                })?;
-            let mail_map = unsafe { Mmap::map(&mail_file) }.map_err(|e| {
+            let mail_map = {
+                let mail_path = mail.path();
+                let mail_file = File::open(&mail_path).map_err(|e| {
+                        eprintln!("Opening {}{} failed: {}", dir_name, mail.file_name().to_string_lossy(), e);
+                        5
+                    })?;
+                unsafe { Mmap::map(&mail_file) }.map_err(|e| {
                     eprintln!("Mapping {}{} failed: {}", dir_name, mail.file_name().to_string_lossy(), e);
                     5
-                })?;
+                })?
+            };
 
             let mut curs = &mail_map[..];
             while let Ok((header, next)) = parse_mail_header(curs) {
