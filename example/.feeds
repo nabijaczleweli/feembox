@@ -1,6 +1,6 @@
-OUTDIR /home/nabijaczleweli/mail/feeds
+OUTDIR ~/mail/feeds
 TRANS  text/html:text/plain;charset=utf-8:~/code/turndown/bin/turndown.js
 
-whitequark  .  https://lab.whitequark.org/atom.xml
-q3w3e3      .  https://blog.q3w3e3.dev/feed.xml             -f text/html
-наб         .  https://nabijaczleweli.xyz/content/feed.xml  -f text/html
+наб         .  https://nabijaczleweli.xyz/content/feed.xml
+ken_schriff .  https://www.righto.com/feeds/posts/default
+benjojo     .  https://blog.benjojo.co.uk/rss.xml           -f text/html

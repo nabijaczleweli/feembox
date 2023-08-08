@@ -1,36 +1,30 @@
-#!/bin/gawk -f
+#!/bin/sh
 
-BEGIN {
-	feembox="$HOME/.cargo/bin/feembox"
-	datadir="/run/user/" PROCINFO["uid"] "/feeds/"
-	system("mkdir -p " datadir)
-	outdir=""
-	transes=""
-}
+[ $# -ne 0 ] && exec < "$1"
+XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR-"/run/user/$(id -u)"}"
 
-/^OUTDIR/ {
-	outdir=gensub("/$", "", "g", $2) "/"
-	next
-}
+datadir="$XDG_RUNTIME_DIR/feeds/"
+mkdir -p "$datadir" || exit
 
-/^TRANS/ {
-	transes="-t \"" $2 "\""
-	next
-}
+outdir=
+trans=
 
-!/^#/ && !/^$/ {
-	name=$1
-	subdir=gensub("/$", "", "g", $2)
-	url=$3
-	$1 = $2 = $3 = ""
-	leftovers=$0
-
-	#print("curl -sL --etag-compare \"" datadir name ".etag\" --etag-save \"" datadir name ".etag\" -o \"" datadir name ".feed\" \"" url "\"") | "/bin/sh"
-	print("curl -sL -z \"" datadir name ".feed\" -o \"" datadir name ".feed\" \"" url "\"")       | "/bin/sh"
-	print(feembox " " transes " " leftovers " \"" outdir subdir "\" \"" datadir name ".feed\" &") | "/bin/sh"
-}
-
-END {
-	print("wait") | "/bin/sh"
-	close("/bin/sh")
-}
+while read -r name subdir url leftovers; do
+	case "$name" in
+		OUTDIR)
+			outdir="$subdir/"
+			[ "${outdir#'~/'}" != "$outdir" ] && outdir="$HOME${outdir#'~'}"  # ~username not supported
+			;;
+		TRANS ) trans="-t $subdir" ;;
+		''    )                    ;;
+		'#'*  )                    ;;
+		*     )
+			(
+				IFS="$IFS\""
+				curl -SsL -z "$datadir$name.feed" -o "$datadir$name.feed" "$url" &&  # --etag-compare "$datadir$name.etag" --etag-save "$datadir$name.etag"
+					${FEEMBOX-feembox} $trans $leftovers "$outdir$subdir" "$datadir$name.feed"
+			) &
+			;;
+	esac
+done
+wait
