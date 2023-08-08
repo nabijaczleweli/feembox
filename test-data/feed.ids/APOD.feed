@@ -1,0 +1,63 @@
+<rss version="2.0">
+  <channel>
+    <title>APOD</title>
+    <link>https://apod.nasa.gov/</link>
+    <description>Astronomy Picture of the Day</description>
+    <language>en-us</language>
+    <image>
+      <title>APOD</title>
+      <url>https://apod.nasa.gov/favicon.ico</url>
+      <link>https://apod.nasa.gov/</link>
+    </image>
+
+    <item>
+    <title></title>
+    <link>https://apod.nasa.gov/apod/astropix.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/astropix.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230807.jpg" align="left" alt="The Pelican Nebula is slowly being transformed.  " border="0" />&#60;/a> The Pelican Nebula is slowly being transformed.  &#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title></title>
+    <link>https://apod.nasa.gov/apod/ap230806.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230806.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230806.jpg" align="left" alt="What created this unusual space ribbon? " border="0" />&#60;/a> What created this unusual space ribbon? &#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title>NGC 1360: The Robin's Egg Nebula</title>
+    <link>https://apod.nasa.gov/apod/ap230805.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230805.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230805.jpg" align="left" alt="NGC 1360: The Robin's Egg Nebula" border="0" />&#60;/a> NGC 1360: The Robin's Egg Nebula&#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title>Moonrays of August</title>
+    <link>https://apod.nasa.gov/apod/ap230804.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230804.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230804.jpg" align="left" alt="Moonrays of August" border="0" />&#60;/a> Moonrays of August&#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title>The Falcon and the Redstone</title>
+    <link>https://apod.nasa.gov/apod/ap230803.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230803.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230803.jpg" align="left" alt="In a photo from the early hours of July 29 (UTC)," border="0" />&#60;/a> In a photo from the early hours of July 29 (UTC),&#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title></title>
+    <link>https://apod.nasa.gov/apod/ap230802.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230802.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230802.jpg" align="left" alt="Why is the Cigar Galaxy billowing red smoke? " border="0" />&#60;/a> Why is the Cigar Galaxy billowing red smoke? &#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <item>
+    <title></title>
+    <link>https://apod.nasa.gov/apod/ap230801.html</link>
+<description>&#60;p>&#60;a href="https://apod.nasa.gov/apod/ap230801.html">&#60;img src="https://apod.nasa.gov/apod/calendar/S_230801.jpg" align="left" alt="The monsters that live on the Sun are not like us." border="0" />&#60;/a> The monsters that live on the Sun are not like us.&#60;/p>&#60;br clear="all"/></description>
+    </item>
+
+    <textInput>
+    <title>Search APOD</title>
+    <description>Search APOD</description>
+    <name>query</name>
+    <link>https://apod.nasa.gov/cgi-bin/apod/apod_search
+    </link>
+    </textInput>
+  </channel>
+</rss>
